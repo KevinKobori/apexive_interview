@@ -1,5 +1,7 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
+import 'package:flutter/widgets.dart';
 
 abstract final class XImagesHelper {
   static Future<void> precacheCache(

@@ -1,3 +1,4 @@
+// TODO: NOW - REMOVE THIS MATERIAL DEPENDENCY
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
@@ -34,7 +35,7 @@ class CollectionsOverview extends StatelessWidget {
                       ),
                       // TODO: NOW
                       // AppIcon.regular(
-                      //   theme.icons.characters.vikoin,
+                      //   theme.icons.characters.tag,
                       //   color: theme.colors.actionBarForeground,
                       // ),
                       Icon(
@@ -48,7 +49,7 @@ class CollectionsOverview extends StatelessWidget {
             ],
           );
         } else {
-          return CircularProgressIndicator();
+          return Text('PUT LOADING HERE');
         }
       },
     );

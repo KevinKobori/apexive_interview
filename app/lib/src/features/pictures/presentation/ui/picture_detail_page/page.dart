@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart' as dz;
+import 'package:flutter/widgets.dart';
 import 'package:localstorage/localstorage.dart' as ls;
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_app/src/features/pictures/presentation/ui/picture_detail_page/views/state_loaded_success_view.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PictureDetailPage extends StatefulWidget {
   const PictureDetailPage({

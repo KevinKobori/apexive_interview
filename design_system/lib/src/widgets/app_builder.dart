@@ -7,8 +7,8 @@ import 'package:nasa_apod_design_system/src/theme/responsive_theme.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:nasa_apod_design_system/src/widgets/buttons/button.dart';
 
-class AppBase extends StatelessWidget {
-  const AppBase({
+class ApodAppBuilder extends StatelessWidget {
+  const ApodAppBuilder({
     required this.routerDelegate,
     required this.routeInformationParser,
     required this.appLogo,
@@ -95,7 +95,7 @@ class AppBase extends StatelessWidget {
     );
   }
 
-  Widget _appBuilder(BuildContext context, Widget? child) {
+  Widget _builder(BuildContext context, Widget? child) {
     return builder != null
         ? builder!(context, child)
         : child ?? const SizedBox.shrink();
@@ -115,7 +115,7 @@ class AppBase extends StatelessWidget {
           routeInformationParser: routeInformationParser,
           routerDelegate: routerDelegate,
           backButtonDispatcher: backButtonDispatcher,
-          builder: _appBuilder,
+          builder: _builder,
           title: title,
           onGenerateTitle: onGenerateTitle,
           textStyle: theme.typography.paragraph1.copyWith(

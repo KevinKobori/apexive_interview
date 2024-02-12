@@ -19,7 +19,9 @@ dependencies:
   sliver_tools: ^0.2.12
   flutter_svg: ^1.0.3
   tap_builder: ^0.3.4
-
+  nasa_apod_core:
+    path: ../core
+    
 dev_dependencies:
   test_utils:
     path: ../test_utils 

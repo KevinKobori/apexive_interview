@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
@@ -130,9 +131,9 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
               ).toEdgeInsets(theme),
               child: Column(
                 children: [
-                  OutlinedButton(
-                    onPressed: () => widget.onLoadAllPicturesList,
-                    child: const Text('List all'),
+                  AppButton(
+                    onTap: () => widget.onLoadAllPicturesList,
+                    title: 'List all',
                   ),
                   ApodDatePickerDialog(
                       onLoadPictureByDate: widget.onLoadPictureByDate),

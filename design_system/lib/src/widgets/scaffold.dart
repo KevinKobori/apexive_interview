@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -44,7 +44,7 @@ class AppScaffold extends StatelessWidget {
                   child: BackdropFilter(
                     filter: ui.ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
                     child: Container(
-                      color: Colors.black.withOpacity(0.8),
+                      color: theme.colors.background.withOpacity(0.8),
                     ),
                   ),
                 )

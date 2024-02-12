@@ -1,26 +1,14 @@
-// import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:tap_builder/tap_builder.dart';
 
-// class CustomImageProvider extends ImageProvider {
-//   final String imageUrl;
-
-//   CustomImageProvider(this.imageUrl) : super();
-
-//   String get url => imageUrl;
-
-//   @override
-//   Future<CustomImageProvider> obtainKey(ImageConfiguration configuration) {
-//     // The key in this case can simply be this instance, as the URL is the unique identifier.
-//     return SynchronousFuture<CustomImageProvider>(this);
-//   }
-// }
-
 class PictureTile extends StatefulWidget {
   const PictureTile({
-    required this.title, // required this.image,
+    required this.title,
+    // required this.image,
     required this.imageUrl,
     required this.date,
     required this.onTap,
@@ -71,7 +59,7 @@ class _PictureTileState extends State<PictureTile> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const Center(child: Text('PUT LOADING HERE'));
     } else {
       return TapBuilder(
         onTap: widget.onTap,
@@ -220,5 +208,5 @@ Future<double> getImageAspectRatio(String imageUrl) async {
     ImageStreamListener(imageListener),
   );
 
-  return await completer.future ?? 1;
+  return await completer.future;
 }

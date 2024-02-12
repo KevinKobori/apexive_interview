@@ -1,23 +1,6 @@
-import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-
-class AppNotification extends Equatable {
-  const AppNotification({
-    required this.title,
-    required this.description,
-    required this.icon,
-  });
-  final String title;
-  final String description;
-  final String icon;
-
-  @override
-  List<Object?> get props => [
-        title,
-        description,
-        icon,
-      ];
-}
 
 class AppNotifiableBar extends StatefulWidget {
   const AppNotifiableBar({
@@ -27,7 +10,7 @@ class AppNotifiableBar extends StatefulWidget {
     this.onClosed,
   });
 
-  final AppNotification? notification;
+  final NotificationViewModel? notification;
   final VoidCallback? onClosed;
   final Widget child;
 
@@ -89,7 +72,7 @@ class AppNotifiableBarLayout extends StatelessWidget {
         notification = null;
 
   final AppNotifiableBarState _state;
-  final AppNotification? notification;
+  final NotificationViewModel? notification;
   final VoidCallback? onClosed;
   final Widget child;
 
@@ -138,7 +121,7 @@ class _NotificationBody extends StatelessWidget {
     this.onClose,
   });
 
-  final AppNotification notification;
+  final NotificationViewModel notification;
   final VoidCallback? onClose;
 
   @override

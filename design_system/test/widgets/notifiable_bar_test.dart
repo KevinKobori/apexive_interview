@@ -1,4 +1,7 @@
+import 'package:flutter/widgets.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
+
 import '../base/widget.dart';
 
 void main() {
@@ -13,9 +16,9 @@ void main() {
     );
   }
 
-  AppNotification notification(BuildContext context) {
+  NotificationViewModel notification(BuildContext context) {
     final theme = AppTheme.of(context);
-    return AppNotification(
+    return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',
       icon: theme.icons.characters.tag,

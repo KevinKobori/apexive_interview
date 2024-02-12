@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_app/src/features/account/widget/avatar.dart';
 import 'package:nasa_apod_app/src/features/collections/ui/widget/overview.dart';

@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -9,7 +10,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBase(
+    return ApodAppBuilder(
       debugShowCheckedModeBanner: false,
       colorMode: AppThemeColorMode.dark,
       appLogo: ExactAssetPicture(

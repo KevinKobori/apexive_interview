@@ -1,5 +1,6 @@
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PicturesPageHeader extends StatelessWidget {
   const PicturesPageHeader({

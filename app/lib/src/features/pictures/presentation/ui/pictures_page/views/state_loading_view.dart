@@ -1,5 +1,5 @@
+import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PicturesPageStateLoadingView extends StatelessWidget {
@@ -14,7 +14,7 @@ class PicturesPageStateLoadingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       body: const Center(
-        child: CircularProgressIndicator(),
+        child: Text('PUT LOADING HERE'),
       ),
     );
   }

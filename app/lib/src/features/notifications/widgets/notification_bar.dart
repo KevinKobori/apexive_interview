@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
@@ -24,7 +25,7 @@ class NotificationBar extends StatelessWidget {
             onClosed: () => BlocProvider.of<NotificationsOverviewBloc>(context)
                 .add(NotificationsOverviewEventClose(null)),
             notification: state.lastNotification != null
-                ? AppNotification(
+                ? NotificationViewModel(
                     title: state.lastNotification!.title,
                     description: state.lastNotification!.description,
                     icon: () {
@@ -37,7 +38,7 @@ class NotificationBar extends StatelessWidget {
             child: child,
           );
         } else {
-          return CircularProgressIndicator();
+          return Text('PUT LOADING HERE');
         }
       },
     );

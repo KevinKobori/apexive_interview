@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class I18n {

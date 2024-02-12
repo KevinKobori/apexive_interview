@@ -1,11 +1,15 @@
-import 'package:nasa_apod_core/nasa_apod_core.dart';
+import 'package:flutter/material.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodDatePickerDialog extends StatefulWidget
     implements PreferredSizeWidget {
   const ApodDatePickerDialog({
     required this.onLoadPictureByDate,
     super.key,
-  }) : preferredSize = const Size.fromHeight(kToolbarHeight);
+    // TODO: NOW = REMOVE THIS kToolbarHeight FROM MATERIAL DEPENDENCY???
+  }) : preferredSize = const Size.fromHeight(
+            // kToolbarHeight
+            52);
 
   final ValueChanged<DateTime> onLoadPictureByDate;
 
@@ -81,11 +85,11 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: () {
+    return AppButton(
+      onTap: () {
         _restorableDatePickerRouteFuture.present();
       },
-      child: const Text('Search by date'),
+      title: 'Search by date',
     );
   }
 }
