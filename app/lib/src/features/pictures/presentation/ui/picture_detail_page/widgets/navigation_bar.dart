@@ -1,8 +1,8 @@
-import 'package:nasa_apod_app/features/account/widget/avatar.dart';
-import 'package:nasa_apod_app/features/collections/ui/widget/overview.dart';
-import 'package:nasa_apod_app/features/notifications/widgets/notification_bar.dart';
-import 'package:nasa_apod_app/features/pictures/presentation/ui/pictures_page/widgets/navigation_bar.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_app/src/features/account/widget/avatar.dart';
+import 'package:nasa_apod_app/src/features/collections/ui/widget/overview.dart';
+import 'package:nasa_apod_app/src/features/notifications/widgets/notification_bar.dart';
+import 'package:nasa_apod_app/src/features/pictures/presentation/ui/pictures_page/widgets/navigation_bar.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PictureDetailNavigationBar extends StatelessWidget {
