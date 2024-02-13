@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:nasa_apod_design_system/src/widgets/base/padding.dart';
 
-class AppContainer extends StatelessWidget {
-  const AppContainer({
+class ApodContainer extends StatelessWidget {
+  const ApodContainer({
     super.key,
     this.width,
     this.height,
@@ -19,8 +19,8 @@ class AppContainer extends StatelessWidget {
     this.child,
   });
 
-  final AppEdgeInsets? padding;
-  final AppEdgeInsets? margin;
+  final ApodEdgeInsets? padding;
+  final ApodEdgeInsets? margin;
   final Decoration? decoration;
   final Decoration? foregroundDecoration;
   final double? width;
@@ -34,7 +34,7 @@ class AppContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return Container(
       width: width,
       height: height,

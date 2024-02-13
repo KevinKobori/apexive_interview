@@ -22,7 +22,7 @@ class PicturesPageNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,
-      child: AppNavigationBar(
+      child: ApodNavigationBar(
         leading: CurrentUserAvatar(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
@@ -47,7 +47,7 @@ class CurrentUserAccountNavigationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
 
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
       bloc: accountOverviewPresenter,
@@ -57,11 +57,11 @@ class CurrentUserAccountNavigationBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              AppText.paragraph1(
+              ApodText.paragraph1(
                 'Account',
                 color: theme.colors.actionBarForeground,
               ),
-              AppText.title3(
+              ApodText.title3(
                 state.account.name,
                 color: theme.colors.actionBarForeground,
               ),

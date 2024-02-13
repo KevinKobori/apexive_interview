@@ -22,7 +22,7 @@ void testAppView(
     appTestWidgets(
       deviceCategory.key,
       {
-        for (var colorMode in AppThemeColorMode.values)
+        for (var colorMode in ApodAppThemeColorMode.values)
           colorMode.name: Row(
             mainAxisSize: MainAxisSize.min,
             textDirection: TextDirection.ltr,
@@ -31,7 +31,7 @@ void testAppView(
               ...deviceCategory.value.entries.map(
                 (device) => MediaQuery(
                   data: device.value,
-                  child: AppResponsiveTheme(
+                  child: ApodAppResponsiveTheme(
                     colorMode: colorMode,
                     appLogo: StringPicture(
                       SvgPicture.svgStringDecoderBuilder,
@@ -61,7 +61,7 @@ void testAppView(
                                     horizontal: 8,
                                     vertical: 4,
                                   ),
-                                  child: AppText.title3(
+                                  child: ApodText.title3(
                                     device.key,
                                     color: Colors.black,
                                   ),

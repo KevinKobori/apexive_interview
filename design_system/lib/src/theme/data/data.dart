@@ -11,13 +11,13 @@ import 'package:nasa_apod_design_system/src/theme/data/shadows.dart';
 import 'package:nasa_apod_design_system/src/theme/data/spacing.dart';
 import 'package:nasa_apod_design_system/src/theme/data/typography.dart';
 
-class AppThemeData extends Equatable {
-  const AppThemeData({
+class ApodThemeData extends Equatable {
+  const ApodThemeData({
     required this.icons,
     required this.colors,
     required this.typography,
     required this.radius,
-    required this.spacing,
+    required this.spacings,
     required this.shadow,
     required this.durations,
     required this.images,
@@ -25,34 +25,34 @@ class AppThemeData extends Equatable {
     TargetPlatform? platform,
   }) : _platform = platform;
 
-  factory AppThemeData.regular({
+  factory ApodThemeData.regular({
     required PictureProvider appLogo,
     required PictureProvider appWarmLogo,
   }) =>
-      AppThemeData(
-        formFactor: AppFormFactor.medium,
-        icons: AppIconsData.regular(),
-        typography: AppTypographyData.regular(),
-        colors: AppColorsData.light(),
-        radius: const AppRadiusData.regular(),
-        spacing: AppSpacingData.regular(),
-        shadow: AppShadowsData.regular(),
-        durations: AppDurationsData.regular(),
-        images: AppImagesData.regular(
+      ApodThemeData(
+        formFactor: ApodAppFormFactor.medium,
+        icons: ApodIconsData.regular(),
+        typography: ApodTypographyData.regular(),
+        colors: ApodColorsData.light(),
+        radius: const ApodRadiusData.regular(),
+        spacings: ApodSpacingsData.regular(),
+        shadow: ApodShadowsData.regular(),
+        durations: ApodDurationsData.regular(),
+        images: ApodImagesData.regular(
           appLogo: appLogo,
           appWarmLogo: appWarmLogo,
         ),
       );
 
-  final AppIconsData icons;
-  final AppColorsData colors;
-  final AppTypographyData typography;
-  final AppRadiusData radius;
-  final AppSpacingData spacing;
-  final AppShadowsData shadow;
-  final AppDurationsData durations;
-  final AppImagesData images;
-  final AppFormFactor formFactor;
+  final ApodIconsData icons;
+  final ApodColorsData colors;
+  final ApodTypographyData typography;
+  final ApodRadiusData radius;
+  final ApodSpacingsData spacings;
+  final ApodShadowsData shadow;
+  final ApodDurationsData durations;
+  final ApodImagesData images;
+  final ApodAppFormFactor formFactor;
   final TargetPlatform? _platform;
   TargetPlatform get platform => _platform ?? defaultTargetPlatform;
 
@@ -63,14 +63,14 @@ class AppThemeData extends Equatable {
         colors,
         typography,
         radius,
-        spacing,
+        spacings,
         shadow,
         durations,
         images,
       ];
 
-  AppThemeData withColors(AppColorsData colors) {
-    return AppThemeData(
+  ApodThemeData withColors(ApodColorsData colors) {
+    return ApodThemeData(
       platform: platform,
       formFactor: formFactor,
       colors: colors,
@@ -79,13 +79,13 @@ class AppThemeData extends Equatable {
       images: images,
       radius: radius,
       shadow: shadow,
-      spacing: spacing,
+      spacings: spacings,
       typography: typography,
     );
   }
 
-  AppThemeData withImages(AppImagesData images) {
-    return AppThemeData(
+  ApodThemeData withImages(ApodImagesData images) {
+    return ApodThemeData(
       platform: platform,
       formFactor: formFactor,
       colors: colors,
@@ -94,13 +94,13 @@ class AppThemeData extends Equatable {
       images: images,
       radius: radius,
       shadow: shadow,
-      spacing: spacing,
+      spacings: spacings,
       typography: typography,
     );
   }
 
-  AppThemeData withFormFactor(AppFormFactor formFactor) {
-    return AppThemeData(
+  ApodThemeData withFormFactor(ApodAppFormFactor formFactor) {
+    return ApodThemeData(
       platform: platform,
       formFactor: formFactor,
       colors: colors,
@@ -109,13 +109,13 @@ class AppThemeData extends Equatable {
       images: images,
       radius: radius,
       shadow: shadow,
-      spacing: spacing,
+      spacings: spacings,
       typography: typography,
     );
   }
 
-  AppThemeData withTypography(AppTypographyData typography) {
-    return AppThemeData(
+  ApodThemeData withTypography(ApodTypographyData typography) {
+    return ApodThemeData(
       platform: platform,
       formFactor: formFactor,
       colors: colors,
@@ -124,7 +124,7 @@ class AppThemeData extends Equatable {
       images: images,
       radius: radius,
       shadow: shadow,
-      spacing: spacing,
+      spacings: spacings,
       typography: typography,
     );
   }

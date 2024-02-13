@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:nasa_apod_design_system/src/widgets/buttons/action_button.dart';
 
-class AppBackButton extends StatelessWidget {
-  const AppBackButton({
+class ApodBackButton extends StatelessWidget {
+  const ApodBackButton({
     super.key,
     this.onTap,
   });
@@ -12,8 +12,8 @@ class AppBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-    return AppActionButton(
+    final theme = ApodTheme.of(context);
+    return ApodActionButton(
       icon: theme.icons.characters.arrowBack,
       onTap: onTap ?? () => Navigator.pop(context),
     );

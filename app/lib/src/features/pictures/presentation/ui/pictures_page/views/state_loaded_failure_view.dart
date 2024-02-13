@@ -14,13 +14,13 @@ class PicturesPageStateLoadedFailureView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: NOW
-    return AppScaffold(
-      body: Container(),
-      // TODO: NOW PUT IT BACK
-      // ApodReloadPage(
-      //   error: failureMessage,
-      //   reload: reload,
-      // ),
+    return ApodScaffold(
+      body:
+          // TODO: NOW PUT IT BACK
+          ApodReloadPage(
+        failureMessage: failureMessage,
+        reload: reload,
+      ),
     );
   }
 }

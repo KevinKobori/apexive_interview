@@ -7,16 +7,16 @@ import 'package:nasa_apod_design_system/src/theme/data/images.dart';
 import 'package:nasa_apod_design_system/src/theme/data/typography.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
-enum AppThemeColorMode {
+enum ApodAppThemeColorMode {
   light,
   dark,
   highContrast,
 }
 
-/// Updates automatically the [AppTheme] regarding the current [MediaQuery],
+/// Updates automatically the [ApodTheme] regarding the current [MediaQuery],
 /// as soon as the [theme] isn't overriden.
-class AppResponsiveTheme extends StatelessWidget {
-  const AppResponsiveTheme({
+class ApodAppResponsiveTheme extends StatelessWidget {
+  const ApodAppResponsiveTheme({
     required this.appLogo,
     required this.child,
     required this.appWarmLogo,
@@ -27,41 +27,41 @@ class AppResponsiveTheme extends StatelessWidget {
     this.formFactor,
   });
 
-  final AppThemeColorMode? colorMode;
-  final AppFormFactor? formFactor;
+  final ApodAppThemeColorMode? colorMode;
+  final ApodAppFormFactor? formFactor;
   final Widget child;
   final PictureProvider appLogo;
   final PictureProvider? darkAppLogo;
   final PictureProvider appWarmLogo;
   final PictureProvider? darkAppWarmLogo;
 
-  static AppThemeColorMode colorModeOf(BuildContext context) {
+  static ApodAppThemeColorMode colorModeOf(BuildContext context) {
     final platformBrightness = MediaQuery.platformBrightnessOf(context);
     final useDarkTheme = platformBrightness == ui.Brightness.dark;
     if (useDarkTheme) {
-      return AppThemeColorMode.dark;
+      return ApodAppThemeColorMode.dark;
     }
     final highContrast = MediaQuery.highContrastOf(context);
     if (highContrast) {
-      return AppThemeColorMode.highContrast;
+      return ApodAppThemeColorMode.highContrast;
     }
 
-    return AppThemeColorMode.light;
+    return ApodAppThemeColorMode.light;
   }
 
-  static AppFormFactor formFactorOf(BuildContext context) {
+  static ApodAppFormFactor formFactorOf(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
 
     if (mediaQuery.size.width < 200) {
-      return AppFormFactor.small;
+      return ApodAppFormFactor.small;
     }
 
-    return AppFormFactor.medium;
+    return ApodAppFormFactor.medium;
   }
 
   @override
   Widget build(BuildContext context) {
-    var theme = AppThemeData.regular(
+    var theme = ApodThemeData.regular(
       appLogo: appLogo,
       appWarmLogo: appWarmLogo,
     );
@@ -69,35 +69,35 @@ class AppResponsiveTheme extends StatelessWidget {
     /// Updating the colors for the current brightness
     final colorMode = this.colorMode ?? colorModeOf(context);
     switch (colorMode) {
-      case AppThemeColorMode.dark:
-        theme = theme.withColors(AppColorsData.dark());
+      case ApodAppThemeColorMode.dark:
+        theme = theme.withColors(ApodColorsData.dark());
 
-        final darkAppLogo = this.darkAppLogo;
+        final darkAppLogo = darkAppLogo;
         if (darkAppLogo != null) {
           theme = theme.withImages(theme.images.withAppLogo(darkAppLogo));
         }
         break;
-      case AppThemeColorMode.highContrast:
-        theme = theme.withColors(AppColorsData.highContrast());
+      case ApodAppThemeColorMode.highContrast:
+        theme = theme.withColors(ApodColorsData.highContrast());
         theme = theme.withImages(
-          AppImagesData.highContrast(
+          ApodImagesData.highContrast(
             appLogo: theme.images.appLogo,
             appWarmLogo: theme.images.appWarmLogo,
           ),
         );
         break;
-      case AppThemeColorMode.light:
+      case ApodAppThemeColorMode.light:
         break;
     }
 
     // Updating the sizes for current form factor.
     final formFactor = this.formFactor ?? formFactorOf(context);
     theme = theme.withFormFactor(formFactor);
-    if (formFactor == AppFormFactor.small) {
-      theme = theme.withTypography(AppTypographyData.small());
+    if (formFactor == ApodAppFormFactor.small) {
+      theme = theme.withTypography(ApodTypographyData.small());
     }
 
-    return AppTheme(
+    return ApodTheme(
       data: theme,
       child: child,
     );

@@ -1,7 +1,7 @@
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:flutter/widgets.dart';
+import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
-enum AppTextLevel {
+enum ApodTextLevel {
   paragraph1,
   paragraph2,
   title1,
@@ -9,77 +9,77 @@ enum AppTextLevel {
   title3,
 }
 
-class AppText extends StatelessWidget {
-  const AppText(
+class ApodText extends StatelessWidget {
+  const ApodText(
     this.data, {
     super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-    this.level = AppTextLevel.paragraph1,
+    this.level = ApodTextLevel.paragraph1,
   });
 
-  const AppText.paragraph1(
+  const ApodText.paragraph1(
     this.data, {
     super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  }) : level = AppTextLevel.paragraph1;
+  }) : level = ApodTextLevel.paragraph1;
 
-  const AppText.paragraph2(
+  const ApodText.paragraph2(
     this.data, {
     super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  }) : level = AppTextLevel.paragraph2;
+  }) : level = ApodTextLevel.paragraph2;
 
-  const AppText.title1(
+  const ApodText.title1(
     this.data, {
     super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  }) : level = AppTextLevel.title1;
+  }) : level = ApodTextLevel.title1;
 
-  const AppText.title2(
+  const ApodText.title2(
     this.data, {
     super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  }) : level = AppTextLevel.title2;
+  }) : level = ApodTextLevel.title2;
 
-  const AppText.title3(
+  const ApodText.title3(
     this.data, {
     super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  }) : level = AppTextLevel.title3;
+  }) : level = ApodTextLevel.title3;
 
   final String data;
-  final AppTextLevel level;
+  final ApodTextLevel level;
   final Color? color;
   final double? fontSize;
   final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final color = this.color ?? theme.colors.foreground;
     final style = () {
       switch (level) {
-        case AppTextLevel.paragraph1:
+        case ApodTextLevel.paragraph1:
           return theme.typography.paragraph1;
-        case AppTextLevel.paragraph2:
+        case ApodTextLevel.paragraph2:
           return theme.typography.paragraph2;
-        case AppTextLevel.title1:
+        case ApodTextLevel.title1:
           return theme.typography.title1;
-        case AppTextLevel.title2:
+        case ApodTextLevel.title2:
           return theme.typography.title2;
-        case AppTextLevel.title3:
+        case ApodTextLevel.title3:
           return theme.typography.title3;
       }
     }();

@@ -39,13 +39,13 @@ class PictureDetailLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-    return AppScaffold(
+    final theme = ApodTheme.of(context);
+    return ApodScaffold(
       // TODO: NOW - TURN IT NON NULABLE??
       backgroundImage: CachedNetworkImageProvider(pictureViewModel!.url),
-      body: AppContentSheet(
+      body: ApodContentSheet(
         children: [
-          if (pictureViewModel == null) const AppText.title2('Not found'),
+          if (pictureViewModel == null) const ApodText.title2('Not found'),
           if (pictureViewModel != null)
             ..._buildBody(context, theme, pictureViewModel!),
         ],
@@ -60,7 +60,7 @@ class PictureDetailLayout extends StatelessWidget {
   }
 
   List<Widget> _buildBody(
-      BuildContext context, AppThemeData theme, PictureViewModel picture) {
+      BuildContext context, ApodThemeData theme, PictureViewModel picture) {
     return [
       ClipRRect(
         borderRadius: theme.radius.asBorderRadius().regular,
@@ -74,12 +74,12 @@ class PictureDetailLayout extends StatelessWidget {
           ),
         ),
       ),
-      AppText.title1(picture.title),
-      AppText.title3(
+      ApodText.title1(picture.title),
+      ApodText.title3(
         picture.date,
         color: theme.colors.accent,
       ),
-      AppText.paragraph1(picture.explanation),
+      ApodText.paragraph1(picture.explanation),
       const SizedBox(
         height: 100,
       ),

@@ -7,43 +7,43 @@ void main() {
   testAppWidgets(
     'button',
     {
-      'text-inactive': const AppButtonLayout.inactive(
+      'text-inactive': const ApodTextButtonLayout.inactive(
         title: 'Buy',
       ),
-      'text-hovered': const AppButtonLayout.hovered(
+      'text-hovered': const ApodTextButtonLayout.hovered(
         title: 'Buy',
       ),
-      'text-pressed': const AppButtonLayout.pressed(
+      'text-pressed': const ApodTextButtonLayout.pressed(
         title: 'Buy',
       ),
       'icon-inactive': Builder(
         builder: (context) {
-          final theme = AppTheme.of(context);
-          return AppButtonLayout.inactive(
+          final theme = ApodTheme.of(context);
+          return ApodTextButtonLayout.inactive(
             icon: theme.icons.characters.shoppingCart,
           );
         },
       ),
       'icon-hovered': Builder(
         builder: (context) {
-          final theme = AppTheme.of(context);
-          return AppButtonLayout.hovered(
+          final theme = ApodTheme.of(context);
+          return ApodTextButtonLayout.hovered(
             icon: theme.icons.characters.shoppingCart,
           );
         },
       ),
       'icon-pressed': Builder(
         builder: (context) {
-          final theme = AppTheme.of(context);
-          return AppButtonLayout.pressed(
+          final theme = ApodTheme.of(context);
+          return ApodTextButtonLayout.pressed(
             icon: theme.icons.characters.shoppingCart,
           );
         },
       ),
       'both-inactive': Builder(
         builder: (context) {
-          final theme = AppTheme.of(context);
-          return AppButtonLayout.inactive(
+          final theme = ApodTheme.of(context);
+          return ApodTextButtonLayout.inactive(
             title: 'Buy',
             icon: theme.icons.characters.shoppingCart,
           );
@@ -51,8 +51,8 @@ void main() {
       ),
       'both-hovered': Builder(
         builder: (context) {
-          final theme = AppTheme.of(context);
-          return AppButtonLayout.hovered(
+          final theme = ApodTheme.of(context);
+          return ApodTextButtonLayout.hovered(
             title: 'Buy',
             icon: theme.icons.characters.shoppingCart,
           );
@@ -60,8 +60,8 @@ void main() {
       ),
       'both-pressed': Builder(
         builder: (context) {
-          final theme = AppTheme.of(context);
-          return AppButtonLayout.pressed(
+          final theme = ApodTheme.of(context);
+          return ApodTextButtonLayout.pressed(
             title: 'Buy',
             icon: theme.icons.characters.shoppingCart,
           );

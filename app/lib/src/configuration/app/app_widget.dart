@@ -12,7 +12,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ApodAppBuilder(
       debugShowCheckedModeBanner: false,
-      colorMode: AppThemeColorMode.dark,
+      colorMode: ApodAppThemeColorMode.dark,
       appLogo: ExactAssetPicture(
         SvgPicture.svgStringDecoderBuilder,
         'assets/images/nasa_logo.svg',

@@ -1,22 +1,22 @@
 import 'dart:typed_data';
 
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
-class AppImagesData extends Equatable {
-  const AppImagesData({
+class ApodImagesData extends Equatable {
+  const ApodImagesData({
     required this.appLogo,
     required this.appWarmLogo,
     required this.backgroundPattern,
   });
 
-  factory AppImagesData.regular({
+  factory ApodImagesData.regular({
     required PictureProvider appLogo,
     required PictureProvider appWarmLogo,
   }) =>
-      AppImagesData(
+      ApodImagesData(
         appLogo: appLogo,
         appWarmLogo: appWarmLogo,
         backgroundPattern: const AssetImage(
@@ -25,11 +25,11 @@ class AppImagesData extends Equatable {
         ),
       );
 
-  factory AppImagesData.highContrast({
+  factory ApodImagesData.highContrast({
     required PictureProvider appLogo,
     required PictureProvider appWarmLogo,
   }) =>
-      AppImagesData(
+      ApodImagesData(
         appLogo: appLogo,
         appWarmLogo: appWarmLogo,
         backgroundPattern: MemoryImage(kTransparentImage),
@@ -46,16 +46,16 @@ class AppImagesData extends Equatable {
         backgroundPattern.named('backgroundPattern'),
       ];
 
-  AppImagesData withAppLogo(PictureProvider appLogo) {
-    return AppImagesData(
+  ApodImagesData withAppLogo(PictureProvider appLogo) {
+    return ApodImagesData(
       appLogo: appLogo,
       appWarmLogo: appWarmLogo,
       backgroundPattern: backgroundPattern,
     );
   }
 
-  AppImagesData withBackgroundPattern(ImageProvider backgroundPattern) {
-    return AppImagesData(
+  ApodImagesData withBackgroundPattern(ImageProvider backgroundPattern) {
+    return ApodImagesData(
       appLogo: appLogo,
       appWarmLogo: appWarmLogo,
       backgroundPattern: backgroundPattern,

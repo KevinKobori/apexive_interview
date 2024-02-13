@@ -62,7 +62,7 @@ class PicturesPageStateLoadedSuccessViewMobileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
+    return ApodScaffold(
       backgroundImage: CachedNetworkImageProvider(pictureViewModelList[0].url),
       body: _BodyWithProducts(
         pictureViewModelList: pictureViewModelList,
@@ -109,7 +109,7 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return LayoutBuilder(builder: (context, constraints) {
       return CustomScrollView(
         controller: _controller,
@@ -123,15 +123,15 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              padding: AppEdgeInsets.only(
-                left: AppGapSize.large,
-                top: AppGapSize.large,
-                right: AppGapSize.large,
-                bottom: AppGapSize.none,
+              padding: ApodEdgeInsets.only(
+                left: ApodSpacings.large,
+                top: ApodSpacings.large,
+                right: ApodSpacings.large,
+                bottom: ApodSpacings.none,
               ).toEdgeInsets(theme),
               child: Column(
                 children: [
-                  AppButton(
+                  ApodTextButton(
                     onTap: () => widget.onLoadAllPicturesList,
                     title: 'List all',
                   ),
@@ -152,7 +152,7 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                         right: 0,
                         bottom: 0,
                         child: Container(
-                          margin: AppEdgeInsets.semiSmall().toEdgeInsets(theme),
+                          margin: ApodEdgeInsets.semiSmall().toEdgeInsets(theme),
                           height: theme.typography.title1.fontSize! * 1.3,
                           width: theme.typography.title1.fontSize! * 1.3,
                           alignment: Alignment.centerLeft,
@@ -166,26 +166,26 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
             ),
           ),
           SliverToBoxAdapter(
-            child: AppPadding(
-              padding: const AppEdgeInsets.only(
-                left: AppGapSize.large,
-                top: AppGapSize.large,
-                right: AppGapSize.large,
-                bottom: AppGapSize.none,
+            child: ApodPadding(
+              padding: const ApodEdgeInsets.only(
+                left: ApodSpacings.large,
+                top: ApodSpacings.large,
+                right: ApodSpacings.large,
+                bottom: ApodSpacings.none,
               ),
-              child: AppText.title1('Discover Now'),
+              child: ApodText.title1('Discover Now'),
             ),
           ),
           SliverSafeArea(
             top: false,
-            sliver: AppTileSliverGrid(
+            sliver: ApodSliverGridTile(
               padding: EdgeInsets.only(
-                left: theme.spacing.large,
-                top: theme.spacing.extraSmall,
-                right: theme.spacing.large,
+                left: theme.spacings.large,
+                top: theme.spacings.extraSmall,
+                right: theme.spacings.large,
                 bottom: math.max(
                   mediaQuery.padding.bottom,
-                  theme.spacing.large,
+                  theme.spacings.large,
                 ),
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),

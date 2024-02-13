@@ -14,7 +14,7 @@ class CollectionsOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return BlocBuilder<CollectionsOverviewBloc, CollectionsOverviewState>(
       bloc: collectionsOverviewPresenter,
       builder: (context, state) {
@@ -29,7 +29,7 @@ class CollectionsOverview extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AppText.title3(
+                      ApodText.title3(
                         '$itemCount',
                         color: theme.colors.actionBarForeground,
                       ),

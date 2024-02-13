@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:tap_builder/tap_builder.dart';
 
-class AppActionButton extends StatelessWidget {
-  const AppActionButton({
+class ApodActionButton extends StatelessWidget {
+  const ApodActionButton({
     required this.icon,
     super.key,
     this.onTap,
@@ -19,52 +19,52 @@ class AppActionButton extends StatelessWidget {
       builder: (context, state, hasFocus) {
         switch (state) {
           case TapState.hover:
-            return AppActionButtonLayout.hovered(icon: icon);
+            return ApodActionButtonLayout.hovered(icon: icon);
           case TapState.pressed:
-            return AppActionButtonLayout.pressed(icon: icon);
+            return ApodActionButtonLayout.pressed(icon: icon);
           default:
-            return AppActionButtonLayout.inactive(icon: icon);
+            return ApodActionButtonLayout.inactive(icon: icon);
         }
       },
     );
   }
 }
 
-class AppActionButtonLayout extends StatelessWidget {
-  const AppActionButtonLayout.inactive({
+class ApodActionButtonLayout extends StatelessWidget {
+  const ApodActionButtonLayout.inactive({
     required this.icon,
     super.key,
-  }) : _state = AppButtonState.inactive;
+  }) : _state = ApodTextButtonState.inactive;
 
-  const AppActionButtonLayout.hovered({
+  const ApodActionButtonLayout.hovered({
     required this.icon,
     super.key,
-  }) : _state = AppButtonState.hovered;
+  }) : _state = ApodTextButtonState.hovered;
 
-  const AppActionButtonLayout.pressed({
+  const ApodActionButtonLayout.pressed({
     required this.icon,
     super.key,
-  }) : _state = AppButtonState.pressed;
+  }) : _state = ApodTextButtonState.pressed;
 
   final String icon;
-  final AppButtonState _state;
+  final ApodTextButtonState _state;
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     switch (_state) {
-      case AppButtonState.hovered:
-        return AppButtonLayout.hovered(
+      case ApodTextButtonState.hovered:
+        return ApodTextButtonLayout.hovered(
           icon: icon,
           hoveredBackgroundColor: theme.colors.accentOpposite.withOpacity(0.15),
         );
-      case AppButtonState.pressed:
-        return AppButtonLayout.pressed(
+      case ApodTextButtonState.pressed:
+        return ApodTextButtonLayout.pressed(
           icon: icon,
           pressedBackgroundColor: theme.colors.accentOpposite.withOpacity(0.20),
         );
-      case AppButtonState.inactive:
-        return AppButtonLayout.inactive(
+      case ApodTextButtonState.inactive:
+        return ApodTextButtonLayout.inactive(
           icon: icon,
           inactiveBackgroundColor: theme.colors.accentOpposite.withOpacity(0),
         );

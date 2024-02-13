@@ -20,11 +20,11 @@ class PictureDetailNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final route = ModalRoute.of(context);
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,
-      child: AppNavigationBar(
+      child: ApodNavigationBar(
         animation: route?.animation,
         canNavigateBack: true,
         leading: CurrentUserAvatar(
@@ -36,7 +36,7 @@ class PictureDetailNavigationBar extends StatelessWidget {
         body: CurrentUserAccountNavigationBody(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
-        action: AppButton(
+        action: ApodTextButton(
           // TODO: NOW - CHANGE THIS NAME
           icon: theme.icons.characters.addPicture,
           title: 'Add to collectionss',

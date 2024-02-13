@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
-class AppIconsData extends Equatable {
-  const AppIconsData({
+class ApodIconsData extends Equatable {
+  const ApodIconsData({
     required this.fontFamily,
     required this.fontPackage,
     required this.characters,
@@ -10,17 +10,17 @@ class AppIconsData extends Equatable {
   });
 
   /// Icons have been exported with "Export Icon Font" Figma plugin.
-  factory AppIconsData.regular() => AppIconsData(
+  factory ApodIconsData.regular() => ApodIconsData(
         fontFamily: 'apod_icons',
         fontPackage: 'nasa_apod_design_system',
-        characters: AppIconCharactersData.regular(),
-        sizes: AppIconSizesData.regular(),
+        characters: ApodIconCharactersData.regular(),
+        sizes: ApodIconSizesData.regular(),
       );
 
   final String fontFamily;
   final String? fontPackage;
-  final AppIconCharactersData characters;
-  final AppIconSizesData sizes;
+  final ApodIconCharactersData characters;
+  final ApodIconSizesData sizes;
 
   @override
   List<Object?> get props => [
@@ -31,8 +31,8 @@ class AppIconsData extends Equatable {
       ];
 }
 
-class AppIconCharactersData extends Equatable {
-  const AppIconCharactersData({
+class ApodIconCharactersData extends Equatable {
+  const ApodIconCharactersData({
     required this.addPicture,
     required this.arrowBack,
     required this.dismiss,
@@ -42,7 +42,7 @@ class AppIconCharactersData extends Equatable {
     required this.shoppingCart,
   });
 
-  factory AppIconCharactersData.regular() => AppIconCharactersData(
+  factory ApodIconCharactersData.regular() => ApodIconCharactersData(
         addPicture: String.fromCharCodes([57344, 58343, 58413, 57568]),
         arrowBack: String.fromCharCodes([57344, 58537, 59260, 57572]),
         dismiss: String.fromCharCodes([57344, 57911, 61195, 57514]),
@@ -71,14 +71,14 @@ class AppIconCharactersData extends Equatable {
       ];
 }
 
-class AppIconSizesData extends Equatable {
-  const AppIconSizesData({
+class ApodIconSizesData extends Equatable {
+  const ApodIconSizesData({
     required this.small,
     required this.regular,
     required this.big,
   });
 
-  factory AppIconSizesData.regular() => const AppIconSizesData(
+  factory ApodIconSizesData.regular() => const ApodIconSizesData(
         small: 16.0,
         regular: 22.0,
         big: 32.0,

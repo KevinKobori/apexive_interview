@@ -1,26 +1,26 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class AppTileSliverGrid extends StatelessWidget {
-  const AppTileSliverGrid({
+class ApodSliverGridTile extends StatelessWidget {
+  final int crossAxisCount;
+  final List<Widget> children;
+  final EdgeInsets? padding;
+
+  const ApodSliverGridTile({
     required this.children,
     super.key,
     this.crossAxisCount = 2,
     this.padding,
   });
 
-  final int crossAxisCount;
-  final List<Widget> children;
-  final EdgeInsets? padding;
-
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final grid = SliverMasonryGrid.count(
       crossAxisCount: crossAxisCount,
-      mainAxisSpacing: theme.spacing.semiSmall,
-      crossAxisSpacing: theme.spacing.semiSmall,
+      mainAxisSpacing: theme.spacings.semiSmall,
+      crossAxisSpacing: theme.spacings.semiSmall,
       childCount: children.length,
       itemBuilder: (context, index) {
         return children[index];
@@ -30,11 +30,11 @@ class AppTileSliverGrid extends StatelessWidget {
     final padding = this.padding;
     if (padding != null) {
       return SliverPadding(
-        padding: padding,
+        padding: padding, // .toEdgeInsets(theme),
         sliver: grid,
       );
+    } else {
+      return grid;
     }
-
-    return grid;
   }
 }

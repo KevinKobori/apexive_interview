@@ -1,64 +1,63 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
-import 'package:nasa_apod_design_system/src/widgets/base/gap.dart';
 
-class AppEdgeInsets extends Equatable {
-  const AppEdgeInsets.all(AppGapSize value)
+class ApodEdgeInsets extends Equatable {
+  const ApodEdgeInsets.all(ApodSpacings value)
       : left = value,
         top = value,
         right = value,
         bottom = value;
 
-  const AppEdgeInsets.symmetric({
-    AppGapSize vertical = AppGapSize.none,
-    AppGapSize horizontal = AppGapSize.none,
+  const ApodEdgeInsets.symmetric({
+    ApodSpacings vertical = ApodSpacings.none,
+    ApodSpacings horizontal = ApodSpacings.none,
   })  : left = horizontal,
         top = vertical,
         right = horizontal,
         bottom = vertical;
 
-  const AppEdgeInsets.only({
-    this.left = AppGapSize.none,
-    this.top = AppGapSize.none,
-    this.right = AppGapSize.none,
-    this.bottom = AppGapSize.none,
+  const ApodEdgeInsets.only({
+    this.left = ApodSpacings.none,
+    this.top = ApodSpacings.none,
+    this.right = ApodSpacings.none,
+    this.bottom = ApodSpacings.none,
   });
 
-  const AppEdgeInsets.extraSmall()
-      : left = AppGapSize.extraSmall,
-        top = AppGapSize.extraSmall,
-        right = AppGapSize.extraSmall,
-        bottom = AppGapSize.extraSmall;
+  const ApodEdgeInsets.extraSmall()
+      : left = ApodSpacings.extraSmall,
+        top = ApodSpacings.extraSmall,
+        right = ApodSpacings.extraSmall,
+        bottom = ApodSpacings.extraSmall;
 
-  const AppEdgeInsets.small()
-      : left = AppGapSize.small,
-        top = AppGapSize.small,
-        right = AppGapSize.small,
-        bottom = AppGapSize.small;
+  const ApodEdgeInsets.small()
+      : left = ApodSpacings.small,
+        top = ApodSpacings.small,
+        right = ApodSpacings.small,
+        bottom = ApodSpacings.small;
 
-  const AppEdgeInsets.semiSmall()
-      : left = AppGapSize.semiSmall,
-        top = AppGapSize.semiSmall,
-        right = AppGapSize.semiSmall,
-        bottom = AppGapSize.semiSmall;
+  const ApodEdgeInsets.semiSmall()
+      : left = ApodSpacings.semiSmall,
+        top = ApodSpacings.semiSmall,
+        right = ApodSpacings.semiSmall,
+        bottom = ApodSpacings.semiSmall;
 
-  const AppEdgeInsets.large()
-      : left = AppGapSize.large,
-        top = AppGapSize.large,
-        right = AppGapSize.large,
-        bottom = AppGapSize.large;
+  const ApodEdgeInsets.large()
+      : left = ApodSpacings.large,
+        top = ApodSpacings.large,
+        right = ApodSpacings.large,
+        bottom = ApodSpacings.large;
 
-  const AppEdgeInsets.extraLarge()
-      : left = AppGapSize.extraLarge,
-        top = AppGapSize.extraLarge,
-        right = AppGapSize.extraLarge,
-        bottom = AppGapSize.extraLarge;
+  const ApodEdgeInsets.extraLarge()
+      : left = ApodSpacings.extraLarge,
+        top = ApodSpacings.extraLarge,
+        right = ApodSpacings.extraLarge,
+        bottom = ApodSpacings.extraLarge;
 
-  final AppGapSize left;
-  final AppGapSize top;
-  final AppGapSize right;
-  final AppGapSize bottom;
+  final ApodSpacings left;
+  final ApodSpacings top;
+  final ApodSpacings right;
+  final ApodSpacings bottom;
 
   @override
   List<Object?> get props => [
@@ -68,7 +67,7 @@ class AppEdgeInsets extends Equatable {
         bottom,
       ];
 
-  EdgeInsets toEdgeInsets(AppThemeData theme) {
+  EdgeInsets toEdgeInsets(ApodThemeData theme) {
     return EdgeInsets.only(
       left: left.getSpacing(theme),
       top: top.getSpacing(theme),
@@ -78,44 +77,44 @@ class AppEdgeInsets extends Equatable {
   }
 }
 
-class AppPadding extends StatelessWidget {
-  const AppPadding({
+class ApodPadding extends StatelessWidget {
+  const ApodPadding({
     super.key,
-    this.padding = const AppEdgeInsets.all(AppGapSize.none),
+    this.padding = const ApodEdgeInsets.all(ApodSpacings.none),
     this.child,
   });
 
-  const AppPadding.extraSmall({
+  const ApodPadding.extraSmall({
     super.key,
     this.child,
-  }) : padding = const AppEdgeInsets.all(AppGapSize.extraSmall);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacings.extraSmall);
 
-  const AppPadding.small({
+  const ApodPadding.small({
     super.key,
     this.child,
-  }) : padding = const AppEdgeInsets.all(AppGapSize.small);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacings.small);
 
-  const AppPadding.semiSmall({
+  const ApodPadding.semiSmall({
     super.key,
     this.child,
-  }) : padding = const AppEdgeInsets.all(AppGapSize.semiSmall);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacings.semiSmall);
 
-  const AppPadding.large({
+  const ApodPadding.large({
     super.key,
     this.child,
-  }) : padding = const AppEdgeInsets.all(AppGapSize.large);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacings.large);
 
-  const AppPadding.extraLarge({
+  const ApodPadding.extraLarge({
     super.key,
     this.child,
-  }) : padding = const AppEdgeInsets.all(AppGapSize.extraLarge);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacings.extraLarge);
 
-  final AppEdgeInsets padding;
+  final ApodEdgeInsets padding;
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return Padding(
       padding: padding.toEdgeInsets(theme),
       child: child,

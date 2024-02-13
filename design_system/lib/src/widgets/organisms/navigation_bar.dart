@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class AppNavigationBar extends StatelessWidget {
-  const AppNavigationBar({
+class ApodNavigationBar extends StatelessWidget {
+  const ApodNavigationBar({
     required this.leading,
     required this.body,
     required this.summary,
@@ -38,11 +38,11 @@ class AppNavigationBar extends StatelessWidget {
               ),
               FadeTransition(
                 opacity: animation,
-                child: const AppBackButton(),
+                child: const ApodBackButton(),
               ),
             ],
           ),
-        const AppGap.semiSmall(),
+        const ApodGap.semiSmall(),
         if (action == null) body,
         if (action != null)
           Expanded(
@@ -66,7 +66,7 @@ class AppNavigationBar extends StatelessWidget {
               ],
             ),
           ),
-        const AppGap.semiSmall(),
+        const ApodGap.semiSmall(),
         if (action == null) summary,
         if (action != null)
           Stack(
@@ -108,18 +108,18 @@ class AppNavigationBar extends StatelessWidget {
               opacity: !canNavigateBack ? 0.0 : 1.0,
               child: IgnorePointer(
                 ignoring: !canNavigateBack,
-                child: const AppBackButton(),
+                child: const ApodBackButton(),
               ),
             ),
           ],
         ),
-        const AppGap.semiSmall(),
+        const ApodGap.semiSmall(),
         if (canNavigateBack) Expanded(child: summary),
         if (!canNavigateBack)
           Expanded(
             child: body,
           ),
-        const AppGap.semiSmall(),
+        const ApodGap.semiSmall(),
         if (!canNavigateBack) summary,
         if (canNavigateBack && action != null) action,
       ],
@@ -147,9 +147,9 @@ class NavigationBarContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-    return AppContainer(
-      padding: const AppEdgeInsets.semiSmall(),
+    final theme = ApodTheme.of(context);
+    return ApodContainer(
+      padding: const ApodEdgeInsets.semiSmall(),
       decoration: BoxDecoration(
         borderRadius: theme.radius.asBorderRadius().regular,
       ),

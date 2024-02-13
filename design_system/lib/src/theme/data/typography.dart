@@ -1,9 +1,9 @@
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
-class AppTypographyData extends Equatable {
-  const AppTypographyData({
+class ApodTypographyData extends Equatable {
+  const ApodTypographyData({
     required this.paragraph1,
     required this.paragraph2,
     required this.title1,
@@ -11,7 +11,7 @@ class AppTypographyData extends Equatable {
     required this.title3,
   });
 
-  factory AppTypographyData.regular() => const AppTypographyData(
+  factory ApodTypographyData.regular() => const ApodTypographyData(
         paragraph1: TextStyle(
           fontFamily: 'Poppins',
           package: 'nasa_apod_design_system',
@@ -49,7 +49,7 @@ class AppTypographyData extends Equatable {
         ),
       );
 
-  factory AppTypographyData.small() => const AppTypographyData(
+  factory ApodTypographyData.small() => const ApodTypographyData(
         paragraph1: TextStyle(
           fontFamily: 'Poppins',
           package: 'nasa_apod_design_system',

@@ -4,8 +4,8 @@ import 'dart:ui' as ui;
 import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class AppScaffold extends StatelessWidget {
-  const AppScaffold({
+class ApodScaffold extends StatelessWidget {
+  const ApodScaffold({
     required this.body,
     super.key,
     this.backgroundColor,
@@ -21,7 +21,7 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final floatingBar = this.floatingBar;
 
 // Inside your AppScaffold build method
@@ -55,15 +55,15 @@ class AppScaffold extends StatelessWidget {
               duration: theme.durations.regular,
               left: math.max(
                 mediaQuery.padding.left,
-                theme.spacing.semiSmall,
+                theme.spacings.semiSmall,
               ),
               right: math.max(
                 mediaQuery.padding.right,
-                theme.spacing.semiSmall,
+                theme.spacings.semiSmall,
               ),
               bottom: math.max(
                 mediaQuery.padding.bottom,
-                theme.spacing.semiSmall,
+                theme.spacings.semiSmall,
               ),
               child: floatingBar,
             ),

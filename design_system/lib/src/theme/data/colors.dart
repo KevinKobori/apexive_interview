@@ -1,9 +1,9 @@
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
-class AppColorsData extends Equatable {
-  const AppColorsData({
+class ApodColorsData extends Equatable {
+  const ApodColorsData({
     required this.accent,
     required this.accentHighlight,
     required this.accentHighlight2,
@@ -14,7 +14,7 @@ class AppColorsData extends Equatable {
     required this.accentOpposite,
   });
 
-  factory AppColorsData.light() => const AppColorsData(
+  factory ApodColorsData.light() => const ApodColorsData(
         accent: Color(0xFFD21F3C),
         accentOpposite: Color(0xFFFFFFFF),
         accentHighlight: Color(0xFFB71C37),
@@ -26,7 +26,7 @@ class AppColorsData extends Equatable {
         actionBarForeground: Color(0xFFFFFFFF),
       );
 
-  factory AppColorsData.dark() => const AppColorsData(
+  factory ApodColorsData.dark() => const ApodColorsData(
         accent: Color(0xFFD21F3C),
         accentOpposite: Color(0xFFFFFFFF),
         accentHighlight: Color(0xFFB71C37),
@@ -39,7 +39,7 @@ class AppColorsData extends Equatable {
         actionBarForeground: Color(0xFFFFFFFF),
       );
 
-  factory AppColorsData.highContrast() => const AppColorsData(
+  factory ApodColorsData.highContrast() => const ApodColorsData(
         accent: Color(0xFFD21F3C),
         accentOpposite: Color(0xFFFFFFFF),
         accentHighlight: Color(0xFFD21F3C),

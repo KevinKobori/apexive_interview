@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
 import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
-class AppRadiusData extends Equatable {
-  const AppRadiusData({
+class ApodRadiusData extends Equatable {
+  const ApodRadiusData({
     required this.extraSmall,
     required this.small,
     required this.regular,
@@ -11,7 +11,7 @@ class AppRadiusData extends Equatable {
     required this.superLarge,
   });
 
-  const AppRadiusData.regular()
+  const ApodRadiusData.regular()
       : extraSmall = const Radius.circular(5),
         small = const Radius.circular(10),
         regular = const Radius.circular(12),
@@ -24,7 +24,7 @@ class AppRadiusData extends Equatable {
   final Radius big;
   final Radius superLarge;
 
-  AppBorderRadiusData asBorderRadius() => AppBorderRadiusData(this);
+  ApodBorderRadiusData asBorderRadius() => ApodBorderRadiusData(this);
 
   @override
   List<Object?> get props => [
@@ -36,8 +36,8 @@ class AppRadiusData extends Equatable {
       ];
 }
 
-class AppBorderRadiusData extends Equatable {
-  const AppBorderRadiusData(this._radius);
+class ApodBorderRadiusData extends Equatable {
+  const ApodBorderRadiusData(this._radius);
 
   BorderRadius get extraSmall => BorderRadius.all(_radius.extraSmall);
   BorderRadius get small => BorderRadius.all(_radius.small);
@@ -45,7 +45,7 @@ class AppBorderRadiusData extends Equatable {
   BorderRadius get big => BorderRadius.all(_radius.big);
   BorderRadius get superLarge => BorderRadius.all(_radius.superLarge);
 
-  final AppRadiusData _radius;
+  final ApodRadiusData _radius;
 
   @override
   List<Object?> get props => [_radius];

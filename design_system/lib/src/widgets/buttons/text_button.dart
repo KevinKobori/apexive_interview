@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:tap_builder/tap_builder.dart';
 
-class AppButton extends StatelessWidget {
-  const AppButton({
+class ApodTextButton extends StatelessWidget {
+  const ApodTextButton({
     super.key,
     this.icon,
     this.title,
@@ -26,7 +26,7 @@ class AppButton extends StatelessWidget {
             return Semantics(
               enabled: true,
               selected: true,
-              child: AppButtonLayout.hovered(
+              child: ApodTextButtonLayout.hovered(
                 icon: icon,
                 title: title,
                 mainAxisSize: mainAxisSize,
@@ -36,7 +36,7 @@ class AppButton extends StatelessWidget {
             return Semantics(
               enabled: true,
               selected: true,
-              child: AppButtonLayout.pressed(
+              child: ApodTextButtonLayout.pressed(
                 icon: icon,
                 title: title,
                 mainAxisSize: mainAxisSize,
@@ -46,7 +46,7 @@ class AppButton extends StatelessWidget {
             return Semantics(
               enabled: true,
               selected: true,
-              child: AppButtonLayout.inactive(
+              child: ApodTextButtonLayout.inactive(
                 icon: icon,
                 title: title,
                 mainAxisSize: mainAxisSize,
@@ -58,14 +58,14 @@ class AppButton extends StatelessWidget {
   }
 }
 
-enum AppButtonState {
+enum ApodTextButtonState {
   inactive,
   hovered,
   pressed,
 }
 
-class AppButtonLayout extends StatelessWidget {
-  const AppButtonLayout.inactive({
+class ApodTextButtonLayout extends StatelessWidget {
+  const ApodTextButtonLayout.inactive({
     super.key,
     this.icon,
     this.title,
@@ -74,10 +74,10 @@ class AppButtonLayout extends StatelessWidget {
     this.hoveredBackgroundColor,
     this.pressedBackgroundColor,
     this.foregroundColor,
-  })  : _state = AppButtonState.inactive,
+  })  : _state = ApodTextButtonState.inactive,
         assert(icon != null || title != null);
 
-  const AppButtonLayout.hovered({
+  const ApodTextButtonLayout.hovered({
     super.key,
     this.icon,
     this.title,
@@ -86,10 +86,10 @@ class AppButtonLayout extends StatelessWidget {
     this.hoveredBackgroundColor,
     this.pressedBackgroundColor,
     this.foregroundColor,
-  })  : _state = AppButtonState.hovered,
+  })  : _state = ApodTextButtonState.hovered,
         assert(icon != null || title != null);
 
-  const AppButtonLayout.pressed({
+  const ApodTextButtonLayout.pressed({
     super.key,
     this.icon,
     this.title,
@@ -98,13 +98,13 @@ class AppButtonLayout extends StatelessWidget {
     this.hoveredBackgroundColor,
     this.pressedBackgroundColor,
     this.foregroundColor,
-  })  : _state = AppButtonState.pressed,
+  })  : _state = ApodTextButtonState.pressed,
         assert(icon != null || title != null);
 
   final String? icon;
   final String? title;
   final MainAxisSize mainAxisSize;
-  final AppButtonState _state;
+  final ApodTextButtonState _state;
   final Color? inactiveBackgroundColor;
   final Color? hoveredBackgroundColor;
   final Color? pressedBackgroundColor;
@@ -112,18 +112,18 @@ class AppButtonLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final title = this.title;
     final icon = this.icon;
     final hasBoth = title != null && icon != null;
     final foregroundColor = this.foregroundColor ?? theme.colors.accentOpposite;
     final backgroundColor = () {
       switch (_state) {
-        case AppButtonState.inactive:
+        case ApodTextButtonState.inactive:
           return inactiveBackgroundColor ?? theme.colors.accent;
-        case AppButtonState.hovered:
+        case ApodTextButtonState.hovered:
           return hoveredBackgroundColor ?? theme.colors.accentHighlight;
-        case AppButtonState.pressed:
+        case ApodTextButtonState.pressed:
           return pressedBackgroundColor ?? theme.colors.accentHighlight2;
       }
     }();
@@ -134,20 +134,20 @@ class AppButtonLayout extends StatelessWidget {
         color: backgroundColor,
       ),
       padding: EdgeInsets.symmetric(
-        vertical: theme.spacing.small,
-        horizontal: title != null ? theme.spacing.large : theme.spacing.small,
+        vertical: theme.spacings.small,
+        horizontal: title != null ? theme.spacings.large : theme.spacings.small,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           if (title != null)
-            AppText.title3(
+            ApodText.title3(
               title,
               color: foregroundColor,
             ),
-          if (hasBoth) const AppGap.semiSmall(),
-          if (icon != null) AppIcon.regular(icon, color: foregroundColor),
+          if (hasBoth) const ApodGap.semiSmall(),
+          if (icon != null) ApodIcon.regular(icon, color: foregroundColor),
         ],
       ),
     );

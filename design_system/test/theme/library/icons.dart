@@ -1,7 +1,7 @@
 part of 'library.dart';
 
 ThemeSection icons(BuildContext context) {
-  final theme = AppTheme.of(context);
+  final theme = ApodTheme.of(context);
   final icons = theme.icons;
   return ThemeSection(
     title: 'Icons',
@@ -12,10 +12,10 @@ ThemeSection icons(BuildContext context) {
           ...icons.characters.props.map<Widget>(
             (c) => NamedCell(
               value: c as Named<String>,
-              builder: (context, v, _) => AppIcon(
+              builder: (context, v, _) => ApodIcon(
                 v,
                 color: theme.colors.foreground,
-                size: AppIconSize.small,
+                size: ApodIconSize.small,
               ),
             ),
           ),
@@ -27,10 +27,10 @@ ThemeSection icons(BuildContext context) {
           ...icons.characters.props.map<Widget>(
             (c) => NamedCell(
               value: c as Named<String>,
-              builder: (context, v, _) => AppIcon(
+              builder: (context, v, _) => ApodIcon(
                 v,
                 color: theme.colors.foreground,
-                size: AppIconSize.regular,
+                size: ApodIconSize.regular,
               ),
             ),
           ),

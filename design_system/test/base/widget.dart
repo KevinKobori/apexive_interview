@@ -33,8 +33,8 @@ void testAppWidgets(
         key,
         MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: AppTheme(
-            data: AppThemeData.regular(
+          home: ApodTheme(
+            data: ApodThemeData.regular(
               appLogo: StringPicture(
                 SvgPicture.svgStringDecoderBuilder,
                 '<svg></svg>',

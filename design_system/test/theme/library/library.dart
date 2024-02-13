@@ -13,21 +13,21 @@ part 'shadows.dart';
 part 'spacing.dart';
 part 'typography.dart';
 
-class AppThemeLibrary extends StatelessWidget {
-  const AppThemeLibrary({
+class ApodThemeLibrary extends StatelessWidget {
+  const ApodThemeLibrary({
     required this.colorMode,
     required this.formFactor,
     super.key,
   });
 
-  final AppThemeColorMode colorMode;
-  final AppFormFactor formFactor;
+  final ApodAppThemeColorMode colorMode;
+  final ApodAppFormFactor formFactor;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AppResponsiveTheme(
+      home: ApodAppResponsiveTheme(
         appLogo: StringPicture(
           SvgPicture.svgStringDecoderBuilder,
           '<svg></svg>',

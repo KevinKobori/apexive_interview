@@ -1,11 +1,11 @@
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
-class AppShadowsData extends Equatable {
-  const AppShadowsData({required this.big});
+class ApodShadowsData extends Equatable {
+  const ApodShadowsData({required this.big});
 
-  factory AppShadowsData.regular() => const AppShadowsData(
+  factory ApodShadowsData.regular() => const ApodShadowsData(
         big: BoxShadow(
           blurRadius: 32,
           color: Color(0x44000000),

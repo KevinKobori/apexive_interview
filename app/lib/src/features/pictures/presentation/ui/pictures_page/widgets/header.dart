@@ -14,14 +14,14 @@ class PicturesPageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return AnimatedBuilder(
       animation: controller,
       child: SafeArea(
         bottom: false,
         child: Padding(
           padding: EdgeInsets.all(
-            theme.spacing.large,
+            theme.spacings.large,
           ),
           child: Center(
             child: SvgPicture(

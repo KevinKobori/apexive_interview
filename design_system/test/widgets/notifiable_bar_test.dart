@@ -6,7 +6,7 @@ import '../base/widget.dart';
 
 void main() {
   Widget bar(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return Container(
       height: 60,
       decoration: BoxDecoration(
@@ -17,7 +17,7 @@ void main() {
   }
 
   NotificationViewModel notification(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',
@@ -30,7 +30,7 @@ void main() {
     {
       'opened': Builder(
         builder: (context) {
-          return AppNotifiableBarLayout.opened(
+          return ApodNotifiableBarLayout.opened(
             notification: notification(context),
             child: bar(context),
           );
@@ -38,7 +38,7 @@ void main() {
       ),
       'closed': Builder(
         builder: (context) {
-          return AppNotifiableBarLayout.closed(
+          return ApodNotifiableBarLayout.closed(
             child: bar(context),
           );
         },

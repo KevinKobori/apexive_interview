@@ -1,7 +1,7 @@
 part of 'library.dart';
 
 ThemeSection colors(BuildContext context) {
-  final theme = AppTheme.of(context);
+  final theme = ApodTheme.of(context);
   return ThemeSection(
     title: 'Colors',
     categories: [

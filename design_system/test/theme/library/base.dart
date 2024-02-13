@@ -13,15 +13,15 @@ class ThemeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return Scaffold(
       backgroundColor: theme.colors.background,
       body: Padding(
-        padding: theme.spacing.asInsets().extraLarge,
+        padding: theme.spacings.asInsets().extraLarge,
         child: SpacedColumn(
-          spaceBetween: theme.spacing.large,
+          spaceBetween: theme.spacings.large,
           children: [
-            AppText.title1(title),
+            ApodText.title1(title),
             ...sections,
           ],
         ),
@@ -42,11 +42,11 @@ class ThemeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return SpacedColumn(
       spaceBetween: 20.0,
       children: [
-        AppText.title2(
+        ApodText.title2(
           title,
           color: theme.colors.accent,
         ),
@@ -72,7 +72,7 @@ class ThemeCategory extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        AppText.title3(title),
+        ApodText.title3(title),
         Wrap(
           spacing: 8.0,
           runSpacing: 8.0,
@@ -124,13 +124,13 @@ class NamedCell<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: theme.spacing.asInsets().semiSmall,
+          padding: theme.spacings.asInsets().semiSmall,
           decoration: BoxDecoration(
             border: Border.all(
               color: theme.colors.foreground.withAlpha(125),
@@ -139,7 +139,7 @@ class NamedCell<T> extends StatelessWidget {
           ),
           child: builder(context, value.value, null),
         ),
-        AppText.paragraph2(
+        ApodText.paragraph2(
           value.name,
           color: theme.colors.foreground.withAlpha(125),
           fontSize: 8,

@@ -1,58 +1,58 @@
 import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
-enum AppIconSize {
+enum ApodIconSize {
   small,
   regular,
   big,
 }
 
-extension AppIconSizeExtension on AppIconSizesData {
-  double resolve(AppIconSize size) {
+extension ApodIconSizeExtension on ApodIconSizesData {
+  double resolve(ApodIconSize size) {
     switch (size) {
-      case AppIconSize.small:
+      case ApodIconSize.small:
         return small;
-      case AppIconSize.regular:
+      case ApodIconSize.regular:
         return regular;
-      case AppIconSize.big:
+      case ApodIconSize.big:
         return big;
     }
   }
 }
 
-class AppIcon extends StatelessWidget {
-  const AppIcon(
+class ApodIcon extends StatelessWidget {
+  const ApodIcon(
     this.data, {
     super.key,
     this.color,
-    this.size = AppIconSize.regular,
+    this.size = ApodIconSize.regular,
   });
 
-  const AppIcon.small(
+  const ApodIcon.small(
     this.data, {
     super.key,
     this.color,
-  }) : size = AppIconSize.small;
+  }) : size = ApodIconSize.small;
 
-  const AppIcon.regular(
+  const ApodIcon.regular(
     this.data, {
     super.key,
     this.color,
-  }) : size = AppIconSize.regular;
+  }) : size = ApodIconSize.regular;
 
-  const AppIcon.big(
+  const ApodIcon.big(
     this.data, {
     super.key,
     this.color,
-  }) : size = AppIconSize.big;
+  }) : size = ApodIconSize.big;
 
   final String data;
   final Color? color;
-  final AppIconSize size;
+  final ApodIconSize size;
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final color = this.color ?? theme.colors.foreground;
     return Text(
       data,
@@ -67,28 +67,28 @@ class AppIcon extends StatelessWidget {
   }
 }
 
-class AppAnimatedIcon extends StatelessWidget {
-  const AppAnimatedIcon(
+class ApodAnimatedIcon extends StatelessWidget {
+  const ApodAnimatedIcon(
     this.data, {
     super.key,
     this.color,
-    this.size = AppIconSize.small,
+    this.size = ApodIconSize.small,
     this.duration = const Duration(milliseconds: 200),
   });
 
   final String data;
   final Color? color;
-  final AppIconSize size;
+  final ApodIconSize size;
   final Duration duration;
 
   bool get isAnimated => duration.inMilliseconds > 0;
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final color = this.color ?? theme.colors.foreground;
     if (!isAnimated) {
-      return AppIcon(
+      return ApodIcon(
         data,
         key: key,
         color: color,

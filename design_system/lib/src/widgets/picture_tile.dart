@@ -119,7 +119,7 @@ class ProductTileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return AspectRatio(
       aspectRatio: aspectRatio,
       child: ClipRRect(
@@ -166,17 +166,17 @@ class ProductTileLayout extends StatelessWidget {
                         ],
                       ),
                     ),
-                    child: AppPadding.small(
+                    child: ApodPadding.small(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          AppText.title3(
+                          ApodText.title3(
                             title,
                             color: theme.colors.accentOpposite,
                           ),
                           // DateLabel(date),
-                          AppText.paragraph1(
+                          ApodText.paragraph1(
                             date,
                             color: theme.colors.accentOpposite,
                           ),

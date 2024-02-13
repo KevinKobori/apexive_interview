@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/src/theme/responsive_theme.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
-import 'package:nasa_apod_design_system/src/widgets/buttons/button.dart';
+import 'package:nasa_apod_design_system/src/widgets/buttons/text_button.dart';
 
 class ApodAppBuilder extends StatelessWidget {
   const ApodAppBuilder({
@@ -41,7 +41,7 @@ class ApodAppBuilder extends StatelessWidget {
     this.colorMode,
   });
 
-  final AppThemeColorMode? colorMode;
+  final ApodAppThemeColorMode? colorMode;
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
   final bool useInheritedMediaQuery;
   final bool debugShowGrid;
@@ -88,8 +88,8 @@ class ApodAppBuilder extends StatelessWidget {
 
   Widget _inspectorSelectButtonBuilder(
       BuildContext context, VoidCallback onPressed) {
-    final theme = AppTheme.of(context);
-    return AppButton(
+    final theme = ApodTheme.of(context);
+    return ApodTextButton(
       onTap: onPressed,
       icon: theme.icons.characters.addPicture,
     );
@@ -102,13 +102,13 @@ class ApodAppBuilder extends StatelessWidget {
   }
 
   Widget _buildWidgetApp(BuildContext context) {
-    Widget result = AppResponsiveTheme(
+    Widget result = ApodAppResponsiveTheme(
       appLogo: appLogo,
       appWarmLogo: appWarmLogo,
       darkAppLogo: darkAppLogo,
       colorMode: colorMode,
       child: cupertino.Builder(builder: (context) {
-        final theme = AppTheme.of(context);
+        final theme = ApodTheme.of(context);
         return WidgetsApp.router(
           key: GlobalObjectKey(this),
           routeInformationProvider: routeInformationProvider,
@@ -205,7 +205,7 @@ class _ScrollBehaviour extends ScrollBehavior {
 
   @override
   TargetPlatform getPlatform(BuildContext context) =>
-      AppTheme.of(context).platform;
+      ApodTheme.of(context).platform;
 
   @override
   Widget buildScrollbar(
@@ -232,7 +232,7 @@ class _ScrollBehaviour extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(
       BuildContext context, Widget child, ScrollableDetails details) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final indicator =
         _androidOverscrollIndicator ?? AndroidOverscrollIndicator.stretch;
     //  androidOverscrollIndicator;

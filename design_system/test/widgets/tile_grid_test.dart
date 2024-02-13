@@ -10,7 +10,7 @@ void main() async {
     {
       'products': const CustomScrollView(
         slivers: [
-          AppTileSliverGrid(
+          ApodSliverGridTile(
             children: [
               ProductTileLayout.idle(
                 title: 'Dog 1',

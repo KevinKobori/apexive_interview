@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class AppNotifiableBar extends StatefulWidget {
-  const AppNotifiableBar({
+class ApodNotifiableBar extends StatefulWidget {
+  const ApodNotifiableBar({
     required this.child,
     super.key,
     this.notification,
@@ -15,14 +15,14 @@ class AppNotifiableBar extends StatefulWidget {
   final Widget child;
 
   @override
-  State<AppNotifiableBar> createState() => _AppNotifiableBarState();
+  State<ApodNotifiableBar> createState() => _ApodNotifiableBarState();
 }
 
-class _AppNotifiableBarState extends State<AppNotifiableBar> {
+class _ApodNotifiableBarState extends State<ApodNotifiableBar> {
   late bool _isOpened = widget.notification != null;
 
   @override
-  void didUpdateWidget(covariant AppNotifiableBar oldWidget) {
+  void didUpdateWidget(covariant ApodNotifiableBar oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (oldWidget.notification != widget.notification) {
@@ -35,7 +35,7 @@ class _AppNotifiableBarState extends State<AppNotifiableBar> {
   @override
   Widget build(BuildContext context) {
     return _isOpened
-        ? AppNotifiableBarLayout.opened(
+        ? ApodNotifiableBarLayout.opened(
             notification: widget.notification,
             onClosed: () {
               setState(() {
@@ -45,43 +45,43 @@ class _AppNotifiableBarState extends State<AppNotifiableBar> {
             },
             child: widget.child,
           )
-        : AppNotifiableBarLayout.closed(
+        : ApodNotifiableBarLayout.closed(
             child: widget.child,
           );
   }
 }
 
-enum AppNotifiableBarState {
+enum ApodNotifiableBarState {
   opened,
   closed,
 }
 
-class AppNotifiableBarLayout extends StatelessWidget {
-  const AppNotifiableBarLayout.opened({
+class ApodNotifiableBarLayout extends StatelessWidget {
+  const ApodNotifiableBarLayout.opened({
     required this.notification,
     required this.child,
     super.key,
     this.onClosed,
-  }) : _state = AppNotifiableBarState.opened;
+  }) : _state = ApodNotifiableBarState.opened;
 
-  const AppNotifiableBarLayout.closed({
+  const ApodNotifiableBarLayout.closed({
     required this.child,
     super.key,
     this.onClosed,
-  })  : _state = AppNotifiableBarState.closed,
+  })  : _state = ApodNotifiableBarState.closed,
         notification = null;
 
-  final AppNotifiableBarState _state;
+  final ApodNotifiableBarState _state;
   final NotificationViewModel? notification;
   final VoidCallback? onClosed;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final notification = this.notification;
     final isOpened =
-        notification != null || _state == AppNotifiableBarState.opened;
+        notification != null || _state == ApodNotifiableBarState.opened;
 
     return AnimatedContainer(
       duration: theme.durations.regular,
@@ -126,31 +126,31 @@ class _NotificationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return Row(
       children: [
-        AppPadding(
-          padding: const AppEdgeInsets.semiSmall(),
-          child: AppIcon.regular(
+        ApodPadding(
+          padding: const ApodEdgeInsets.semiSmall(),
+          child: ApodIcon.regular(
             notification.icon,
             color: theme.colors.accentOpposite,
           ),
         ),
         Expanded(
-          child: AppPadding(
-            padding: const AppEdgeInsets.symmetric(
-              vertical: AppGapSize.semiSmall,
+          child: ApodPadding(
+            padding: const ApodEdgeInsets.symmetric(
+              vertical: ApodSpacings.semiSmall,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                AppText.title3(
+                ApodText.title3(
                   notification.title,
                   color: theme.colors.accentOpposite,
                   maxLines: 1,
                 ),
-                AppText.paragraph1(
+                ApodText.paragraph1(
                   notification.description,
                   color: theme.colors.accentOpposite,
                   maxLines: 1,
@@ -159,11 +159,11 @@ class _NotificationBody extends StatelessWidget {
             ),
           ),
         ),
-        AppActionButton(
+        ApodActionButton(
           icon: theme.icons.characters.dismiss,
           onTap: onClose,
         ),
-        const AppGap.small(),
+        const ApodGap.small(),
       ],
     );
   }

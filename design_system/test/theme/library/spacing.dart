@@ -1,14 +1,14 @@
 part of 'library.dart';
 
 ThemeSection spacing(BuildContext context) {
-  final theme = AppTheme.of(context);
+  final theme = ApodTheme.of(context);
   return ThemeSection(
     title: 'Spacing',
     categories: [
       ThemeCategory(
         title: 'Regular',
         children: [
-          ...theme.spacing.props.map<Widget>(
+          ...theme.spacings.props.map<Widget>(
             (c) {
               final named = c as Named<double>;
               return NamedCell(

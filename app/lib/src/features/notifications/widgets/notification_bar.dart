@@ -16,12 +16,12 @@ class NotificationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     return BlocBuilder<NotificationsOverviewBloc, NotificationsOverviewState>(
       bloc: notificationsOverviewPresenter,
       builder: (context, state) {
         if (state is NotificationsOverviewStateLoadedData) {
-          return AppNotifiableBar(
+          return ApodNotifiableBar(
             onClosed: () => BlocProvider.of<NotificationsOverviewBloc>(context)
                 .add(NotificationsOverviewEventClose(null)),
             notification: state.lastNotification != null

@@ -8,22 +8,22 @@ export 'data/radius.dart';
 export 'data/shadows.dart';
 export 'data/spacing.dart';
 
-class AppTheme extends InheritedWidget {
-  const AppTheme({
+class ApodTheme extends InheritedWidget {
+  const ApodTheme({
     required this.data,
     required Widget child,
     super.key,
   }) : super(child: child);
 
-  final AppThemeData data;
+  final ApodThemeData data;
 
-  static AppThemeData of(BuildContext context) {
-    final widget = context.dependOnInheritedWidgetOfExactType<AppTheme>();
+  static ApodThemeData of(BuildContext context) {
+    final widget = context.dependOnInheritedWidgetOfExactType<ApodTheme>();
     return widget!.data;
   }
 
   @override
-  bool updateShouldNotify(covariant AppTheme oldWidget) {
+  bool updateShouldNotify(covariant ApodTheme oldWidget) {
     return data != oldWidget.data;
   }
 }

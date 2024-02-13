@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
-class AppContentSheet extends StatelessWidget {
-  const AppContentSheet({
+class ApodContentSheet extends StatelessWidget {
+  const ApodContentSheet({
     required this.children,
     super.key,
   });
@@ -12,7 +12,7 @@ class AppContentSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = ApodTheme.of(context);
     final mediaQuery = MediaQuery.of(context);
     final route = ModalRoute.of(context);
     return SlideTransition(
@@ -30,7 +30,7 @@ class AppContentSheet extends StatelessWidget {
         slivers: [
           SliverPadding(
             padding: EdgeInsets.only(
-              top: mediaQuery.padding.top + theme.spacing.semiSmall,
+              top: mediaQuery.padding.top + theme.spacings.semiSmall,
             ),
             sliver: SliverStack(
               children: <Widget>[
@@ -43,10 +43,10 @@ class AppContentSheet extends StatelessWidget {
                 ),
                 SliverPadding(
                   padding: EdgeInsets.only(
-                    left: theme.spacing.large,
-                    right: theme.spacing.large,
-                    top: theme.spacing.large,
-                    bottom: mediaQuery.padding.bottom + theme.spacing.large,
+                    left: theme.spacings.large,
+                    right: theme.spacings.large,
+                    top: theme.spacings.large,
+                    bottom: mediaQuery.padding.bottom + theme.spacings.large,
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate(

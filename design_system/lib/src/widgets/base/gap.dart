@@ -2,72 +2,28 @@ import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
-enum AppGapSize {
-  none,
-  extraSmall,
-  small,
-  semiSmall,
-  large,
-  extraLarge,
-  superLarge,
-}
+class ApodGap extends StatelessWidget {
+  final ApodSpacings spacing;
 
-extension AppGapSizeExtension on AppGapSize {
-  double getSpacing(AppThemeData theme) {
-    switch (this) {
-      case AppGapSize.none:
-        return 0;
-      case AppGapSize.extraSmall:
-        return theme.spacing.extraSmall;
-      case AppGapSize.small:
-        return theme.spacing.small;
-      case AppGapSize.semiSmall:
-        return theme.spacing.semiSmall;
-      case AppGapSize.large:
-        return theme.spacing.large;
-      case AppGapSize.extraLarge:
-        return theme.spacing.extraLarge;
-      case AppGapSize.superLarge:
-        return theme.spacing.superLarge;
-    }
-  }
-}
+  const ApodGap(this.spacing, {super.key});
 
-class AppGap extends StatelessWidget {
-  const AppGap(
-    this.size, {
-    super.key,
-  });
+  const ApodGap.none({super.key}) : spacing = ApodSpacings.none;
 
-  const AppGap.extraSmall({
-    super.key,
-  }) : size = AppGapSize.extraSmall;
+  const ApodGap.extraSmall({super.key}) : spacing = ApodSpacings.extraSmall;
 
-  const AppGap.small({
-    super.key,
-  }) : size = AppGapSize.small;
+  const ApodGap.small({super.key}) : spacing = ApodSpacings.small;
 
-  const AppGap.semiSmall({
-    super.key,
-  }) : size = AppGapSize.semiSmall;
+  const ApodGap.semiSmall({super.key}) : spacing = ApodSpacings.semiSmall;
 
-  const AppGap.large({
-    super.key,
-  }) : size = AppGapSize.large;
+  const ApodGap.large({super.key}) : spacing = ApodSpacings.large;
 
-  const AppGap.extraLarge({
-    super.key,
-  }) : size = AppGapSize.extraLarge;
+  const ApodGap.extraLarge({super.key}) : spacing = ApodSpacings.extraLarge;
 
-  const AppGap.superLarge({
-    super.key,
-  }) : size = AppGapSize.superLarge;
-
-  final AppGapSize size;
+  const ApodGap.superLarge({super.key}) : spacing = ApodSpacings.superLarge;
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-    return Gap(size.getSpacing(theme));
+    final theme = ApodTheme.of(context);
+    return Gap(spacing.getSpacing(theme));
   }
 }
