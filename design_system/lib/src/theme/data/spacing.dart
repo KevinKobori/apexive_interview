@@ -19,7 +19,7 @@ class ApodSpacingsData extends Equatable {
         extraSmall: 4,
         small: 8,
         semiSmall: 12,
-        large: 22,
+        large: 24,
         extraLarge: 32,
         superLarge: 48,
       );
@@ -32,7 +32,7 @@ class ApodSpacingsData extends Equatable {
   final double extraLarge;
   final double superLarge;
 
-  ApodEdgeInsetsSpacingData asInsets() => ApodEdgeInsetsSpacingData(this);
+  ApodEdgeInsetsSpacingsData asInsets() => ApodEdgeInsetsSpacingsData(this);
 
   @override
   List<Object?> get props => [
@@ -46,8 +46,8 @@ class ApodSpacingsData extends Equatable {
       ];
 }
 
-class ApodEdgeInsetsSpacingData extends Equatable {
-  const ApodEdgeInsetsSpacingData(this._spacing);
+class ApodEdgeInsetsSpacingsData extends Equatable {
+  const ApodEdgeInsetsSpacingsData(this._spacing);
 
   EdgeInsets get none => EdgeInsets.all(_spacing.none);
   EdgeInsets get extraSmall => EdgeInsets.all(_spacing.extraSmall);
@@ -62,7 +62,7 @@ class ApodEdgeInsetsSpacingData extends Equatable {
   List<Object?> get props => [_spacing];
 }
 
-enum ApodSpacings {
+enum ApodSpacing {
   none,
   extraSmall,
   small,
@@ -72,14 +72,14 @@ enum ApodSpacings {
   superLarge,
 }
 
-extension AppSpacingsExtension on ApodSpacings {
+extension AppSpacingsExtension on ApodSpacing {
   double getSpacing(ApodThemeData theme) => switch (this) {
-        ApodSpacings.none => theme.spacings.none,
-        ApodSpacings.extraSmall => theme.spacings.extraSmall,
-        ApodSpacings.small => theme.spacings.small,
-        ApodSpacings.semiSmall => theme.spacings.semiSmall,
-        ApodSpacings.large => theme.spacings.large,
-        ApodSpacings.extraLarge => theme.spacings.extraLarge,
-        ApodSpacings.superLarge => theme.spacings.superLarge,
+        ApodSpacing.none => theme.spacings.none,
+        ApodSpacing.extraSmall => theme.spacings.extraSmall,
+        ApodSpacing.small => theme.spacings.small,
+        ApodSpacing.semiSmall => theme.spacings.semiSmall,
+        ApodSpacing.large => theme.spacings.large,
+        ApodSpacing.extraLarge => theme.spacings.extraLarge,
+        ApodSpacing.superLarge => theme.spacings.superLarge,
       };
 }

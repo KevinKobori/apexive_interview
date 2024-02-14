@@ -72,7 +72,7 @@ class ApodAppResponsiveTheme extends StatelessWidget {
       case ApodAppThemeColorMode.dark:
         theme = theme.withColors(ApodColorsData.dark());
 
-        final darkAppLogo = darkAppLogo;
+        final darkAppLogo = this.darkAppLogo;
         if (darkAppLogo != null) {
           theme = theme.withImages(theme.images.withAppLogo(darkAppLogo));
         }

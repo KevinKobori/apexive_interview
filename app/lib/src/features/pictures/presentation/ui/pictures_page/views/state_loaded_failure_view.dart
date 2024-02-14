@@ -3,23 +3,20 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PicturesPageStateLoadedFailureView extends StatelessWidget {
   final String failureMessage;
-  final void Function() reload;
+  final void Function() onReload;
 
   const PicturesPageStateLoadedFailureView({
     required this.failureMessage,
-    required this.reload,
+    required this.onReload,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    // TODO: NOW
     return ApodScaffold(
-      body:
-          // TODO: NOW PUT IT BACK
-          ApodReloadPage(
+      body: ApodFailureReloadView(
         failureMessage: failureMessage,
-        reload: reload,
+        onReload: onReload,
       ),
     );
   }

@@ -14,7 +14,7 @@ class PicturesPageStateLoadingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ApodScaffold(
       body: const Center(
-        child: Text('PUT LOADING HERE'),
+        child: Text('PUT LOADING HERE 3'),
       ),
     );
   }

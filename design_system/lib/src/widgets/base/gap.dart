@@ -3,23 +3,23 @@ import 'package:gap/gap.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
 class ApodGap extends StatelessWidget {
-  final ApodSpacings spacing;
+  final ApodSpacing spacing;
 
   const ApodGap(this.spacing, {super.key});
 
-  const ApodGap.none({super.key}) : spacing = ApodSpacings.none;
+  const ApodGap.none({super.key}) : spacing = ApodSpacing.none;
 
-  const ApodGap.extraSmall({super.key}) : spacing = ApodSpacings.extraSmall;
+  const ApodGap.extraSmall({super.key}) : spacing = ApodSpacing.extraSmall;
 
-  const ApodGap.small({super.key}) : spacing = ApodSpacings.small;
+  const ApodGap.small({super.key}) : spacing = ApodSpacing.small;
 
-  const ApodGap.semiSmall({super.key}) : spacing = ApodSpacings.semiSmall;
+  const ApodGap.semiSmall({super.key}) : spacing = ApodSpacing.semiSmall;
 
-  const ApodGap.large({super.key}) : spacing = ApodSpacings.large;
+  const ApodGap.large({super.key}) : spacing = ApodSpacing.large;
 
-  const ApodGap.extraLarge({super.key}) : spacing = ApodSpacings.extraLarge;
+  const ApodGap.extraLarge({super.key}) : spacing = ApodSpacing.extraLarge;
 
-  const ApodGap.superLarge({super.key}) : spacing = ApodSpacings.superLarge;
+  const ApodGap.superLarge({super.key}) : spacing = ApodSpacing.superLarge;
 
   @override
   Widget build(BuildContext context) {

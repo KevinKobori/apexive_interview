@@ -34,7 +34,7 @@ class _PicturesPageState extends State<PicturesPage> {
         } else if (state is PicturesPageStateLoadedFailure) {
           return PicturesPageStateLoadedFailureView(
             failureMessage: state.failureMessage,
-            reload: widget.picturesPagePresenter.loadPictures,
+            onReload: widget.picturesPagePresenter.loadPictures,
           );
         } else if (state is PicturesPageStateLoadedSuccess) {
           return PicturesPageStateLoadedSuccessView(

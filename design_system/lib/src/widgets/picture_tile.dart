@@ -5,8 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:tap_builder/tap_builder.dart';
 
-class PictureTile extends StatefulWidget {
-  const PictureTile({
+class ApodPictureTile extends StatefulWidget {
+  const ApodPictureTile({
     required this.title,
     // required this.image,
     required this.imageUrl,
@@ -24,10 +24,10 @@ class PictureTile extends StatefulWidget {
   final VoidCallback onTap;
 
   @override
-  State<PictureTile> createState() => _PictureTileState();
+  State<ApodPictureTile> createState() => _ApodPictureTileState();
 }
 
-class _PictureTileState extends State<PictureTile> {
+class _ApodPictureTileState extends State<ApodPictureTile> {
   double _aspectRatio = 1;
   bool _isLoading = true; // Initial state is loading
 
@@ -39,7 +39,8 @@ class _PictureTileState extends State<PictureTile> {
 
   Future<void> _loadAspectRatio() async {
     try {
-      final double aspectRatio = await getImageAspectRatio(widget.imageUrl);
+      final double aspectRatio =
+          await ImageHelper.getImageAspectRatio(widget.imageUrl);
       if (mounted) {
         setState(() {
           _aspectRatio = aspectRatio;
@@ -59,7 +60,7 @@ class _PictureTileState extends State<PictureTile> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
-      return const Center(child: Text('PUT LOADING HERE'));
+      return const Center(child: Text('PUT LOADING HERE 1'));
     } else {
       return TapBuilder(
         onTap: widget.onTap,
@@ -192,21 +193,4 @@ class ProductTileLayout extends StatelessWidget {
       ),
     );
   }
-}
-
-Future<double> getImageAspectRatio(String imageUrl) async {
-  final ImageStream imageStream =
-      CachedNetworkImageProvider(imageUrl).resolve(ImageConfiguration.empty);
-  final Completer<double> completer = Completer();
-
-  void imageListener(ImageInfo info, bool _) {
-    final double aspectRatio = info.image.width / info.image.height;
-    completer.complete(aspectRatio);
-  }
-
-  imageStream.addListener(
-    ImageStreamListener(imageListener),
-  );
-
-  return await completer.future;
 }

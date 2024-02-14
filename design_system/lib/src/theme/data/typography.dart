@@ -3,6 +3,12 @@ import 'package:flutter/rendering.dart';
 import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
 class ApodTypographyData extends Equatable {
+  final TextStyle title1;
+  final TextStyle title2;
+  final TextStyle title3;
+  final TextStyle paragraph1;
+  final TextStyle paragraph2;
+  
   const ApodTypographyData({
     required this.paragraph1,
     required this.paragraph2,
@@ -86,12 +92,6 @@ class ApodTypographyData extends Equatable {
           decoration: TextDecoration.none,
         ),
       );
-
-  final TextStyle paragraph1;
-  final TextStyle paragraph2;
-  final TextStyle title1;
-  final TextStyle title2;
-  final TextStyle title3;
 
   @override
   List<Object?> get props => [

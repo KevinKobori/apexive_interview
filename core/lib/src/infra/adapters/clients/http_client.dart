@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-enum HttpVerbs {
+enum HttpMethod {
   get,
   post,
   put,
@@ -11,7 +11,7 @@ enum HttpVerbs {
 mixin HttpClient {
   Future<Either<HttpFailure, dynamic>> request({
     required String url,
-    required HttpVerbs method,
+    required HttpMethod method,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? body,
   });

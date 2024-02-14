@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:test_utils/test_utils.dart';
 
 void main() {

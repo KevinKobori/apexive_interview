@@ -10,7 +10,7 @@ class PictureDatasourceImpl implements PictureDatasource {
   Future<Either<DomainFailure, List<PictureModel>>> fetchLastTenDaysData(
       String url) async {
     final requestResult =
-        await httpClient.request(method: HttpVerbs.get, url: url);
+        await httpClient.request(method: HttpMethod.get, url: url);
 
     return await requestResult.fold(
       /// Left
@@ -54,7 +54,7 @@ class PictureDatasourceImpl implements PictureDatasource {
   Future<Either<DomainFailure, PictureModel>> fetchByDate(String url) async {
     // TODO(all): Repository and Usecase Layers
     final resultHttpClient =
-        await httpClient.request(method: HttpVerbs.get, url: url);
+        await httpClient.request(method: HttpMethod.get, url: url);
     return resultHttpClient.fold(
       /// Left
       (httpFailure) => Left(httpFailure.fromHttpToDomain),

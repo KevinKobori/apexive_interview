@@ -21,7 +21,7 @@ class CurrentUserAvatar extends StatelessWidget {
             url: state.account.pictureUrl,
           );
         } else {
-          return Text('PUT LOADING HERE');
+          return Text('PUT LOADING HERE 6');
         }
       },
     );

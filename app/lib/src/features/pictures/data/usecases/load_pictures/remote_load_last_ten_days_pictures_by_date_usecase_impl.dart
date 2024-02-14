@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class RemoteLoadLastTenDaysPicturesByDateUseCaseImpl
     implements RemoteLoadLastTenDaysPicturesByDateUseCase {
@@ -14,33 +16,36 @@ class RemoteLoadLastTenDaysPicturesByDateUseCaseImpl
 
   @override
   Future<Either<DomainFailure, List<PictureEntity>>> call(DateTime date) async {
-    /// Logic for retrieving Astronomy Picture of the Day (Apod) images
-    /// from the last 10 days, including today.
-    final nasaApodEndDate = getNasaApodEndDate(date);
-    final nasaApodStartDate = getNasaApodStartDate(date);
+    final apodEndDate = getApodEndDate(date);
+    final apodStartDate = getApodStartDate(date);
 
     final result = await picturesRepository.getLastTenDaysData(
       apodApiUrlFactory(
         apiKey: apiKey,
-        requestPath: '&start_date=$nasaApodStartDate&end_date=$nasaApodEndDate',
+        requestPath: '&start_date=$apodStartDate&end_date=$apodEndDate',
       ),
     );
     return result;
   }
 
-  static String getNasaApodEndDate(DateTime date) {
-    return getNasaApodDateFormat(date);
+  static String getApodEndDate(DateTime localDateTime) {
+    return getApodDateFormat(localDateTime);
   }
 
-  static String getNasaApodStartDate(DateTime date) {
-    final lastTenDaysUS =
-        DateTime(date.year, date.month, date.day - 9, date.hour - 1);
-    return getNasaApodDateFormat(lastTenDaysUS);
+  static String getApodStartDate(DateTime localDateTime) {
+    final lastTenDaysUS = DateTime(localDateTime.year, localDateTime.month,
+        localDateTime.day - 9, localDateTime.hour);
+    return getApodDateFormat(lastTenDaysUS);
   }
 
-  static String getNasaApodDateFormat(DateTime date) {
-    final dateRequestAPIFormat =
-        DateTime(date.year, date.month, date.day, date.hour - 1);
+  static String getApodDateFormat(DateTime localDateTime) {
+    tz.initializeTimeZones();
+    tz.Location apodLocation = tz.getLocation('America/New_York');
+    tz.TZDateTime apodDateTime =
+        tz.TZDateTime.from(localDateTime, apodLocation);
+
+    final dateRequestAPIFormat = DateTime(apodDateTime.year, apodDateTime.month,
+        apodDateTime.day, apodDateTime.hour);
     final String year = dateRequestAPIFormat.year.toString();
     final String month = dateRequestAPIFormat.month.toString().padLeft(2, '0');
     final String day = dateRequestAPIFormat.day.toString().padLeft(2, '0');

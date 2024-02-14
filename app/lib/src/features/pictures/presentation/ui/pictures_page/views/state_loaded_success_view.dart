@@ -124,10 +124,10 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
           SliverToBoxAdapter(
             child: Container(
               padding: ApodEdgeInsets.only(
-                left: ApodSpacings.large,
-                top: ApodSpacings.large,
-                right: ApodSpacings.large,
-                bottom: ApodSpacings.none,
+                left: ApodSpacing.large,
+                top: ApodSpacing.large,
+                right: ApodSpacing.large,
+                bottom: ApodSpacing.none,
               ).toEdgeInsets(theme),
               child: Column(
                 children: [
@@ -139,7 +139,7 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                       onLoadPictureByDate: widget.onLoadPictureByDate),
                   Stack(
                     children: [
-                      PictureTile(
+                      ApodPictureTile(
                         key: Key(widget.pictureViewModelList[0].date),
                         title: widget.pictureViewModelList[0].title,
                         imageUrl: widget.pictureViewModelList[0].url,
@@ -168,10 +168,10 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
           SliverToBoxAdapter(
             child: ApodPadding(
               padding: const ApodEdgeInsets.only(
-                left: ApodSpacings.large,
-                top: ApodSpacings.large,
-                right: ApodSpacings.large,
-                bottom: ApodSpacings.none,
+                left: ApodSpacing.large,
+                top: ApodSpacing.large,
+                right: ApodSpacing.large,
+                bottom: ApodSpacing.none,
               ),
               child: ApodText.title1('Discover Now'),
             ),
@@ -191,7 +191,7 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
               children: [
                 ...widget.pictureViewModelList.skip(1).map(
-                      (pictureViewModel) => PictureTile(
+                      (pictureViewModel) => ApodPictureTile(
                         key: Key(pictureViewModel.date), // .id
                         title: pictureViewModel.title,
                         imageUrl: pictureViewModel.url,

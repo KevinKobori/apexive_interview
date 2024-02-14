@@ -3,61 +3,61 @@ import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
 class ApodEdgeInsets extends Equatable {
-  const ApodEdgeInsets.all(ApodSpacings value)
+  const ApodEdgeInsets.all(ApodSpacing value)
       : left = value,
         top = value,
         right = value,
         bottom = value;
 
   const ApodEdgeInsets.symmetric({
-    ApodSpacings vertical = ApodSpacings.none,
-    ApodSpacings horizontal = ApodSpacings.none,
+    ApodSpacing vertical = ApodSpacing.none,
+    ApodSpacing horizontal = ApodSpacing.none,
   })  : left = horizontal,
         top = vertical,
         right = horizontal,
         bottom = vertical;
 
   const ApodEdgeInsets.only({
-    this.left = ApodSpacings.none,
-    this.top = ApodSpacings.none,
-    this.right = ApodSpacings.none,
-    this.bottom = ApodSpacings.none,
+    this.left = ApodSpacing.none,
+    this.top = ApodSpacing.none,
+    this.right = ApodSpacing.none,
+    this.bottom = ApodSpacing.none,
   });
 
   const ApodEdgeInsets.extraSmall()
-      : left = ApodSpacings.extraSmall,
-        top = ApodSpacings.extraSmall,
-        right = ApodSpacings.extraSmall,
-        bottom = ApodSpacings.extraSmall;
+      : left = ApodSpacing.extraSmall,
+        top = ApodSpacing.extraSmall,
+        right = ApodSpacing.extraSmall,
+        bottom = ApodSpacing.extraSmall;
 
   const ApodEdgeInsets.small()
-      : left = ApodSpacings.small,
-        top = ApodSpacings.small,
-        right = ApodSpacings.small,
-        bottom = ApodSpacings.small;
+      : left = ApodSpacing.small,
+        top = ApodSpacing.small,
+        right = ApodSpacing.small,
+        bottom = ApodSpacing.small;
 
   const ApodEdgeInsets.semiSmall()
-      : left = ApodSpacings.semiSmall,
-        top = ApodSpacings.semiSmall,
-        right = ApodSpacings.semiSmall,
-        bottom = ApodSpacings.semiSmall;
+      : left = ApodSpacing.semiSmall,
+        top = ApodSpacing.semiSmall,
+        right = ApodSpacing.semiSmall,
+        bottom = ApodSpacing.semiSmall;
 
   const ApodEdgeInsets.large()
-      : left = ApodSpacings.large,
-        top = ApodSpacings.large,
-        right = ApodSpacings.large,
-        bottom = ApodSpacings.large;
+      : left = ApodSpacing.large,
+        top = ApodSpacing.large,
+        right = ApodSpacing.large,
+        bottom = ApodSpacing.large;
 
   const ApodEdgeInsets.extraLarge()
-      : left = ApodSpacings.extraLarge,
-        top = ApodSpacings.extraLarge,
-        right = ApodSpacings.extraLarge,
-        bottom = ApodSpacings.extraLarge;
+      : left = ApodSpacing.extraLarge,
+        top = ApodSpacing.extraLarge,
+        right = ApodSpacing.extraLarge,
+        bottom = ApodSpacing.extraLarge;
 
-  final ApodSpacings left;
-  final ApodSpacings top;
-  final ApodSpacings right;
-  final ApodSpacings bottom;
+  final ApodSpacing left;
+  final ApodSpacing top;
+  final ApodSpacing right;
+  final ApodSpacing bottom;
 
   @override
   List<Object?> get props => [
@@ -80,34 +80,34 @@ class ApodEdgeInsets extends Equatable {
 class ApodPadding extends StatelessWidget {
   const ApodPadding({
     super.key,
-    this.padding = const ApodEdgeInsets.all(ApodSpacings.none),
+    this.padding = const ApodEdgeInsets.all(ApodSpacing.none),
     this.child,
   });
 
   const ApodPadding.extraSmall({
     super.key,
     this.child,
-  }) : padding = const ApodEdgeInsets.all(ApodSpacings.extraSmall);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacing.extraSmall);
 
   const ApodPadding.small({
     super.key,
     this.child,
-  }) : padding = const ApodEdgeInsets.all(ApodSpacings.small);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacing.small);
 
   const ApodPadding.semiSmall({
     super.key,
     this.child,
-  }) : padding = const ApodEdgeInsets.all(ApodSpacings.semiSmall);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacing.semiSmall);
 
   const ApodPadding.large({
     super.key,
     this.child,
-  }) : padding = const ApodEdgeInsets.all(ApodSpacings.large);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacing.large);
 
   const ApodPadding.extraLarge({
     super.key,
     this.child,
-  }) : padding = const ApodEdgeInsets.all(ApodSpacings.extraLarge);
+  }) : padding = const ApodEdgeInsets.all(ApodSpacing.extraLarge);
 
   final ApodEdgeInsets padding;
   final Widget? child;

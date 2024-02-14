@@ -67,7 +67,6 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
     final result = await datasource.fetchByDate(apodApiUrlFactory(
         // TODO: NOW - PUT IT IN .env
         apiKey: ApodEnvironmentConstants.apiKey,
-        // 'Ieuiin5UvhSz44qMh9rboqVMfOkYbkNebhwEtxPF',
         requestPath: '&date=$apodDate'));
     return result.fold(
       (domainFailure) => Left(domainFailure),

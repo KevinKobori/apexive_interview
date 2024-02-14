@@ -1,31 +1,28 @@
-// TODO: NOW - PUT IT IN DESIGN SYSTEM PACKAGE
 import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class ApodReloadPage extends StatelessWidget {
+class ApodFailureReloadView extends StatelessWidget {
   final String failureMessage;
-  final void Function() reload;
+  final void Function() onReload;
 
-  const ApodReloadPage({
+  const ApodFailureReloadView({
     required this.failureMessage,
-    required this.reload,
+    required this.onReload,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return ApodPadding(
-      padding: const ApodEdgeInsets.all(ApodSpacings.extraLarge),
+      padding: const ApodEdgeInsets.all(ApodSpacing.extraLarge),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(failureMessage,
-              style: const TextStyle(fontSize: 16),
-              textAlign: TextAlign.center),
+          ApodText.title2(failureMessage),
           const ApodGap.small(),
           ApodTextButton(
-            onTap: reload,
+            onTap: onReload,
             title: I18n.strings.reload,
           )
         ],

@@ -1,12 +1,12 @@
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 String localStorageItemKeyFactory() => 'pictures_list';
 
 RemoteLoadLastTenDaysPicturesByDateUseCaseImpl
     remoteLoadPicturesUseCaseFactory() =>
         RemoteLoadLastTenDaysPicturesByDateUseCaseImpl(
-          apiKey: 'Ieuiin5UvhSz44qMh9rboqVMfOkYbkNebhwEtxPF',
+          apiKey: ApodEnvironmentConstants.apiKey,
           picturesRepository: pictureRepositoryFactory(),
         );
 

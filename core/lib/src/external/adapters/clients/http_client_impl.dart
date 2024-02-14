@@ -12,7 +12,7 @@ class HttpClientAdapter implements HttpClient {
   @override
   Future<Either<HttpFailure, dynamic>> request(
       {required String url,
-      required HttpVerbs method,
+      required HttpMethod method,
       Map<String, dynamic>? body,
       Map<String, dynamic>? headers}) async {
     final defaultHeaders = headers?.cast<String, String>() ?? {}
@@ -22,15 +22,15 @@ class HttpClientAdapter implements HttpClient {
     var response = Response('', 500);
     Future<Response>? futureResponse;
     try {
-      if (method == HttpVerbs.post) {
+      if (method == HttpMethod.post) {
         futureResponse = client.post(Uri.parse(url),
             headers: defaultHeaders, body: jsonBody);
-      } else if (method == HttpVerbs.put) {
+      } else if (method == HttpMethod.put) {
         futureResponse =
             client.put(Uri.parse(url), headers: defaultHeaders, body: jsonBody);
-      } else if (method == HttpVerbs.get) {
+      } else if (method == HttpMethod.get) {
         futureResponse = client.get(Uri.parse(url), headers: defaultHeaders);
-      } else if (method == HttpVerbs.delete) {
+      } else if (method == HttpMethod.delete) {
         futureResponse = client.delete(Uri.parse(url), headers: defaultHeaders);
       }
       if (futureResponse != null) {

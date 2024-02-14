@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
 
-abstract final class XImagesHelper {
-  static Future<void> precacheCache(
+abstract final class ImageHelper {
+  static Future<void> precache(
     BuildContext context, {
     required List<String> imagesPathList,
   }) async {
@@ -27,6 +27,6 @@ abstract final class XImagesHelper {
       ImageStreamListener(imageListener),
     );
 
-    return await completer.future ?? 1;
+    return await completer.future;
   }
 }

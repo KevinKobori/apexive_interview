@@ -49,7 +49,7 @@ class CollectionsOverview extends StatelessWidget {
             ],
           );
         } else {
-          return Text('PUT LOADING HERE');
+          return Text('PUT LOADING HERE 5');
         }
       },
     );

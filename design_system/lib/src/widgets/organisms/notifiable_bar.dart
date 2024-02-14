@@ -139,7 +139,7 @@ class _NotificationBody extends StatelessWidget {
         Expanded(
           child: ApodPadding(
             padding: const ApodEdgeInsets.symmetric(
-              vertical: ApodSpacings.semiSmall,
+              vertical: ApodSpacing.semiSmall,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,

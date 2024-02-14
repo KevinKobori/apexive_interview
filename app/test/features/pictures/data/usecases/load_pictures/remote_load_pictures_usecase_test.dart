@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:test_utils/test_utils.dart';
 
 void main() {
@@ -29,10 +29,10 @@ void main() {
     apiKey = ApodTest.faker.randomGenerator.string(10);
 
     final nasaApodEndDate =
-        RemoteLoadLastTenDaysPicturesByDateUseCaseImpl.getNasaApodEndDate(
+        RemoteLoadLastTenDaysPicturesByDateUseCaseImpl.getApodEndDate(
             nowDate);
     final nasaApodStartDate =
-        RemoteLoadLastTenDaysPicturesByDateUseCaseImpl.getNasaApodStartDate(
+        RemoteLoadLastTenDaysPicturesByDateUseCaseImpl.getApodStartDate(
             nowDate);
 
     url = apodApiUrlFactory(
@@ -44,7 +44,7 @@ void main() {
       picturesRepository: pictureRepository,
       apiKey: apiKey,
     );
-    registerFallbackValue<HttpVerbs>(HttpVerbs.get);
+    registerFallbackValue<HttpMethod>(HttpMethod.get);
   });
 
   test('Should call HttpClient with correct values', () async {
@@ -54,7 +54,7 @@ void main() {
 
     await sut.call(nowDate);
 
-    ApodTest.verify(() => httpClient.request(method: HttpVerbs.get, url: url));
+    ApodTest.verify(() => httpClient.request(method: HttpMethod.get, url: url));
   });
 
   test('Should return pictures list on 200 with valid data', () async {

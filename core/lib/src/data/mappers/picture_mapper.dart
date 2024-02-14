@@ -57,7 +57,10 @@ abstract final class PictureMapper {
       PictureModel pictureModel) {
     return Right(PictureEntity(
       copyright: pictureModel.copyright,
-      date: DateTimeMapper.getYMDFromDateTime(pictureModel.date),
+      date:
+          // DateTimeMapper.getYMDFromDateTime(
+          pictureModel.date,
+      // ),
       explanation: pictureModel.explanation,
       hdurl: pictureModel.hdurl,
       mediaType: pictureModel.mediaType,
