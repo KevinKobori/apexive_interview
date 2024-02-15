@@ -8,18 +8,14 @@ import 'package:tap_builder/tap_builder.dart';
 class ApodPictureTile extends StatefulWidget {
   const ApodPictureTile({
     required this.title,
-    // required this.image,
     required this.imageUrl,
     required this.date,
     required this.onTap,
     super.key,
-    // this.aspectRatio = 1.0,
   });
 
   final String title;
-  // final double aspectRatio;
   final String imageUrl;
-  // final ImageProvider image;
   final String date;
   final VoidCallback onTap;
 
@@ -29,7 +25,7 @@ class ApodPictureTile extends StatefulWidget {
 
 class _ApodPictureTileState extends State<ApodPictureTile> {
   double _aspectRatio = 1;
-  bool _isLoading = true; // Initial state is loading
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -44,16 +40,15 @@ class _ApodPictureTileState extends State<ApodPictureTile> {
       if (mounted) {
         setState(() {
           _aspectRatio = aspectRatio;
-          _isLoading = false; // Loading is complete
+          _isLoading = false;
         });
       }
     } catch (e) {
       if (mounted) {
         setState(() {
-          _isLoading = false; // Ensure loading state is disabled even on error
+          _isLoading = false;
         });
       }
-      // Handle any errors here
     }
   }
 
@@ -69,7 +64,6 @@ class _ApodPictureTileState extends State<ApodPictureTile> {
             case TapState.pressed:
             case TapState.hover:
               return ProductTileLayout.hovered(
-                // image: widget.image,
                 image: CachedNetworkImageProvider(widget.imageUrl),
                 title: widget.title,
                 date: widget.date,
@@ -77,7 +71,6 @@ class _ApodPictureTileState extends State<ApodPictureTile> {
               );
             default:
               return ProductTileLayout.idle(
-                // image: widget.image,
                 image: CachedNetworkImageProvider(widget.imageUrl),
                 title: widget.title,
                 date: widget.date,
@@ -100,16 +93,16 @@ class ProductTileLayout extends StatelessWidget {
     required this.title,
     required this.image,
     required this.date,
+    required this.aspectRatio,
     super.key,
-    this.aspectRatio = 1.0,
   }) : _state = ProductTileState.idle;
 
   const ProductTileLayout.hovered({
     required this.title,
     required this.image,
     required this.date,
+    required this.aspectRatio,
     super.key,
-    this.aspectRatio = 1.0,
   }) : _state = ProductTileState.hovered;
 
   final String title;
@@ -176,7 +169,6 @@ class ProductTileLayout extends StatelessWidget {
                             title,
                             color: theme.colors.accentOpposite,
                           ),
-                          // DateLabel(date),
                           ApodText.paragraph1(
                             date,
                             color: theme.colors.accentOpposite,

@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
 class ApodSpacingsData extends Equatable {
   const ApodSpacingsData({

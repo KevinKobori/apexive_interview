@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-import 'package:nasa_apod_design_system/src/theme/data/form_factor.dart';
 import 'package:test_utils/test_utils.dart';
 
 import 'library/library.dart';

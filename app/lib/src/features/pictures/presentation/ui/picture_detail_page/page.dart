@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart' as dz;
 import 'package:flutter/widgets.dart';
 import 'package:localstorage/localstorage.dart' as ls;
 import 'package:nasa_apod_app/nasa_apod_app.dart';
-import 'package:nasa_apod_app/src/features/pictures/presentation/ui/picture_detail_page/views/state_loaded_success_view.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class PictureDetailPage extends StatefulWidget {
@@ -64,12 +63,10 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
     return ValueListenableBuilder(
       valueListenable: rxPictureViewModel,
       builder: (_, pictureViewModel, __) {
-        // TODO: NOW
         final picture = widget.pictureViewModel ?? pictureViewModel;
         return PictureDetailPageStateLoadedSuccessView(
-          aspectRatio: widget.aspectRatio,
           pictureDate: widget.pictureDate,
-          pictureViewModel: picture,
+          pictureViewModel: picture!,
         );
       },
     );

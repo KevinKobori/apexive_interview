@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
@@ -15,7 +13,6 @@ class PictureRepositoryImpl implements PictureRepository {
   @override
   Future<Either<DomainFailure, List<PictureEntity>>> getLastTenDaysData(
       String url) async {
-    log('URLURL >>> $url');
     if (await networkInfo.isConnected()) {
       final resultDataSource =
           await pictureDatasource.fetchLastTenDaysData(url);

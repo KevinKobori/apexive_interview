@@ -52,7 +52,6 @@ class PictureDatasourceImpl implements PictureDatasource {
 
   @override
   Future<Either<DomainFailure, PictureModel>> fetchByDate(String url) async {
-    // TODO(all): Repository and Usecase Layers
     final resultHttpClient =
         await httpClient.request(method: HttpMethod.get, url: url);
     return resultHttpClient.fold(

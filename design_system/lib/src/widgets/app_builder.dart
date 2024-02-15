@@ -3,21 +3,19 @@ import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nasa_apod_design_system/src/theme/responsive_theme.dart';
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
-import 'package:nasa_apod_design_system/src/widgets/buttons/text_button.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodAppBuilder extends StatelessWidget {
   const ApodAppBuilder({
     required this.routerDelegate,
     required this.routeInformationParser,
     required this.appLogo,
-    required this.appWarmLogo,
+    required this.appWormLogo,
     super.key,
     // required this.routerConfig,
 
     this.darkAppLogo,
-    this.darkAppWarmLogo,
+    this.darkAppWormLogo,
     this.routeInformationProvider,
     this.backButtonDispatcher,
     this.debugShowGrid = false,
@@ -67,8 +65,8 @@ class ApodAppBuilder extends StatelessWidget {
   final TransitionBuilder? builder;
   final PictureProvider appLogo;
   final PictureProvider? darkAppLogo;
-  final PictureProvider appWarmLogo;
-  final PictureProvider? darkAppWarmLogo;
+  final PictureProvider appWormLogo;
+  final PictureProvider? darkAppWormLogo;
 
   // We provide material and cupertino localization delegate even it will
   // probably not be used.
@@ -104,7 +102,7 @@ class ApodAppBuilder extends StatelessWidget {
   Widget _buildWidgetApp(BuildContext context) {
     Widget result = ApodAppResponsiveTheme(
       appLogo: appLogo,
-      appWarmLogo: appWarmLogo,
+      appWormLogo: appWormLogo,
       darkAppLogo: darkAppLogo,
       colorMode: colorMode,
       child: cupertino.Builder(builder: (context) {
@@ -220,7 +218,6 @@ class _ScrollBehaviour extends ScrollBehavior {
           case TargetPlatform.linux:
           case TargetPlatform.macOS:
           case TargetPlatform.windows:
-          // TODO add scrollbar
           case TargetPlatform.android:
           case TargetPlatform.fuchsia:
           case TargetPlatform.iOS:

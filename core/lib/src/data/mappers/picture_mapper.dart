@@ -28,22 +28,7 @@ abstract final class PictureMapper {
     try {
       final result = List<PictureModel>.from(
         pictureEntityList.map(
-          (pictureEntity) {
-            final pictureModelResult =
-                PictureMapper.fromEntityToModel(pictureEntity);
-            return pictureModelResult.fold(
-              /// Left
-              (mapperFailure) {
-                return;
-                // return Left(mapperFailure); // TODO(all): Need to fix this possibility of return an error during the proccess
-              },
-
-              /// Right
-              (pictureModel) {
-                return pictureModel;
-              },
-            );
-          },
+          (pictureEntity) => PictureMapper.fromEntityToModel(pictureEntity),
         ),
       ).toList();
       return Right(result);
@@ -57,10 +42,7 @@ abstract final class PictureMapper {
       PictureModel pictureModel) {
     return Right(PictureEntity(
       copyright: pictureModel.copyright,
-      date:
-          // DateTimeMapper.getYMDFromDateTime(
-          pictureModel.date,
-      // ),
+      date: pictureModel.date,
       explanation: pictureModel.explanation,
       hdurl: pictureModel.hdurl,
       mediaType: pictureModel.mediaType,
@@ -128,19 +110,7 @@ abstract final class PictureMapper {
   /// External <<< FROM <<< Data
   static Either<MapperFailure, Map<String, dynamic>> fromModelToJson(
       PictureModel pictureModel) {
-    return Right(pictureModel.toJson()
-        // <String, dynamic>{
-        //   'copyright': pictureModel.copyright,
-        //   'date':
-        //       '${pictureModel.date.year}-${pictureModel.date.month}-${pictureModel.date.day}',
-        //   'explanation': pictureModel.explanation,
-        //   'hdurl': pictureModel.hdurl,
-        //   'media_type': pictureModel.mediaType,
-        //   'service_version': pictureModel.serviceVersion,
-        //   'title': pictureModel.title,
-        //   'url': pictureModel.url,
-        // }
-        );
+    return Right(pictureModel.toJson());
   }
 
   static Either<MapperFailure, List<Map<String, dynamic>>>

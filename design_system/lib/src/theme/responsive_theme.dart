@@ -2,10 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nasa_apod_design_system/src/theme/data/form_factor.dart';
-import 'package:nasa_apod_design_system/src/theme/data/images.dart';
-import 'package:nasa_apod_design_system/src/theme/data/typography.dart';
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 enum ApodAppThemeColorMode {
   light,
@@ -19,10 +16,10 @@ class ApodAppResponsiveTheme extends StatelessWidget {
   const ApodAppResponsiveTheme({
     required this.appLogo,
     required this.child,
-    required this.appWarmLogo,
+    required this.appWormLogo,
     super.key,
     this.darkAppLogo,
-    this.darkAppWarmLogo,
+    this.darkAppWormLogo,
     this.colorMode,
     this.formFactor,
   });
@@ -32,8 +29,8 @@ class ApodAppResponsiveTheme extends StatelessWidget {
   final Widget child;
   final PictureProvider appLogo;
   final PictureProvider? darkAppLogo;
-  final PictureProvider appWarmLogo;
-  final PictureProvider? darkAppWarmLogo;
+  final PictureProvider appWormLogo;
+  final PictureProvider? darkAppWormLogo;
 
   static ApodAppThemeColorMode colorModeOf(BuildContext context) {
     final platformBrightness = MediaQuery.platformBrightnessOf(context);
@@ -63,7 +60,7 @@ class ApodAppResponsiveTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = ApodThemeData.regular(
       appLogo: appLogo,
-      appWarmLogo: appWarmLogo,
+      appWormLogo: appWormLogo,
     );
 
     /// Updating the colors for the current brightness
@@ -72,9 +69,8 @@ class ApodAppResponsiveTheme extends StatelessWidget {
       case ApodAppThemeColorMode.dark:
         theme = theme.withColors(ApodColorsData.dark());
 
-        final darkAppLogo = this.darkAppLogo;
         if (darkAppLogo != null) {
-          theme = theme.withImages(theme.images.withAppLogo(darkAppLogo));
+          theme = theme.withImages(theme.images.withAppLogo(darkAppLogo!));
         }
         break;
       case ApodAppThemeColorMode.highContrast:
@@ -82,7 +78,7 @@ class ApodAppResponsiveTheme extends StatelessWidget {
         theme = theme.withImages(
           ApodImagesData.highContrast(
             appLogo: theme.images.appLogo,
-            appWarmLogo: theme.images.appWarmLogo,
+            appWormLogo: theme.images.appWormLogo,
           ),
         );
         break;

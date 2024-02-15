@@ -21,7 +21,7 @@ void main() {
     return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',
-      icon: theme.icons.characters.tag,
+      icon: theme.images.appLogo,
     );
   }
 

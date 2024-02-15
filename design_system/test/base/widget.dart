@@ -39,7 +39,7 @@ void testAppWidgets(
                 SvgPicture.svgStringDecoderBuilder,
                 '<svg></svg>',
               ),
-              appWarmLogo: StringPicture(
+              appWormLogo: StringPicture(
                 SvgPicture.svgStringDecoderBuilder,
                 '<svg></svg>',
               ),

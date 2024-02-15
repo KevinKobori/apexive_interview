@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -128,42 +129,55 @@ class _NotificationBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = ApodTheme.of(context);
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ApodPadding(
-          padding: const ApodEdgeInsets.semiSmall(),
-          child: ApodIcon.regular(
-            notification.icon,
-            color: theme.colors.accentOpposite,
-          ),
-        ),
         Expanded(
-          child: ApodPadding(
-            padding: const ApodEdgeInsets.symmetric(
-              vertical: ApodSpacing.semiSmall,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ApodText.title3(
-                  notification.title,
-                  color: theme.colors.accentOpposite,
-                  maxLines: 1,
+          child: Row(
+            children: [
+              ApodContainer(
+                height: theme.icons.sizes.big,
+                width: theme.icons.sizes.big,
+                margin: const ApodEdgeInsets.semiSmall(),
+                child: SvgPicture(
+                  ExactAssetPicture(
+                    SvgPicture.svgStringDecoderBuilder,
+                    'assets/images/nasa_logo.svg',
+                  ),
                 ),
-                ApodText.paragraph1(
-                  notification.description,
-                  color: theme.colors.accentOpposite,
-                  maxLines: 1,
+              ),
+              Expanded(
+                child: ApodPadding(
+                  padding: const ApodEdgeInsets.symmetric(
+                    vertical: ApodSpacing.semiSmall,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ApodText.title3(
+                        notification.title,
+                        color: theme.colors.accentOpposite,
+                        maxLines: 1,
+                      ),
+                      ApodText.paragraph1(
+                        notification.description,
+                        color: theme.colors.accentOpposite,
+                        maxLines: 1,
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-        ApodActionButton(
-          icon: theme.icons.characters.dismiss,
-          onTap: onClose,
+        ApodPadding(
+          padding: const ApodEdgeInsets.small(),
+          child: ApodActionButton(
+            icon: theme.icons.characters.dismiss,
+            onTap: onClose,
+          ),
         ),
-        const ApodGap.small(),
       ],
     );
   }

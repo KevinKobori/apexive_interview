@@ -1,4 +1,6 @@
-class PictureViewModel {
+import 'package:equatable/equatable.dart';
+
+class PictureViewModel extends Equatable {
   final String copyright;
   final String date;
   final String explanation;
@@ -8,7 +10,7 @@ class PictureViewModel {
   final String title;
   final String url;
 
-  PictureViewModel({
+  const PictureViewModel({
     required this.copyright,
     required this.date,
     required this.explanation,
@@ -20,7 +22,14 @@ class PictureViewModel {
   });
 
   @override
-  String toString() {
-    return 'PictureViewModel(copyright: $copyright,date: $date, explanation: $explanation, hdurl: $hdurl, mediaType: $mediaType, serviceVersion: $serviceVersion, title: $title, url: $url)';
-  }
+  List<Object?> get props => [
+        copyright,
+        date,
+        explanation,
+        hdurl,
+        mediaType,
+        serviceVersion,
+        title,
+        url,
+      ];
 }

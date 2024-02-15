@@ -65,7 +65,6 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
     final datasource = PictureDatasourceImpl(httpClientAdapterFactory());
     final apodDate = DateTimeMapper.getStringFromDateTimeYMD(date);
     final result = await datasource.fetchByDate(apodApiUrlFactory(
-        // TODO: NOW - PUT IT IN .env
         apiKey: ApodEnvironmentConstants.apiKey,
         requestPath: '&date=$apodDate'));
     return result.fold(

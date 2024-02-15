@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
-import 'package:nasa_apod_design_system/src/widgets/base/padding.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodContainer extends StatelessWidget {
   const ApodContainer({

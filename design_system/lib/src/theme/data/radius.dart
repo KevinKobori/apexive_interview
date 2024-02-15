@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodRadiusData extends Equatable {
   const ApodRadiusData({

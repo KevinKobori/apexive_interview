@@ -37,7 +37,7 @@ void testAppView(
                       SvgPicture.svgStringDecoderBuilder,
                       '<svg width="100" height="50"></svg>',
                     ),
-                    appWarmLogo: StringPicture(
+                    appWormLogo: StringPicture(
                       SvgPicture.svgStringDecoderBuilder,
                       '<svg width="100" height="50"></svg>',
                     ),

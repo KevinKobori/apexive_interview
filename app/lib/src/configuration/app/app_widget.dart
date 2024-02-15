@@ -17,9 +17,9 @@ class AppWidget extends StatelessWidget {
         SvgPicture.svgStringDecoderBuilder,
         'assets/images/nasa_logo.svg',
       ),
-      appWarmLogo: ExactAssetPicture(
+      appWormLogo: ExactAssetPicture(
         SvgPicture.svgStringDecoderBuilder,
-        'assets/images/nasa_warm_logo.svg',
+        'assets/images/nasa_worm_logo.svg',
       ),
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,

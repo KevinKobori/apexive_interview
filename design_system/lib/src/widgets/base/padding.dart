@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodEdgeInsets extends Equatable {
   const ApodEdgeInsets.all(ApodSpacing value)

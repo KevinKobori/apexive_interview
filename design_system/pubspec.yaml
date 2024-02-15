@@ -9,29 +9,25 @@ environment:
 
 dependencies:
   cached_network_image: ^3.3.0
-  flutter_staggered_grid_view: ^0.6.1
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  # gap: ^2.0.0
-  gap: ^3.0.1
-  # sliver_tools: ^0.2.5
-  sliver_tools: ^0.2.12
+  flutter_staggered_grid_view: ^0.6.1
   flutter_svg: ^1.0.3
-  tap_builder: ^0.3.4
+  gap: ^3.0.1
   nasa_apod_core:
     path: ../core
+  sliver_tools: ^0.2.5
+  tap_builder: ^0.3.4
     
 dev_dependencies:
-  test_utils:
-    path: ../test_utils 
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  test_utils:
+    path: ../test_utils 
   
 flutter:
-  assets:
-    - assets/images/
   fonts:
     - family: apod_icons
       fonts:

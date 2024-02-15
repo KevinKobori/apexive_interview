@@ -30,7 +30,7 @@ class NotificationBar extends StatelessWidget {
                     description: state.lastNotification!.description,
                     icon: () {
                       return switch (state.lastNotification!.type) {
-                        NotificationType.offer => theme.icons.characters.vikoin,
+                        NotificationType.offer => theme.images.appLogo,
                       };
                     }(),
                   )

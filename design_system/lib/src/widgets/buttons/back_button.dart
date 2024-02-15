@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
-import 'package:nasa_apod_design_system/src/widgets/buttons/action_button.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodBackButton extends StatelessWidget {
   const ApodBackButton({

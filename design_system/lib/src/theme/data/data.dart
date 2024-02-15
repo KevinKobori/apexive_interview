@@ -1,15 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nasa_apod_design_system/src/theme/data/colors.dart';
-import 'package:nasa_apod_design_system/src/theme/data/durations.dart';
-import 'package:nasa_apod_design_system/src/theme/data/form_factor.dart';
-import 'package:nasa_apod_design_system/src/theme/data/icons.dart';
-import 'package:nasa_apod_design_system/src/theme/data/images.dart';
-import 'package:nasa_apod_design_system/src/theme/data/radius.dart';
-import 'package:nasa_apod_design_system/src/theme/data/shadows.dart';
-import 'package:nasa_apod_design_system/src/theme/data/spacing.dart';
-import 'package:nasa_apod_design_system/src/theme/data/typography.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodThemeData extends Equatable {
   const ApodThemeData({
@@ -27,7 +19,7 @@ class ApodThemeData extends Equatable {
 
   factory ApodThemeData.regular({
     required PictureProvider appLogo,
-    required PictureProvider appWarmLogo,
+    required PictureProvider appWormLogo,
   }) =>
       ApodThemeData(
         formFactor: ApodAppFormFactor.medium,
@@ -40,7 +32,7 @@ class ApodThemeData extends Equatable {
         durations: ApodDurationsData.regular(),
         images: ApodImagesData.regular(
           appLogo: appLogo,
-          appWarmLogo: appWarmLogo,
+          appWormLogo: appWormLogo,
         ),
       );
 

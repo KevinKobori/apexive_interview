@@ -44,7 +44,7 @@ class ApodScaffold extends StatelessWidget {
                   child: BackdropFilter(
                     filter: ui.ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
                     child: Container(
-                      color: theme.colors.background.withOpacity(0.8),
+                      color: theme.colors.background.withOpacity(0.7),
                     ),
                   ),
                 )

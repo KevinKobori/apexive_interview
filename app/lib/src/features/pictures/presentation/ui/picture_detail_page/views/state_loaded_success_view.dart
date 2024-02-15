@@ -5,23 +5,21 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-import '../widgets/navigation_bar.dart';
-
 class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
+  final String pictureDate;
+  final PictureViewModel pictureViewModel;
+
   const PictureDetailPageStateLoadedSuccessView({
     super.key,
-    required this.aspectRatio,
     required this.pictureDate,
-    this.pictureViewModel,
+    required this.pictureViewModel,
   });
-
-  final double aspectRatio;
-  final String pictureDate;
-  final PictureViewModel? pictureViewModel;
 
   @override
   Widget build(BuildContext context) {
-    return PictureDetailLayout(pictureViewModel: pictureViewModel);
+    return PictureDetailLayout(
+      pictureViewModel: pictureViewModel,
+    );
   }
 }
 
@@ -29,34 +27,67 @@ class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
 /// * [AccountOverviewBloc]
 /// * [NotificationsOverviewBloc]
 /// * [CollectionsOverviewBloc]
-class PictureDetailLayout extends StatelessWidget {
+class PictureDetailLayout extends StatefulWidget {
+  final PictureViewModel pictureViewModel;
+
   const PictureDetailLayout({
     super.key,
-    this.pictureViewModel,
+    required this.pictureViewModel,
   });
 
-  final PictureViewModel? pictureViewModel;
+  @override
+  State<PictureDetailLayout> createState() => _PictureDetailLayoutState();
+}
+
+class _PictureDetailLayoutState extends State<PictureDetailLayout> {
+  double _aspectRatio = 1;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAspectRatio();
+  }
+
+  Future<void> _loadAspectRatio() async {
+    try {
+      final double aspectRatio =
+          await ImageHelper.getImageAspectRatio(widget.pictureViewModel.url);
+      if (mounted) {
+        setState(() {
+          _aspectRatio = aspectRatio;
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = ApodTheme.of(context);
-    return ApodScaffold(
-      // TODO: NOW - TURN IT NON NULABLE??
-      backgroundImage: CachedNetworkImageProvider(pictureViewModel!.url),
-      body: ApodContentSheet(
-        children: [
-          if (pictureViewModel == null) const ApodText.title2('Not found'),
-          if (pictureViewModel != null)
-            ..._buildBody(context, theme, pictureViewModel!),
-        ],
-      ),
-      floatingBar: PictureDetailNavigationBar(
-        accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
-        collectionsOverviewPresenter: Modular.get<CollectionsOverviewBloc>(),
-        notificationsOverviewPresenter:
-            Modular.get<NotificationsOverviewBloc>(),
-      ),
-    );
+    if (_isLoading) {
+      return const Center(child: Text('PUT LOADING HERE 7'));
+    } else {
+      return ApodScaffold(
+        backgroundImage:
+            CachedNetworkImageProvider(widget.pictureViewModel.url),
+        body: ApodContentSheet(
+          children: _buildBody(context, theme, widget.pictureViewModel),
+        ),
+        floatingBar: PictureDetailNavigationBar(
+          accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
+          collectionsOverviewPresenter: Modular.get<CollectionsOverviewBloc>(),
+          notificationsOverviewPresenter:
+              Modular.get<NotificationsOverviewBloc>(),
+        ),
+      );
+    }
   }
 
   List<Widget> _buildBody(
@@ -65,7 +96,7 @@ class PictureDetailLayout extends StatelessWidget {
       ClipRRect(
         borderRadius: theme.radius.asBorderRadius().regular,
         child: AspectRatio(
-          aspectRatio: 1,
+          aspectRatio: _aspectRatio,
           child: Image(
             fit: BoxFit.cover,
             image: CachedNetworkImageProvider(
@@ -74,6 +105,7 @@ class PictureDetailLayout extends StatelessWidget {
           ),
         ),
       ),
+      ApodGap.semiSmall(),
       ApodText.title1(picture.title),
       ApodText.title3(
         picture.date,

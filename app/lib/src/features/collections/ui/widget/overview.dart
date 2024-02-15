@@ -1,4 +1,3 @@
-// TODO: NOW - REMOVE THIS MATERIAL DEPENDENCY
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
@@ -33,14 +32,9 @@ class CollectionsOverview extends StatelessWidget {
                         '$itemCount',
                         color: theme.colors.actionBarForeground,
                       ),
-                      // TODO: NOW
-                      // AppIcon.regular(
-                      //   theme.icons.characters.tag,
-                      //   color: theme.colors.actionBarForeground,
-                      // ),
                       Icon(
                         Icons.bookmark,
-                        color: Colors.white,
+                        color: theme.colors.actionBarForeground,
                       ),
                     ],
                   ),

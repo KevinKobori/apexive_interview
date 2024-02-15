@@ -6,10 +6,7 @@ class ApodDatePickerDialog extends StatefulWidget
   const ApodDatePickerDialog({
     required this.onLoadPictureByDate,
     super.key,
-    // TODO: NOW = REMOVE THIS kToolbarHeight FROM MATERIAL DEPENDENCY???
-  }) : preferredSize = const Size.fromHeight(
-            // kToolbarHeight
-            52);
+  }) : preferredSize = const Size.fromHeight(52);
 
   final ValueChanged<DateTime> onLoadPictureByDate;
 

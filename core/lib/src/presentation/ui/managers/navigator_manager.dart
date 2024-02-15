@@ -16,13 +16,8 @@ abstract final class NavigatorManager {
     }
 
     unawaited(Modular.to
-            .pushNamed(route, arguments: arguments)
-            .onError((error, stackTrace) =>
-                // package: RemottelyFlutterException
-                // RemoException.handle(
-                error)
-        // )
-        );
+        .pushNamed(route, arguments: arguments)
+        .onError((error, stackTrace) => error));
   }
 
   static void navigate(String route, {dynamic arguments}) async {

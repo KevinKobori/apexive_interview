@@ -27,10 +27,9 @@ class ApodSliverGridTile extends StatelessWidget {
       },
     );
 
-    final padding = this.padding;
     if (padding != null) {
       return SliverPadding(
-        padding: padding, // .toEdgeInsets(theme),
+        padding: padding!,
         sliver: grid,
       );
     } else {

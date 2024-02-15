@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodIconsData extends Equatable {
   const ApodIconsData({

@@ -24,10 +24,15 @@ class PicturesPageHeader extends StatelessWidget {
             theme.spacings.large,
           ),
           child: Center(
-            child: SvgPicture(
-              theme.images.appWarmLogo,
-              height: theme.typography.title1.fontSize,
-              width: theme.typography.title1.fontSize! * 3,
+            child: Column(
+              children: [
+                SvgPicture(
+                  theme.images.appWormLogo,
+                  width: theme.typography.title1.fontSize! * 4,
+                ),
+                ApodGap.small(),
+                ApodText.paragraph1('Astronomy Picture of the Day'),
+              ],
             ),
           ),
         ),
@@ -43,7 +48,7 @@ class PicturesPageHeader extends StatelessWidget {
             image: DecorationImage(
               image: image,
               fit: BoxFit.cover,
-              opacity: 0.025 + 0.375 * scrollAmount,
+              opacity: 0.025 + 0.475 * scrollAmount,
             ),
           ),
           child: child,

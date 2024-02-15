@@ -6,6 +6,10 @@ This repository contains the implementation of a mobile application following th
 
 # Quick Start
 
+<!-- ```shell
+   clone the ".env_local" and rename it to ".env"
+``` -->
+
 ```shell
    cd nasa_apod_app
    dart run build_runner build --delete-conflicting-outputs

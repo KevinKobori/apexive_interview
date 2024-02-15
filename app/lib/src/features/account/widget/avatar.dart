@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 
-// TODO: NOW - REMOVE BLOC DEPENDENCY HERE
 class CurrentUserAvatar extends StatelessWidget {
   final AccountOverviewBloc accountOverviewPresenter;
 
