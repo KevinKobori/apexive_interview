@@ -112,7 +112,7 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
         controller: _controller,
         slivers: [
           SliverToBoxAdapter(
-            child: PicturesPageHeader(
+            child: ApodPageHeader(
               controller: _controller,
               image: CachedNetworkImageProvider(
                   widget.pictureViewModelList[0].url),
@@ -175,16 +175,14 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
           ),
           SliverToBoxAdapter(
             child: widget.pictureViewModelList.length >= 2
-                ? FittedBox(
-                    child: ApodPadding(
-                      padding: const ApodEdgeInsets.only(
-                        left: ApodSpacing.large,
-                        top: ApodSpacing.none,
-                        right: ApodSpacing.large,
-                        bottom: ApodSpacing.semiSmall,
-                      ),
-                      child: ApodText.title1('Astronomy Picture of the Day'),
+                ? ApodPadding(
+                    padding: const ApodEdgeInsets.only(
+                      left: ApodSpacing.large,
+                      top: ApodSpacing.none,
+                      right: ApodSpacing.large,
+                      bottom: ApodSpacing.semiSmall,
                     ),
+                    child: ApodText.title1('Discover Now'),
                   )
                 : SizedBox.shrink(),
           ),

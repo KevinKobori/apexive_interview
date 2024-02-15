@@ -27,7 +27,7 @@ class _PicturesPageStateLoadingViewState
       return CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: PicturesPageHeader.shimmer(),
+            child: ApodPageHeader.shimmer(),
           ),
           SliverToBoxAdapter(
             child: Container(
