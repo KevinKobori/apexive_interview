@@ -11,6 +11,7 @@ export 'content_sheet.dart';
 export 'layouts/scaffold.dart';
 export 'molecules/sliver_grid_tile.dart';
 export 'organisms/date_picker_dialog.dart';
+export 'organisms/header.dart';
 export 'organisms/navigation_bar.dart';
 export 'organisms/notifiable_bar.dart';
 export 'picture_tile.dart';

@@ -43,7 +43,7 @@ class CollectionsOverview extends StatelessWidget {
             ],
           );
         } else {
-          return Text('PUT LOADING HERE 5');
+          return Center(child: CircularProgressIndicator());
         }
       },
     );

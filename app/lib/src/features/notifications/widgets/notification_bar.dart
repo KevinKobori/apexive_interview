@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
@@ -38,7 +38,7 @@ class NotificationBar extends StatelessWidget {
             child: child,
           );
         } else {
-          return Text('PUT LOADING HERE 4');
+          return Center(child: CircularProgressIndicator());
         }
       },
     );

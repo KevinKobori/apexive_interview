@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -128,13 +129,38 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
+                  Stack(
+                    children: [
+                      ApodPictureTile(
+                        key: Key(widget.pictureViewModelList[0].date),
+                        title: widget.pictureViewModelList[0].title,
+                        imageUrl: widget.pictureViewModelList[0].url,
+                        date: widget.pictureViewModelList[0].date,
+                        onTap: () => widget.onViewPictureDetail(
+                            1, widget.pictureViewModelList[0]),
+                      ),
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          margin:
+                              ApodEdgeInsets.semiSmall().toEdgeInsets(theme),
+                          height: theme.icons.sizes.big,
+                          width: theme.icons.sizes.big,
+                          alignment: Alignment.centerLeft,
+                          child: SvgPicture(theme.images.appLogo),
+                        ),
+                      ),
+                    ],
+                  ),
+                  ApodGap.large(),
                   SizedBox(
                     height: 38,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
                         ApodTextButton(
-                          onTap: () => widget.onLoadAllPicturesList,
+                          onTap: widget.onLoadAllPicturesList,
                           title: 'List all',
                         ),
                         ApodGap.semiSmall(),
@@ -143,51 +169,25 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                       ],
                     ),
                   ),
-                  // ApodGap.large(),
-                  // Stack(
-                  //   children: [
-                  //     ApodPictureTile(
-                  //       key: Key(widget.pictureViewModelList[0].date),
-                  //       title: widget.pictureViewModelList[0].title,
-                  //       imageUrl: widget.pictureViewModelList[0].url,
-                  //       date: widget.pictureViewModelList[0].date,
-                  //       // aspectRatio: widget.pictureViewModelList[0].aspectRatio,
-                  //       onTap: () => widget.onViewPictureDetail(
-                  //           1, widget.pictureViewModelList[0]),
-                  //     ),
-                  //     Positioned(
-                  //       right: 0,
-                  //       bottom: 0,
-                  //       child: Container(
-                  //         margin:
-                  //             ApodEdgeInsets.semiSmall().toEdgeInsets(theme),
-                  //         // height: theme.typography.title1.fontSize! * 1.3,
-                  //         // width: theme.typography.title1.fontSize! * 1.3,
-                  //         height: theme.icons.sizes.big,
-                  //         width: theme.icons.sizes.big,
-                  //         alignment: Alignment.centerLeft,
-                  //         child: SvgPicture(theme.images.appLogo),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),
           ),
-          // SliverToBoxAdapter(
-          //   child: FittedBox(
-          //     child: ApodPadding(
-          //       padding: const ApodEdgeInsets.only(
-          //         left: ApodSpacing.large,
-          //         top: ApodSpacing.none,
-          //         right: ApodSpacing.large,
-          //         bottom: ApodSpacing.semiSmall,
-          //       ),
-          //       child: ApodText.title1('Astronomy Picture of the Day'),
-          //     ),
-          //   ),
-          // ),
+          SliverToBoxAdapter(
+            child: widget.pictureViewModelList.length >= 2
+                ? FittedBox(
+                    child: ApodPadding(
+                      padding: const ApodEdgeInsets.only(
+                        left: ApodSpacing.large,
+                        top: ApodSpacing.none,
+                        right: ApodSpacing.large,
+                        bottom: ApodSpacing.semiSmall,
+                      ),
+                      child: ApodText.title1('Astronomy Picture of the Day'),
+                    ),
+                  )
+                : SizedBox.shrink(),
+          ),
           SliverSafeArea(
             top: false,
             sliver: ApodSliverGridTile(
@@ -201,18 +201,19 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                 ),
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
-              children: [
-                ...widget.pictureViewModelList.map(
-                      (pictureViewModel) => ApodPictureTile(
-                        key: Key(pictureViewModel.date),
-                        title: pictureViewModel.title,
-                        imageUrl: pictureViewModel.url,
-                        date: pictureViewModel.date,
-                        onTap: () =>
-                            widget.onViewPictureDetail(1, pictureViewModel),
-                      ),
+              children: widget.pictureViewModelList
+                  .skip(1)
+                  .map(
+                    (pictureViewModel) => ApodPictureTile(
+                      key: Key(pictureViewModel.date),
+                      title: pictureViewModel.title,
+                      imageUrl: pictureViewModel.url,
+                      date: pictureViewModel.date,
+                      onTap: () =>
+                          widget.onViewPictureDetail(1, pictureViewModel),
                     ),
-              ],
+                  )
+                  .toList(),
             ),
           ),
         ],

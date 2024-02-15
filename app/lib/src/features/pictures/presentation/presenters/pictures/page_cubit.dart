@@ -8,7 +8,6 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
     implements PicturesPagePresenter {
   final RemoteLoadLastTenDaysPicturesByDateUseCase
       loadLastTenDaysPicturesByDate;
-  List<PictureViewModel>? pictureViewModelList;
 
   PicturesPageCubit({
     required this.loadLastTenDaysPicturesByDate,
@@ -23,8 +22,7 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
         (domainFailure) =>
             emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
         (pictureViewModelList) {
-      this.pictureViewModelList = pictureViewModelList;
-      emit(PicturesPageStateLoadedSuccess(this.pictureViewModelList!));
+      emit(PicturesPageStateLoadedSuccess(pictureViewModelList));
     });
   }
 
@@ -56,7 +54,7 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
         (domainFailure) =>
             emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
         (pictureViewModelList) {
-      emit(PicturesPageStateLoadedSuccess(this.pictureViewModelList!));
+      emit(PicturesPageStateLoadedSuccess(pictureViewModelList));
     });
   }
 

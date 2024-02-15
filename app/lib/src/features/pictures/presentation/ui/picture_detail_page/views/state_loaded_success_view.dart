@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
@@ -72,7 +72,7 @@ class _PictureDetailLayoutState extends State<PictureDetailLayout> {
   Widget build(BuildContext context) {
     final theme = ApodTheme.of(context);
     if (_isLoading) {
-      return const Center(child: Text('PUT LOADING HERE 7'));
+      return const Center(child: CircularProgressIndicator());
     } else {
       return ApodScaffold(
         backgroundImage:
