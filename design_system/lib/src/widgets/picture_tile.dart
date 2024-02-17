@@ -106,7 +106,7 @@ class ProductTileLayout extends StatelessWidget {
         title = '',
         image = const CachedNetworkImageProvider(''),
         date = '',
-        aspectRatio = 0.8;
+        aspectRatio = 1.2;
 
   const ProductTileLayout.idle({
     required this.title,
