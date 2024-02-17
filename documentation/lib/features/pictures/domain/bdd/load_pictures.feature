@@ -1,4 +1,4 @@
-Pictures
+Catalog
 
 User Request: Display a descending list of all captures, paginate every 10 items, and ensure offline usability with cached data from the last session.
 

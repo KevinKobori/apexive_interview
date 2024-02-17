@@ -157,14 +157,14 @@ abstract final class PictureMapper {
   }
 
   static Either<MapperFailure, List<PictureModel>> fromJsonListToModelList(
-      List<Map<String, dynamic>> picturesJsonList) {
+      List<Map<String, dynamic>> pictureJsonList) {
     try {
-      final picturesModelList = List<PictureModel>.from(picturesJsonList.map(
+      final pictureModelList = List<PictureModel>.from(pictureJsonList.map(
           (pisctureJson) => PictureMapper.fromJsonToModel(pisctureJson).fold(
                 (mapperFailure) => mapperFailure,
                 (pisctureModel) => pisctureModel,
               ))).toList();
-      return Right(picturesModelList);
+      return Right(pictureModelList);
     } catch (_) {
       return const Left(MapperFailure.conversionError);
     }
@@ -247,8 +247,8 @@ abstract final class PictureMapper {
           (mapperFailure) {
             return Left(mapperFailure);
           },
-          (picturesJsonList) {
-            return Right(picturesJsonList);
+          (pictureJsonList) {
+            return Right(pictureJsonList);
           },
         );
       },

@@ -28,7 +28,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
       getPictureViewModelFromLocalStorage() async {
     final pictureJsonList =
         await ls.LocalStorage(localStorageConfigKeyPathFactory())
-            .getItem(localLoadPicturesUseCaseFactory().itemKey);
+            .getItem(localLoadCatalogUseCaseImplFactory().itemKey);
 
     final int pictureMapIndex = pictureJsonList.indexWhere(
         (dynamic pictureJson) => pictureJson['date'] == widget.pictureDate);

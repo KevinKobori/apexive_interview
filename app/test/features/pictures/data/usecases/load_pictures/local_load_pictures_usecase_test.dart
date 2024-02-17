@@ -5,14 +5,14 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:test_utils/test_utils.dart';
 
 void main() {
-  late LocalLoadLastTenDaysPicturesByDateUseCase sut;
+  late LocalLoadCatalogUseCase sut;
   late LocalStorageSpy localStorage;
   late String itemKey;
 
   setUp(() {
     localStorage = LocalStorageSpy();
-    itemKey = 'pictures_list';
-    sut = LocalLoadLastTenDaysPicturesByDateUseCaseImpl(
+    itemKey = 'catalog';
+    sut = LocalLoadCatalogUseCaseImpl(
       localStorage: localStorage,
       itemKey: itemKey,
     );
@@ -25,15 +25,15 @@ void main() {
 
       await sut.call(null);
 
-      verify(() => localStorage.fetch('pictures_list')).called(1);
+      verify(() => localStorage.fetch('catalog')).called(1);
     });
 
-    test('When load data should return a list of pictures on success',
+    test('When load data should return a catalog on success',
         () async {
       final data = DeviceLocalStorageFactory().generateValidPictureJsonList();
-      final picturesJsonList = data;
+      final pictureJsonList = data;
       late final List<PictureEntity> matcher;
-      PictureMapper.fromJsonListToEntityList(picturesJsonList).fold(
+      PictureMapper.fromJsonListToEntityList(pictureJsonList).fold(
         (domainFailure) {},
         (pictureEntityList) {
           matcher = pictureEntityList;

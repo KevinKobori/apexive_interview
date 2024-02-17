@@ -13,9 +13,8 @@ void main() {
         child: BlocProvider(
           create: (context) => AccountOverviewBloc(),
           child: CatalogPageLoadedSuccessView(
-            catalog: [],
+            catalog: const [],
             onLoadPictureByDate: (date) {},
-            catalogPagePresenter: catalogPagePresenterFactory(),
             onLoadCatalog: () {},
           ),
         ),

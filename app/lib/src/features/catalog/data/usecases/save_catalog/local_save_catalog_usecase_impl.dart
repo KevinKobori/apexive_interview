@@ -2,11 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-class LocalSavePicturesUseCaseImpl implements LocalSavePicturesUseCase {
+class LocalSaveCatalogUseCaseImpl implements LocalSaveCatalogUseCase {
   final LocalStorage localStorage;
   final String itemKey;
 
-  LocalSavePicturesUseCaseImpl({
+  LocalSaveCatalogUseCaseImpl({
     required this.itemKey,
     required this.localStorage,
   });
@@ -20,9 +20,9 @@ class LocalSavePicturesUseCaseImpl implements LocalSavePicturesUseCase {
       (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
 
       /// Right
-      (picturesJsonList) async {
+      (pictureJsonList) async {
         final saveResult = await localStorage.save(
-            itemKey: itemKey, itemValue: picturesJsonList);
+            itemKey: itemKey, itemValue: pictureJsonList);
         return saveResult.fold(
           /// Left
           (localStorageFailure) =>

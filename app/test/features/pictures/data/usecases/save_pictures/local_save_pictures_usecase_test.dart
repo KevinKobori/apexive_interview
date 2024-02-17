@@ -5,14 +5,14 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:test_utils/test_utils.dart';
 
 void main() {
-  late LocalSavePicturesUseCase sut;
+  late LocalSaveCatalogUseCase sut;
   late LocalStorageSpy localStorage;
   late String itemKey;
 
   setUp(() {
     localStorage = LocalStorageSpy();
-    itemKey = 'pictures_list';
-    sut = LocalSavePicturesUseCaseImpl(
+    itemKey = 'catalog';
+    sut = LocalSaveCatalogUseCaseImpl(
       localStorage: localStorage,
       itemKey: itemKey,
     );
@@ -22,11 +22,11 @@ void main() {
     test('When save data should call localStorage with correct values',
         () async {
       final data = DeviceLocalStorageFactory().generateValidPictureJsonList();
-      final picturesJsonList = data;
+      final pictureJsonList = data;
 
       localStorage.mockSaveSuccess();
 
-      await PictureMapper.fromJsonListToEntityList(picturesJsonList).fold(
+      await PictureMapper.fromJsonListToEntityList(pictureJsonList).fold(
         (domainFailure) {},
         (pictureEntityList) async {
           final result = await sut.call(pictureEntityList);
@@ -38,20 +38,20 @@ void main() {
       );
 
       verify(() => localStorage.save(
-          itemKey: 'pictures_list',
+          itemKey: 'catalog',
           itemValue: any<dynamic>(named: 'itemValue'))).called(1);
     });
 
     test('When save data should throw UnexpectedFailure if save throws',
         () async {
-      final picturesJsonList =
+      final pictureJsonList =
           DeviceLocalStorageFactory().generateValidPictureJsonList();
 
       localStorage.mockSaveFailure(LocalStorageFailure.unknownError);
 
       late final List<PictureEntity> matcher;
 
-      PictureMapper.fromJsonListToEntityList(picturesJsonList).fold(
+      PictureMapper.fromJsonListToEntityList(pictureJsonList).fold(
         (domainFailure) {},
         (pictureEntityList) {
           matcher = pictureEntityList;

@@ -9,7 +9,7 @@ part of 'collection_model.dart';
 _$CollectionModelImpl _$$CollectionModelImplFromJson(Map json) =>
     _$CollectionModelImpl(
       name: json['name'] as String,
-      pictureList: (json['pictureList'] as List<dynamic>)
+      catalog: (json['catalog'] as List<dynamic>)
           .map(
               (e) => PictureModel.fromJson(Map<String, Object?>.from(e as Map)))
           .toList(),
@@ -19,5 +19,5 @@ Map<String, dynamic> _$$CollectionModelImplToJson(
         _$CollectionModelImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'pictureList': instance.pictureList.map((e) => e.toJson()).toList(),
+      'catalog': instance.catalog.map((e) => e.toJson()).toList(),
     };

@@ -10,9 +10,7 @@ class PictureDetailPageLoadedSuccessView extends StatelessWidget {
   final PictureViewModel picture;
 
   const PictureDetailPageLoadedSuccessView({
-    super.key,
-    required this.pictureDate,
-    required this.picture,
+    required this.pictureDate, required this.picture, super.key,
   });
 
   @override
@@ -23,10 +21,6 @@ class PictureDetailPageLoadedSuccessView extends StatelessWidget {
   }
 }
 
-/// State dependencies :
-/// * [AccountOverviewBloc]
-/// * [NotificationsOverviewBloc]
-/// * [CollectionsOverviewBloc]
 class _MobileLayout extends StatefulWidget {
   final PictureViewModel picture;
 
@@ -103,7 +97,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
           ),
         ),
       ),
-      ApodGap.semiSmall(),
+      const ApodGap.semiSmall(),
       ApodText.title1(picture.title),
       ApodText.title3(
         picture.date,

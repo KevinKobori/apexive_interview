@@ -2,11 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-class LocalValidatePicturesUseCaseImpl implements LocalValidatePicturesUseCase {
+class LocalValidateCatalogUseCaseImpl implements LocalValidateCatalogUseCase {
   final LocalStorage localStorage;
   final String itemKey;
 
-  LocalValidatePicturesUseCaseImpl({
+  LocalValidateCatalogUseCaseImpl({
     required this.itemKey,
     required this.localStorage,
   });

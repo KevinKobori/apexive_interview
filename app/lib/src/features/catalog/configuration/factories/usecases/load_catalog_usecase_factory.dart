@@ -3,41 +3,39 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 String localStorageCatalogKeyFactory() => 'catalog';
 
-RemoteLoadLastTenDaysPicturesByDateUseCaseImpl
-    remoteLoadPicturesUseCaseFactory() =>
-        RemoteLoadLastTenDaysPicturesByDateUseCaseImpl(
-          apiKey: ApodEnvironmentConstants.apiKey,
-          picturesRepository: pictureRepositoryFactory(),
-        );
+RemoteLoadCatalogByInitEndDateUseCaseImpl remoteLoadCatalogByInitEndDateUseCaseFactory() =>
+    RemoteLoadCatalogByInitEndDateUseCaseImpl(
+      apiKey: ApodEnvironmentConstants.apiKey,
+      pictureRepository: pictureRepositoryFactory(),
+    );
 
-LocalLoadLastTenDaysPicturesByDateUseCaseImpl
-    localLoadPicturesUseCaseFactory() =>
-        LocalLoadLastTenDaysPicturesByDateUseCaseImpl(
+LocalLoadCatalogUseCaseImpl
+    localLoadCatalogUseCaseImplFactory() =>
+        LocalLoadCatalogUseCaseImpl(
           localStorage:
               localStorageAdapterFactory(localStorageConfigKeyPathFactory()),
           itemKey: localStorageCatalogKeyFactory(),
         );
 
-LocalValidatePicturesUseCaseImpl localValidatePicturesUseCaseFactory() =>
-    LocalValidatePicturesUseCaseImpl(
+LocalValidateCatalogUseCase localValidateCatalogUseCaseFactory() =>
+    LocalValidateCatalogUseCaseImpl(
       localStorage:
           localStorageAdapterFactory(localStorageConfigKeyPathFactory()),
       itemKey: localStorageCatalogKeyFactory(),
     );
 
-LocalSavePicturesUseCaseImpl localSavePicturesUseCaseFactory() =>
-    LocalSavePicturesUseCaseImpl(
+LocalSaveCatalogUseCase localSaveCatalogUseCaseFactory() =>
+    LocalSaveCatalogUseCaseImpl(
       localStorage:
           localStorageAdapterFactory(localStorageConfigKeyPathFactory()),
       itemKey: localStorageCatalogKeyFactory(),
     );
 
-RemoteLoadLastTenDaysPicturesByDateWithLocalFallbackUseCaseImpl
-    remoteLoadPicturesUseCaseWithLocalFallbackFactory() =>
-        RemoteLoadLastTenDaysPicturesByDateWithLocalFallbackUseCaseImpl(
-          remoteLoadLastTenDaysPicturesByDate:
-              remoteLoadPicturesUseCaseFactory(),
-          localLoadLastTenDaysPicturesByDate: localLoadPicturesUseCaseFactory(),
-          localValidatePictures: localValidatePicturesUseCaseFactory(),
-          localSavePictures: localSavePicturesUseCaseFactory(),
+RemoteLoadCatalogByInitEndDateWithLocalFallbackUseCaseImpl
+    remoteLoadCatalogByInitEndDateWithLocalFallbackUseCaseFactory() =>
+        RemoteLoadCatalogByInitEndDateWithLocalFallbackUseCaseImpl(
+          remoteLoadCatalogByInitEndDate: remoteLoadCatalogByInitEndDateUseCaseFactory(),
+          localLoadCatalog: localLoadCatalogUseCaseImplFactory(),
+          localValidateCatalog: localValidateCatalogUseCaseFactory(),
+          localSaveCatalog: localSaveCatalogUseCaseFactory(),
         );

@@ -8,7 +8,7 @@ class ApodTypographyData extends Equatable {
   final TextStyle title3;
   final TextStyle paragraph1;
   final TextStyle paragraph2;
-  
+
   const ApodTypographyData({
     required this.paragraph1,
     required this.paragraph2,

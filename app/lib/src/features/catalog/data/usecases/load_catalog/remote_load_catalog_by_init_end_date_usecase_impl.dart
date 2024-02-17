@@ -5,13 +5,13 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 // TODO: NOW - CHANGE TI TO RECEIVE START AND END DATES
-class RemoteLoadLastTenDaysPicturesByDateUseCaseImpl
-    implements RemoteLoadLastTenDaysPicturesByDateUseCase {
-  final PictureRepository picturesRepository;
+class RemoteLoadCatalogByInitEndDateUseCaseImpl
+    implements RemoteLoadCatalogByInitEndDateUseCase {
+  final PictureRepository pictureRepository;
   final String apiKey;
 
-  RemoteLoadLastTenDaysPicturesByDateUseCaseImpl({
-    required this.picturesRepository,
+  RemoteLoadCatalogByInitEndDateUseCaseImpl({
+    required this.pictureRepository,
     required this.apiKey,
   });
 
@@ -20,7 +20,7 @@ class RemoteLoadLastTenDaysPicturesByDateUseCaseImpl
     final apodEndDate = getApodEndDate(date);
     final apodStartDate = getApodStartDate(date);
 
-    final result = await picturesRepository.getLastTenDaysData(
+    final result = await pictureRepository.getLastTenDaysData(
       apodApiUrlFactory(
         apiKey: apiKey,
         requestPath: '&start_date=$apodStartDate&end_date=$apodEndDate',
@@ -41,8 +41,8 @@ class RemoteLoadLastTenDaysPicturesByDateUseCaseImpl
 
   static String getApodDateFormat(DateTime localDateTime) {
     tz.initializeTimeZones();
-    tz.Location apodLocation = tz.getLocation('America/New_York');
-    tz.TZDateTime apodDateTime =
+    final tz.Location apodLocation = tz.getLocation('America/New_York');
+    final tz.TZDateTime apodDateTime =
         tz.TZDateTime.from(localDateTime, apodLocation);
 
     final dateRequestAPIFormat = DateTime(apodDateTime.year, apodDateTime.month,

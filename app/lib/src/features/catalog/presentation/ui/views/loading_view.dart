@@ -5,20 +5,13 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class CatalogPageLoadingView extends StatefulWidget {
-  final CatalogPagePresenter catalogPagePresenter;
-
-  const CatalogPageLoadingView({
-    required this.catalogPagePresenter,
-    super.key,
-  });
+  const CatalogPageLoadingView({super.key});
 
   @override
-  State<CatalogPageLoadingView> createState() =>
-      _CatalogPageLoadingViewState();
+  State<CatalogPageLoadingView> createState() => _CatalogPageLoadingViewState();
 }
 
-class _CatalogPageLoadingViewState
-    extends State<CatalogPageLoadingView> {
+class _CatalogPageLoadingViewState extends State<CatalogPageLoadingView> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -26,18 +19,18 @@ class _CatalogPageLoadingViewState
     return LayoutBuilder(builder: (context, constraints) {
       return CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: ApodPageHeader.shimmer(),
           ),
           SliverToBoxAdapter(
             child: Container(
-              padding: ApodEdgeInsets.only(
+              padding: const ApodEdgeInsets.only(
                 left: ApodSpacing.large,
                 top: ApodSpacing.large,
                 right: ApodSpacing.large,
                 bottom: ApodSpacing.large,
               ).toEdgeInsets(theme),
-              child: Column(
+              child: const Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   ApodPictureTile.shimmer(),
@@ -59,7 +52,8 @@ class _CatalogPageLoadingViewState
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
               children:
-                  List.generate(10, (_) => ApodPictureTile.shimmer()).toList(),
+                  List.generate(10, (_) => const ApodPictureTile.shimmer())
+                      .toList(),
             ),
           ),
         ],

@@ -10,17 +10,17 @@ abstract final class NavigatorManager {
     }
   }
 
-  static void pushNamed(String route, {dynamic arguments}) {
+  static Future<void> pushNamed(String route, {dynamic arguments}) async {
     if (route == Modular.to.path) {
       return;
     }
 
-    unawaited(Modular.to
+    await Modular.to
         .pushNamed(route, arguments: arguments)
-        .onError((error, stackTrace) => error));
+        .onError((error, stackTrace) => error);
   }
 
-  static void navigate(String route, {dynamic arguments}) async {
+  static void navigate(String route, {dynamic arguments}) {
     if (route == Modular.to.path) {
       return;
     }

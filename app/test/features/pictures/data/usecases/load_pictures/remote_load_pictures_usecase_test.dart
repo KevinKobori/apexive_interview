@@ -8,10 +8,10 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:test_utils/test_utils.dart';
 
 void main() {
-  late PictureDatasourceImpl pictureDatasource;
+  late PictureDatasource pictureDatasource;
   late DeviceInfo networkInfo;
-  late PictureRepositoryImpl pictureRepository;
-  late RemoteLoadLastTenDaysPicturesByDateUseCaseImpl sut;
+  late PictureRepository pictureRepository;
+  late RemoteLoadCatalogByInitEndDateUseCase sut;
   late HttpClientSpy httpClient;
   late String apiKey;
   late String url;
@@ -29,10 +29,9 @@ void main() {
     apiKey = ApodTest.faker.randomGenerator.string(10);
 
     final nasaApodEndDate =
-        RemoteLoadLastTenDaysPicturesByDateUseCaseImpl.getApodEndDate(
-            nowDate);
+        RemoteLoadCatalogByInitEndDateUseCaseImpl.getApodEndDate(nowDate);
     final nasaApodStartDate =
-        RemoteLoadLastTenDaysPicturesByDateUseCaseImpl.getApodStartDate(
+        RemoteLoadCatalogByInitEndDateUseCaseImpl.getApodStartDate(
             nowDate);
 
     url = apodApiUrlFactory(
@@ -40,8 +39,8 @@ void main() {
       requestPath: '&start_date=$nasaApodStartDate&end_date=$nasaApodEndDate',
     );
 
-    sut = RemoteLoadLastTenDaysPicturesByDateUseCaseImpl(
-      picturesRepository: pictureRepository,
+    sut = RemoteLoadCatalogByInitEndDateUseCaseImpl(
+      pictureRepository: pictureRepository,
       apiKey: apiKey,
     );
     registerFallbackValue<HttpMethod>(HttpMethod.get);
@@ -57,7 +56,7 @@ void main() {
     ApodTest.verify(() => httpClient.request(method: HttpMethod.get, url: url));
   });
 
-  test('Should return pictures list on 200 with valid data', () async {
+  test('Should return catalog on 200 with valid data', () async {
     final data =
         json.encode(ApodResponsesFactory().generateValidPictureJsonList());
 
@@ -65,21 +64,21 @@ void main() {
 
     final dynamicList = json.decode(data);
 
-    final picturesJsonListResult =
+    final pictureJsonListResult =
         JsonMapper.fromDynamicListToJsonList(dynamicList);
 
-    late final List<Map<String, dynamic>> picturesJsonList;
+    late final List<Map<String, dynamic>> pictureJsonList;
 
-    picturesJsonListResult.fold(
+    pictureJsonListResult.fold(
       (l) {},
       (r) {
-        picturesJsonList = r;
+        pictureJsonList = r;
       },
     );
 
     late final List<PictureEntity> matcher;
 
-    PictureMapper.fromJsonListToEntityList(picturesJsonList).fold(
+    PictureMapper.fromJsonListToEntityList(pictureJsonList).fold(
       (domainFailure) {},
       (pictureEntityList) {
         matcher = pictureEntityList;

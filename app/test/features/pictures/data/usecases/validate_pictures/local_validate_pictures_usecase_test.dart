@@ -1,18 +1,18 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:test_utils/test_utils.dart';
 
 void main() {
-  late LocalValidatePicturesUseCase sut;
+  late LocalValidateCatalogUseCase sut;
   late LocalStorageSpy localStorage;
   late String itemKey;
 
   setUp(() {
     localStorage = LocalStorageSpy();
-    itemKey = 'pictures_list';
-    sut = LocalValidatePicturesUseCaseImpl(
+    itemKey = 'catalog';
+    sut = LocalValidateCatalogUseCaseImpl(
       localStorage: localStorage,
       itemKey: itemKey,
     );
@@ -26,7 +26,7 @@ void main() {
 
       await sut.call(null);
 
-      verify(() => localStorage.fetch('pictures_list')).called(1);
+      verify(() => localStorage.fetch('catalog')).called(1);
     });
 
     test('When validate data should delete localStorage if it is invalid',
@@ -37,7 +37,7 @@ void main() {
       final result = await sut.call(null);
       result.fold((l) => l, (r) => r);
 
-      verify(() => localStorage.delete('pictures_list')).called(1);
+      verify(() => localStorage.delete('catalog')).called(1);
     });
 
     test('When validate data should delete localStorage if it is incomplete',
@@ -47,7 +47,7 @@ void main() {
 
       await sut.call(null);
 
-      verify(() => localStorage.delete('pictures_list')).called(1);
+      verify(() => localStorage.delete('catalog')).called(1);
     });
 
     test('When validate data should delete localStorage if fetch fails',
@@ -58,7 +58,7 @@ void main() {
 
       result.fold((l) => l, (r) => r);
 
-      verify(() => localStorage.delete('pictures_list')).called(1);
+      verify(() => localStorage.delete('catalog')).called(1);
     });
   });
 }

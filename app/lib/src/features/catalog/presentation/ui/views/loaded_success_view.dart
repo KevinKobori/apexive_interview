@@ -10,14 +10,12 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class CatalogPageLoadedSuccessView extends StatelessWidget {
   const CatalogPageLoadedSuccessView({
-    super.key,
-    required this.catalogPagePresenter,
     required this.catalog,
     required this.onLoadCatalog,
     required this.onLoadPictureByDate,
+    super.key,
   });
 
-  final CatalogPagePresenter catalogPagePresenter;
   final List<PictureViewModel> catalog;
   final VoidCallback onLoadCatalog;
   final ValueChanged<DateTime> onLoadPictureByDate;
@@ -28,8 +26,8 @@ class CatalogPageLoadedSuccessView extends StatelessWidget {
       catalog: catalog,
       onLoadCatalog: onLoadCatalog,
       onLoadPictureByDate: onLoadPictureByDate,
-      onViewPictureDetail: (aspectRatio, picture) {
-        Modular.to.pushNamed(
+      onViewPictureDetail: (aspectRatio, picture) async {
+        await NavigatorManager.pushNamed(
           '/picture/detail/${picture.date}/${aspectRatio.toString()}',
           arguments: picture,
         );
@@ -38,11 +36,6 @@ class CatalogPageLoadedSuccessView extends StatelessWidget {
   }
 }
 
-/// State dependencies :
-/// * [CatalogPageBloc]
-/// * [AccountOverviewBloc]
-/// * [NotificationsOverviewBloc]
-/// * [CollectionsOverviewBloc]
 class _MobileLayout extends StatelessWidget {
   const _MobileLayout({
     required this.catalog,
@@ -113,13 +106,12 @@ class _BodyState extends State<_Body> {
           SliverToBoxAdapter(
             child: ApodPageHeader(
               controller: _controller,
-              image: CachedNetworkImageProvider(
-                  widget.catalog[0].url),
+              image: CachedNetworkImageProvider(widget.catalog[0].url),
             ),
           ),
           SliverToBoxAdapter(
             child: Container(
-              padding: ApodEdgeInsets.only(
+              padding: const ApodEdgeInsets.only(
                 left: ApodSpacing.large,
                 top: ApodSpacing.large,
                 right: ApodSpacing.large,
@@ -135,15 +127,15 @@ class _BodyState extends State<_Body> {
                         title: widget.catalog[0].title,
                         imageUrl: widget.catalog[0].url,
                         date: widget.catalog[0].date,
-                        onTap: () => widget.onViewPictureDetail(
-                            1, widget.catalog[0]),
+                        onTap: () =>
+                            widget.onViewPictureDetail(1, widget.catalog[0]),
                       ),
                       Positioned(
                         right: 0,
                         bottom: 0,
                         child: Container(
-                          margin:
-                              ApodEdgeInsets.semiSmall().toEdgeInsets(theme),
+                          margin: const ApodEdgeInsets.semiSmall()
+                              .toEdgeInsets(theme),
                           height: theme.icons.sizes.big,
                           width: theme.icons.sizes.big,
                           alignment: Alignment.centerLeft,
@@ -152,7 +144,7 @@ class _BodyState extends State<_Body> {
                       ),
                     ],
                   ),
-                  ApodGap.large(),
+                  const ApodGap.large(),
                   SizedBox(
                     height: 38,
                     child: ListView(
@@ -162,7 +154,7 @@ class _BodyState extends State<_Body> {
                           onTap: widget.onLoadCatalog,
                           title: 'List all',
                         ),
-                        ApodGap.semiSmall(),
+                        const ApodGap.semiSmall(),
                         ApodDatePickerDialog(
                             onLoadPictureByDate: widget.onLoadPictureByDate),
                       ],
@@ -174,8 +166,8 @@ class _BodyState extends State<_Body> {
           ),
           SliverToBoxAdapter(
             child: widget.catalog.length >= 2
-                ? ApodPadding(
-                    padding: const ApodEdgeInsets.only(
+                ? const ApodPadding(
+                    padding: ApodEdgeInsets.only(
                       left: ApodSpacing.large,
                       top: ApodSpacing.none,
                       right: ApodSpacing.large,
@@ -183,7 +175,7 @@ class _BodyState extends State<_Body> {
                     ),
                     child: ApodText.title1('Discover Now'),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ),
           SliverSafeArea(
             top: false,
@@ -206,8 +198,7 @@ class _BodyState extends State<_Body> {
                       title: picture.title,
                       imageUrl: picture.url,
                       date: picture.date,
-                      onTap: () =>
-                          widget.onViewPictureDetail(1, picture),
+                      onTap: () => widget.onViewPictureDetail(1, picture),
                     ),
                   )
                   .toList(),

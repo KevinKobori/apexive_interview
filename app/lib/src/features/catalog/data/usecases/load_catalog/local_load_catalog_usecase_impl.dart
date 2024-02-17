@@ -2,14 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-class LocalLoadLastTenDaysPicturesByDateUseCaseImpl
-    implements LocalLoadLastTenDaysPicturesByDateUseCase {
+class LocalLoadCatalogUseCaseImpl
+    implements LocalLoadCatalogUseCase {
   final LocalStorage localStorage;
   final String itemKey;
 
-  LocalLoadLastTenDaysPicturesByDateUseCaseImpl({
-    required this.itemKey,
+  LocalLoadCatalogUseCaseImpl({
     required this.localStorage,
+    required this.itemKey,
   });
 
   @override

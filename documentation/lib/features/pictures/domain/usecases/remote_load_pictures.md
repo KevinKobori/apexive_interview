@@ -1,7 +1,7 @@
-## Remote Load Pictures Use Case
+## Remote Load Catalog Use Case
 
 > **Success Case**
-1. The system makes a request to the Pictures API URL
+1. The system makes a request to the Catalog API URL
 2. The system validates the received API data
 3. The system delivers the captures data
 

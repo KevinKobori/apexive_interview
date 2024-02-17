@@ -21,7 +21,7 @@ CollectionModel _$CollectionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CollectionModel {
   String get name => throw _privateConstructorUsedError;
-  List<PictureModel> get pictureList => throw _privateConstructorUsedError;
+  List<PictureModel> get catalog => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $CollectionModelCopyWith<$Res> {
           CollectionModel value, $Res Function(CollectionModel) then) =
       _$CollectionModelCopyWithImpl<$Res, CollectionModel>;
   @useResult
-  $Res call({String name, List<PictureModel> pictureList});
+  $Res call({String name, List<PictureModel> catalog});
 }
 
 /// @nodoc
@@ -52,16 +52,16 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
   @override
   $Res call({
     Object? name = null,
-    Object? pictureList = null,
+    Object? catalog = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      pictureList: null == pictureList
-          ? _value.pictureList
-          : pictureList // ignore: cast_nullable_to_non_nullable
+      catalog: null == catalog
+          ? _value.catalog
+          : catalog // ignore: cast_nullable_to_non_nullable
               as List<PictureModel>,
     ) as $Val);
   }
@@ -75,7 +75,7 @@ abstract class _$$CollectionModelImplCopyWith<$Res>
       __$$CollectionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<PictureModel> pictureList});
+  $Res call({String name, List<PictureModel> catalog});
 }
 
 /// @nodoc
@@ -90,16 +90,16 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? pictureList = null,
+    Object? catalog = null,
   }) {
     return _then(_$CollectionModelImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      pictureList: null == pictureList
-          ? _value._pictureList
-          : pictureList // ignore: cast_nullable_to_non_nullable
+      catalog: null == catalog
+          ? _value._catalog
+          : catalog // ignore: cast_nullable_to_non_nullable
               as List<PictureModel>,
     ));
   }
@@ -109,25 +109,25 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CollectionModelImpl implements _CollectionModel {
   const _$CollectionModelImpl(
-      {required this.name, required final List<PictureModel> pictureList})
-      : _pictureList = pictureList;
+      {required this.name, required final List<PictureModel> catalog})
+      : _catalog = catalog;
 
   factory _$CollectionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionModelImplFromJson(json);
 
   @override
   final String name;
-  final List<PictureModel> _pictureList;
+  final List<PictureModel> _catalog;
   @override
-  List<PictureModel> get pictureList {
-    if (_pictureList is EqualUnmodifiableListView) return _pictureList;
+  List<PictureModel> get catalog {
+    if (_catalog is EqualUnmodifiableListView) return _catalog;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_pictureList);
+    return EqualUnmodifiableListView(_catalog);
   }
 
   @override
   String toString() {
-    return 'CollectionModel(name: $name, pictureList: $pictureList)';
+    return 'CollectionModel(name: $name, catalog: $catalog)';
   }
 
   @override
@@ -136,14 +136,13 @@ class _$CollectionModelImpl implements _CollectionModel {
         (other.runtimeType == runtimeType &&
             other is _$CollectionModelImpl &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality()
-                .equals(other._pictureList, _pictureList));
+            const DeepCollectionEquality().equals(other._catalog, _catalog));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_pictureList));
+      runtimeType, name, const DeepCollectionEquality().hash(_catalog));
 
   @JsonKey(ignore: true)
   @override
@@ -163,7 +162,7 @@ class _$CollectionModelImpl implements _CollectionModel {
 abstract class _CollectionModel implements CollectionModel {
   const factory _CollectionModel(
       {required final String name,
-      required final List<PictureModel> pictureList}) = _$CollectionModelImpl;
+      required final List<PictureModel> catalog}) = _$CollectionModelImpl;
 
   factory _CollectionModel.fromJson(Map<String, dynamic> json) =
       _$CollectionModelImpl.fromJson;
@@ -171,7 +170,7 @@ abstract class _CollectionModel implements CollectionModel {
   @override
   String get name;
   @override
-  List<PictureModel> get pictureList;
+  List<PictureModel> get catalog;
   @override
   @JsonKey(ignore: true)
   _$$CollectionModelImplCopyWith<_$CollectionModelImpl> get copyWith =>

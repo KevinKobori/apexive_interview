@@ -12,7 +12,7 @@ class CollectionsOverviewStateLoadedData extends CollectionsOverviewState {
         collectionList: [
           CollectionModel(
             name: 'Moon',
-            pictureList: [
+            catalog: [
               PictureModel(
                 copyright: 'copyright',
                 date: DateTime.parse('2024-01-01'),
@@ -28,7 +28,7 @@ class CollectionsOverviewStateLoadedData extends CollectionsOverviewState {
           ),
           CollectionModel(
             name: 'Galaxies',
-            pictureList: [
+            catalog: [
               PictureModel(
                 copyright: 'copyright',
                 date: DateTime.parse('2024-01-01'),

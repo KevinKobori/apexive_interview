@@ -8,7 +8,7 @@ part 'collection_model.g.dart';
 class CollectionModel with _$CollectionModel {
   const factory CollectionModel({
     required String name,
-    required List<PictureModel> pictureList,
+    required List<PictureModel> catalog,
   }) = _CollectionModel;
 
   factory CollectionModel.fromJson(Map<String, Object?> json) =>

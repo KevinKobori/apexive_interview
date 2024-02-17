@@ -5,11 +5,10 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     implements CatalogPagePresenter {
-  final RemoteLoadLastTenDaysPicturesByDateUseCase
-      loadLastTenDaysPicturesByDate;
+  final RemoteLoadCatalogByInitEndDateUseCase loadCatalogByInitEndDate;
 
   CatalogPageBloc({
-    required this.loadLastTenDaysPicturesByDate,
+    required this.loadCatalogByInitEndDate,
   }) : super(CatalogPageLoading()) {
     on<CatalogPageLoadCatalog>((event, emit) async {
       await loadCatalog(emit);
@@ -24,13 +23,14 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     });
   }
 
+  @override
   Future<void> loadCatalog(Emitter<CatalogPageState> emit) async {
     emit(CatalogPageLoading());
 
     /// Infra, Data, Domain
     final now = DateTime.now();
     final Either<DomainFailure, List<PictureEntity>> usecaseResult =
-        await loadLastTenDaysPicturesByDate.call(now);
+        await loadCatalogByInitEndDate.call(now);
 
     /// Presenter
     final Either<DomainFailure, List<PictureViewModel>> presenterResult =
@@ -56,6 +56,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     });
   }
 
+  @override
   Future<void> loadPictureByDate(CatalogPageLoadPictureByDate event,
       Emitter<CatalogPageState> emit) async {
     emit(CatalogPageLoading());
@@ -90,6 +91,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     });
   }
 
+  @override
   void goToPictureDetail(CatalogPageGoToPictureDetail event) {
     NavigatorManager.pushNamed('picture/detail/$event.pictureDate',
         arguments: event.picture);
