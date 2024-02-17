@@ -12,6 +12,6 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.module('/', module: PicturesModule());
+    r.module('/', module: CatalogModule());
   }
 }

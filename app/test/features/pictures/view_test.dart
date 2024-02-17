@@ -5,18 +5,18 @@ import '../../base/view.dart';
 
 void main() {
   testAppView(
-    'features/pictures',
+    'features/catalog',
     BlocProvider(
       create: (context) => NotificationsOverviewBloc(),
       child: BlocProvider(
         create: (context) => CollectionsOverviewBloc(),
         child: BlocProvider(
           create: (context) => AccountOverviewBloc(),
-          child: PicturesPageStateLoadedSuccessViewMobileLayout(
-            pictureViewModelList: [],
-            onViewPictureDetail: (aspectRatio, pictureViewModel) {},
-            onLoadAllPicturesList: () {},
+          child: CatalogPageLoadedSuccessView(
+            catalog: [],
             onLoadPictureByDate: (date) {},
+            catalogPagePresenter: catalogPagePresenterFactory(),
+            onLoadCatalog: () {},
           ),
         ),
       ),

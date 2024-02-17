@@ -9,6 +9,7 @@ export 'buttons/back_button.dart';
 export 'buttons/text_button.dart';
 export 'content_sheet.dart';
 export 'layouts/scaffold.dart';
+export 'molecules/current_user_account_navigation_body.dart';
 export 'molecules/sliver_grid_tile.dart';
 export 'organisms/date_picker_dialog.dart';
 export 'organisms/header.dart';
