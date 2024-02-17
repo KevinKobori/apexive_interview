@@ -1,4 +1,5 @@
-export 'presenters/pictures/page_cubit.dart';
+export 'presenters/pictures/page_bloc.dart';
+export 'presenters/pictures/page_event.dart';
 export 'presenters/pictures/page_presenter.dart';
 export 'presenters/pictures/page_state.dart';
 export 'ui/picture_detail_page/page.dart';

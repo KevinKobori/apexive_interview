@@ -15,33 +15,42 @@ class PicturesPage extends StatefulWidget {
 }
 
 class _PicturesPageState extends State<PicturesPage> {
+  late PicturesPageBloc bloc;
   @override
   void initState() {
-    widget.picturesPagePresenter.loadPictures();
+    bloc = widget.picturesPagePresenter as PicturesPageBloc;
+    // bloca.loadPictures();
+    bloc.add(PicturesPageEventLoadPictures());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PicturesPageCubit, PicturesPageState>(
-      bloc: widget.picturesPagePresenter as PicturesPageCubit,
+    return BlocBuilder<PicturesPageBloc, PicturesPageState>(
+      // BlocBuilder<PicturesPageCubit, PicturesPageState>(
+      bloc: bloc,
       builder: (context, state) {
         if (state is PicturesPageStateLoading) {
           return PicturesPageStateLoadingView(
-            picturesPagePresenter: widget.picturesPagePresenter,
+            picturesPagePresenter: bloc,
           );
         } else if (state is PicturesPageStateLoadedFailure) {
           return PicturesPageStateLoadedFailureView(
             failureMessage: state.failureMessage,
-            onReload: widget.picturesPagePresenter.loadPictures,
+            onReload: () => bloc.add(PicturesPageEventLoadPictures()),
+            // bloca.loadPictures,
           );
         } else if (state is PicturesPageStateLoadedSuccess) {
           return PicturesPageStateLoadedSuccessView(
-            picturesPagePresenter: widget.picturesPagePresenter,
+            picturesPagePresenter: bloc,
             pictureViewModelList: state.pictureViewModelList,
-            onLoadAllPicturesList: widget.picturesPagePresenter.loadPictures,
-            onLoadPictureByDate: (date) => widget.picturesPagePresenter
-                .loadPictureByDate(context, date: date),
+            onLoadAllPicturesList: () =>
+                bloc.add(PicturesPageEventLoadPictures()),
+            // bloca.loadPictures,
+            onLoadPictureByDate: (date) =>
+                bloc.add(PicturesPageEventLoadPictureByDate(date)),
+            // => bloca
+            //     .loadPictureByDate(context, date: date),
           );
         } else {
           return const SizedBox.shrink();

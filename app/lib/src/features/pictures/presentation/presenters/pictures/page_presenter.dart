@@ -1,14 +1,10 @@
-import 'package:flutter/widgets.dart';
-import 'package:nasa_apod_core/nasa_apod_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
 
 abstract class PicturesPagePresenter {
-  void loadPictures();
-  void loadPictureByDate(
-    BuildContext context, {
-    required DateTime date,
-  });
-  void pushToPictureDetails(
-    String pictureDate, {
-    required PictureViewModel pictureViewModel,
-  });
+  Future<void> loadPictures(Emitter<PicturesPageState> emit);
+  Future<void> loadPictureByDate(PicturesPageEventLoadPictureByDate event,
+      Emitter<PicturesPageState> emit);
+
+  void goToPictureDetail(PicturesPageEventGoToPictureDetail event);
 }
