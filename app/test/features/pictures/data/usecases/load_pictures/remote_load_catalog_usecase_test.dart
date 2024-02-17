@@ -11,14 +11,18 @@ void main() {
   late PictureDatasource pictureDatasource;
   late DeviceInfo networkInfo;
   late PictureRepository pictureRepository;
-  late RemoteLoadCatalogByInitEndDateUseCase sut;
+  late RemoteLoadCatalogByStartEndDateUseCase sut;
   late HttpClientSpy httpClient;
   late String apiKey;
   late String url;
-  late DateTime nowDate;
+  late LoadCatalogParams params;
 
   setUp(() {
-    nowDate = DateTime.now();
+    params = LoadCatalogParams(
+      startDate: DateTime.now().subtract(const Duration(days: 9)),
+      endDate: DateTime.now(),
+    );
+
     httpClient = HttpClientSpy();
     pictureDatasource = PictureDatasourceImpl(httpClient);
     networkInfo = DeviceInfoImpl(Connectivity());
@@ -29,17 +33,18 @@ void main() {
     apiKey = ApodTest.faker.randomGenerator.string(10);
 
     final nasaApodEndDate =
-        RemoteLoadCatalogByInitEndDateUseCaseImpl.getApodEndDate(nowDate);
+        RemoteLoadCatalogByStartEndDateUseCaseImpl.getApodDateFormat(
+            params.endDate);
     final nasaApodStartDate =
-        RemoteLoadCatalogByInitEndDateUseCaseImpl.getApodStartDate(
-            nowDate);
+        RemoteLoadCatalogByStartEndDateUseCaseImpl.getApodDateFormat(
+            params.startDate);
 
     url = apodApiUrlFactory(
       apiKey: apiKey,
       requestPath: '&start_date=$nasaApodStartDate&end_date=$nasaApodEndDate',
     );
 
-    sut = RemoteLoadCatalogByInitEndDateUseCaseImpl(
+    sut = RemoteLoadCatalogByStartEndDateUseCaseImpl(
       pictureRepository: pictureRepository,
       apiKey: apiKey,
     );
@@ -51,7 +56,7 @@ void main() {
 
     httpClient.mockRequestSuccess(data);
 
-    await sut.call(nowDate);
+    await sut.call(params);
 
     ApodTest.verify(() => httpClient.request(method: HttpMethod.get, url: url));
   });
@@ -85,7 +90,7 @@ void main() {
       },
     );
 
-    final resultSUT = await sut.call(nowDate);
+    final resultSUT = await sut.call(params);
 
     late List<PictureEntity> actual;
 
@@ -105,7 +110,7 @@ void main() {
     httpClient.mockRequestSuccess(
         json.encode(ApodResponsesFactory().generateInvalidPictureJsonList()));
 
-    final result = await sut.call(nowDate);
+    final result = await sut.call(params);
 
     final actual = result.fold(
       (domainFailure) => domainFailure,
@@ -123,7 +128,7 @@ void main() {
     httpClient
         .mockRequestFailure(ApodResponsesFactory().generateNotFoundFailure());
 
-    final result = await sut.call(nowDate);
+    final result = await sut.call(params);
 
     final actual = result.fold(
       (domainFailure) => domainFailure,

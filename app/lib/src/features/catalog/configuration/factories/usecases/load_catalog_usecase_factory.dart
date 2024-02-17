@@ -3,8 +3,8 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 String localStorageCatalogKeyFactory() => 'catalog';
 
-RemoteLoadCatalogByInitEndDateUseCaseImpl remoteLoadCatalogByInitEndDateUseCaseFactory() =>
-    RemoteLoadCatalogByInitEndDateUseCaseImpl(
+RemoteLoadCatalogByStartEndDateUseCaseImpl remoteLoadCatalogByStartEndDateUseCaseFactory() =>
+    RemoteLoadCatalogByStartEndDateUseCaseImpl(
       apiKey: ApodEnvironmentConstants.apiKey,
       pictureRepository: pictureRepositoryFactory(),
     );
@@ -31,10 +31,10 @@ LocalSaveCatalogUseCase localSaveCatalogUseCaseFactory() =>
       itemKey: localStorageCatalogKeyFactory(),
     );
 
-RemoteLoadCatalogByInitEndDateWithLocalFallbackUseCaseImpl
-    remoteLoadCatalogByInitEndDateWithLocalFallbackUseCaseFactory() =>
-        RemoteLoadCatalogByInitEndDateWithLocalFallbackUseCaseImpl(
-          remoteLoadCatalogByInitEndDate: remoteLoadCatalogByInitEndDateUseCaseFactory(),
+RemoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseImpl
+    remoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseFactory() =>
+        RemoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseImpl(
+          remoteLoadCatalogByStartEndDate: remoteLoadCatalogByStartEndDateUseCaseFactory(),
           localLoadCatalog: localLoadCatalogUseCaseImplFactory(),
           localValidateCatalog: localValidateCatalogUseCaseFactory(),
           localSaveCatalog: localSaveCatalogUseCaseFactory(),

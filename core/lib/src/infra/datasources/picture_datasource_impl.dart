@@ -7,7 +7,7 @@ class PictureDatasourceImpl implements PictureDatasource {
   PictureDatasourceImpl(this.httpClient);
 
   @override
-  Future<Either<DomainFailure, List<PictureModel>>> fetchLastTenDaysData(
+  Future<Either<DomainFailure, List<PictureModel>>> fetchDataByStartEndDate(
       String url) async {
     final requestResult =
         await httpClient.request(method: HttpMethod.get, url: url);

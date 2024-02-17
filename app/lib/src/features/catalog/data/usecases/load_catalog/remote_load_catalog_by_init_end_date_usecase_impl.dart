@@ -5,38 +5,29 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 // TODO: NOW - CHANGE TI TO RECEIVE START AND END DATES
-class RemoteLoadCatalogByInitEndDateUseCaseImpl
-    implements RemoteLoadCatalogByInitEndDateUseCase {
+class RemoteLoadCatalogByStartEndDateUseCaseImpl
+    implements RemoteLoadCatalogByStartEndDateUseCase {
   final PictureRepository pictureRepository;
   final String apiKey;
 
-  RemoteLoadCatalogByInitEndDateUseCaseImpl({
+  RemoteLoadCatalogByStartEndDateUseCaseImpl({
     required this.pictureRepository,
     required this.apiKey,
   });
 
   @override
-  Future<Either<DomainFailure, List<PictureEntity>>> call(DateTime date) async {
-    final apodEndDate = getApodEndDate(date);
-    final apodStartDate = getApodStartDate(date);
+  Future<Either<DomainFailure, List<PictureEntity>>> call(
+      LoadCatalogParams params) async {
+    final apodStartDate = getApodDateFormat(params.startDate);
+    final apodEndDate = getApodDateFormat(params.endDate);
 
-    final result = await pictureRepository.getLastTenDaysData(
+    final result = await pictureRepository.getDataByStartEndDate(
       apodApiUrlFactory(
         apiKey: apiKey,
         requestPath: '&start_date=$apodStartDate&end_date=$apodEndDate',
       ),
     );
     return result;
-  }
-
-  static String getApodEndDate(DateTime localDateTime) {
-    return getApodDateFormat(localDateTime);
-  }
-
-  static String getApodStartDate(DateTime localDateTime) {
-    final lastTenDaysUS = DateTime(localDateTime.year, localDateTime.month,
-        localDateTime.day - 9, localDateTime.hour);
-    return getApodDateFormat(lastTenDaysUS);
   }
 
   static String getApodDateFormat(DateTime localDateTime) {

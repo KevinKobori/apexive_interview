@@ -11,11 +11,11 @@ class PictureRepositoryImpl implements PictureRepository {
   });
 
   @override
-  Future<Either<DomainFailure, List<PictureEntity>>> getLastTenDaysData(
+  Future<Either<DomainFailure, List<PictureEntity>>> getDataByStartEndDate(
       String url) async {
     if (await networkInfo.isConnected()) {
       final resultDataSource =
-          await pictureDatasource.fetchLastTenDaysData(url);
+          await pictureDatasource.fetchDataByStartEndDate(url);
 
       return resultDataSource.fold(
         /// Left
