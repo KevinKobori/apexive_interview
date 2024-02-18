@@ -1,6 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodImagesData extends Equatable {
@@ -10,8 +8,8 @@ class ApodImagesData extends Equatable {
   });
 
   factory ApodImagesData.regular({
-    required PictureProvider appLogo,
-    required PictureProvider appWormLogo,
+    required String appLogo,
+    required String appWormLogo,
   }) =>
       ApodImagesData(
         appLogo: appLogo,
@@ -19,16 +17,16 @@ class ApodImagesData extends Equatable {
       );
 
   factory ApodImagesData.highContrast({
-    required PictureProvider appLogo,
-    required PictureProvider appWormLogo,
+    required String appLogo,
+    required String appWormLogo,
   }) =>
       ApodImagesData(
         appLogo: appLogo,
         appWormLogo: appWormLogo,
       );
 
-  final PictureProvider appLogo;
-  final PictureProvider appWormLogo;
+  final String appLogo;
+  final String appWormLogo;
 
   @override
   List<Object?> get props => [
@@ -36,7 +34,7 @@ class ApodImagesData extends Equatable {
         appWormLogo.named('appWormLogo'),
       ];
 
-  ApodImagesData withAppLogo(PictureProvider appLogo) {
+  ApodImagesData withAppLogo(String appLogo) {
     return ApodImagesData(
       appLogo: appLogo,
       appWormLogo: appWormLogo,

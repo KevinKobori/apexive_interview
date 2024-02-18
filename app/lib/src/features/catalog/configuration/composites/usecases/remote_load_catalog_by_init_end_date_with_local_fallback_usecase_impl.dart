@@ -36,14 +36,14 @@ class RemoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseImpl
   }
 
   Future<Either<DomainFailure, List<PictureEntity>>> _getLocalData() async {
-    final validateResult = await localValidateCatalog.call(null);
+    // final validateResult = await localValidateCatalog.call(null);
 
-    return await validateResult.fold(
-      /// Left
-      (domainFailure) => Left(domainFailure),
+    // return await validateResult.fold(
+    //   /// Left
+    //   (domainFailure) => Left(domainFailure),
 
-      /// Right
-      (_) async {
+    //   /// Right
+    //   (_) async {
         final loadResult = await localLoadCatalog.call(null);
 
         return loadResult.fold(
@@ -53,7 +53,7 @@ class RemoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseImpl
           /// Right
           (pictureEntityList) => Right(pictureEntityList),
         );
-      },
-    );
+    //   },
+    // );
   }
 }

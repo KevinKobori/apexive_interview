@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 import 'base.dart';
@@ -26,14 +24,8 @@ class ApodThemeLibrary extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ApodAppResponsiveTheme(
-        appLogo: StringPicture(
-          SvgPicture.svgStringDecoderBuilder,
-          '<svg></svg>',
-        ),
-        appWormLogo: StringPicture(
-          SvgPicture.svgStringDecoderBuilder,
-          '<svg></svg>',
-        ),
+        appLogo: '<svg></svg>',
+        appWormLogo: '<svg></svg>',
         colorMode: colorMode,
         formFactor: formFactor,
         child: Builder(

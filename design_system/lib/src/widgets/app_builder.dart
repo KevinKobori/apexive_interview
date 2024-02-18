@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart' as cupertino;
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodAppBuilder extends StatelessWidget {
@@ -63,10 +61,10 @@ class ApodAppBuilder extends StatelessWidget {
   final bool showPerformanceOverlay;
   final Locale? locale;
   final TransitionBuilder? builder;
-  final PictureProvider appLogo;
-  final PictureProvider? darkAppLogo;
-  final PictureProvider appWormLogo;
-  final PictureProvider? darkAppWormLogo;
+  final String appLogo;
+  final String? darkAppLogo;
+  final String appWormLogo;
+  final String? darkAppWormLogo;
 
   // We provide material and cupertino localization delegate even it will
   // probably not be used.

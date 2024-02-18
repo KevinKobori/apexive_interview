@@ -1,7 +1,5 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 enum ApodAppThemeColorMode {
@@ -27,10 +25,10 @@ class ApodAppResponsiveTheme extends StatelessWidget {
   final ApodAppThemeColorMode? colorMode;
   final ApodAppFormFactor? formFactor;
   final Widget child;
-  final PictureProvider appLogo;
-  final PictureProvider? darkAppLogo;
-  final PictureProvider appWormLogo;
-  final PictureProvider? darkAppWormLogo;
+  final String appLogo;
+  final String? darkAppLogo;
+  final String appWormLogo;
+  final String? darkAppWormLogo;
 
   static ApodAppThemeColorMode colorModeOf(BuildContext context) {
     final platformBrightness = MediaQuery.platformBrightnessOf(context);

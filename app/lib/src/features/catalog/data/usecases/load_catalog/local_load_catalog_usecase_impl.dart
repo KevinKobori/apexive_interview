@@ -20,12 +20,13 @@ class LocalLoadCatalogUseCaseImpl implements LocalLoadCatalogUseCase {
 
       /// Right
       (localData) {
-        if (localData.isEmpty != false) {
+        final List<Map<String, dynamic>> jsonListData = List<Map<String, dynamic>>.from(localData);
+        if (jsonListData.isEmpty != false) {
           return const Left(DomainFailure.unexpected());
         }
 
         final entityListResult =
-            PictureMapper.fromJsonListToEntityList(localData);
+            PictureMapper.fromJsonListToEntityList(jsonListData);
         return entityListResult.fold(
           /// Left
           (mapperFailure) => Left(mapperFailure.toDomain),

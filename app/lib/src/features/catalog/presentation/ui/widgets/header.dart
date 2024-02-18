@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:shimmer/shimmer.dart';
@@ -60,7 +59,7 @@ class ApodPageHeader extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              SvgPicture(
+              SvgPicture.asset(
                 theme.images.appWormLogo,
                 width: theme.typography.title1.fontSize! * 4,
               ),

@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodThemeData extends Equatable {
@@ -18,8 +17,8 @@ class ApodThemeData extends Equatable {
   }) : _platform = platform;
 
   factory ApodThemeData.regular({
-    required PictureProvider appLogo,
-    required PictureProvider appWormLogo,
+    required String appLogo,
+    required String appWormLogo,
   }) =>
       ApodThemeData(
         formFactor: ApodAppFormFactor.medium,

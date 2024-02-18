@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:test_utils/test_utils.dart';
 
@@ -35,14 +33,8 @@ void testAppWidgets(
           debugShowCheckedModeBanner: false,
           home: ApodTheme(
             data: ApodThemeData.regular(
-              appLogo: StringPicture(
-                SvgPicture.svgStringDecoderBuilder,
-                '<svg></svg>',
-              ),
-              appWormLogo: StringPicture(
-                SvgPicture.svgStringDecoderBuilder,
-                '<svg></svg>',
-              ),
+              appLogo: '<svg></svg>',
+              appWormLogo: '<svg></svg>',
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
