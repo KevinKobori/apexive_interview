@@ -6,11 +6,9 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PictureDetailPageLoadedSuccessView extends StatelessWidget {
-  final String pictureDate;
   final PictureViewModel picture;
 
   const PictureDetailPageLoadedSuccessView({
-    required this.pictureDate,
     required this.picture,
     super.key,
   });
@@ -35,53 +33,21 @@ class _MobileLayout extends StatefulWidget {
 }
 
 class _MobileLayoutState extends State<_MobileLayout> {
-  double _aspectRatio = 1;
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadAspectRatio();
-  }
-
-  void _loadAspectRatio() async {
-    try {
-      final double aspectRatio =
-          await ImageHelper.getImageAspectRatio(widget.picture.url);
-      if (mounted) {
-        setState(() {
-          _aspectRatio = aspectRatio;
-          _isLoading = false;
-        });
-      }
-    } catch (e) {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = ApodTheme.of(context);
-    if (_isLoading) {
-      return const Center(child: CircularProgressIndicator());
-    } else {
-      return ApodScaffold(
-        backgroundImage: CachedNetworkImageProvider(widget.picture.url),
-        body: ApodContentSheet(
-          children: _buildBody(context, theme, widget.picture),
-        ),
-        floatingBar: _NavigationBar(
-          accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
-          collectionsOverviewPresenter: Modular.get<CollectionsOverviewBloc>(),
-          notificationsOverviewPresenter:
-              Modular.get<NotificationsOverviewBloc>(),
-        ),
-      );
-    }
+    return ApodScaffold(
+      backgroundImage: CachedNetworkImageProvider(widget.picture.url),
+      body: ApodContentSheet(
+        children: _buildBody(context, theme, widget.picture),
+      ),
+      floatingBar: _NavigationBar(
+        accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
+        collectionsOverviewPresenter: Modular.get<CollectionsOverviewBloc>(),
+        notificationsOverviewPresenter:
+            Modular.get<NotificationsOverviewBloc>(),
+      ),
+    );
   }
 
   List<Widget> _buildBody(
@@ -90,7 +56,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
       ClipRRect(
         borderRadius: theme.radius.asBorderRadius().regular,
         child: AspectRatio(
-          aspectRatio: _aspectRatio,
+          aspectRatio: picture.aspectRatio,
           child: Image(
             fit: BoxFit.cover,
             image: CachedNetworkImageProvider(

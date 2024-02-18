@@ -15,10 +15,9 @@ class AppModule extends Module {
   void routes(r) {
     r.module('/', module: CatalogModule());
     r.child(
-      '/picture/detail/:pictureDate/:aspectRatio',
+      '/picture/detail/:picture_date',
       child: (context) => pictureDetailPageFactory(
-        aspectRatio: double.parse(r.args.params['aspectRatio']!),
-        pictureDate: r.args.params['pictureDate']!,
+        pictureDate: r.args.params['picture_date']!,
       ),
     );
   }

@@ -16,7 +16,7 @@ void main() {
             catalog: const [],
             onLoadPictureByDate: (_) {},
             onLoadCatalog: () {},
-            onPushToPictureDetail: (_, __) {},
+            onPushToPictureDetail: (_) {},
           ),
         ),
       ),

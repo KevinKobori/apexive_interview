@@ -6,12 +6,10 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class PictureDetailPage extends StatefulWidget {
   const PictureDetailPage({
-    required this.aspectRatio,
     required this.pictureDate,
     super.key,
   });
 
-  final double aspectRatio;
   final String pictureDate;
 
   @override
@@ -37,7 +35,8 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
     });
     final pictureJson = pictureJsonList[pictureMapIndex];
 
-    final viewModelResult = PictureMapper.fromJsonToViewModel(pictureJson);
+    final viewModelResult =
+        await PictureMapper.fromJsonToViewModel(pictureJson);
     return viewModelResult.fold((mapperFailure) {
       return dz.Left(mapperFailure.toDomain);
     }, (pictureViewModel) {
@@ -67,12 +66,11 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
       builder: (_, pictureViewModel, __) {
         if (pictureViewModel == null) {
           return const Center(
-            // TODO: NOW 
+            // TODO: NOW
             child: Text('ERROR'),
           );
         } else {
           return PictureDetailPageLoadedSuccessView(
-            pictureDate: widget.pictureDate,
             picture: pictureViewModel,
           );
         }

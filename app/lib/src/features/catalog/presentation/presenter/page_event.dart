@@ -27,19 +27,14 @@ class CatalogPageLoadPictureByDate extends CatalogPageEvent {
 }
 
 class CatalogPageGoToPictureDetail extends CatalogPageEvent {
-  final String pictureDate;
-  final PictureViewModel? picture;
-  final double aspectRatio;
+  final PictureViewModel picture;
 
-  const CatalogPageGoToPictureDetail({
-    required this.pictureDate,
-    required this.aspectRatio,
-    required this.picture,
-  });
+  const CatalogPageGoToPictureDetail(
+    this.picture,
+  );
 
   @override
   List<Object?> get props => [
-        pictureDate,
         picture,
       ];
 }

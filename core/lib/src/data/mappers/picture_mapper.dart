@@ -64,10 +64,12 @@ abstract final class PictureMapper {
     }
   }
 
-  static Either<MapperFailure, PictureViewModel> fromEntityToViewModel(
-      PictureEntity pictureEntity) {
+  static Future<Either<MapperFailure, PictureViewModel>> fromEntityToViewModel(
+      PictureEntity pictureEntity) async {
     final apodDate =
         DateTimeMapper.getStringFromDateTimeYMD(pictureEntity.date);
+    final double aspectRatio =
+        await ImageHelper.getImageAspectRatio(pictureEntity.url);
 
     final pictureViewModel = PictureViewModel(
       copyright: pictureEntity.copyright,
@@ -78,23 +80,46 @@ abstract final class PictureMapper {
       serviceVersion: pictureEntity.serviceVersion,
       title: pictureEntity.title,
       url: pictureEntity.url,
+      aspectRatio: aspectRatio,
     );
 
     return Right(pictureViewModel);
   }
 
-  static Either<MapperFailure, List<PictureViewModel>>
-      fromEntityListToViewModelList(List<PictureEntity> pictureEntityList) {
-    try {
-      final pictureViewModelList = pictureEntityList
-          .map((pictureEntity) => fromEntityToViewModel(pictureEntity)
-              .getOrElse(() => throw const MapperFailure.conversionError()))
-          .toList();
+  // static Future<Either<MapperFailure, List<PictureViewModel>>>
+  //     fromEntityListToViewModelList(
+  //         List<PictureEntity> pictureEntityList) async {
+  //   try {
+  //     final pictureViewModelList = pictureEntityList.map((pictureEntity) async {
+  //       final result = await fromEntityToViewModel(pictureEntity);
+  //       return result
+  //           .getOrElse(() => throw const MapperFailure.conversionError());
+  //     }).toList();
 
-      return Right(pictureViewModelList);
-    } catch (_) {
-      return const Left(MapperFailure.conversionError());
+  //     return Right(pictureViewModelList);
+  //   } catch (_) {
+  //     return const Left(MapperFailure.conversionError());
+  //   }
+  // }
+
+  static Future<Either<MapperFailure, List<PictureViewModel>>>
+      fromEntityListToViewModelList(
+          List<PictureEntity> pictureEntityList) async {
+    final List<PictureViewModel> pictureViewModelList = [];
+    for (final pictureEntity in pictureEntityList) {
+      final result = await fromEntityToViewModel(pictureEntity);
+      if (result.isLeft()) {
+        // If any conversion fails, return immediately with the failure
+        return const Left(MapperFailure.conversionError());
+      }
+      // Assuming the failure doesn't stop the process, add the view model to the list
+      result.fold(
+          (l) =>
+              null, // This block shouldn't execute due to the isLeft check above
+          (r) => pictureViewModelList.add(r));
     }
+    // If all entities were successfully converted, return the list of view models
+    return Right(pictureViewModelList);
   }
 
   static Either<MapperFailure, Map<String, dynamic>> fromModelToJson(
@@ -161,19 +186,36 @@ abstract final class PictureMapper {
     }
   }
 
-  static Either<MapperFailure, PictureViewModel> fromJsonToViewModel(
-      Map<String, dynamic> json) {
-    return fromJsonToEntity(json).flatMap(fromEntityToViewModel);
+  // static Either<MapperFailure, PictureViewModel> fromJsonToViewModel(
+  //     Map<String, dynamic> json) {
+  //   return fromJsonToEntity(json).flatMap(fromEntityToViewModel);
+  // }
+
+  static Future<Either<MapperFailure, PictureViewModel>> fromJsonToViewModel(
+      Map<String, dynamic> json) async {
+    // Convert JSON to Entity and check for failure
+    final entityEither = fromJsonToEntity(json);
+    if (entityEither.isLeft()) {
+      // If the conversion failed, immediately return the failure
+      return entityEither as Future<Either<MapperFailure, PictureViewModel>>;
+    }
+
+    // Await the asynchronous operation of converting Entity to ViewModel
+    return entityEither.fold(
+      (failure) async => Left(failure), // Pass through failure
+      (entity) async => await fromEntityToViewModel(
+          entity), // Await the conversion from entity to ViewModel
+    );
   }
 
-  static Either<MapperFailure, PictureViewModel> fromModelToViewModel(
-      PictureModel pictureModel) {
-    return fromModelToEntity(pictureModel).fold(
+  static Future<Either<MapperFailure, PictureViewModel>> fromModelToViewModel(
+      PictureModel pictureModel) async {
+    return await fromModelToEntity(pictureModel).fold(
       (mapperFailure) {
         return Left(mapperFailure);
       },
-      (pictureEntity) {
-        return PictureMapper.fromEntityToViewModel(pictureEntity);
+      (pictureEntity) async {
+        return await PictureMapper.fromEntityToViewModel(pictureEntity);
       },
     );
   }

@@ -9,6 +9,7 @@ class PictureViewModel extends Equatable {
   final String serviceVersion;
   final String title;
   final String url;
+  final double aspectRatio;
 
   const PictureViewModel({
     required this.copyright,
@@ -19,6 +20,7 @@ class PictureViewModel extends Equatable {
     required this.serviceVersion,
     required this.title,
     required this.url,
+    required this.aspectRatio,
   });
 
   @override
@@ -31,5 +33,6 @@ class PictureViewModel extends Equatable {
         serviceVersion,
         title,
         url,
+        aspectRatio,
       ];
 }

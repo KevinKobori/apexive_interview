@@ -39,9 +39,10 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     final Either<DomainFailure, List<PictureViewModel>> presenterResult =
         await usecaseResult.fold(
       (domainFailure) => Left(domainFailure),
-      (pictureEntityList) {
+      (pictureEntityList) async {
         final pictureViewModelListResult =
-            PictureMapper.fromEntityListToViewModelList(pictureEntityList);
+            await PictureMapper.fromEntityListToViewModelList(
+                pictureEntityList);
         return pictureViewModelListResult.fold(
           (mapperFailure) => Left(mapperFailure.toDomain),
           (pictureViewModelList) =>
@@ -73,11 +74,11 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
 
     /// Presenter
     final Either<DomainFailure, List<PictureViewModel>> presenterResult =
-        datasourceResult.fold(
+        await datasourceResult.fold(
       (domainFailure) => Left(domainFailure),
-      (pictureModel) {
+      (pictureModel) async {
         final pictureViewModelResult =
-            PictureMapper.fromModelToViewModel(pictureModel);
+            await PictureMapper.fromModelToViewModel(pictureModel);
 
         return pictureViewModelResult.fold(
           (mapperFailure) => Left(mapperFailure.toDomain),
@@ -96,11 +97,6 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
 
   @override
   void goToPictureDetail(CatalogPageGoToPictureDetail event) async {
-    // NavigatorManager.pushNamed('picture/detail/$event.pictureDate',
-    //     arguments: event.picture);
-    await NavigatorManager.pushNamed(
-      '/picture/detail/${event.pictureDate}/${event.aspectRatio.toString()}',
-      arguments: event.picture,
-    );
+    await NavigatorManager.pushNamed('/picture/detail/${event.picture.date}');
   }
 }

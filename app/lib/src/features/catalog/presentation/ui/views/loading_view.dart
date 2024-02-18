@@ -45,7 +45,7 @@ class CatalogPageLoadingView extends StatelessWidget {
                 bottom: math.max(
                   mediaQuery.padding.bottom,
                   theme.spacings.large,
-                ),
+                ) + theme.spacings.superLarge,
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
               children:

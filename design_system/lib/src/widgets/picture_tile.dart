@@ -35,37 +35,9 @@ class ApodPictureTile extends StatefulWidget {
 }
 
 class _ApodPictureTileState extends State<ApodPictureTile> {
-  double _aspectRatio = 1;
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadAspectRatio();
-  }
-
-  void _loadAspectRatio() async {
-    try {
-      final double aspectRatio =
-          await ImageHelper.getImageAspectRatio(widget.imageUrl);
-      if (mounted) {
-        setState(() {
-          _aspectRatio = aspectRatio;
-          _isLoading = false;
-        });
-      }
-    } catch (e) {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (widget.isLoading || _isLoading) {
+    if (widget.isLoading) {
       return const ProductTileLayout.shimmer();
     } else {
       return TapBuilder(
@@ -78,14 +50,14 @@ class _ApodPictureTileState extends State<ApodPictureTile> {
                 image: CachedNetworkImageProvider(widget.imageUrl),
                 title: widget.title,
                 date: widget.date,
-                aspectRatio: _aspectRatio,
+                aspectRatio: widget.aspectRatio,
               );
             default:
               return ProductTileLayout.idle(
                 image: CachedNetworkImageProvider(widget.imageUrl),
                 title: widget.title,
                 date: widget.date,
-                aspectRatio: _aspectRatio,
+                aspectRatio: widget.aspectRatio,
               );
           }
         },

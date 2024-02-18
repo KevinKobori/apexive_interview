@@ -41,12 +41,8 @@ class _CatalogPageState extends State<CatalogPage> {
             onLoadCatalog: () => bloc.add(const CatalogPageLoadCatalog()),
             onLoadPictureByDate: (date) =>
                 bloc.add(CatalogPageLoadPictureByDate(date)),
-            onPushToPictureDetail: (aspectRatio, picture) =>
-                bloc.add(CatalogPageGoToPictureDetail(
-              aspectRatio: aspectRatio,
-              picture: null,
-              pictureDate: picture.date,
-            )),
+            onPushToPictureDetail: (picture) =>
+                bloc.add(CatalogPageGoToPictureDetail(picture)),
           );
         } else {
           return const SizedBox.shrink();

@@ -20,7 +20,7 @@ class CatalogPageLoadedSuccessView extends StatelessWidget {
   final List<PictureViewModel> catalog;
   final VoidCallback onLoadCatalog;
   final ValueChanged<DateTime> onLoadPictureByDate;
-  final void Function(double, PictureViewModel) onPushToPictureDetail;
+  final void Function(PictureViewModel) onPushToPictureDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _MobileLayout extends StatelessWidget {
   final List<PictureViewModel> catalog;
   final VoidCallback onLoadCatalog;
   final ValueChanged<DateTime> onLoadPictureByDate;
-  final void Function(double, PictureViewModel) onPushToPictureDetail;
+  final void Function(PictureViewModel) onPushToPictureDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _Body extends StatefulWidget {
   });
 
   final List<PictureViewModel> catalog;
-  final void Function(double, PictureViewModel) onViewPictureDetail;
+  final void Function(PictureViewModel) onViewPictureDetail;
   final VoidCallback onLoadCatalog;
   final ValueChanged<DateTime> onLoadPictureByDate;
 
@@ -124,9 +124,9 @@ class _BodyState extends State<_Body> {
                         title: widget.catalog[0].title,
                         imageUrl: widget.catalog[0].url,
                         date: widget.catalog[0].date,
-                        aspectRatio: 1,
+                        aspectRatio: widget.catalog[0].aspectRatio,
                         onTap: () =>
-                            widget.onViewPictureDetail(1, widget.catalog[0]),
+                            widget.onViewPictureDetail(widget.catalog[0]),
                       ),
                       Positioned(
                         right: 0,
@@ -183,9 +183,10 @@ class _BodyState extends State<_Body> {
                 top: theme.spacings.extraSmall,
                 right: theme.spacings.large,
                 bottom: math.max(
-                  mediaQuery.padding.bottom,
-                  theme.spacings.large,
-                ),
+                      mediaQuery.padding.bottom,
+                      theme.spacings.large,
+                    ) +
+                    theme.spacings.superLarge,
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
               children: widget.catalog
@@ -196,8 +197,8 @@ class _BodyState extends State<_Body> {
                       title: picture.title,
                       imageUrl: picture.url,
                       date: picture.date,
-                      aspectRatio: 1,
-                      onTap: () => widget.onViewPictureDetail(1, picture),
+                      aspectRatio: picture.aspectRatio,
+                      onTap: () => widget.onViewPictureDetail(picture),
                     ),
                   )
                   .toList(),
