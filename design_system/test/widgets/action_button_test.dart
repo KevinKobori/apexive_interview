@@ -9,7 +9,7 @@ void main() {
     {
       'inactive': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.inactive(
             icon: theme.icons.characters.arrowBack,
           );
@@ -17,7 +17,7 @@ void main() {
       ),
       'hovered': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.hovered(
             icon: theme.icons.characters.arrowBack,
           );
@@ -25,7 +25,7 @@ void main() {
       ),
       'pressed': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.pressed(
             icon: theme.icons.characters.arrowBack,
           );

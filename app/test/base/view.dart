@@ -20,8 +20,8 @@ void testAppView(
     appTestWidgets(
       deviceCategory.key,
       {
-        for (final colorMode in ApodAppThemeColorMode.values)
-          colorMode.name: Row(
+        for (final themeMode in ThemeMode.values)
+          themeMode.name: Row(
             mainAxisSize: MainAxisSize.min,
             textDirection: TextDirection.ltr,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,10 +29,10 @@ void testAppView(
               ...deviceCategory.value.entries.map(
                 (device) => MediaQuery(
                   data: device.value,
-                  child: ApodAppResponsiveTheme(
-                    colorMode: colorMode,
-                    appLogo: '<svg width="100" height="50"></svg>',
-                    appWormLogo: '<svg width="100" height="50"></svg>',
+                  child: ApodAppBuilder(
+                    themeMode: themeMode,
+                    // appLogo: '<svg width="100" height="50"></svg>',
+                    // appWormLogo: '<svg width="100" height="50"></svg>',
                     child: Directionality(
                       textDirection: TextDirection.ltr,
                       child: SizedBox(

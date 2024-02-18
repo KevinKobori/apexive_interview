@@ -18,7 +18,7 @@ void main() {
       ),
       'icon-inactive': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.inactive(
             icon: theme.icons.characters.shoppingCart,
           );
@@ -26,7 +26,7 @@ void main() {
       ),
       'icon-hovered': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.hovered(
             icon: theme.icons.characters.shoppingCart,
           );
@@ -34,7 +34,7 @@ void main() {
       ),
       'icon-pressed': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.pressed(
             icon: theme.icons.characters.shoppingCart,
           );
@@ -42,7 +42,7 @@ void main() {
       ),
       'both-inactive': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.inactive(
             title: 'Buy',
             icon: theme.icons.characters.shoppingCart,
@@ -51,7 +51,7 @@ void main() {
       ),
       'both-hovered': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.hovered(
             title: 'Buy',
             icon: theme.icons.characters.shoppingCart,
@@ -60,7 +60,7 @@ void main() {
       ),
       'both-pressed': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.pressed(
             title: 'Buy',
             icon: theme.icons.characters.shoppingCart,

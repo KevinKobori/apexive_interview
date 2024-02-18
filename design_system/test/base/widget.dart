@@ -31,16 +31,14 @@ void testAppWidgets(
         key,
         MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ApodTheme(
-            data: ApodThemeData.regular(
-              appLogo: '<svg></svg>',
-              appWormLogo: '<svg></svg>',
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [...configurations.map((builder) => builder(value))],
-            ),
+          title: 'Nasa Apod',
+          theme: ApodLightTheme.data(),
+          darkTheme: ApodDarkTheme.data(),
+          themeMode: ThemeMode.dark,
+          home: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [...configurations.map((builder) => builder(value))],
           ),
         ),
       ),

@@ -94,7 +94,7 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return LayoutBuilder(builder: (context, constraints) {
       return CustomScrollView(
         controller: _controller,

@@ -6,7 +6,7 @@ import '../base/widget.dart';
 
 void main() {
   Widget bar(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return Container(
       height: 60,
       decoration: BoxDecoration(
@@ -17,7 +17,7 @@ void main() {
   }
 
   NotificationViewModel notification(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',

@@ -9,13 +9,8 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ApodAppBuilder(
-      debugShowCheckedModeBanner: false,
-      colorMode: ApodAppThemeColorMode.dark,
-      appLogo: 'assets/images/nasa_logo.svg',
-      appWormLogo: 'assets/images/nasa_worm_logo.svg',
-      routeInformationParser: Modular.routeInformationParser,
-      routerDelegate: Modular.routerDelegate,
-      title: 'Nasa Apod',
+      routerConfig: Modular.routerConfig,
+      themeMode: ThemeMode.dark,
     );
   }
 }

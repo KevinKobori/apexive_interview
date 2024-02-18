@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
@@ -10,13 +9,12 @@ class NotificationBar extends StatelessWidget {
 
   const NotificationBar({
     required this.notificationsOverviewPresenter,
-    super.key,
-    required this.child,
+    required this.child, super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return BlocBuilder<NotificationsOverviewBloc, NotificationsOverviewState>(
       bloc: notificationsOverviewPresenter,
       builder: (context, state) {
@@ -38,7 +36,7 @@ class NotificationBar extends StatelessWidget {
             child: child,
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

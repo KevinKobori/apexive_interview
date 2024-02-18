@@ -11,27 +11,27 @@ part 'typography.dart';
 
 class ApodThemeLibrary extends StatelessWidget {
   const ApodThemeLibrary({
-    required this.colorMode,
+    required this.themeMode,
     required this.formFactor,
     super.key,
   });
 
-  final ApodAppThemeColorMode colorMode;
+  final ThemeMode themeMode;
   final ApodAppFormFactor formFactor;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ApodAppResponsiveTheme(
-        appLogo: '<svg></svg>',
-        appWormLogo: '<svg></svg>',
-        colorMode: colorMode,
+      home: ApodAppBuilder(
+        // appLogo: '<svg></svg>',
+        // appWormLogo: '<svg></svg>',
+        themeMode: themeMode,
         formFactor: formFactor,
         child: Builder(
           builder: (context) {
             return ThemeContainer(
-              title: 'Apod Theme : ${formFactor.name} - ${colorMode.name}',
+              title: 'Apod Theme : ${formFactor.name} - ${themeMode.name}',
               sections: [
                 colors(context),
                 typography(context),

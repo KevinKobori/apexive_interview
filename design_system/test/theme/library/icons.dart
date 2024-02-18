@@ -1,7 +1,7 @@
 part of 'library.dart';
 
 ThemeSection icons(BuildContext context) {
-  final theme = ApodTheme.of(context);
+  final theme = Theme.of(context).extension<ApodThemeData>()!;
   final icons = theme.icons;
   return ThemeSection(
     title: 'Icons',

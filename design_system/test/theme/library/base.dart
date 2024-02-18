@@ -12,7 +12,7 @@ class ThemeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return Scaffold(
       backgroundColor: theme.colors.background,
       body: ApodPadding(
@@ -41,7 +41,7 @@ class ThemeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return SpacedColumn(
       spaceBetween: 20.0,
       children: [
@@ -123,7 +123,7 @@ class NamedCell<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,

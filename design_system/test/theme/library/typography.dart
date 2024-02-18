@@ -1,7 +1,7 @@
 part of 'library.dart';
 
 ThemeSection typography(BuildContext context) {
-  final theme = ApodTheme.of(context);
+  final theme = Theme.of(context).extension<ApodThemeData>()!;
   return ThemeSection(
     title: 'Typography',
     categories: [

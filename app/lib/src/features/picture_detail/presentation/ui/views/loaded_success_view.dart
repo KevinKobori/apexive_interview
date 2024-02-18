@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
@@ -35,7 +34,7 @@ class _MobileLayout extends StatefulWidget {
 class _MobileLayoutState extends State<_MobileLayout> {
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return ApodScaffold(
       backgroundImage: CachedNetworkImageProvider(widget.picture.url),
       body: ApodContentSheet(
@@ -92,7 +91,7 @@ class _NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
     final route = ModalRoute.of(context);
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,
