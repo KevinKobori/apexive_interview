@@ -4,19 +4,19 @@ extension HttpFailureToDomainFailureExtension on HttpFailure {
   DomainFailure get toDomain {
     switch (this) {
       case HttpFailure.badRequest:
-        return DomainFailure.unexpected;
+        return const DomainFailure.unexpected();
       case HttpFailure.forbidden:
-        return DomainFailure.unexpected;
+        return const DomainFailure.unexpected();
       case HttpFailure.invalidData:
-        return DomainFailure.invalidData;
+        return const DomainFailure.invalidData();
       case HttpFailure.notFound:
-        return DomainFailure.notFound;
+        return const DomainFailure.notFound();
       case HttpFailure.internalServerError:
-        return DomainFailure.internalServerError;
+        return const DomainFailure.internalServerError();
       case HttpFailure.unauthorized:
-        return DomainFailure.unexpected;
+        return const DomainFailure.unexpected();
       default:
-        return DomainFailure.unexpected;
+        return const DomainFailure.unexpected();
     }
   }
 }

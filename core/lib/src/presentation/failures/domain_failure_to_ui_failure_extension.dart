@@ -13,6 +13,8 @@ extension DomainFailureToUIFailureExtension on DomainFailure {
         return I18n.strings.notFoundFailure;
       case DomainFailure.unexpected:
         return I18n.strings.unexpectedFailure;
+      default:
+        return I18n.strings.unexpectedFailure;
     }
   }
 }

@@ -48,7 +48,7 @@ void main() {
       final pictureJsonList =
           DeviceLocalStorageFactory().generateValidPictureJsonList();
 
-      localStorage.mockSaveFailure(LocalStorageFailure.unknownError);
+      localStorage.mockSaveFailure(const LocalStorageFailure.unknownError());
 
       late final List<PictureEntity> matcher;
 
@@ -71,7 +71,7 @@ void main() {
           predicate((element) =>
               element is DomainFailure &&
               element == DomainFailure.unexpected &&
-              element == DomainFailure.unexpected));
+              element == const DomainFailure.unexpected()));
     });
   });
 }

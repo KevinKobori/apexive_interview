@@ -38,7 +38,7 @@ class PictureRepositoryImpl implements PictureRepository {
         },
       );
     } else {
-      return const Left(DomainFailure.notHaveInternetConnection);
+      return const Left(DomainFailure.notHaveInternetConnection());
     }
   }
 }

@@ -4,11 +4,13 @@ extension MapperFailureToDomainFailureExtension on MapperFailure {
   DomainFailure get toDomain {
     switch (this) {
       case MapperFailure.invalidJsonFormat:
-        return DomainFailure.unexpected;
+        return const DomainFailure.unexpected();
       case MapperFailure.conversionError:
-        return DomainFailure.unexpected;
+        return const DomainFailure.unexpected();
       case MapperFailure.unknownError:
-        return DomainFailure.unexpected;
+        return const DomainFailure.unexpected();
+      default:
+        return const DomainFailure.unexpected();
     }
   }
 }

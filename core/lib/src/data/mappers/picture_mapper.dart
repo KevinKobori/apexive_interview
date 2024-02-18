@@ -27,11 +27,11 @@ abstract final class PictureMapper {
     try {
       final pictureModelList = pictureEntityList
           .map((pictureEntity) => fromEntityToModel(pictureEntity)
-              .getOrElse(() => throw MapperFailure.conversionError))
+              .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
       return Right(pictureModelList);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 
@@ -56,11 +56,11 @@ abstract final class PictureMapper {
     try {
       final pictureEntityList = pictureModelList
           .map((pictureModel) => fromModelToEntity(pictureModel)
-              .getOrElse(() => throw MapperFailure.conversionError))
+              .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
       return Right(pictureEntityList);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 
@@ -88,12 +88,12 @@ abstract final class PictureMapper {
     try {
       final pictureViewModelList = pictureEntityList
           .map((pictureEntity) => fromEntityToViewModel(pictureEntity)
-              .getOrElse(() => throw MapperFailure.conversionError))
+              .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
 
       return Right(pictureViewModelList);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 
@@ -103,7 +103,7 @@ abstract final class PictureMapper {
       final json = model.toJson();
       return Right(json);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 
@@ -112,11 +112,11 @@ abstract final class PictureMapper {
     try {
       final jsonList = modelList
           .map((model) => fromModelToJson(model)
-              .getOrElse(() => throw MapperFailure.conversionError))
+              .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
       return Right(jsonList);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 
@@ -126,7 +126,7 @@ abstract final class PictureMapper {
       final pictureModel = PictureModel.fromJson(json);
       return Right(pictureModel);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 
@@ -135,11 +135,11 @@ abstract final class PictureMapper {
     try {
       final pictureModelList = jsonList
           .map((json) => fromJsonToModel(json)
-              .getOrElse(() => throw MapperFailure.conversionError))
+              .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
       return Right(pictureModelList);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 
@@ -153,11 +153,11 @@ abstract final class PictureMapper {
     try {
       final list = jsonList
           .map((json) => fromJsonToEntity(json)
-              .getOrElse(() => throw MapperFailure.conversionError))
+              .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
       return Right(list);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 
@@ -188,11 +188,11 @@ abstract final class PictureMapper {
     try {
       final jsonList = entityList
           .map((entity) => fromEntityToJson(entity)
-              .getOrElse(() => throw MapperFailure.conversionError))
+              .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
       return Right(jsonList);
     } catch (_) {
-      return const Left(MapperFailure.conversionError);
+      return const Left(MapperFailure.conversionError());
     }
   }
 }

@@ -37,7 +37,7 @@ class HttpClientAdapter implements HttpClient {
         response = await futureResponse.timeout(const Duration(seconds: 10));
       }
     } catch (_) {
-      return const Left(HttpFailure.internalServerError);
+      return const Left(HttpFailure.internalServerError());
     }
     return _handleResponse(response);
   }
@@ -51,17 +51,17 @@ class HttpClientAdapter implements HttpClient {
       case 204:
         return const Right(null);
       case 400:
-        return const Left(HttpFailure.badRequest);
+        return const Left(HttpFailure.badRequest());
       case 401:
-        return const Left(HttpFailure.unauthorized);
+        return const Left(HttpFailure.unauthorized());
       case 403:
-        return const Left(HttpFailure.forbidden);
+        return const Left(HttpFailure.forbidden());
       case 404:
-        return const Left(HttpFailure.notFound);
+        return const Left(HttpFailure.notFound());
       case 500:
-        return const Left(HttpFailure.internalServerError);
+        return const Left(HttpFailure.internalServerError());
       default:
-        return const Left(HttpFailure.internalServerError);
+        return const Left(HttpFailure.internalServerError());
     }
   }
 }

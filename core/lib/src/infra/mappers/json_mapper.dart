@@ -8,21 +8,21 @@ class JsonMapper {
     if (data is Map<String, dynamic>) {
       return const Right(true);
     }
-    return const Left(MapperFailure.invalidJsonFormat);
+    return const Left(MapperFailure.invalidJsonFormat());
   }
 
   static Either<MapperFailure, bool> dataIsAListOfMap(dynamic data) {
     if (data is List<Map<String, dynamic>> || (data is List && data.isEmpty)) {
       return const Right(true);
     }
-    return const Left(MapperFailure.invalidJsonFormat);
+    return const Left(MapperFailure.invalidJsonFormat());
   }
 
   static Either<MapperFailure, String> tryEncode(Map<String, dynamic> data) {
     try {
       return Right(json.encode(data));
     } catch (_) {
-      return const Left(MapperFailure.invalidJsonFormat);
+      return const Left(MapperFailure.invalidJsonFormat());
     }
   }
 
@@ -30,7 +30,7 @@ class JsonMapper {
     try {
       return Right(json.decode(data));
     } catch (_) {
-      return const Left(MapperFailure.invalidJsonFormat);
+      return const Left(MapperFailure.invalidJsonFormat());
     }
   }
 
@@ -45,7 +45,7 @@ class JsonMapper {
 
       return Right(list);
     } catch (_) {
-      return const Left(MapperFailure.invalidJsonFormat);
+      return const Left(MapperFailure.invalidJsonFormat());
     }
   }
 }

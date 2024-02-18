@@ -1,15 +1,22 @@
-# External Exception
-**ApodExternalException < response.status**
+# External Failure
 
-# Infra Exception
-**ApodInfraException < IApodExternalException**
+**response.status**
 
-# Data Exception
-**ApodDataException < IApodInfraException**
+# Infra Failure
 
-# Domain Exception
-**ApodDomainException < IApodDataException**
+**HttpFailure < response.status**
+**LocalStorageFailure < code**
 
-# Presenter Exception
-**PresenterException < IApodDomainException**
-**UI < IPresenterException**
+# Data Failure
+
+**MapperFailure < code**
+
+# Domain Failure
+
+**DomainFailure < HttpFailure**
+**DomainFailure < LocalStorageFailure**
+**DomainFailure < MapperFailure**
+
+# UI Failure
+
+**I18n < DomainFailure**

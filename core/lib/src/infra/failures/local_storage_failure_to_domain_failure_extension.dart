@@ -4,7 +4,9 @@ extension LocalStorageFailureToDomainFailureExtension on LocalStorageFailure {
   DomainFailure get toDomain {
     switch (this) {
       case LocalStorageFailure.unknownError:
-        return DomainFailure.unexpected;
+        return const DomainFailure.unexpected();
+      default:
+        return const DomainFailure.unexpected();
     }
   }
 }

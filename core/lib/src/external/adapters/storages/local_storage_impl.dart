@@ -15,7 +15,7 @@ class LocalStorageAdapter implements LocalStorage {
       await localStorage.setItem(itemKey, itemValue);
       return const Right(null);
     } catch (_) {
-      return const Left(LocalStorageFailure.unknownError);
+      return const Left(LocalStorageFailure.unknownError());
     }
   }
 
@@ -25,7 +25,7 @@ class LocalStorageAdapter implements LocalStorage {
       await localStorage.deleteItem(itemKey);
       return const Right(null);
     } catch (_) {
-      return const Left(LocalStorageFailure.unknownError);
+      return const Left(LocalStorageFailure.unknownError());
     }
   }
 
@@ -35,7 +35,7 @@ class LocalStorageAdapter implements LocalStorage {
       final data = await localStorage.getItem(itemKey);
       return Right(data);
     } catch (_) {
-      return const Left(LocalStorageFailure.unknownError);
+      return const Left(LocalStorageFailure.unknownError());
     }
   }
 }

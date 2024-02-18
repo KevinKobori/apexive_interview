@@ -23,7 +23,7 @@ class LocalLoadCatalogUseCaseImpl
       /// Right
       (localData) {
         if (localData.isEmpty != false) {
-          return const Left(DomainFailure.unexpected);
+          return const Left(DomainFailure.unexpected());
         }
 
         final entityListResult =
