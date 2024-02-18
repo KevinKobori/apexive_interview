@@ -52,8 +52,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
 
     /// UI
     presenterResult.fold(
-        (domainFailure) =>
-            emit(CatalogPageLoadedFailure(domainFailure.toUI)),
+        (domainFailure) => emit(CatalogPageLoadedFailure(domainFailure.toUI)),
         (pictureViewModelList) {
       emit(CatalogPageLoadedSuccess(pictureViewModelList));
     });
@@ -67,9 +66,10 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     /// Infra, Data, Domain
     final datasource = PictureDatasourceImpl(httpClientAdapterFactory());
     final apodDate = DateTimeMapper.getStringFromDateTimeYMD(event.date);
-    final datasourceResult = await datasource.fetchPictureByDate(apodApiUrlFactory(
-        apiKey: ApodEnvironmentConstants.apiKey,
-        requestPath: '&date=$apodDate'));
+    final datasourceResult = await datasource.fetchPictureByDate(
+        apodApiUrlFactory(
+            apiKey: ApodEnvironmentConstants.apiKey,
+            requestPath: '&date=$apodDate'));
 
     /// Presenter
     final Either<DomainFailure, List<PictureViewModel>> presenterResult =
@@ -78,7 +78,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
       (pictureModel) {
         final pictureViewModelResult =
             PictureMapper.fromModelToViewModel(pictureModel);
-            
+
         return pictureViewModelResult.fold(
           (mapperFailure) => Left(mapperFailure.toDomain),
           (pictureViewModel) => Right([pictureViewModel]),
@@ -88,16 +88,19 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
 
     /// UI
     presenterResult.fold(
-        (domainFailure) =>
-            emit(CatalogPageLoadedFailure(domainFailure.toUI)),
+        (domainFailure) => emit(CatalogPageLoadedFailure(domainFailure.toUI)),
         (pictureViewModelList) {
       emit(CatalogPageLoadedSuccess(pictureViewModelList));
     });
   }
 
   @override
-  void goToPictureDetail(CatalogPageGoToPictureDetail event) {
-    NavigatorManager.pushNamed('picture/detail/$event.pictureDate',
-        arguments: event.picture);
+  void goToPictureDetail(CatalogPageGoToPictureDetail event) async {
+    // NavigatorManager.pushNamed('picture/detail/$event.pictureDate',
+    //     arguments: event.picture);
+    await NavigatorManager.pushNamed(
+      '/picture/detail/${event.pictureDate}/${event.aspectRatio.toString()}',
+      arguments: event.picture,
+    );
   }
 }

@@ -14,8 +14,9 @@ void main() {
           create: (context) => AccountOverviewBloc(),
           child: CatalogPageLoadedSuccessView(
             catalog: const [],
-            onLoadPictureByDate: (date) {},
+            onLoadPictureByDate: (_) {},
             onLoadCatalog: () {},
+            onPushToPictureDetail: (_, __) {},
           ),
         ),
       ),

@@ -15,8 +15,8 @@ class ThemeContainer extends StatelessWidget {
     final theme = ApodTheme.of(context);
     return Scaffold(
       backgroundColor: theme.colors.background,
-      body: Padding(
-        padding: theme.spacings.asInsets().extraLarge,
+      body: ApodPadding(
+        padding: const ApodEdgeInsets.extraLarge(),
         child: SpacedColumn(
           spaceBetween: theme.spacings.large,
           children: [

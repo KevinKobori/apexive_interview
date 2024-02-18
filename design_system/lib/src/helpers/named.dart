@@ -8,7 +8,9 @@ class Named<T> extends Equatable {
   final T value;
 
   @override
-  List<Object?> get props => [value];
+  List<Object?> get props => [
+        value,
+      ];
 
   @override
   String toString() => '<$name>($value)';

@@ -55,10 +55,8 @@ class ApodPageHeader extends StatelessWidget {
   Widget _buildBody(ApodThemeData theme) {
     return SafeArea(
       bottom: false,
-      child: Padding(
-        padding: EdgeInsets.all(
-          theme.spacings.large,
-        ),
+      child: ApodPadding(
+        padding: const ApodEdgeInsets.large(),
         child: Center(
           child: Column(
             children: [

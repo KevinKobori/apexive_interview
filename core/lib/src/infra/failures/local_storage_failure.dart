@@ -9,5 +9,7 @@ class LocalStorageFailure extends Equatable implements Exception {
   String toString() => 'LocalStorageFailure: $message';
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [
+        message,
+      ];
 }

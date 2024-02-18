@@ -4,7 +4,10 @@ class HttpFailure extends Equatable implements Exception {
   final String message;
   final int statusCode;
 
-  const HttpFailure._(this.message, this.statusCode);
+  const HttpFailure._(
+    this.message,
+    this.statusCode,
+  );
 
   const HttpFailure.unknownError() : this._('Unknown Error', -1);
   const HttpFailure.invalidData() : this._('Invalid Data', -2);
@@ -61,8 +64,7 @@ class HttpFailure extends Equatable implements Exception {
   const HttpFailure.expectationFailed() : this._('Expectation Failed', 417);
   const HttpFailure.iamATeapot() : this._('I\'m a teapot', 418);
   const HttpFailure.misdirectedRequest() : this._('Misdirected Request', 421);
-  const HttpFailure.unprocessableEntity()
-      : this._('Unprocessable Entity', 422);
+  const HttpFailure.unprocessableEntity() : this._('Unprocessable Entity', 422);
   const HttpFailure.locked() : this._('Locked', 423);
   const HttpFailure.failedDependency() : this._('Failed Dependency', 424);
   const HttpFailure.upgradeRequired() : this._('Upgrade Required', 426);
@@ -89,8 +91,7 @@ class HttpFailure extends Equatable implements Exception {
       : this._('HTTP Version Not Supported', 505);
   const HttpFailure.variantAlsoNegociates()
       : this._('Variant Also Negociates', 506);
-  const HttpFailure.insufficientStorage()
-      : this._('Insufficient Storage', 507);
+  const HttpFailure.insufficientStorage() : this._('Insufficient Storage', 507);
   const HttpFailure.loopDetected() : this._('Loop Detected', 508);
   const HttpFailure.notExtended() : this._('Not Extended', 510);
   const HttpFailure.networkAuthenticationRequired()
@@ -240,5 +241,8 @@ class HttpFailure extends Equatable implements Exception {
   String toString() => 'HttpFailure: $message (Status Code: $statusCode)';
 
   @override
-  List<Object?> get props => [message, statusCode];
+  List<Object?> get props => [
+        message,
+        statusCode,
+      ];
 }

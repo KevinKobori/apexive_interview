@@ -28,8 +28,7 @@ void main() {
       verify(() => localStorage.fetch('catalog')).called(1);
     });
 
-    test('When load data should return a catalog on success',
-        () async {
+    test('When load data should return a catalog on success', () async {
       final data = DeviceLocalStorageFactory().generateValidPictureJsonList();
       final pictureJsonList = data;
       late final List<PictureEntity> matcher;
@@ -69,7 +68,8 @@ void main() {
       expect(
         actual,
         predicate((element) =>
-            element is DomainFailure && element == const DomainFailure.unexpected()),
+            element is DomainFailure &&
+            element == const DomainFailure.unexpected()),
       );
     });
 
@@ -89,7 +89,8 @@ void main() {
       expect(
         actual,
         predicate((element) =>
-            element is DomainFailure && element == const DomainFailure.unexpected()),
+            element is DomainFailure &&
+            element == const DomainFailure.unexpected()),
       );
     });
 
@@ -109,7 +110,8 @@ void main() {
       expect(
         actual,
         predicate((element) =>
-            element is DomainFailure && element == const DomainFailure.unexpected()),
+            element is DomainFailure &&
+            element == const DomainFailure.unexpected()),
       );
     });
 
@@ -127,7 +129,8 @@ void main() {
       expect(
         actual,
         predicate((element) =>
-            element is DomainFailure && element == const DomainFailure.unexpected()),
+            element is DomainFailure &&
+            element == const DomainFailure.unexpected()),
       );
     });
   });

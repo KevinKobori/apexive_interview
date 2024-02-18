@@ -29,7 +29,8 @@ class AccountAvatar extends StatelessWidget {
 
 class AccountAvatarSuccessView extends StatelessWidget {
   const AccountAvatarSuccessView({
-    required this.url, super.key,
+    required this.url,
+    super.key,
   });
 
   final String url;

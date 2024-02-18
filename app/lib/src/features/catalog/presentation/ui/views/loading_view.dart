@@ -5,7 +5,9 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class CatalogPageLoadingView extends StatelessWidget {
-  const CatalogPageLoadingView({super.key});
+  const CatalogPageLoadingView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

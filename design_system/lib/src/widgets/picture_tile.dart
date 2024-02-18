@@ -7,24 +7,27 @@ import 'package:tap_builder/tap_builder.dart';
 class ApodPictureTile extends StatefulWidget {
   const ApodPictureTile.shimmer({
     super.key,
-  })  : isShimmer = true,
+  })  : isLoading = true,
         title = '',
         imageUrl = '',
         date = '',
+        aspectRatio = 1.2,
         onTap = null;
 
   const ApodPictureTile({
     required this.title,
     required this.imageUrl,
     required this.date,
+    required this.aspectRatio,
     required this.onTap,
     super.key,
-  }) : isShimmer = false;
+  }) : isLoading = false;
 
-  final bool isShimmer;
+  final bool isLoading;
   final String title;
   final String imageUrl;
   final String date;
+  final double aspectRatio;
   final VoidCallback? onTap;
 
   @override
@@ -62,7 +65,7 @@ class _ApodPictureTileState extends State<ApodPictureTile> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.isShimmer || _isLoading) {
+    if (widget.isLoading || _isLoading) {
       return const ProductTileLayout.shimmer();
     } else {
       return TapBuilder(

@@ -11,5 +11,7 @@ class MapperFailure extends Equatable implements Exception {
   String toString() => 'MapperFailure: $message';
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [
+        message,
+      ];
 }

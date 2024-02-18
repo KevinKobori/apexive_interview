@@ -19,24 +19,40 @@ class RemoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseImpl
   @override
   Future<Either<DomainFailure, List<PictureEntity>>> call(
       LoadCatalogParams params) async {
-    final result = await remoteLoadCatalogByStartEndDate.call(params);
+    final loadResult = await remoteLoadCatalogByStartEndDate.call(params);
 
-    return await result.fold(
+    return await loadResult.fold(
+      /// Left
       (domainFailure) async {
-        await localValidateCatalog.call(null);
-        final pictureEntityListResult = await localLoadCatalog.call(null);
-        
-        return pictureEntityListResult.fold(
-          (domainFailure) => Left(domainFailure),
-          (pictureEntityList) => Right(pictureEntityList),
-        );
+        return await _getLocalData();
       },
+
+      /// Right
       (pictureEntityList) async {
         await localSaveCatalog.call(pictureEntityList);
-        // await localValidateCatalog.call(null);
-        // await localLoadCatalog.call(null);
+        return await _getLocalData();
+      },
+    );
+  }
 
-        return Right(pictureEntityList);
+  Future<Either<DomainFailure, List<PictureEntity>>> _getLocalData() async {
+    final validateResult = await localValidateCatalog.call(null);
+
+    return await validateResult.fold(
+      /// Left
+      (domainFailure) => Left(domainFailure),
+
+      /// Right
+      (_) async {
+        final loadResult = await localLoadCatalog.call(null);
+
+        return loadResult.fold(
+          /// Left
+          (domainFailure) => Left(domainFailure),
+
+          /// Right
+          (pictureEntityList) => Right(pictureEntityList),
+        );
       },
     );
   }

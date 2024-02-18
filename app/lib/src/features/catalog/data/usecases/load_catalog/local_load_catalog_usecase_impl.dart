@@ -2,8 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-class LocalLoadCatalogUseCaseImpl
-    implements LocalLoadCatalogUseCase {
+class LocalLoadCatalogUseCaseImpl implements LocalLoadCatalogUseCase {
   final LocalStorage localStorage;
   final String itemKey;
 
@@ -17,8 +16,7 @@ class LocalLoadCatalogUseCaseImpl
     final dataResult = await localStorage.fetch(itemKey);
     return dataResult.fold(
       /// Left
-      (localStorageFailure) =>
-          Left(localStorageFailure.toDomain),
+      (localStorageFailure) => Left(localStorageFailure.toDomain),
 
       /// Right
       (localData) {

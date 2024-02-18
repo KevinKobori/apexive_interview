@@ -20,14 +20,14 @@ class RemoteLoadCatalogByStartEndDateUseCaseImpl
     final apodStartDate = getApodDateFormat(params.startDate);
     final apodEndDate = getApodDateFormat(params.endDate);
 
-    final result = await pictureRepository.getCatalogByStartEndDate(
+    final repositoryResult = await pictureRepository.getCatalogByStartEndDate(
       apodApiUrlFactory(
         apiKey: apiKey,
         requestPath: '&start_date=$apodStartDate&end_date=$apodEndDate',
       ),
     );
-    
-    return result;
+
+    return repositoryResult;
   }
 
   static String getApodDateFormat(DateTime localDateTime) {

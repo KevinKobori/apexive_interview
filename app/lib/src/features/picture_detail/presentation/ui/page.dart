@@ -8,13 +8,11 @@ class PictureDetailPage extends StatefulWidget {
   const PictureDetailPage({
     required this.aspectRatio,
     required this.pictureDate,
-    required this.picture,
     super.key,
   });
 
   final double aspectRatio;
   final String pictureDate;
-  final PictureViewModel? picture;
 
   @override
   State<PictureDetailPage> createState() => _PictureDetailPageState();
@@ -30,8 +28,13 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
         await ls.LocalStorage(localStorageConfigKeyPathFactory())
             .getItem(localLoadCatalogUseCaseImplFactory().itemKey);
 
-    final int pictureMapIndex = pictureJsonList.indexWhere(
-        (dynamic pictureJson) => pictureJson['date'] == widget.pictureDate);
+    final int pictureMapIndex =
+        pictureJsonList.indexWhere((dynamic pictureJson) {
+      final apodDate = DateTimeMapper.getStringFromDateTimeYMD(
+          DateTime.parse(pictureJson['date']));
+
+      return apodDate == widget.pictureDate;
+    });
     final pictureJson = pictureJsonList[pictureMapIndex];
 
     final viewModelResult = PictureMapper.fromJsonToViewModel(pictureJson);
@@ -45,16 +48,14 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      if (widget.picture == null) {
-        final result = await getPictureViewModelFromLocalStorage();
+      final localStorageResult = await getPictureViewModelFromLocalStorage();
 
-        result.fold(
-          (domainFailure) => null,
-          (pictureViewModel) {
-            rxPicture.value = pictureViewModel;
-          },
-        );
-      }
+      localStorageResult.fold(
+        (domainFailure) => null,
+        (pictureViewModel) {
+          rxPicture.value = pictureViewModel;
+        },
+      );
     });
     super.initState();
   }
@@ -64,11 +65,17 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
     return ValueListenableBuilder(
       valueListenable: rxPicture,
       builder: (_, pictureViewModel, __) {
-        final picture = widget.picture ?? pictureViewModel;
-        return PictureDetailPageLoadedSuccessView(
-          pictureDate: widget.pictureDate,
-          picture: picture!,
-        );
+        if (pictureViewModel == null) {
+          return const Center(
+            // TODO: NOW 
+            child: Text('ERROR'),
+          );
+        } else {
+          return PictureDetailPageLoadedSuccessView(
+            pictureDate: widget.pictureDate,
+            picture: pictureViewModel,
+          );
+        }
       },
     );
   }

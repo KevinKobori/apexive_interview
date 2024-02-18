@@ -48,5 +48,7 @@ class ApodBorderRadiusData extends Equatable {
   final ApodRadiusData _radius;
 
   @override
-  List<Object?> get props => [_radius];
+  List<Object?> get props => [
+        _radius,
+      ];
 }

@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class AppWidget extends StatelessWidget {
-  AppWidget({
+  const AppWidget({
     super.key,
   });
 

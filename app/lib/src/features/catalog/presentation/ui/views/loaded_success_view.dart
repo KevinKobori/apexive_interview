@@ -13,12 +13,14 @@ class CatalogPageLoadedSuccessView extends StatelessWidget {
     required this.catalog,
     required this.onLoadCatalog,
     required this.onLoadPictureByDate,
+    required this.onPushToPictureDetail,
     super.key,
   });
 
   final List<PictureViewModel> catalog;
   final VoidCallback onLoadCatalog;
   final ValueChanged<DateTime> onLoadPictureByDate;
+  final void Function(double, PictureViewModel) onPushToPictureDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +28,7 @@ class CatalogPageLoadedSuccessView extends StatelessWidget {
       catalog: catalog,
       onLoadCatalog: onLoadCatalog,
       onLoadPictureByDate: onLoadPictureByDate,
-      onViewPictureDetail: (aspectRatio, picture) async {
-        await NavigatorManager.pushNamed(
-          '/picture/detail/${picture.date}/${aspectRatio.toString()}',
-          arguments: picture,
-        );
-      },
+      onPushToPictureDetail: onPushToPictureDetail,
     );
   }
 }
@@ -39,15 +36,15 @@ class CatalogPageLoadedSuccessView extends StatelessWidget {
 class _MobileLayout extends StatelessWidget {
   const _MobileLayout({
     required this.catalog,
-    required this.onViewPictureDetail,
     required this.onLoadCatalog,
     required this.onLoadPictureByDate,
+    required this.onPushToPictureDetail,
   });
 
   final List<PictureViewModel> catalog;
-  final void Function(double, PictureViewModel) onViewPictureDetail;
   final VoidCallback onLoadCatalog;
   final ValueChanged<DateTime> onLoadPictureByDate;
+  final void Function(double, PictureViewModel) onPushToPictureDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +54,7 @@ class _MobileLayout extends StatelessWidget {
         catalog: catalog,
         onLoadCatalog: onLoadCatalog,
         onLoadPictureByDate: onLoadPictureByDate,
-        onViewPictureDetail: onViewPictureDetail,
+        onViewPictureDetail: onPushToPictureDetail,
       ),
       floatingBar: _NavigationBar(
         accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
@@ -127,6 +124,7 @@ class _BodyState extends State<_Body> {
                         title: widget.catalog[0].title,
                         imageUrl: widget.catalog[0].url,
                         date: widget.catalog[0].date,
+                        aspectRatio: 1,
                         onTap: () =>
                             widget.onViewPictureDetail(1, widget.catalog[0]),
                       ),
@@ -198,6 +196,7 @@ class _BodyState extends State<_Body> {
                       title: picture.title,
                       imageUrl: picture.url,
                       date: picture.date,
+                      aspectRatio: 1,
                       onTap: () => widget.onViewPictureDetail(1, picture),
                     ),
                   )

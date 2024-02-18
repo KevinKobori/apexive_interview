@@ -58,7 +58,9 @@ class ApodEdgeInsetsSpacingsData extends Equatable {
   final ApodSpacingsData _spacing;
 
   @override
-  List<Object?> get props => [_spacing];
+  List<Object?> get props => [
+        _spacing,
+      ];
 }
 
 enum ApodSpacing {

@@ -19,7 +19,6 @@ class AppModule extends Module {
       child: (context) => pictureDetailPageFactory(
         aspectRatio: double.parse(r.args.params['aspectRatio']!),
         pictureDate: r.args.params['pictureDate']!,
-        picture: r.args.data,
       ),
     );
   }

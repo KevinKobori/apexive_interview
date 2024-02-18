@@ -14,7 +14,8 @@ class LocalSaveCatalogUseCaseImpl implements LocalSaveCatalogUseCase {
   @override
   Future<Either<DomainFailure, void>> call(
       List<PictureEntity> pictureEntityList) async {
-    final pictureJsonListResult = PictureMapper.fromEntityListToJsonList(pictureEntityList);
+    final pictureJsonListResult =
+        PictureMapper.fromEntityListToJsonList(pictureEntityList);
     return await pictureJsonListResult.fold(
       /// Left
       (mapperFailure) => Left(mapperFailure.toDomain),

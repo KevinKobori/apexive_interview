@@ -15,5 +15,7 @@ class DomainFailure extends Equatable implements Exception {
   String toString() => 'DomainFailure: $message';
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [
+        message,
+      ];
 }

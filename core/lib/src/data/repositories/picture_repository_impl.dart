@@ -25,7 +25,7 @@ class PictureRepositoryImpl implements PictureRepository {
         (pictureModelList) {
           final entityListResult =
               PictureMapper.fromModelListToEntityList(pictureModelList);
-              
+
           return entityListResult.fold(
             /// Left
             (mapperFailure) {

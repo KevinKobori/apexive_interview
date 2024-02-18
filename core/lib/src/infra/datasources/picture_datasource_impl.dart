@@ -19,7 +19,7 @@ class PictureDatasourceImpl implements PictureDatasource {
       /// Right
       (data) {
         final jsonListResult = JsonMapper.tryDecode(data);
-        
+
         return jsonListResult.fold(
           /// Left
           (mapperFailure) => Left(mapperFailure.toDomain),
@@ -52,7 +52,8 @@ class PictureDatasourceImpl implements PictureDatasource {
   }
 
   @override
-  Future<Either<DomainFailure, PictureModel>> fetchPictureByDate(String url) async {
+  Future<Either<DomainFailure, PictureModel>> fetchPictureByDate(
+      String url) async {
     final resultHttpClient =
         await httpClient.request(method: HttpMethod.get, url: url);
     return resultHttpClient.fold(
