@@ -226,13 +226,13 @@ class _NavigationBar extends StatelessWidget {
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,
       child: ApodNavigationBar(
-        leading: CurrentUserAvatar(
+        leading: AccountAvatar(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
         summary: CollectionsOverview(
           collectionsOverviewPresenter: collectionsOverviewPresenter,
         ),
-        body: CurrentUserAccountNavigationBody(
+        body: AccountNavigationBarBody(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
       ),

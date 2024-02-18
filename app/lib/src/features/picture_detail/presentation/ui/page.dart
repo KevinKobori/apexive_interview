@@ -35,10 +35,10 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
     final pictureJson = pictureJsonList[pictureMapIndex];
 
     final viewModelResult = PictureMapper.fromJsonToViewModel(pictureJson);
-    return viewModelResult.fold((l) {
-      return dz.Left(l.fromJsonperToDomain);
-    }, (r) {
-      return dz.Right(r);
+    return viewModelResult.fold((mapperFailure) {
+      return dz.Left(mapperFailure.toDomain);
+    }, (pictureViewModel) {
+      return dz.Right(pictureViewModel);
     });
   }
 
@@ -47,8 +47,9 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (widget.picture == null) {
         final result = await getPictureViewModelFromLocalStorage();
+
         result.fold(
-          (domainFailure) {},
+          (domainFailure) => null,
           (pictureViewModel) {
             rxPicture.value = pictureViewModel;
           },

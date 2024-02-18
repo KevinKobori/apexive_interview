@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class CurrentUserAccountNavigationBody extends StatelessWidget {
+class AccountNavigationBarBody extends StatelessWidget {
   final AccountOverviewBloc accountOverviewPresenter;
 
-  const CurrentUserAccountNavigationBody({
+  const AccountNavigationBarBody({
     required this.accountOverviewPresenter,
     super.key,
   });
@@ -15,11 +15,10 @@ class CurrentUserAccountNavigationBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = ApodTheme.of(context);
 
-    // TODO: NOW REMOVE THIS BLOC
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
       bloc: accountOverviewPresenter,
       builder: (context, state) {
-        if (state is AccountOverviewStateLoadedData) {
+        if (state is AccountOverviewStateLoadedSuccess) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
@@ -35,7 +34,7 @@ class CurrentUserAccountNavigationBody extends StatelessWidget {
             ],
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

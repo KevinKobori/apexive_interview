@@ -43,7 +43,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
         final pictureViewModelListResult =
             PictureMapper.fromEntityListToViewModelList(pictureEntityList);
         return pictureViewModelListResult.fold(
-          (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+          (mapperFailure) => Left(mapperFailure.toDomain),
           (pictureViewModelList) =>
               Right(pictureViewModelList.toList().reversed.toList()),
         );
@@ -53,7 +53,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     /// UI
     presenterResult.fold(
         (domainFailure) =>
-            emit(CatalogPageLoadedFailure(domainFailure.toUIFailure)),
+            emit(CatalogPageLoadedFailure(domainFailure.toUI)),
         (pictureViewModelList) {
       emit(CatalogPageLoadedSuccess(pictureViewModelList));
     });
@@ -67,7 +67,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     /// Infra, Data, Domain
     final datasource = PictureDatasourceImpl(httpClientAdapterFactory());
     final apodDate = DateTimeMapper.getStringFromDateTimeYMD(event.date);
-    final datasourceResult = await datasource.fetchByDate(apodApiUrlFactory(
+    final datasourceResult = await datasource.fetchPictureByDate(apodApiUrlFactory(
         apiKey: ApodEnvironmentConstants.apiKey,
         requestPath: '&date=$apodDate'));
 
@@ -78,8 +78,9 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
       (pictureModel) {
         final pictureViewModelResult =
             PictureMapper.fromModelToViewModel(pictureModel);
+            
         return pictureViewModelResult.fold(
-          (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+          (mapperFailure) => Left(mapperFailure.toDomain),
           (pictureViewModel) => Right([pictureViewModel]),
         );
       },
@@ -88,7 +89,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     /// UI
     presenterResult.fold(
         (domainFailure) =>
-            emit(CatalogPageLoadedFailure(domainFailure.toUIFailure)),
+            emit(CatalogPageLoadedFailure(domainFailure.toUI)),
         (pictureViewModelList) {
       emit(CatalogPageLoadedSuccess(pictureViewModelList));
     });

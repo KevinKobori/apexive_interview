@@ -4,7 +4,6 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
-// TODO: NOW - CHANGE TI TO RECEIVE START AND END DATES
 class RemoteLoadCatalogByStartEndDateUseCaseImpl
     implements RemoteLoadCatalogByStartEndDateUseCase {
   final PictureRepository pictureRepository;
@@ -21,12 +20,13 @@ class RemoteLoadCatalogByStartEndDateUseCaseImpl
     final apodStartDate = getApodDateFormat(params.startDate);
     final apodEndDate = getApodDateFormat(params.endDate);
 
-    final result = await pictureRepository.getDataByStartEndDate(
+    final result = await pictureRepository.getCatalogByStartEndDate(
       apodApiUrlFactory(
         apiKey: apiKey,
         requestPath: '&start_date=$apodStartDate&end_date=$apodEndDate',
       ),
     );
+    
     return result;
   }
 

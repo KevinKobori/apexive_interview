@@ -1,7 +1,7 @@
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 extension DomainFailureToUIFailureExtension on DomainFailure {
-  String get toUIFailure {
+  String get toUI {
     switch (this) {
       case DomainFailure.notHaveInternetConnection:
         return I18n.strings.notHaveInternetConnectionFailure;

@@ -34,7 +34,7 @@ void main() {
       final pictureJsonList = data;
       late final List<PictureEntity> matcher;
       PictureMapper.fromJsonListToEntityList(pictureJsonList).fold(
-        (domainFailure) {},
+        (domainFailure) => null,
         (pictureEntityList) {
           matcher = pictureEntityList;
         },
@@ -45,7 +45,7 @@ void main() {
       late List<PictureEntity> actual;
       final resultSUT = await sut.call(null);
       resultSUT.fold(
-        (domainFailure) {},
+        (domainFailure) => null,
         (pictureEntityList) {
           actual = pictureEntityList;
         },

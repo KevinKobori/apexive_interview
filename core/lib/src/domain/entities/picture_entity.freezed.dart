@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PictureEntity {
-  String get copyright => throw _privateConstructorUsedError;
+  String? get copyright => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   String get explanation => throw _privateConstructorUsedError;
   String get hdurl => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $PictureEntityCopyWith<$Res> {
       _$PictureEntityCopyWithImpl<$Res, PictureEntity>;
   @useResult
   $Res call(
-      {String copyright,
+      {String? copyright,
       DateTime date,
       String explanation,
       String hdurl,
@@ -60,7 +60,7 @@ class _$PictureEntityCopyWithImpl<$Res, $Val extends PictureEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? copyright = null,
+    Object? copyright = freezed,
     Object? date = null,
     Object? explanation = null,
     Object? hdurl = null,
@@ -70,10 +70,10 @@ class _$PictureEntityCopyWithImpl<$Res, $Val extends PictureEntity>
     Object? url = null,
   }) {
     return _then(_value.copyWith(
-      copyright: null == copyright
+      copyright: freezed == copyright
           ? _value.copyright
           : copyright // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$PictureEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String copyright,
+      {String? copyright,
       DateTime date,
       String explanation,
       String hdurl,
@@ -136,7 +136,7 @@ class __$$PictureEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? copyright = null,
+    Object? copyright = freezed,
     Object? date = null,
     Object? explanation = null,
     Object? hdurl = null,
@@ -146,10 +146,10 @@ class __$$PictureEntityImplCopyWithImpl<$Res>
     Object? url = null,
   }) {
     return _then(_$PictureEntityImpl(
-      copyright: null == copyright
+      copyright: freezed == copyright
           ? _value.copyright
           : copyright // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -196,7 +196,7 @@ class _$PictureEntityImpl implements _PictureEntity {
       required this.url});
 
   @override
-  final String copyright;
+  final String? copyright;
   @override
   final DateTime date;
   @override
@@ -249,7 +249,7 @@ class _$PictureEntityImpl implements _PictureEntity {
 
 abstract class _PictureEntity implements PictureEntity {
   const factory _PictureEntity(
-      {required final String copyright,
+      {required final String? copyright,
       required final DateTime date,
       required final String explanation,
       required final String hdurl,
@@ -259,7 +259,7 @@ abstract class _PictureEntity implements PictureEntity {
       required final String url}) = _$PictureEntityImpl;
 
   @override
-  String get copyright;
+  String? get copyright;
   @override
   DateTime get date;
   @override

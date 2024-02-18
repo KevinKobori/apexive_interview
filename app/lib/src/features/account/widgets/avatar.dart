@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 
-class CurrentUserAvatar extends StatelessWidget {
+class AccountAvatar extends StatelessWidget {
   final AccountOverviewBloc accountOverviewPresenter;
 
-  const CurrentUserAvatar({
+  const AccountAvatar({
     required this.accountOverviewPresenter,
     super.key,
   });
@@ -15,22 +15,21 @@ class CurrentUserAvatar extends StatelessWidget {
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
       bloc: accountOverviewPresenter,
       builder: (context, state) {
-        if (state is AccountOverviewStateLoadedData) {
-          return UserAvatar(
+        if (state is AccountOverviewStateLoadedSuccess) {
+          return AccountAvatarSuccessView(
             url: state.account.pictureUrl,
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );
   }
 }
 
-class UserAvatar extends StatelessWidget {
-  const UserAvatar({
-    super.key,
-    required this.url,
+class AccountAvatarSuccessView extends StatelessWidget {
+  const AccountAvatarSuccessView({
+    required this.url, super.key,
   });
 
   final String url;

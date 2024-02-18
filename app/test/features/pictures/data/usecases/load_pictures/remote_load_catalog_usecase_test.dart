@@ -84,7 +84,7 @@ void main() {
     late final List<PictureEntity> matcher;
 
     PictureMapper.fromJsonListToEntityList(pictureJsonList).fold(
-      (domainFailure) {},
+      (domainFailure) => null,
       (pictureEntityList) {
         matcher = pictureEntityList;
       },
@@ -95,7 +95,7 @@ void main() {
     late List<PictureEntity> actual;
 
     resultSUT.fold(
-      (domainFailure) {},
+      (domainFailure) => null,
       (pictureEntityList) {
         actual = pictureEntityList;
       },

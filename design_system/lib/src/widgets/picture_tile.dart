@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -43,7 +41,7 @@ class _ApodPictureTileState extends State<ApodPictureTile> {
     _loadAspectRatio();
   }
 
-  Future<void> _loadAspectRatio() async {
+  void _loadAspectRatio() async {
     try {
       final double aspectRatio =
           await ImageHelper.getImageAspectRatio(widget.imageUrl);

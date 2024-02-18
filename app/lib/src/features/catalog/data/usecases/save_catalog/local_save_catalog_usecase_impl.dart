@@ -14,10 +14,10 @@ class LocalSaveCatalogUseCaseImpl implements LocalSaveCatalogUseCase {
   @override
   Future<Either<DomainFailure, void>> call(
       List<PictureEntity> pictureEntityList) async {
-    final result = PictureMapper.fromEntityListToJsonList(pictureEntityList);
-    return await result.fold(
+    final pictureJsonListResult = PictureMapper.fromEntityListToJsonList(pictureEntityList);
+    return await pictureJsonListResult.fold(
       /// Left
-      (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+      (mapperFailure) => Left(mapperFailure.toDomain),
 
       /// Right
       (pictureJsonList) async {
@@ -25,8 +25,7 @@ class LocalSaveCatalogUseCaseImpl implements LocalSaveCatalogUseCase {
             itemKey: itemKey, itemValue: pictureJsonList);
         return saveResult.fold(
           /// Left
-          (localStorageFailure) =>
-              Left(localStorageFailure.fromLocalStorageToDomain),
+          (localStorageFailure) => Left(localStorageFailure.toDomain),
 
           /// Right
           (_) => const Right(null),

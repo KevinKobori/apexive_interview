@@ -5,7 +5,7 @@ part 'picture_entity.freezed.dart';
 @freezed
 class PictureEntity with _$PictureEntity {
   const factory PictureEntity({
-    required String copyright,
+    required String? copyright,
     required DateTime date,
     required String explanation,
     required String hdurl,

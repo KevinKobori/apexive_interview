@@ -10,7 +10,9 @@ class PictureDetailPageLoadedSuccessView extends StatelessWidget {
   final PictureViewModel picture;
 
   const PictureDetailPageLoadedSuccessView({
-    required this.pictureDate, required this.picture, super.key,
+    required this.pictureDate,
+    required this.picture,
+    super.key,
   });
 
   @override
@@ -42,7 +44,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
     _loadAspectRatio();
   }
 
-  Future<void> _loadAspectRatio() async {
+  void _loadAspectRatio() async {
     try {
       final double aspectRatio =
           await ImageHelper.getImageAspectRatio(widget.picture.url);
@@ -131,13 +133,13 @@ class _NavigationBar extends StatelessWidget {
       child: ApodNavigationBar(
         animation: route?.animation,
         canNavigateBack: true,
-        leading: CurrentUserAvatar(
+        leading: AccountAvatar(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
         summary: CollectionsOverview(
           collectionsOverviewPresenter: collectionsOverviewPresenter,
         ),
-        body: CurrentUserAccountNavigationBody(
+        body: AccountNavigationBarBody(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
         action: ApodTextButton(

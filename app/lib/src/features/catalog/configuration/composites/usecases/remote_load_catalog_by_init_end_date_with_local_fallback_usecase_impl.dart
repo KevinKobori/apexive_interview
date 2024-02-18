@@ -24,10 +24,18 @@ class RemoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseImpl
     return await result.fold(
       (domainFailure) async {
         await localValidateCatalog.call(null);
-        return await localLoadCatalog.call(null);
+        final pictureEntityListResult = await localLoadCatalog.call(null);
+        
+        return pictureEntityListResult.fold(
+          (domainFailure) => Left(domainFailure),
+          (pictureEntityList) => Right(pictureEntityList),
+        );
       },
       (pictureEntityList) async {
         await localSaveCatalog.call(pictureEntityList);
+        // await localValidateCatalog.call(null);
+        // await localLoadCatalog.call(null);
+
         return Right(pictureEntityList);
       },
     );

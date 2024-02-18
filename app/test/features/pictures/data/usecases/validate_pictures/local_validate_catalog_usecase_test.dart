@@ -35,7 +35,8 @@ void main() {
           DeviceLocalStorageFactory().generateInvalidPictureJsonList());
 
       final result = await sut.call(null);
-      result.fold((l) => l, (r) => r);
+
+      result.fold((domainFailure) => domainFailure, (_) => _);
 
       verify(() => localStorage.delete('catalog')).called(1);
     });

@@ -7,21 +7,22 @@ class PictureDatasourceImpl implements PictureDatasource {
   PictureDatasourceImpl(this.httpClient);
 
   @override
-  Future<Either<DomainFailure, List<PictureModel>>> fetchDataByStartEndDate(
+  Future<Either<DomainFailure, List<PictureModel>>> fetchCatalogByStartEndDate(
       String url) async {
     final requestResult =
         await httpClient.request(method: HttpMethod.get, url: url);
 
     return await requestResult.fold(
       /// Left
-      (httpFailure) => Left(httpFailure.fromHttpToDomain),
+      (httpFailure) => Left(httpFailure.toDomain),
 
       /// Right
       (data) {
-        final dynamicListResult = JsonMapper.tryDecode(data);
-        return dynamicListResult.fold(
+        final jsonListResult = JsonMapper.tryDecode(data);
+        
+        return jsonListResult.fold(
           /// Left
-          (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+          (mapperFailure) => Left(mapperFailure.toDomain),
 
           /// Right
           (dynamicList) {
@@ -29,7 +30,7 @@ class PictureDatasourceImpl implements PictureDatasource {
                 JsonMapper.fromDynamicListToJsonList(dynamicList);
             return pictureJsonListResult.fold(
               /// Left
-              (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+              (mapperFailure) => Left(mapperFailure.toDomain),
 
               /// Right
               (pictureJsonList) {
@@ -37,7 +38,7 @@ class PictureDatasourceImpl implements PictureDatasource {
                     PictureMapper.fromJsonListToModelList(pictureJsonList);
                 return pictureModelListResult.fold(
                   /// Left
-                  (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+                  (mapperFailure) => Left(mapperFailure.toDomain),
 
                   /// Right
                   (pictureModelList) => Right(pictureModelList),
@@ -51,19 +52,19 @@ class PictureDatasourceImpl implements PictureDatasource {
   }
 
   @override
-  Future<Either<DomainFailure, PictureModel>> fetchByDate(String url) async {
+  Future<Either<DomainFailure, PictureModel>> fetchPictureByDate(String url) async {
     final resultHttpClient =
         await httpClient.request(method: HttpMethod.get, url: url);
     return resultHttpClient.fold(
       /// Left
-      (httpFailure) => Left(httpFailure.fromHttpToDomain),
+      (httpFailure) => Left(httpFailure.toDomain),
 
       /// Right
       (data) {
-        final mapResult = JsonMapper.tryDecode(data);
-        return mapResult.fold(
+        final jsonResult = JsonMapper.tryDecode(data);
+        return jsonResult.fold(
           /// Left
-          (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+          (mapperFailure) => Left(mapperFailure.toDomain),
 
           /// Right
           (pictureJson) {
@@ -71,7 +72,7 @@ class PictureDatasourceImpl implements PictureDatasource {
                 pictureJson as Map<String, dynamic>);
             return modelResult.fold(
               /// Left
-              (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+              (mapperFailure) => Left(mapperFailure.toDomain),
 
               /// Right
               (pictureModel) => Right(pictureModel),

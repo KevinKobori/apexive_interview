@@ -11,11 +11,11 @@ class PictureRepositoryImpl implements PictureRepository {
   });
 
   @override
-  Future<Either<DomainFailure, List<PictureEntity>>> getDataByStartEndDate(
+  Future<Either<DomainFailure, List<PictureEntity>>> getCatalogByStartEndDate(
       String url) async {
     if (await networkInfo.isConnected()) {
       final resultDataSource =
-          await pictureDatasource.fetchDataByStartEndDate(url);
+          await pictureDatasource.fetchCatalogByStartEndDate(url);
 
       return resultDataSource.fold(
         /// Left
@@ -25,10 +25,11 @@ class PictureRepositoryImpl implements PictureRepository {
         (pictureModelList) {
           final entityListResult =
               PictureMapper.fromModelListToEntityList(pictureModelList);
+              
           return entityListResult.fold(
             /// Left
             (mapperFailure) {
-              return Left(mapperFailure.fromJsonperToDomain);
+              return Left(mapperFailure.toDomain);
             },
 
             /// Right

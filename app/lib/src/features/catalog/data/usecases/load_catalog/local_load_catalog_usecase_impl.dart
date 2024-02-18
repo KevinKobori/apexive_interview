@@ -18,7 +18,7 @@ class LocalLoadCatalogUseCaseImpl
     return dataResult.fold(
       /// Left
       (localStorageFailure) =>
-          Left(localStorageFailure.fromLocalStorageToDomain),
+          Left(localStorageFailure.toDomain),
 
       /// Right
       (localData) {
@@ -30,7 +30,7 @@ class LocalLoadCatalogUseCaseImpl
             PictureMapper.fromJsonListToEntityList(localData);
         return entityListResult.fold(
           /// Left
-          (mapperFailure) => Left(mapperFailure.fromJsonperToDomain),
+          (mapperFailure) => Left(mapperFailure.toDomain),
 
           /// Right
           (pictureEntity) => Right(pictureEntity),

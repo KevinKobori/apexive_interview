@@ -27,11 +27,12 @@ void main() {
       localStorage.mockSaveSuccess();
 
       await PictureMapper.fromJsonListToEntityList(pictureJsonList).fold(
-        (domainFailure) {},
+        (domainFailure) => null,
         (pictureEntityList) async {
           final result = await sut.call(pictureEntityList);
+
           return result.fold(
-            (domainFailure) {},
+            (domainFailure) => null,
             (_) {},
           );
         },
@@ -52,7 +53,7 @@ void main() {
       late final List<PictureEntity> matcher;
 
       PictureMapper.fromJsonListToEntityList(pictureJsonList).fold(
-        (domainFailure) {},
+        (domainFailure) => null,
         (pictureEntityList) {
           matcher = pictureEntityList;
         },

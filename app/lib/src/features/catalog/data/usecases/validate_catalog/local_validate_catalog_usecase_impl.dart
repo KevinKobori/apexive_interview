@@ -21,7 +21,7 @@ class LocalValidateCatalogUseCaseImpl implements LocalValidateCatalogUseCase {
         return deleteResult.fold(
           /// Left
           (localStorageFailure) {
-            return Left(localStorageFailure.fromLocalStorageToDomain);
+            return Left(localStorageFailure.toDomain);
           },
 
           /// Right
@@ -41,7 +41,7 @@ class LocalValidateCatalogUseCaseImpl implements LocalValidateCatalogUseCase {
             return deleteResult.fold(
               /// Left
               (domainFailure) {
-                return Left(mapperFailure.fromJsonperToDomain);
+                return Left(mapperFailure.toDomain);
               },
 
               /// Right

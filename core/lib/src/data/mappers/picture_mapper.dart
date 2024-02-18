@@ -2,45 +2,42 @@ import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 abstract final class PictureMapper {
-  /// Data <<< FROM <<< Domain
   static Either<MapperFailure, PictureModel> fromEntityToModel(
       PictureEntity pictureEntity) {
-    return Right(
-      PictureModel(
-        copyright: pictureEntity.copyright,
-        date: DateTime(
-          pictureEntity.date.year,
-          pictureEntity.date.month,
-          pictureEntity.date.day,
-        ),
-        explanation: pictureEntity.explanation,
-        hdurl: pictureEntity.hdurl,
-        mediaType: pictureEntity.mediaType,
-        serviceVersion: pictureEntity.serviceVersion,
-        title: pictureEntity.title,
-        url: pictureEntity.url,
+    final model = PictureModel(
+      copyright: pictureEntity.copyright,
+      date: DateTime(
+        pictureEntity.date.year,
+        pictureEntity.date.month,
+        pictureEntity.date.day,
       ),
+      explanation: pictureEntity.explanation,
+      hdurl: pictureEntity.hdurl,
+      mediaType: pictureEntity.mediaType,
+      serviceVersion: pictureEntity.serviceVersion,
+      title: pictureEntity.title,
+      url: pictureEntity.url,
     );
+
+    return Right(model);
   }
 
   static Either<MapperFailure, List<PictureModel>> fromEntityListToModelList(
       List<PictureEntity> pictureEntityList) {
     try {
-      final result = List<PictureModel>.from(
-        pictureEntityList.map(
-          (pictureEntity) => PictureMapper.fromEntityToModel(pictureEntity),
-        ),
-      ).toList();
-      return Right(result);
+      final pictureModelList = pictureEntityList
+          .map((pictureEntity) => fromEntityToModel(pictureEntity)
+              .getOrElse(() => throw MapperFailure.conversionError))
+          .toList();
+      return Right(pictureModelList);
     } catch (_) {
       return const Left(MapperFailure.conversionError);
     }
   }
 
-  /// Data >>> TO >>> Domain
   static Either<MapperFailure, PictureEntity> fromModelToEntity(
       PictureModel pictureModel) {
-    return Right(PictureEntity(
+    final pictureEntity = PictureEntity(
       copyright: pictureModel.copyright,
       date: pictureModel.date,
       explanation: pictureModel.explanation,
@@ -49,180 +46,126 @@ abstract final class PictureMapper {
       serviceVersion: pictureModel.serviceVersion,
       title: pictureModel.title,
       url: pictureModel.url,
-    ));
+    );
+
+    return Right(pictureEntity);
   }
 
   static Either<MapperFailure, List<PictureEntity>> fromModelListToEntityList(
       List<PictureModel> pictureModelList) {
     try {
-      final result = List<PictureEntity>.from(
-        pictureModelList.map((pictureModel) {
-          return PictureMapper.fromModelToEntity(pictureModel).fold(
-            (mapperFailure) => mapperFailure,
-            (pictureEntity) => pictureEntity,
-          );
-        }),
-      ).toList();
-      return Right(result);
+      final pictureEntityList = pictureModelList
+          .map((pictureModel) => fromModelToEntity(pictureModel)
+              .getOrElse(() => throw MapperFailure.conversionError))
+          .toList();
+      return Right(pictureEntityList);
     } catch (_) {
       return const Left(MapperFailure.conversionError);
     }
   }
 
-  /// Presentation <<< FROM <<< Domain
   static Either<MapperFailure, PictureViewModel> fromEntityToViewModel(
       PictureEntity pictureEntity) {
-    return Right(PictureViewModel(
+    final apodDate =
+        DateTimeMapper.getStringFromDateTimeYMD(pictureEntity.date);
+
+    final pictureViewModel = PictureViewModel(
       copyright: pictureEntity.copyright,
-      date:
-          '${pictureEntity.date.year}-${pictureEntity.date.month}-${pictureEntity.date.day}',
+      date: apodDate,
       explanation: pictureEntity.explanation,
       hdurl: pictureEntity.hdurl,
       mediaType: pictureEntity.mediaType,
       serviceVersion: pictureEntity.serviceVersion,
       title: pictureEntity.title,
       url: pictureEntity.url,
-    ));
+    );
+
+    return Right(pictureViewModel);
   }
 
   static Either<MapperFailure, List<PictureViewModel>>
       fromEntityListToViewModelList(List<PictureEntity> pictureEntityList) {
     try {
-      final result = List<PictureViewModel>.from(
-        pictureEntityList.map(
-          (pictureEntity) =>
-              PictureMapper.fromEntityToViewModel(pictureEntity).fold(
-            (pictureEntity) => pictureEntity,
-            (mapperFailure) => mapperFailure,
-          ),
-        ),
-      ).toList();
-      return Right(result);
+      final pictureViewModelList = pictureEntityList
+          .map((pictureEntity) => fromEntityToViewModel(pictureEntity)
+              .getOrElse(() => throw MapperFailure.conversionError))
+          .toList();
+
+      return Right(pictureViewModelList);
     } catch (_) {
       return const Left(MapperFailure.conversionError);
     }
   }
 
-  /// Presentation >>> TO >>> Domain
-  /// fromViewModelToEntity
-  /// fromViewModelListToEntityList
-  ///
-  /// External <<< FROM <<< Data
   static Either<MapperFailure, Map<String, dynamic>> fromModelToJson(
-      PictureModel pictureModel) {
-    return Right(pictureModel.toJson());
+      PictureModel model) {
+    try {
+      final json = model.toJson();
+      return Right(json);
+    } catch (_) {
+      return const Left(MapperFailure.conversionError);
+    }
   }
 
   static Either<MapperFailure, List<Map<String, dynamic>>>
-      fromModelListToJsonList(List<PictureModel> pictureModelList) {
+      fromModelListToJsonList(List<PictureModel> modelList) {
     try {
-      final result = List<Map<String, dynamic>>.from(pictureModelList.map(
-          (pictureModel) => PictureMapper.fromModelToJson(pictureModel)
-              .fold((l) => l, (r) => r))).toList();
-      return Right(result);
+      final jsonList = modelList
+          .map((model) => fromModelToJson(model)
+              .getOrElse(() => throw MapperFailure.conversionError))
+          .toList();
+      return Right(jsonList);
     } catch (_) {
       return const Left(MapperFailure.conversionError);
     }
   }
 
-  /// External >>> TO >>> Data
   static Either<MapperFailure, PictureModel> fromJsonToModel(
-      Map<String, dynamic> pictureJson) {
+      Map<String, dynamic> json) {
     try {
-      if (!pictureJson.keys.toSet().containsAll([
-        'date',
-        'explanation',
-        'media_type',
-        'service_version',
-        'title',
-        'url',
-      ])) {
-        return const Left(MapperFailure.conversionError);
-      }
-      return Right(PictureModel(
-        copyright: pictureJson['copyright'] ?? '',
-        date: pictureJson['date'] != null
-            ? DateTime.parse(pictureJson['date'])
-            : DateTime.now(),
-        explanation: pictureJson['explanation'] ?? '',
-        hdurl: pictureJson['hdurl'] ?? '',
-        mediaType: pictureJson['media_type'] ?? '',
-        serviceVersion: pictureJson['service_version'] ?? '',
-        title: pictureJson['title'] ?? '',
-        url: pictureJson['url'] ?? '',
-      ));
+      final pictureModel = PictureModel.fromJson(json);
+      return Right(pictureModel);
     } catch (_) {
       return const Left(MapperFailure.conversionError);
     }
   }
 
   static Either<MapperFailure, List<PictureModel>> fromJsonListToModelList(
-      List<Map<String, dynamic>> pictureJsonList) {
+      List<Map<String, dynamic>> jsonList) {
     try {
-      final pictureModelList = List<PictureModel>.from(pictureJsonList.map(
-          (pisctureJson) => PictureMapper.fromJsonToModel(pisctureJson).fold(
-                (mapperFailure) => mapperFailure,
-                (pisctureModel) => pisctureModel,
-              ))).toList();
+      final pictureModelList = jsonList
+          .map((json) => fromJsonToModel(json)
+              .getOrElse(() => throw MapperFailure.conversionError))
+          .toList();
       return Right(pictureModelList);
     } catch (_) {
       return const Left(MapperFailure.conversionError);
     }
   }
 
-  /// [REMOVE_OTHERS]
-  /// External > Domain [REMOVE_THIS]
   static Either<MapperFailure, PictureEntity> fromJsonToEntity(
-      Map<String, dynamic> pictureJson) {
-    return PictureMapper.fromJsonToModel(pictureJson).fold((mapperFailure) {
-      return Left(mapperFailure);
-    }, (pictureModel) {
-      return PictureMapper.fromModelToEntity(pictureModel).fold(
-        (mapperFailure) {
-          return Left(mapperFailure);
-        },
-        (pictureEntity) {
-          return Right(pictureEntity);
-        },
-      );
-    });
+      Map<String, dynamic> json) {
+    return fromJsonToModel(json).flatMap(fromModelToEntity);
   }
 
-  /// [REMOVE_OTHERS]
   static Either<MapperFailure, List<PictureEntity>> fromJsonListToEntityList(
-      List<Map<String, dynamic>> pictureJson) {
-    return PictureMapper.fromJsonListToModelList(pictureJson).fold(
-      /// Left
-      (mapperFailure) {
-        return Left(mapperFailure);
-      },
-      (pictureModelList) {
-        return PictureMapper.fromModelListToEntityList(pictureModelList).fold(
-            (mapperFailure) {
-          return Left(mapperFailure);
-        }, (pictureEntityList) {
-          return Right(pictureEntityList);
-        });
-      },
-    );
+      List<Map<String, dynamic>> jsonList) {
+    try {
+      final list = jsonList
+          .map((json) => fromJsonToEntity(json)
+              .getOrElse(() => throw MapperFailure.conversionError))
+          .toList();
+      return Right(list);
+    } catch (_) {
+      return const Left(MapperFailure.conversionError);
+    }
   }
 
-  /// External > Presenter [REMOVE_THIS]
   static Either<MapperFailure, PictureViewModel> fromJsonToViewModel(
-      Map<String, dynamic> pictureJson) {
-    final asd = fromJsonToEntity(pictureJson);
-
-    return asd.fold(
-      (mapperFailure) {
-        return Left(mapperFailure);
-      },
-      (pictureEntity) {
-        return PictureMapper.fromEntityToViewModel(pictureEntity);
-      },
-    );
+      Map<String, dynamic> json) {
+    return fromJsonToEntity(json).flatMap(fromEntityToViewModel);
   }
 
-  /// External > Presenter [REMOVE_THIS]
   static Either<MapperFailure, PictureViewModel> fromModelToViewModel(
       PictureModel pictureModel) {
     return fromModelToEntity(pictureModel).fold(
@@ -235,23 +178,21 @@ abstract final class PictureMapper {
     );
   }
 
-  /// Domain > External [REMOVE_THIS]
+  static Either<MapperFailure, Map<String, dynamic>> fromEntityToJson(
+      PictureEntity entity) {
+    return fromEntityToModel(entity).flatMap(fromModelToJson);
+  }
+
   static Either<MapperFailure, List<Map<String, dynamic>>>
-      fromEntityListToJsonList(List<PictureEntity> pictureEntityList) {
-    return PictureMapper.fromEntityListToModelList(pictureEntityList).fold(
-      (mapperFailure) {
-        return Left(mapperFailure);
-      },
-      (pictureModelList) {
-        return PictureMapper.fromModelListToJsonList(pictureModelList).fold(
-          (mapperFailure) {
-            return Left(mapperFailure);
-          },
-          (pictureJsonList) {
-            return Right(pictureJsonList);
-          },
-        );
-      },
-    );
+      fromEntityListToJsonList(List<PictureEntity> entityList) {
+    try {
+      final jsonList = entityList
+          .map((entity) => fromEntityToJson(entity)
+              .getOrElse(() => throw MapperFailure.conversionError))
+          .toList();
+      return Right(jsonList);
+    } catch (_) {
+      return const Left(MapperFailure.conversionError);
+    }
   }
 }

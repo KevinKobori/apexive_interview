@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class PictureViewModel extends Equatable {
-  final String copyright;
+  final String? copyright;
   final String date;
   final String explanation;
   final String hdurl;

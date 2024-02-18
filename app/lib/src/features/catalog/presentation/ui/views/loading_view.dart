@@ -4,14 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class CatalogPageLoadingView extends StatefulWidget {
+class CatalogPageLoadingView extends StatelessWidget {
   const CatalogPageLoadingView({super.key});
 
-  @override
-  State<CatalogPageLoadingView> createState() => _CatalogPageLoadingViewState();
-}
-
-class _CatalogPageLoadingViewState extends State<CatalogPageLoadingView> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
