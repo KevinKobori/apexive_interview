@@ -27,7 +27,7 @@ class CatalogPageLoadingView extends StatelessWidget {
                 right: ApodSpacing.large,
                 bottom: ApodSpacing.large,
               ).toEdgeInsets(theme),
-              child: const Column(
+              child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   ApodPictureTile.shimmer(),
@@ -43,14 +43,14 @@ class CatalogPageLoadingView extends StatelessWidget {
                 top: theme.spacings.extraSmall,
                 right: theme.spacings.large,
                 bottom: math.max(
-                  mediaQuery.padding.bottom,
-                  theme.spacings.large,
-                ) + theme.spacings.superLarge,
+                      mediaQuery.padding.bottom,
+                      theme.spacings.large,
+                    ) +
+                    theme.spacings.superLarge,
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
               children:
-                  List.generate(10, (_) => const ApodPictureTile.shimmer())
-                      .toList(),
+                  List.generate(10, (_) => ApodPictureTile.shimmer()).toList(),
             ),
           ),
         ],

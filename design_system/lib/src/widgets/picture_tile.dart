@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -5,14 +7,20 @@ import 'package:shimmer/shimmer.dart';
 import 'package:tap_builder/tap_builder.dart';
 
 class ApodPictureTile extends StatefulWidget {
-  const ApodPictureTile.shimmer({
-    super.key,
+  const ApodPictureTile._shimmer({
+    required this.aspectRatio,
   })  : isLoading = true,
         title = '',
         imageUrl = '',
         date = '',
-        aspectRatio = 1.2,
         onTap = null;
+
+  final bool isLoading;
+  final String title;
+  final String imageUrl;
+  final String date;
+  final double aspectRatio;
+  final VoidCallback? onTap;
 
   const ApodPictureTile({
     required this.title,
@@ -23,12 +31,15 @@ class ApodPictureTile extends StatefulWidget {
     super.key,
   }) : isLoading = false;
 
-  final bool isLoading;
-  final String title;
-  final String imageUrl;
-  final String date;
-  final double aspectRatio;
-  final VoidCallback? onTap;
+  factory ApodPictureTile.shimmer({Key? key}) {
+    const double min = 0.5;
+    const double max = 2;
+    final double aspectRatio = 0.5 + Random().nextDouble() * (max - min);
+
+    return ApodPictureTile._shimmer(
+      aspectRatio: aspectRatio,
+    );
+  }
 
   @override
   State<ApodPictureTile> createState() => _ApodPictureTileState();
@@ -38,7 +49,9 @@ class _ApodPictureTileState extends State<ApodPictureTile> {
   @override
   Widget build(BuildContext context) {
     if (widget.isLoading) {
-      return const ProductTileLayout.shimmer();
+      return ProductTileLayout.shimmer(
+        aspectRatio: widget.aspectRatio,
+      );
     } else {
       return TapBuilder(
         onTap: widget.onTap,
@@ -74,12 +87,12 @@ enum ProductTileState {
 
 class ProductTileLayout extends StatelessWidget {
   const ProductTileLayout.shimmer({
+    required this.aspectRatio,
     super.key,
   })  : _state = ProductTileState.shimmer,
         title = '',
         image = const CachedNetworkImageProvider(''),
-        date = '',
-        aspectRatio = 1.2;
+        date = '';
 
   const ProductTileLayout.idle({
     required this.title,

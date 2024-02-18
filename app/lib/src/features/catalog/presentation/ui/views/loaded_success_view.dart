@@ -103,7 +103,7 @@ class _BodyState extends State<_Body> {
           SliverToBoxAdapter(
             child: ApodPageHeader(
               controller: _controller,
-              image: CachedNetworkImageProvider(widget.catalog[0].url),
+              image: CachedNetworkImageProvider(widget.catalog[1].url),
             ),
           ),
           SliverToBoxAdapter(
