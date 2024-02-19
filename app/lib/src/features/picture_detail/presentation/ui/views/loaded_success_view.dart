@@ -34,11 +34,10 @@ class _MobileLayout extends StatefulWidget {
 class _MobileLayoutState extends State<_MobileLayout> {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
     return ApodScaffold(
       backgroundImage: CachedNetworkImageProvider(widget.picture.url),
       body: ApodContentSheet(
-        children: _buildBody(context, theme, widget.picture),
+        children: _buildBody(context, widget.picture),
       ),
       floatingBar: _NavigationBar(
         accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
@@ -49,8 +48,10 @@ class _MobileLayoutState extends State<_MobileLayout> {
     );
   }
 
-  List<Widget> _buildBody(
-      BuildContext context, ApodThemeData theme, PictureViewModel picture) {
+  List<Widget> _buildBody(BuildContext context, PictureViewModel picture) {
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
+
     return [
       ClipRRect(
         borderRadius: theme.radius.xBorder.semiSmall,
@@ -68,7 +69,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
       ApodText.title1(picture.title),
       ApodText.title3(
         picture.date,
-        color: theme.colors.accent,
+        color: colors.primary,
       ),
       ApodText.paragraph1(picture.explanation),
       const SizedBox(
@@ -92,6 +93,7 @@ class _NavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
+
     final route = ModalRoute.of(context);
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,

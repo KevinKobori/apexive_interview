@@ -2,6 +2,7 @@ part of 'library.dart';
 
 ThemeSection spacing(BuildContext context) {
   final theme = Theme.of(context).extension<ApodThemeData>()!;
+  final colors = Theme.of(context).colorScheme;
   return ThemeSection(
     title: 'Spacing',
     categories: [
@@ -16,7 +17,7 @@ ThemeSection spacing(BuildContext context) {
                 builder: (context, v, _) => Container(
                   height: 24,
                   width: v,
-                  color: theme.colors.accent,
+                  color: colors.primary,
                 ),
               );
             },

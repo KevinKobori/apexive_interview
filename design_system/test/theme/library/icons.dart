@@ -2,6 +2,7 @@ part of 'library.dart';
 
 ThemeSection icons(BuildContext context) {
   final theme = Theme.of(context).extension<ApodThemeData>()!;
+  final colors = Theme.of(context).colorScheme;
   final icons = theme.icons;
   return ThemeSection(
     title: 'Icons',
@@ -14,7 +15,7 @@ ThemeSection icons(BuildContext context) {
               value: c as Named<String>,
               builder: (context, v, _) => ApodIcon(
                 v,
-                color: theme.colors.foreground,
+                color: colors.onBackground,
                 size: ApodIconSize.extraSmall,
               ),
             ),
@@ -29,7 +30,7 @@ ThemeSection icons(BuildContext context) {
               value: c as Named<String>,
               builder: (context, v, _) => ApodIcon(
                 v,
-                color: theme.colors.foreground,
+                color: colors.onBackground,
                 size: ApodIconSize.medium,
               ),
             ),

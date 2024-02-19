@@ -118,10 +118,11 @@ class ProductTileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     return _state == ProductTileState.shimmer
         ? Shimmer.fromColors(
-            baseColor: theme.colors.background,
-            highlightColor: theme.colors.background.withOpacity(0.6),
+            baseColor: colors.background,
+            highlightColor: colors.background.withOpacity(0.6),
             child: AspectRatio(
               aspectRatio: aspectRatio,
               child: ClipRRect(
@@ -156,7 +157,7 @@ class ProductTileLayout extends StatelessWidget {
                   Positioned.fill(
                     child: AnimatedContainer(
                       duration: theme.durations.quick,
-                      color: theme.colors.accent.withOpacity(
+                      color: colors.primary.withOpacity(
                         _state == ProductTileState.hovered ? 0.2 : 0.0,
                       ),
                     ),
@@ -171,9 +172,9 @@ class ProductTileLayout extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                theme.colors.background.withOpacity(0),
-                                theme.colors.background.withOpacity(0),
-                                theme.colors.background.withOpacity(
+                                colors.background.withOpacity(0),
+                                colors.background.withOpacity(0),
+                                colors.background.withOpacity(
                                     _state == ProductTileState.hovered
                                         ? 0.9
                                         : 0.8),
@@ -187,11 +188,11 @@ class ProductTileLayout extends StatelessWidget {
                               children: [
                                 ApodText.title3(
                                   title,
-                                  color: theme.colors.accentOpposite,
+                                  color: colors.onPrimary,
                                 ),
                                 ApodText.paragraph1(
                                   date,
-                                  color: theme.colors.accentOpposite,
+                                  color: colors.onPrimary,
                                 ),
                               ],
                             ),

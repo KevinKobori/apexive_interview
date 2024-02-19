@@ -8,7 +8,7 @@ abstract final class ApodDarkTheme {
     var customThemeData = ApodThemeData.regular(
       appLogo: darkAppLogo,
       appWormLogo: darkAppWormLogo,
-    ).withColors(ApodColorsData.dark());
+    );
     if (formFactor != null) {
       customThemeData = customThemeData.withFormFactor(formFactor);
       if (formFactor == ApodAppFormFactor.small) {

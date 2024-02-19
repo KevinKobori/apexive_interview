@@ -67,7 +67,8 @@ class ApodText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
-    final color = this.color ?? theme.colors.foreground;
+    final colors = Theme.of(context).colorScheme;
+    final color = this.color ?? colors.onBackground;
     final style = () {
       switch (level) {
         case ApodTextLevel.paragraph1:

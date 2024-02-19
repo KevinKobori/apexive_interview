@@ -2,6 +2,7 @@ part of 'library.dart';
 
 ThemeSection radius(BuildContext context) {
   final theme = Theme.of(context).extension<ApodThemeData>()!;
+  final colors = Theme.of(context).colorScheme;
   return ThemeSection(
     title: 'Border radius',
     categories: [
@@ -18,7 +19,7 @@ ThemeSection radius(BuildContext context) {
                   width: 48,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: v),
-                    color: theme.colors.accent,
+                    color: colors.primary,
                   ),
                 ),
               );

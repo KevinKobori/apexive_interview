@@ -33,7 +33,7 @@ class ApodThemeLibrary extends StatelessWidget {
             return ThemeContainer(
               title: 'Apod Theme : ${formFactor.name} - ${themeMode.name}',
               sections: [
-                colors(context),
+                // colors(context),
                 typography(context),
                 icons(context),
                 radius(context),

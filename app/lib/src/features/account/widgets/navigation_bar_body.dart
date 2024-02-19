@@ -12,7 +12,7 @@ class AccountNavigationBarBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
 
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
       bloc: accountOverviewPresenter,
@@ -24,11 +24,11 @@ class AccountNavigationBarBody extends StatelessWidget {
             children: [
               ApodText.paragraph1(
                 'Account',
-                color: theme.colors.actionBarForeground,
+                color: colors.onSurface,
               ),
               ApodText.title3(
                 state.account.name,
-                color: theme.colors.actionBarForeground,
+                color: colors.onSurface,
               ),
             ],
           );

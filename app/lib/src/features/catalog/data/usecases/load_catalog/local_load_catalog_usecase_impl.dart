@@ -20,7 +20,8 @@ class LocalLoadCatalogUseCaseImpl implements LocalLoadCatalogUseCase {
 
       /// Right
       (localData) {
-        final List<Map<String, dynamic>> jsonListData = List<Map<String, dynamic>>.from(localData);
+        final List<Map<String, dynamic>> jsonListData =
+            List<Map<String, dynamic>>.from(localData);
         if (jsonListData.isEmpty != false) {
           return const Left(DomainFailure.unexpected());
         }

@@ -21,12 +21,13 @@ class ApodScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     final floatingBar = this.floatingBar;
 
 // Inside your AppScaffold build method
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: backgroundColor ?? theme.colors.background,
+        color: backgroundColor ?? colors.background,
       ),
       child: Stack(
         children: [
@@ -43,7 +44,7 @@ class ApodScaffold extends StatelessWidget {
                   child: BackdropFilter(
                     filter: ui.ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
                     child: Container(
-                      color: theme.colors.background.withOpacity(0.7),
+                      color: colors.background.withOpacity(0.7),
                     ),
                   ),
                 )

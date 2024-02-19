@@ -44,15 +44,15 @@ class RemoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseImpl
 
     //   /// Right
     //   (_) async {
-        final loadResult = await localLoadCatalog.call(null);
+    final loadResult = await localLoadCatalog.call(null);
 
-        return loadResult.fold(
-          /// Left
-          (domainFailure) => Left(domainFailure),
+    return loadResult.fold(
+      /// Left
+      (domainFailure) => Left(domainFailure),
 
-          /// Right
-          (pictureEntityList) => Right(pictureEntityList),
-        );
+      /// Right
+      (pictureEntityList) => Right(pictureEntityList),
+    );
     //   },
     // );
   }

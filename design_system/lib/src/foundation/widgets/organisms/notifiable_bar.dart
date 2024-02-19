@@ -79,6 +79,7 @@ class ApodNotifiableBarLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     final notification = this.notification;
     final isOpened =
         notification != null || _state == ApodNotifiableBarState.opened;
@@ -87,11 +88,11 @@ class ApodNotifiableBarLayout extends StatelessWidget {
       duration: theme.durations.regular,
       decoration: BoxDecoration(
         borderRadius: theme.radius.xBorder.semiSmall,
-        color: theme.colors.accent,
+        color: colors.primary,
         boxShadow: [
           BoxShadow(
             blurRadius: isOpened ? 32 : 16,
-            color: theme.colors.accent.withOpacity(0.5),
+            color: colors.primary.withOpacity(0.5),
           )
         ],
       ),
@@ -127,6 +128,7 @@ class _NotificationBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -152,12 +154,12 @@ class _NotificationBody extends StatelessWidget {
                     children: [
                       ApodText.title3(
                         notification.title,
-                        color: theme.colors.accentOpposite,
+                        color: colors.onPrimary,
                         maxLines: 1,
                       ),
                       ApodText.paragraph1(
                         notification.description,
-                        color: theme.colors.accentOpposite,
+                        color: colors.onPrimary,
                         maxLines: 1,
                       ),
                     ],

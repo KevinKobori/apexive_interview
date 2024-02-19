@@ -22,10 +22,11 @@ class ApodPageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     return isShimmer
         ? Shimmer.fromColors(
-            baseColor: theme.colors.background,
-            highlightColor: theme.colors.background.withOpacity(0.6),
+            baseColor: colors.background,
+            highlightColor: colors.background.withOpacity(0.6),
             child: _buildBody(theme),
           )
         : AnimatedBuilder(

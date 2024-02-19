@@ -52,7 +52,9 @@ class ApodIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
-    final color = this.color ?? theme.colors.foreground;
+    final colors = Theme.of(context).colorScheme;
+
+    final color = this.color ?? colors.onBackground;
     return Text(
       data,
       style: TextStyle(
@@ -85,7 +87,8 @@ class ApodAnimatedIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
-    final color = this.color ?? theme.colors.foreground;
+    final colors = Theme.of(context).colorScheme;
+    final color = this.color ?? colors.onBackground;
     if (!isAnimated) {
       return ApodIcon(
         data,

@@ -4,7 +4,6 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 class ApodThemeData extends ThemeExtension<ApodThemeData> {
   const ApodThemeData({
     required this.icons,
-    required this.colors,
     required this.typography,
     required this.radius,
     required this.spacings,
@@ -16,7 +15,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
   }) : _platform = platform;
 
   final ApodIconsData icons;
-  final ApodColorsData colors;
   final ApodTypographyData typography;
   final ApodRadiusData radius;
   final ApodSpacingsData spacings;
@@ -30,7 +28,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
   @override
   ApodThemeData copyWith({
     ApodIconsData? icons,
-    ApodColorsData? colors,
     ApodTypographyData? typography,
     ApodRadiusData? radius,
     ApodSpacingsData? spacings,
@@ -42,7 +39,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
   }) {
     return ApodThemeData(
       icons: icons ?? this.icons,
-      colors: colors ?? this.colors,
       typography: typography ?? this.typography,
       radius: radius ?? this.radius,
       spacings: spacings ?? this.spacings,
@@ -62,7 +58,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
 
     return ApodThemeData(
       icons: icons,
-      colors: colors,
       typography: typography,
       radius: radius,
       spacings: spacings,
@@ -82,7 +77,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
         formFactor: ApodAppFormFactor.medium,
         icons: ApodIconsData(),
         typography: ApodTypographyData.regular(),
-        colors: ApodColorsData.light(),
         radius: const ApodRadiusData(),
         spacings: const ApodSpacingsData(),
         boxShadows: const ApodBoxShadowsData(),
@@ -100,7 +94,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
           runtimeType == other.runtimeType &&
           platform == other.platform &&
           icons == other.icons &&
-          colors == other.colors &&
           typography == other.typography &&
           radius == other.radius &&
           spacings == other.spacings &&
@@ -112,7 +105,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
   int get hashCode =>
       platform.hashCode ^
       icons.hashCode ^
-      colors.hashCode ^
       typography.hashCode ^
       radius.hashCode ^
       spacings.hashCode ^
@@ -120,26 +112,10 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
       durations.hashCode ^
       images.hashCode;
 
-  ApodThemeData withColors(ApodColorsData colors) {
-    return ApodThemeData(
-      platform: platform,
-      formFactor: formFactor,
-      colors: colors,
-      durations: durations,
-      icons: icons,
-      images: images,
-      radius: radius,
-      boxShadows: boxShadows,
-      spacings: spacings,
-      typography: typography,
-    );
-  }
-
   ApodThemeData withImages(ApodImagesData images) {
     return ApodThemeData(
       platform: platform,
       formFactor: formFactor,
-      colors: colors,
       durations: durations,
       icons: icons,
       images: images,
@@ -154,7 +130,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
     return ApodThemeData(
       platform: platform,
       formFactor: formFactor,
-      colors: colors,
       durations: durations,
       icons: icons,
       images: images,
@@ -169,7 +144,6 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
     return ApodThemeData(
       platform: platform,
       formFactor: formFactor,
-      colors: colors,
       durations: durations,
       icons: icons,
       images: images,

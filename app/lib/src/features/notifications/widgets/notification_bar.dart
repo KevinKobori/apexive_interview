@@ -9,7 +9,8 @@ class NotificationBar extends StatelessWidget {
 
   const NotificationBar({
     required this.notificationsOverviewPresenter,
-    required this.child, super.key,
+    required this.child,
+    super.key,
   });
 
   @override

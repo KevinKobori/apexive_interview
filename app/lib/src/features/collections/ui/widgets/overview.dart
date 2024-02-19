@@ -12,7 +12,7 @@ class CollectionsOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     return BlocBuilder<CollectionsOverviewBloc, CollectionsOverviewState>(
       bloc: collectionsOverviewPresenter,
       builder: (context, state) {
@@ -29,11 +29,11 @@ class CollectionsOverview extends StatelessWidget {
                     children: [
                       ApodText.title3(
                         '$itemCount',
-                        color: theme.colors.actionBarForeground,
+                        color: colors.onSurface,
                       ),
                       Icon(
                         Icons.bookmark,
-                        color: theme.colors.actionBarForeground,
+                        color: colors.onSurface,
                       ),
                     ],
                   ),

@@ -12,8 +12,9 @@ class ThemeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
-      backgroundColor: theme.colors.background,
+      backgroundColor: colors.background,
       body: ApodPadding(
         padding: const ApodEdgeInsets.extraLarge(),
         child: SpacedColumn(
@@ -40,13 +41,13 @@ class ThemeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     return SpacedColumn(
       spaceBetween: 20.0,
       children: [
         ApodText.title2(
           title,
-          color: theme.colors.accent,
+          color: colors.primary,
         ),
         ...categories,
       ],
@@ -123,6 +124,7 @@ class NamedCell<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,7 +133,7 @@ class NamedCell<T> extends StatelessWidget {
           padding: theme.spacings.xInsets.semiSmall,
           decoration: BoxDecoration(
             border: Border.all(
-              color: theme.colors.foreground.withAlpha(125),
+              color: colors.onBackground.withAlpha(125),
             ),
             borderRadius: BorderRadius.circular(4),
           ),
@@ -139,7 +141,7 @@ class NamedCell<T> extends StatelessWidget {
         ),
         ApodText.paragraph2(
           value.name,
-          color: theme.colors.foreground.withAlpha(125),
+          color: colors.onBackground.withAlpha(125),
           fontSize: 8,
         ),
       ],

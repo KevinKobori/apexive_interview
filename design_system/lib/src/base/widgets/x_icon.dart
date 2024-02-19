@@ -160,8 +160,7 @@ class XIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final xIconSizes =
-        Theme.of(context).extension<XAssetsData>()!.xIcons.sizes;
+    final xIconSizes = Theme.of(context).extension<XAssetsData>()!.xIcons.sizes;
 
     return Icon(
       icon,

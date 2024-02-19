@@ -1,5 +1,5 @@
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 
-CatalogPage CatalogPageFactory() => CatalogPage(
+CatalogPage catalogPageFactory() => CatalogPage(
       pagePresenter: pagePresenterFactory(),
     );

@@ -50,22 +50,22 @@ class ApodActionButtonLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final colors = Theme.of(context).colorScheme;
     switch (_state) {
       case ApodTextButtonState.hovered:
         return ApodTextButtonLayout.hovered(
           icon: icon,
-          hoveredBackgroundColor: theme.colors.accentOpposite.withOpacity(0.15),
+          hoveredBackgroundColor: colors.onPrimary.withOpacity(0.15),
         );
       case ApodTextButtonState.pressed:
         return ApodTextButtonLayout.pressed(
           icon: icon,
-          pressedBackgroundColor: theme.colors.accentOpposite.withOpacity(0.20),
+          pressedBackgroundColor: colors.onPrimary.withOpacity(0.20),
         );
       case ApodTextButtonState.inactive:
         return ApodTextButtonLayout.inactive(
           icon: icon,
-          inactiveBackgroundColor: theme.colors.accentOpposite.withOpacity(0),
+          inactiveBackgroundColor: colors.onPrimary.withOpacity(0),
         );
     }
   }

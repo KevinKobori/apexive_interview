@@ -1,68 +1,47 @@
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-
 abstract final class ApodLightColorScheme {
   static ColorScheme get data => ColorScheme.fromSeed(
         seedColor: const Color(0xFF1E88E5),
-
-        // primaryColor: Main color used in the app, for widgets like AppBar.
-        primary: const Color(0xFF1E88E5), // Example: Google Blue 600
-
-        // accentColor: Highlight color for interactive elements like buttons.
-        secondary: const Color(0xFF00C853), // Example: Google Green
-
-        // cardColor: Background color for cards.
-        surface: Colors.white,
-
-        // scaffoldBackgroundColor: Scaffold background color.
-        background: const Color(0xFFE0E0E0), // Example: Google Grey 300
-
-        // errorColor: Color to indicate errors.
-        error: const Color(0xFFD32F2F), // Example: Google Red
-
-        // No direct equivalent: Color for text/icons on primary.
-        onPrimary: Colors.white,
-
-        // No direct equivalent: Color for text/icons on secondary.
-        onSecondary: Colors.white,
-
-        // Usually related to text on light/dark backgrounds.
-        onSurface: Colors.black,
-
-        // No direct equivalent: Color for text/icons on background.
-        onBackground: Colors.black,
-
-        // No direct equivalent: Color for text/icons on errors.
-        onError: Colors.white,
-
         // brightness: Overall light/dark theme setting.
         brightness: Brightness.light,
-
+        // primaryColor: Main color used in the app, for widgets like AppBar.
+        primary: const Color(0xFF1E88E5), // Example: Google Blue 600
+        // No direct equivalent: Color for text/icons on primary.
+        onPrimary: Colors.white,
+        // accentColor: Highlight color for interactive elements like buttons.
+        secondary: const Color(0xFF00C853), // Example: Google Green
+        // No direct equivalent: Color for text/icons on secondary.
+        onSecondary: Colors.white,
+        // cardColor: Background color for cards.
+        surface: Colors.white,
+        // Usually related to text on light/dark backgrounds.
+        onSurface: Colors.black,
+        // scaffoldBackgroundColor: Scaffold background color.
+        background: const Color(0xFFE0E0E0), // Example: Google Grey 300
+        // No direct equivalent: Color for text/icons on background.
+        onBackground: Colors.black,
+        // errorColor: Color to indicate errors.
+        error: const Color(0xFFD32F2F), // Example: Google Red
+        // No direct equivalent: Color for text/icons on errors.
+        onError: Colors.white,
         // No direct equivalent: Color for containers on primary.
         onPrimaryContainer: const Color(0xFFBBDEFB), // Example: Google Blue 100
-
         // No direct equivalent: Color for primary containers.
         primaryContainer: const Color(0xFF1565C0), // Example: Google Blue 700
-
         // No direct equivalent: Color for error containers.
         errorContainer: const Color(0xFFF44336), // Example: Google Red 500
-
         // No direct equivalent: Inverse color of primary.
         inversePrimary: const Color(0xFFCDDC39), // Example: Google Lime
-
         // No direct equivalent: Inverse color of surface.
         inverseSurface: const Color(0xFF424242), // Example: Google Grey 800
-
         // No direct equivalent: Color for text/icons on error containers.
         onErrorContainer: Colors.black,
-
         // No direct equivalent: Color for text/icons on secondary containers.
         onSecondaryContainer:
             const Color(0xFFA5D6A7), // Example: Google Green 200
-
         // No direct equivalent: Color variation for surfaces.
         onSurfaceVariant: Colors.grey.shade500,
-
         // No direct equivalent.
         tertiary: const Color(0xFFFFC107), // Example: Google Amber
         onInverseSurface: Colors.white,
