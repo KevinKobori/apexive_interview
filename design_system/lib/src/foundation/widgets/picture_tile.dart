@@ -125,7 +125,7 @@ class ProductTileLayout extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: aspectRatio,
               child: ClipRRect(
-                borderRadius: theme.radius.asBorderRadius().extraSmall,
+                borderRadius: theme.radius.xBorder.extraSmall,
                 child: Container(
                   color: Colors.grey,
                 ),
@@ -135,7 +135,7 @@ class ProductTileLayout extends StatelessWidget {
         : AspectRatio(
             aspectRatio: aspectRatio,
             child: ClipRRect(
-              borderRadius: theme.radius.asBorderRadius().extraSmall,
+              borderRadius: theme.radius.xBorder.extraSmall,
               child: Stack(
                 children: [
                   Positioned.fill(

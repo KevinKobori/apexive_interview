@@ -1,20 +1,20 @@
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 enum ApodIconSize {
-  small,
-  regular,
-  big,
+  extraSmall,
+  medium,
+  semiLarge,
 }
 
 extension ApodIconSizeExtension on ApodIconSizesData {
   double resolve(ApodIconSize size) {
     switch (size) {
-      case ApodIconSize.small:
-        return small;
-      case ApodIconSize.regular:
-        return regular;
-      case ApodIconSize.big:
-        return big;
+      case ApodIconSize.extraSmall:
+        return extraSmall;
+      case ApodIconSize.medium:
+        return medium;
+      case ApodIconSize.semiLarge:
+        return semiLarge;
     }
   }
 }
@@ -24,26 +24,26 @@ class ApodIcon extends StatelessWidget {
     this.data, {
     super.key,
     this.color,
-    this.size = ApodIconSize.regular,
+    this.size = ApodIconSize.medium,
   });
 
   const ApodIcon.small(
     this.data, {
     super.key,
     this.color,
-  }) : size = ApodIconSize.small;
+  }) : size = ApodIconSize.extraSmall;
 
   const ApodIcon.regular(
     this.data, {
     super.key,
     this.color,
-  }) : size = ApodIconSize.regular;
+  }) : size = ApodIconSize.medium;
 
   const ApodIcon.big(
     this.data, {
     super.key,
     this.color,
-  }) : size = ApodIconSize.big;
+  }) : size = ApodIconSize.semiLarge;
 
   final String data;
   final Color? color;
@@ -59,7 +59,7 @@ class ApodIcon extends StatelessWidget {
         fontFamily: theme.icons.fontFamily,
         package: theme.icons.fontPackage,
         color: color,
-        fontSize: theme.icons.sizes.resolve(size),
+        fontSize: (theme.icons.sizes as ApodIconSizesData).resolve(size),
         decoration: TextDecoration.none,
       ),
     );
@@ -71,7 +71,7 @@ class ApodAnimatedIcon extends StatelessWidget {
     this.data, {
     super.key,
     this.color,
-    this.size = ApodIconSize.small,
+    this.size = ApodIconSize.extraSmall,
     this.duration = const Duration(milliseconds: 200),
   });
 
@@ -99,7 +99,7 @@ class ApodAnimatedIcon extends StatelessWidget {
         fontFamily: theme.icons.fontFamily,
         package: theme.icons.fontPackage,
         color: color,
-        fontSize: theme.icons.sizes.resolve(size),
+        fontSize: (theme.icons.sizes as ApodIconSizesData).resolve(size),
         decoration: TextDecoration.none,
       ),
       duration: duration,

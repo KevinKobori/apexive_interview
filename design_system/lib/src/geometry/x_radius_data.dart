@@ -1,6 +1,6 @@
 part of x_metrics_data;
 
-class XRadiusData {
+class XRadiusData extends Equatable {
   final Radius none;
   final Radius extraSmall;
   final Radius small;
@@ -32,4 +32,17 @@ class XRadiusData {
         superLarge = superLarge ?? const Radius.circular(XStandardSizes.x48);
 
   XBorderRadiusData get xBorder => XBorderRadiusData(this);
+
+  @override
+  List<Object?> get props => [
+        none.named('none'),
+        extraSmall.named('extraSmall'),
+        small.named('small'),
+        semiSmall.named('semiSmall'),
+        medium.named('medium'),
+        semiLarge.named('semiLarge'),
+        large.named('large'),
+        extraLarge.named('extraLarge'),
+        superLarge.named('superLarge'),
+      ];
 }

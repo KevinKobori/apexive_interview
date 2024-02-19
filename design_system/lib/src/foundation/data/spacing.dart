@@ -1,66 +1,47 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class ApodSpacingsData extends Equatable {
-  const ApodSpacingsData({
-    required this.none,
-    required this.extraSmall,
-    required this.small,
-    required this.semiSmall,
-    required this.large,
-    required this.extraLarge,
-    required this.superLarge,
-  });
-
-  factory ApodSpacingsData.regular() => const ApodSpacingsData(
-        none: 0,
-        extraSmall: 4,
-        small: 8,
-        semiSmall: 12,
-        large: 24,
-        extraLarge: 32,
-        superLarge: 48,
-      );
-
-  final double none;
-  final double extraSmall;
-  final double small;
-  final double semiSmall;
-  final double large;
-  final double extraLarge;
-  final double superLarge;
-
-  ApodEdgeInsetsSpacingsData asInsets() => ApodEdgeInsetsSpacingsData(this);
+class ApodSpacingsData extends XSpacingsData {
+  const ApodSpacingsData()
+      : super(
+          none: 0,
+          extraSmall: 4,
+          small: 8,
+          semiSmall: 12,
+          large: 24,
+          extraLarge: 32,
+          superLarge: 48,
+        );
 
   @override
-  List<Object?> get props => [
-        none.named('none'),
-        extraSmall.named('extraSmall'),
-        small.named('small'),
-        semiSmall.named('semiSmall'),
-        large.named('large'),
-        extraLarge.named('extraLarge'),
-        superLarge.named('superLarge'),
-      ];
+  double get superSmall => throw UnimplementedError(
+      'superSmall is not available in ApodSpacingsData');
+
+  @override
+  double get medium =>
+      throw UnimplementedError('medium is not available in ApodSpacingsData');
+
+  @override
+  double get semiLarge => throw UnimplementedError(
+      'semiLarge is not available in ApodSpacingsData');
+
+  @override
+  ApodEdgeInsetsSpacingsData get xInsets => ApodEdgeInsetsSpacingsData(this);
 }
 
-class ApodEdgeInsetsSpacingsData extends Equatable {
-  const ApodEdgeInsetsSpacingsData(this._spacing);
-
-  EdgeInsets get none => EdgeInsets.all(_spacing.none);
-  EdgeInsets get extraSmall => EdgeInsets.all(_spacing.extraSmall);
-  EdgeInsets get small => EdgeInsets.all(_spacing.small);
-  EdgeInsets get semiSmall => EdgeInsets.all(_spacing.semiSmall);
-  EdgeInsets get large => EdgeInsets.all(_spacing.large);
-  EdgeInsets get extraLarge => EdgeInsets.all(_spacing.extraLarge);
-
-  final ApodSpacingsData _spacing;
+class ApodEdgeInsetsSpacingsData extends XEdgeInsetsSpacingsData {
+  const ApodEdgeInsetsSpacingsData(ApodSpacingsData spacing) : super(spacing);
 
   @override
-  List<Object?> get props => [
-        _spacing,
-      ];
+  EdgeInsets get superSmall => throw UnimplementedError(
+      'superSmall is not available in ApodEdgeInsetsSpacingsData');
+
+  @override
+  EdgeInsets get medium => throw UnimplementedError(
+      'medium is not available in ApodEdgeInsetsSpacingsData');
+
+  @override
+  EdgeInsets get semiLarge => throw UnimplementedError(
+      'semiLarge is not available in ApodEdgeInsetsSpacingsData');
 }
 
 enum ApodSpacing {
@@ -74,7 +55,7 @@ enum ApodSpacing {
 }
 
 extension AppSpacingsExtension on ApodSpacing {
-  double getSpacing(ApodThemeData theme) => switch (this) {
+  double toDouble(ApodThemeData theme) => switch (this) {
         ApodSpacing.none => theme.spacings.none,
         ApodSpacing.extraSmall => theme.spacings.extraSmall,
         ApodSpacing.small => theme.spacings.small,

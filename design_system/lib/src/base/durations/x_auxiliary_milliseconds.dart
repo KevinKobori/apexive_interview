@@ -1,4 +1,4 @@
 abstract final class XAuxiliaryMilliseconds {
   /// Random
-  static const double x350 = 350;
+  static const int x250 = 250;
 }

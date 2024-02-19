@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -10,7 +9,7 @@ void main() {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        borderRadius: theme.radius.asBorderRadius().small,
+        borderRadius: theme.radius.xBorder.small,
         color: theme.colors.actionBarBackground,
       ),
     );

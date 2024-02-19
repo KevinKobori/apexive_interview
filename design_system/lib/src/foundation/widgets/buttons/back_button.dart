@@ -12,7 +12,7 @@ class ApodBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
     return ApodActionButton(
-      icon: theme.icons.characters.arrowBack,
+      icon: (theme.icons.characters as ApodIconCharactersData).arrowBack,
       onTap: onTap ?? () => Navigator.pop(context),
     );
   }

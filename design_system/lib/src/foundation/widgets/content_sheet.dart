@@ -36,7 +36,7 @@ class ApodContentSheet extends StatelessWidget {
                 SliverPositioned.fill(
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      borderRadius: theme.radius.asBorderRadius().superLarge,
+                      borderRadius: theme.radius.xBorder.large,
                     ),
                   ),
                 ),

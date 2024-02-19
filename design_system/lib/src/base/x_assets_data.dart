@@ -1,5 +1,6 @@
 library x_assets_data;
 
+import 'package:equatable/equatable.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 part 'assets/x_icons_data.dart';
@@ -12,7 +13,7 @@ class XAssetsData extends ThemeExtension<XAssetsData> {
   XAssetsData({
     final XIconsData? xIcons,
     final XImagesData? xImages,
-  })  : xIcons = xIcons ?? XIconsData(),
+  })  : xIcons = xIcons ?? const XIconsData(),
         xImages = xImages ?? const XImagesData();
 
   @override

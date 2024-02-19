@@ -2,6 +2,8 @@ library nasa_apod_design_system;
 
 export 'package:flutter/material.dart';
 
+export 'src/base/durations/x_auxiliary_milliseconds.dart';
+export 'src/base/durations/x_standard_milliseconds.dart';
 export 'src/base/sizes/x_auxiliary_sizes.dart';
 export 'src/base/sizes/x_standard_sizes.dart';
 export 'src/base/widgets/x_gap.dart';

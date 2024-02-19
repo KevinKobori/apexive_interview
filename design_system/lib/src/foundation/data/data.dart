@@ -8,7 +8,7 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
     required this.typography,
     required this.radius,
     required this.spacings,
-    required this.shadow,
+    required this.boxShadows,
     required this.durations,
     required this.images,
     required this.formFactor,
@@ -20,7 +20,7 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
   final ApodTypographyData typography;
   final ApodRadiusData radius;
   final ApodSpacingsData spacings;
-  final ApodShadowsData shadow;
+  final ApodBoxShadowsData boxShadows;
   final ApodDurationsData durations;
   final ApodImagesData images;
   final ApodAppFormFactor formFactor;
@@ -34,7 +34,7 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
     ApodTypographyData? typography,
     ApodRadiusData? radius,
     ApodSpacingsData? spacings,
-    ApodShadowsData? shadow,
+    ApodBoxShadowsData? shadow,
     ApodDurationsData? durations,
     ApodImagesData? images,
     ApodAppFormFactor? formFactor,
@@ -46,7 +46,7 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
       typography: typography ?? this.typography,
       radius: radius ?? this.radius,
       spacings: spacings ?? this.spacings,
-      shadow: shadow ?? this.shadow,
+      boxShadows: shadow ?? boxShadows,
       durations: durations ?? this.durations,
       images: images ?? this.images,
       formFactor: formFactor ?? this.formFactor,
@@ -59,20 +59,18 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
     if (other is! ApodThemeData) {
       return this;
     }
-    // Example of interpolating one field, you need to interpolate all fields accordingly
+
     return ApodThemeData(
-      icons: icons, // ApodIconsData.lerp(icons, other.icons, t),
-      // Add lerp for other fields
-      colors: colors, // Update this to interpolate
-      typography: typography, // Update this to interpolate
-      radius: radius, // Update this to interpolate
-      spacings: spacings, // Update this to interpolate
-      shadow: shadow, // Update this to interpolate
-      durations: durations, // Update this to interpolate
-      images: images, // Update this to interpolate
-      formFactor:
-          t < 0.5 ? formFactor : other.formFactor, // Example interpolation
-      platform: platform, // Typically not interpolated
+      icons: icons,
+      colors: colors,
+      typography: typography,
+      radius: radius,
+      spacings: spacings,
+      boxShadows: boxShadows,
+      durations: durations,
+      images: images,
+      formFactor: t < 0.5 ? formFactor : other.formFactor,
+      platform: platform,
     );
   }
 
@@ -82,13 +80,13 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
   }) =>
       ApodThemeData(
         formFactor: ApodAppFormFactor.medium,
-        icons: ApodIconsData.regular(),
+        icons: ApodIconsData(),
         typography: ApodTypographyData.regular(),
         colors: ApodColorsData.light(),
-        radius: const ApodRadiusData.regular(),
-        spacings: ApodSpacingsData.regular(),
-        shadow: ApodShadowsData.regular(),
-        durations: ApodDurationsData.regular(),
+        radius: const ApodRadiusData(),
+        spacings: const ApodSpacingsData(),
+        boxShadows: const ApodBoxShadowsData(),
+        durations: const ApodDurationsData(),
         images: ApodImagesData.regular(
           appLogo: appLogo,
           appWormLogo: appWormLogo,
@@ -96,17 +94,31 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
       );
 
   @override
-  List<Object?> get props => [
-        platform,
-        icons,
-        colors,
-        typography,
-        radius,
-        spacings,
-        shadow,
-        durations,
-        images,
-      ];
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ApodThemeData &&
+          runtimeType == other.runtimeType &&
+          platform == other.platform &&
+          icons == other.icons &&
+          colors == other.colors &&
+          typography == other.typography &&
+          radius == other.radius &&
+          spacings == other.spacings &&
+          boxShadows == other.boxShadows &&
+          durations == other.durations &&
+          images == other.images;
+
+  @override
+  int get hashCode =>
+      platform.hashCode ^
+      icons.hashCode ^
+      colors.hashCode ^
+      typography.hashCode ^
+      radius.hashCode ^
+      spacings.hashCode ^
+      boxShadows.hashCode ^
+      durations.hashCode ^
+      images.hashCode;
 
   ApodThemeData withColors(ApodColorsData colors) {
     return ApodThemeData(
@@ -117,7 +129,7 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
       icons: icons,
       images: images,
       radius: radius,
-      shadow: shadow,
+      boxShadows: boxShadows,
       spacings: spacings,
       typography: typography,
     );
@@ -132,7 +144,7 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
       icons: icons,
       images: images,
       radius: radius,
-      shadow: shadow,
+      boxShadows: boxShadows,
       spacings: spacings,
       typography: typography,
     );
@@ -147,7 +159,7 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
       icons: icons,
       images: images,
       radius: radius,
-      shadow: shadow,
+      boxShadows: boxShadows,
       spacings: spacings,
       typography: typography,
     );
@@ -162,7 +174,7 @@ class ApodThemeData extends ThemeExtension<ApodThemeData> {
       icons: icons,
       images: images,
       radius: radius,
-      shadow: shadow,
+      boxShadows: boxShadows,
       spacings: spacings,
       typography: typography,
     );

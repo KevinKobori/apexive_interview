@@ -53,7 +53,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
       BuildContext context, ApodThemeData theme, PictureViewModel picture) {
     return [
       ClipRRect(
-        borderRadius: theme.radius.asBorderRadius().regular,
+        borderRadius: theme.radius.xBorder.semiSmall,
         child: AspectRatio(
           aspectRatio: picture.aspectRatio,
           child: Image(
@@ -108,7 +108,7 @@ class _NavigationBar extends StatelessWidget {
           accountOverviewPresenter: accountOverviewPresenter,
         ),
         action: ApodTextButton(
-          icon: theme.icons.characters.addPicture,
+          icon: (theme.icons.characters as ApodIconCharactersData).addPicture,
           title: 'Add to collections',
           onTap: () {},
         ),

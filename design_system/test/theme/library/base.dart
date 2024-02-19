@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ThemeContainer extends StatelessWidget {
@@ -129,7 +128,7 @@ class NamedCell<T> extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: theme.spacings.asInsets().semiSmall,
+          padding: theme.spacings.xInsets.semiSmall,
           decoration: BoxDecoration(
             border: Border.all(
               color: theme.colors.foreground.withAlpha(125),

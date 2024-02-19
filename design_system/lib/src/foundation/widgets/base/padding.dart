@@ -68,10 +68,10 @@ class ApodEdgeInsets extends Equatable {
 
   EdgeInsets toEdgeInsets(ApodThemeData theme) {
     return EdgeInsets.only(
-      left: left.getSpacing(theme),
-      top: top.getSpacing(theme),
-      right: right.getSpacing(theme),
-      bottom: bottom.getSpacing(theme),
+      left: left.toDouble(theme),
+      top: top.toDouble(theme),
+      right: right.toDouble(theme),
+      bottom: bottom.toDouble(theme),
     );
   }
 }

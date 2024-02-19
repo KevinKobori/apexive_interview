@@ -129,7 +129,7 @@ class ApodTextButtonLayout extends StatelessWidget {
     return AnimatedContainer(
       duration: theme.durations.quick,
       decoration: BoxDecoration(
-        borderRadius: theme.radius.asBorderRadius().small,
+        borderRadius: theme.radius.xBorder.small,
         color: backgroundColor,
       ),
       padding: EdgeInsets.symmetric(

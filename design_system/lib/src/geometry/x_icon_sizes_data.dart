@@ -1,7 +1,7 @@
-
+import 'package:equatable/equatable.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class XIconSizesData {
+class XIconSizesData extends Equatable {
   final double extraSmall;
   final double small;
   final double semiSmall;
@@ -28,6 +28,18 @@ class XIconSizesData {
         large = large ?? XStandardSizes.x48,
         extraLarge = extraLarge ?? XStandardSizes.x96,
         superLarge = superLarge ?? XStandardSizes.x192;
+
+  @override
+  List<Object?> get props => [
+        extraSmall.named('extraSmall'),
+        small.named('small'),
+        semiSmall.named('semiSmall'),
+        medium.named('medium'),
+        semiLarge.named('semiLarge'),
+        large.named('large'),
+        extraLarge.named('extraLarge'),
+        superLarge.named('superLarge'),
+      ];
 }
 
 enum XIconSize {

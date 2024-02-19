@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 import '../base/widget.dart';
@@ -11,7 +10,7 @@ void main() {
         builder: (context) {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.inactive(
-            icon: theme.icons.characters.arrowBack,
+            icon: (theme.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),
@@ -19,7 +18,7 @@ void main() {
         builder: (context) {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.hovered(
-            icon: theme.icons.characters.arrowBack,
+            icon: (theme.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),
@@ -27,7 +26,7 @@ void main() {
         builder: (context) {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.pressed(
-            icon: theme.icons.characters.arrowBack,
+            icon: (theme.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),

@@ -15,7 +15,7 @@ ThemeSection icons(BuildContext context) {
               builder: (context, v, _) => ApodIcon(
                 v,
                 color: theme.colors.foreground,
-                size: ApodIconSize.small,
+                size: ApodIconSize.extraSmall,
               ),
             ),
           ),
@@ -30,7 +30,7 @@ ThemeSection icons(BuildContext context) {
               builder: (context, v, _) => ApodIcon(
                 v,
                 color: theme.colors.foreground,
-                size: ApodIconSize.regular,
+                size: ApodIconSize.medium,
               ),
             ),
           ),

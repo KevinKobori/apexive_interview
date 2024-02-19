@@ -150,7 +150,7 @@ class NavigationBarContainer extends StatelessWidget {
     return ApodContainer(
       padding: const ApodEdgeInsets.semiSmall(),
       decoration: BoxDecoration(
-        borderRadius: theme.radius.asBorderRadius().regular,
+        borderRadius: theme.radius.xBorder.semiSmall,
         color: theme.colors.background,
       ),
       child: child,

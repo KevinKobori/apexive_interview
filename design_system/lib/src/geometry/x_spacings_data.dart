@@ -1,6 +1,6 @@
 part of x_metrics_data;
 
-class XSpacingsData {
+class XSpacingsData extends Equatable {
   final double none;
   final double superSmall;
   final double extraSmall;
@@ -33,6 +33,44 @@ class XSpacingsData {
         large = large ?? XStandardSizes.x24,
         extraLarge = extraLarge ?? XStandardSizes.x32,
         superLarge = superLarge ?? XStandardSizes.x48;
+
+  XEdgeInsetsSpacingsData get xInsets => XEdgeInsetsSpacingsData(this);
+
+  @override
+  List<Object?> get props => [
+        none.named('none'),
+        superSmall.named('superSmall'),
+        extraSmall.named('extraSmall'),
+        small.named('small'),
+        semiSmall.named('semiSmall'),
+        medium.named('medium'),
+        semiLarge.named('semiLarge'),
+        large.named('large'),
+        extraLarge.named('extraLarge'),
+        superLarge.named('superLarge'),
+      ];
+}
+
+class XEdgeInsetsSpacingsData extends Equatable {
+  final XSpacingsData _spacing;
+
+  const XEdgeInsetsSpacingsData(this._spacing);
+
+  EdgeInsets get none => EdgeInsets.all(_spacing.none);
+  EdgeInsets get superSmall => EdgeInsets.all(_spacing.superSmall);
+  EdgeInsets get extraSmall => EdgeInsets.all(_spacing.extraSmall);
+  EdgeInsets get small => EdgeInsets.all(_spacing.small);
+  EdgeInsets get semiSmall => EdgeInsets.all(_spacing.semiSmall);
+  EdgeInsets get medium => EdgeInsets.all(_spacing.medium);
+  EdgeInsets get semiLarge => EdgeInsets.all(_spacing.semiLarge);
+  EdgeInsets get large => EdgeInsets.all(_spacing.large);
+  EdgeInsets get extraLarge => EdgeInsets.all(_spacing.extraLarge);
+  EdgeInsets get superLarge => EdgeInsets.all(_spacing.superLarge);
+
+  @override
+  List<Object?> get props => [
+        _spacing,
+      ];
 }
 
 enum XSpacing {

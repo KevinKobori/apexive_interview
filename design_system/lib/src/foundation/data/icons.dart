@@ -1,37 +1,20 @@
-import 'package:equatable/equatable.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class ApodIconsData extends Equatable {
-  const ApodIconsData({
-    required this.fontFamily,
-    required this.fontPackage,
-    required this.characters,
-    required this.sizes,
-  });
-
-  /// Icons have been exported with "Export Icon Font" Figma plugin.
-  factory ApodIconsData.regular() => ApodIconsData(
-        fontFamily: 'apod_icons',
-        fontPackage: 'nasa_apod_design_system',
-        characters: ApodIconCharactersData.regular(),
-        sizes: ApodIconSizesData.regular(),
-      );
-
-  final String fontFamily;
-  final String? fontPackage;
-  final ApodIconCharactersData characters;
-  final ApodIconSizesData sizes;
-
-  @override
-  List<Object?> get props => [
-        fontFamily,
-        fontPackage,
-        characters,
-        sizes,
-      ];
+class ApodIconsData extends XIconsData {
+  ApodIconsData({
+    final String? fontFamily,
+    final String? fontPackage,
+    final ApodIconCharactersData? characters,
+    final ApodIconSizesData? sizes,
+  }) : super(
+          fontFamily: 'apod_icons',
+          fontPackage: 'nasa_apod_design_system',
+          characters: ApodIconCharactersData.regular(),
+          sizes: const ApodIconSizesData(),
+        );
 }
 
-class ApodIconCharactersData extends Equatable {
+class ApodIconCharactersData extends XIconCharactersData {
   const ApodIconCharactersData({
     required this.addPicture,
     required this.arrowBack,
@@ -65,33 +48,41 @@ class ApodIconCharactersData extends Equatable {
         addPicture.named('addPicture'),
         arrowBack.named('arrowBack'),
         dismiss.named('dismiss'),
+        options.named('options'),
         tag.named('tag'),
         vikoin.named('vikoin'),
         shoppingCart.named('shoppingCart'),
       ];
 }
 
-class ApodIconSizesData extends Equatable {
+class ApodIconSizesData extends XIconSizesData {
   const ApodIconSizesData({
-    required this.small,
-    required this.regular,
-    required this.big,
-  });
-
-  factory ApodIconSizesData.regular() => const ApodIconSizesData(
-        small: 16.0,
-        regular: 22.0,
-        big: 32.0,
-      );
-
-  final double small;
-  final double regular;
-  final double big;
+    final double? extraSmall,
+    final double? medium,
+    final double? semiLarge,
+  }) : super(
+          extraSmall: 16.0,
+          medium: 22.0,
+          semiLarge: 32.0,
+        );
 
   @override
-  List<Object?> get props => [
-        small.named('small'),
-        regular.named('regular'),
-        big.named('big'),
-      ];
+  double get small =>
+      throw UnimplementedError('small is not available in ApodIconSizesData');
+
+  @override
+  double get semiSmall => throw UnimplementedError(
+      'semiSmall is not available in ApodIconSizesData');
+
+  @override
+  double get large =>
+      throw UnimplementedError('large is not available in ApodIconSizesData');
+
+  @override
+  double get extraLarge => throw UnimplementedError(
+      'extraLarge is not available in ApodIconSizesData');
+
+  @override
+  double get superLarge => throw UnimplementedError(
+      'superLarge is not available in ApodIconSizesData');
 }

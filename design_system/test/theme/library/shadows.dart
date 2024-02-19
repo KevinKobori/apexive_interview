@@ -8,7 +8,7 @@ ThemeSection shadow(BuildContext context) {
       ThemeCategory(
         title: 'Regular',
         children: [
-          ...theme.shadow.props.map<Widget>(
+          ...theme.boxShadows.props.map<Widget>(
             (c) {
               final named = c as Named<BoxShadow>;
               return NamedCell(

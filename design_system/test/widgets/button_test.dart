@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 import '../base/widget.dart';
@@ -20,7 +19,8 @@ void main() {
         builder: (context) {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.inactive(
-            icon: theme.icons.characters.shoppingCart,
+            icon:
+                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
@@ -28,7 +28,8 @@ void main() {
         builder: (context) {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.hovered(
-            icon: theme.icons.characters.shoppingCart,
+            icon:
+                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
@@ -36,7 +37,8 @@ void main() {
         builder: (context) {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.pressed(
-            icon: theme.icons.characters.shoppingCart,
+            icon:
+                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
@@ -45,7 +47,8 @@ void main() {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.inactive(
             title: 'Buy',
-            icon: theme.icons.characters.shoppingCart,
+            icon:
+                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
@@ -54,7 +57,8 @@ void main() {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.hovered(
             title: 'Buy',
-            icon: theme.icons.characters.shoppingCart,
+            icon:
+                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
@@ -63,7 +67,8 @@ void main() {
           final theme = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.pressed(
             title: 'Buy',
-            icon: theme.icons.characters.shoppingCart,
+            icon:
+                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),

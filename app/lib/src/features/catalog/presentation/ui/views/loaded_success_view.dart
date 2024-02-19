@@ -133,8 +133,10 @@ class _BodyState extends State<_Body> {
                         child: Container(
                           margin: const ApodEdgeInsets.semiSmall()
                               .toEdgeInsets(theme),
-                          height: theme.icons.sizes.big,
-                          width: theme.icons.sizes.big,
+                          height: (theme.icons.sizes as ApodIconSizesData)
+                              .semiLarge,
+                          width: (theme.icons.sizes as ApodIconSizesData)
+                              .semiLarge,
                           alignment: Alignment.centerLeft,
                           child: SvgPicture.asset(theme.images.appLogo),
                         ),

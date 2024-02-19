@@ -3,6 +3,7 @@ abstract final class XAuxiliarySizes {
   static const double x1 = 1;
   static const double x2 = 2;
   static const double x3 = 3;
+  static const double x5 = 5;
   static const double x6 = 6;
   static const double x10 = 10;
   static const double x14 = 14;

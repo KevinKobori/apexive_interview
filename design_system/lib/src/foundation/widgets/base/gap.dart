@@ -40,6 +40,6 @@ class ApodGap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
-    return Gap(spacing.getSpacing(theme));
+    return Gap(spacing.toDouble(theme));
   }
 }

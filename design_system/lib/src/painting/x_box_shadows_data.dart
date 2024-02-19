@@ -1,6 +1,6 @@
 part of x_metrics_data;
 
-class XBoxShadowsData {
+class XBoxShadowsData extends Equatable {
   final BoxShadow small;
   final BoxShadow medium;
   final BoxShadow large;
@@ -30,4 +30,11 @@ class XBoxShadowsData {
               // TODO: NOW - CHANGE COLOR
               color: Color(0x44000000),
             );
+
+  @override
+  List<Object?> get props => [
+        small.named('small'),
+        medium.named('medium'),
+        large.named('large'),
+      ];
 }
