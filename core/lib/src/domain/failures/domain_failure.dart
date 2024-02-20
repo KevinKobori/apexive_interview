@@ -4,7 +4,8 @@ class DomainFailure extends Equatable implements Exception {
   final String message;
 
   const DomainFailure.unexpected() : message = 'Unexpected error occurred.';
-  const DomainFailure.notFound() : message = 'Resource not found.';
+  const DomainFailure.resourceNotFound() : message = 'Resource Not found.';
+  const DomainFailure.dataNotFound() : message = 'Data not found.';
   const DomainFailure.invalidData() : message = 'Invalid data provided.';
   const DomainFailure.internalServerError()
       : message = 'Internal server error.';

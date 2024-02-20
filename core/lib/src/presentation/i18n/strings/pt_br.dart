@@ -10,7 +10,9 @@ class PtBr implements Translation {
   @override
   String get invalidDataFailure => 'Dados inválidos!';
   @override
-  String get notFoundFailure => 'Não encontrado!';
+  String get resourceNotFoundFailure => 'Recurso Não encontrado!';
+  @override
+  String get dataNotFoundFailure => 'Dado Não encontrado!';
   @override
   String get internalServerErrorFailure => 'Erro no servidor';
 

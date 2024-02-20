@@ -14,12 +14,14 @@ class LocalLoadCatalogUseCaseImpl implements LocalLoadCatalogUseCase {
   @override
   Future<Either<DomainFailure, List<PictureEntity>>> call(void _) async {
     final dataResult = await localStorage.fetch(itemKey);
+
     return dataResult.fold(
       /// Left
       (localStorageFailure) => Left(localStorageFailure.toDomain),
 
       /// Right
       (localData) {
+        localData ??= <Map<String, dynamic>>[];
         final List<Map<String, dynamic>> jsonListData =
             List<Map<String, dynamic>>.from(localData);
         if (jsonListData.isEmpty != false) {

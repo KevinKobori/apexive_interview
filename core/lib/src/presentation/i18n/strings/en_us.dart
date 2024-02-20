@@ -10,7 +10,9 @@ class EnUs implements Translation {
   @override
   String get invalidDataFailure => 'Invalid data!';
   @override
-  String get notFoundFailure => 'Not found!';
+  String get resourceNotFoundFailure => 'Resource Not found!';
+  @override
+  String get dataNotFoundFailure => 'Data Not found!';
   @override
   String get internalServerErrorFailure => 'Server error!';
 

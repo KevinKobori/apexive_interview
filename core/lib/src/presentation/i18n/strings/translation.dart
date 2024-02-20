@@ -3,7 +3,8 @@ abstract class Translation {
   String get unexpectedFailure;
   String get notHaveInternetConnectionFailure;
   String get invalidDataFailure;
-  String get notFoundFailure;
+  String get resourceNotFoundFailure;
+  String get dataNotFoundFailure;
   String get internalServerErrorFailure;
 
   /// Strings

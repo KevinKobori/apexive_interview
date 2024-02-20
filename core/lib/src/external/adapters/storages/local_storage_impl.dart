@@ -33,6 +33,10 @@ class LocalStorageAdapter implements LocalStorage {
   Future<Either<LocalStorageFailure, dynamic>> fetch(String itemKey) async {
     try {
       final data = await localStorage.getItem(itemKey);
+      if (data == null) {
+        return const Left(LocalStorageFailure.dataNotFound());
+      }
+
       return Right(data);
     } catch (_) {
       return const Left(LocalStorageFailure.unknownError());

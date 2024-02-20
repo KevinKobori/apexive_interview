@@ -138,6 +138,6 @@ void main() {
     expect(
         actual,
         predicate((element) =>
-            element is DomainFailure && element == DomainFailure.notFound));
+            element is DomainFailure && element == DomainFailure.resourceNotFound));
   });
 }
