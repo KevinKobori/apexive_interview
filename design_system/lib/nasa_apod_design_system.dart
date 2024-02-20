@@ -1,7 +1,5 @@
 library nasa_apod_design_system;
 
-export 'package:flutter/material.dart';
-
 export 'src/base/durations/x_auxiliary_milliseconds.dart';
 export 'src/base/durations/x_standard_milliseconds.dart';
 export 'src/base/sizes/x_auxiliary_sizes.dart';
@@ -45,6 +43,7 @@ export 'src/foundation/widgets/organisms/date_picker_dialog.dart';
 export 'src/foundation/widgets/organisms/navigation_bar.dart';
 export 'src/foundation/widgets/organisms/notifiable_bar.dart';
 export 'src/foundation/widgets/picture_tile.dart';
+export 'src/foundation/widgets/views/blanc_box.dart';
 export 'src/foundation/widgets/views/failure_reload_view.dart';
 export 'src/geometry/x_icon_sizes_data.dart';
 export 'src/helpers/named.dart';

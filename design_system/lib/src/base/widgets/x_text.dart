@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-enum XTextTheme {
+enum XTextLevel {
   labelSmall,
   labelMedium,
   labelLarge,
@@ -34,10 +33,11 @@ class XText extends StatelessWidget {
   final TextHeightBehavior? textHeightBehavior;
   final Color? selectionColor;
   final TextScaler? textScaler;
-  final XTextTheme? xStyle;
+  final XTextLevel? xLevel;
 
   const XText(
     this.data, {
+    required this.xLevel,
     super.key,
     this.strutStyle,
     this.textAlign,
@@ -51,13 +51,12 @@ class XText extends StatelessWidget {
     this.textHeightBehavior,
     this.selectionColor,
     this.textScaler,
-    this.xStyle,
   }) : style = null;
 
   const XText.custom(
     this.data, {
+    required this.style,
     super.key,
-    this.style,
     this.strutStyle,
     this.textAlign,
     this.textDirection,
@@ -70,7 +69,7 @@ class XText extends StatelessWidget {
     this.textHeightBehavior,
     this.selectionColor,
     this.textScaler,
-  }) : xStyle = null;
+  }) : xLevel = null;
 
   const XText.labelSmall(
     this.data, {
@@ -88,7 +87,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.labelSmall;
+        xLevel = XTextLevel.labelSmall;
 
   const XText.labelMedium(
     this.data, {
@@ -106,7 +105,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.labelMedium;
+        xLevel = XTextLevel.labelMedium;
 
   const XText.labelLarge(
     this.data, {
@@ -124,7 +123,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.labelLarge;
+        xLevel = XTextLevel.labelLarge;
 
   const XText.bodySmall(
     this.data, {
@@ -142,7 +141,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.bodySmall;
+        xLevel = XTextLevel.bodySmall;
 
   const XText.bodyMedium(
     this.data, {
@@ -160,7 +159,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.bodyMedium;
+        xLevel = XTextLevel.bodyMedium;
 
   const XText.bodyLarge(
     this.data, {
@@ -178,7 +177,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.bodyLarge;
+        xLevel = XTextLevel.bodyLarge;
 
   const XText.titleSmall(
     this.data, {
@@ -196,7 +195,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.titleSmall;
+        xLevel = XTextLevel.titleSmall;
 
   const XText.titleMedium(
     this.data, {
@@ -214,7 +213,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.titleMedium;
+        xLevel = XTextLevel.titleMedium;
 
   const XText.titleLarge(
     this.data, {
@@ -232,7 +231,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.titleLarge;
+        xLevel = XTextLevel.titleLarge;
 
   const XText.headlineSmall(
     this.data, {
@@ -250,7 +249,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.headlineSmall;
+        xLevel = XTextLevel.headlineSmall;
 
   const XText.headlineMedium(
     this.data, {
@@ -268,7 +267,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.headlineMedium;
+        xLevel = XTextLevel.headlineMedium;
 
   const XText.headlineLarge(
     this.data, {
@@ -286,7 +285,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.headlineLarge;
+        xLevel = XTextLevel.headlineLarge;
 
   const XText.displaySmall(
     this.data, {
@@ -304,7 +303,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.displaySmall;
+        xLevel = XTextLevel.displaySmall;
 
   const XText.displayMedium(
     this.data, {
@@ -322,7 +321,7 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.displayMedium;
+        xLevel = XTextLevel.displayMedium;
 
   const XText.displayLarge(
     this.data, {
@@ -340,13 +339,13 @@ class XText extends StatelessWidget {
     this.selectionColor,
     this.textScaler,
   })  : style = null,
-        xStyle = XTextTheme.displayLarge;
+        xLevel = XTextLevel.displayLarge;
 
   @override
   Widget build(BuildContext context) {
     final textThemeData = Theme.of(context).textTheme;
     final resolvedTextStyle =
-        resolveXTextStyle(xTextTheme: xStyle, textTheme: textThemeData);
+        resolveXTextStyle(xTextTheme: xLevel, textTheme: textThemeData);
 
     return Text(
       data,
@@ -367,23 +366,59 @@ class XText extends StatelessWidget {
   }
 
   TextStyle? resolveXTextStyle(
-          {required XTextTheme? xTextTheme, required TextTheme textTheme}) =>
+          {required XTextLevel? xTextTheme, required TextTheme textTheme}) =>
       switch (xTextTheme) {
-        XTextTheme.displaySmall => textTheme.displaySmall!,
-        XTextTheme.displayMedium => textTheme.displayMedium!,
-        XTextTheme.displayLarge => textTheme.displayLarge!,
-        XTextTheme.headlineSmall => textTheme.headlineSmall!,
-        XTextTheme.headlineMedium => textTheme.headlineMedium!,
-        XTextTheme.headlineLarge => textTheme.headlineLarge!,
-        XTextTheme.titleSmall => textTheme.titleSmall!,
-        XTextTheme.titleMedium => textTheme.titleMedium!,
-        XTextTheme.titleLarge => textTheme.titleLarge!,
-        XTextTheme.bodySmall => textTheme.bodySmall!,
-        XTextTheme.bodyMedium => textTheme.bodyMedium!,
-        XTextTheme.bodyLarge => textTheme.bodyLarge!,
-        XTextTheme.labelSmall => textTheme.labelSmall!,
-        XTextTheme.labelMedium => textTheme.labelMedium!,
-        XTextTheme.labelLarge => textTheme.labelLarge!,
+        XTextLevel.displaySmall => textTheme.displaySmall!,
+        XTextLevel.displayMedium => textTheme.displayMedium!,
+        XTextLevel.displayLarge => textTheme.displayLarge!,
+        XTextLevel.headlineSmall => textTheme.headlineSmall!,
+        XTextLevel.headlineMedium => textTheme.headlineMedium!,
+        XTextLevel.headlineLarge => textTheme.headlineLarge!,
+        XTextLevel.titleSmall => textTheme.titleSmall!,
+        XTextLevel.titleMedium => textTheme.titleMedium!,
+        XTextLevel.titleLarge => textTheme.titleLarge!,
+        XTextLevel.bodySmall => textTheme.bodySmall!,
+        XTextLevel.bodyMedium => textTheme.bodyMedium!,
+        XTextLevel.bodyLarge => textTheme.bodyLarge!,
+        XTextLevel.labelSmall => textTheme.labelSmall!,
+        XTextLevel.labelMedium => textTheme.labelMedium!,
+        XTextLevel.labelLarge => textTheme.labelLarge!,
         null => null,
       };
+
+  XText copyWith({
+    String? data,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    TextOverflow? overflow,
+    int? maxLines,
+    String? semanticsLabel,
+    TextWidthBasis? textWidthBasis,
+    TextHeightBehavior? textHeightBehavior,
+    Color? selectionColor,
+    TextScaler? textScaler,
+    XTextLevel? xLevel,
+  }) {
+    return XText.custom(
+      data ?? this.data,
+      style: style ?? this.style,
+      key: key,
+      strutStyle: strutStyle ?? this.strutStyle,
+      textAlign: textAlign ?? this.textAlign,
+      textDirection: textDirection ?? this.textDirection,
+      locale: locale ?? this.locale,
+      softWrap: softWrap ?? this.softWrap,
+      overflow: overflow ?? this.overflow,
+      maxLines: maxLines ?? this.maxLines,
+      semanticsLabel: semanticsLabel ?? this.semanticsLabel,
+      textWidthBasis: textWidthBasis ?? this.textWidthBasis,
+      textHeightBehavior: textHeightBehavior ?? this.textHeightBehavior,
+      selectionColor: selectionColor ?? this.selectionColor,
+      textScaler: textScaler ?? this.textScaler,
+    );
+  }
 }

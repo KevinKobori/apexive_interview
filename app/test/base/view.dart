@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:test_utils/test_utils.dart';
 
@@ -53,10 +54,22 @@ void testAppView(
                                     horizontal: 8,
                                     vertical: 4,
                                   ),
-                                  child: ApodText.title3(
-                                    device.key,
-                                    color: Colors.black,
-                                  ),
+                                  child:
+                                      // ApodText.titleSmall(
+                                      //   device.key,
+                                      //   color: Colors.black,
+                                      // ),
+                                      Builder(builder: (context) {
+                                    final textTheme =
+                                        Theme.of(context).textTheme;
+
+                                    return ApodText.custom(
+                                      device.key,
+                                      style: textTheme.titleSmall!.copyWith(
+                                        color: Colors.black,
+                                      ),
+                                    );
+                                  }),
                                 ),
                               ),
                             ),

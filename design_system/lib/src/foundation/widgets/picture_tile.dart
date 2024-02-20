@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tap_builder/tap_builder.dart';
@@ -117,7 +118,9 @@ class ProductTileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    // TODO: NOW - TRANSFORM IT INTO METRICS DATA
+    final apodTheme = Theme.of(context).extension<ApodThemeData>()!;
+    final textTheme = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
     return _state == ProductTileState.shimmer
         ? Shimmer.fromColors(
@@ -126,7 +129,7 @@ class ProductTileLayout extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: aspectRatio,
               child: ClipRRect(
-                borderRadius: theme.radius.xBorder.extraSmall,
+                borderRadius: apodTheme.radius.xBorder.extraSmall,
                 child: Container(
                   color: Colors.grey,
                 ),
@@ -136,12 +139,12 @@ class ProductTileLayout extends StatelessWidget {
         : AspectRatio(
             aspectRatio: aspectRatio,
             child: ClipRRect(
-              borderRadius: theme.radius.xBorder.extraSmall,
+              borderRadius: apodTheme.radius.xBorder.extraSmall,
               child: Stack(
                 children: [
                   Positioned.fill(
                     child: AnimatedContainer(
-                      duration: theme.durations.regular,
+                      duration: apodTheme.durations.regular,
                       curve: Curves.easeIn,
                       transform: Matrix4.identity()
                         ..scale(
@@ -156,7 +159,7 @@ class ProductTileLayout extends StatelessWidget {
                   ),
                   Positioned.fill(
                     child: AnimatedContainer(
-                      duration: theme.durations.quick,
+                      duration: apodTheme.durations.quick,
                       color: colors.primary.withOpacity(
                         _state == ProductTileState.hovered ? 0.2 : 0.0,
                       ),
@@ -186,13 +189,24 @@ class ProductTileLayout extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                ApodText.title3(
+                                // ApodText.titleSmall(
+                                //   title,
+                                // ).copyWith(),
+                                ApodText.custom(
                                   title,
-                                  color: colors.onPrimary,
+                                  style: textTheme.titleSmall!.copyWith(
+                                    color: colors.onPrimary,
+                                  ),
                                 ),
-                                ApodText.paragraph1(
+                                // ApodText.bodyLarge(
+                                //   date,
+                                //   color: colors.onPrimary,
+                                // ),
+                                ApodText.custom(
                                   date,
-                                  color: colors.onPrimary,
+                                  style: textTheme.bodyLarge!.copyWith(
+                                    color: colors.onPrimary,
+                                  ),
                                 ),
                               ],
                             ),

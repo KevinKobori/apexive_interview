@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodScaffold extends StatelessWidget {
@@ -25,11 +26,9 @@ class ApodScaffold extends StatelessWidget {
     final floatingBar = this.floatingBar;
 
 // Inside your AppScaffold build method
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: backgroundColor ?? colors.background,
-      ),
-      child: Stack(
+    return Scaffold(
+      backgroundColor: backgroundColor ?? colors.background,
+      body: Stack(
         children: [
           backgroundImage != null
               ? Positioned.fill(

@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -21,21 +23,22 @@ class ApodPageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return isShimmer
         ? Shimmer.fromColors(
             baseColor: colors.background,
             highlightColor: colors.background.withOpacity(0.6),
-            child: _buildBody(theme),
+            child: _buildBody(context),
           )
         : AnimatedBuilder(
             animation: controller!,
-            child: _buildBody(theme),
+            child: _buildBody(context),
             builder: (context, child) {
               final scrollAmount = (1 -
                       (controller!.offset.abs() /
-                          theme.typography.title1.fontSize! *
+                          textTheme.titleLarge!.fontSize! *
                           0.5))
                   .clamp(0, 1);
               return DecoratedBox(
@@ -52,22 +55,36 @@ class ApodPageHeader extends StatelessWidget {
           );
   }
 
-  Widget _buildBody(ApodThemeData theme) {
+  Widget _buildBody(BuildContext context) {
+    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final textTheme = Theme.of(context).textTheme;
     return SafeArea(
       bottom: false,
       child: ApodPadding(
         padding: const ApodEdgeInsets.large(),
-        child: Center(
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                theme.images.appWormLogo,
-                width: theme.typography.title1.fontSize! * 4,
+        child: Stack(
+          children: [
+            Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SvgPicture.asset(
+                    theme.images.appWormLogo,
+                    width: textTheme.titleLarge!.fontSize! * 4,
+                  ),
+                  const ApodGap.small(),
+                  const ApodText.bodyLarge(
+                    'Astronomy Picture of the Day',
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              const ApodGap.small(),
-              const ApodText.paragraph1('Astronomy Picture of the Day'),
-            ],
-          ),
+            ),
+            const Align(
+              alignment: Alignment.centerRight,
+              child: ThemeSwitch(),
+            ),
+          ],
         ),
       ),
     );

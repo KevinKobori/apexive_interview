@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 import 'base.dart';
@@ -34,7 +35,7 @@ class ApodThemeLibrary extends StatelessWidget {
               title: 'Apod Theme : ${formFactor.name} - ${themeMode.name}',
               sections: [
                 // colors(context),
-                typography(context),
+                // typography(context),
                 icons(context),
                 radius(context),
                 spacing(context),

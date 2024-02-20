@@ -1,4 +1,4 @@
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
+import 'package:flutter/material.dart';
 
 class XColorScheme extends Color {
   // XColorScheme.custom(super.data);

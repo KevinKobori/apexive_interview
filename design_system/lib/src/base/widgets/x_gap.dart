@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -55,6 +56,6 @@ class XGap extends StatelessWidget {
   Widget build(BuildContext context) {
     final XMetricsData? xMetrics = Theme.of(context).extension<XMetricsData>();
 
-    return Gap(xSpacing?.toDouble(xMetrics) ?? spacing ?? XStandardSizes.x0);
+    return Gap(xSpacing?.toDouble(xMetrics) ?? spacing ?? XStandardSizes.zero);
   }
 }

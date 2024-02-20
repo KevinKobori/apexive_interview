@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:tap_builder/tap_builder.dart';
 
+// TODO: NOW - MIGRATE THIS WIDGET TO USE MATERIAL WIDGETS
 class ApodTextButton extends StatelessWidget {
   const ApodTextButton({
     super.key,
@@ -113,10 +115,12 @@ class ApodTextButtonLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     final title = this.title;
     final icon = this.icon;
     final hasBoth = title != null && icon != null;
-    final foregroundColor = this.foregroundColor ?? colors.onPrimary;
+    final foregroundColor = this.foregroundColor ?? colors.onSurface;
     final backgroundColor = () {
       switch (_state) {
         case ApodTextButtonState.inactive:
@@ -142,9 +146,15 @@ class ApodTextButtonLayout extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (title != null)
-            ApodText.title3(
+            // ApodText.titleSmall(
+            //   title,
+            //   color: foregroundColor,
+            // ),
+            ApodText.custom(
               title,
-              color: foregroundColor,
+              style: textTheme.titleSmall!.copyWith(
+                color: foregroundColor,
+              ),
             ),
           if (hasBoth) const ApodGap.semiSmall(),
           if (icon != null) ApodIcon.regular(icon, color: foregroundColor),

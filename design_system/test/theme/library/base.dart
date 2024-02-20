@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ThemeContainer extends StatelessWidget {
@@ -13,6 +14,7 @@ class ThemeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
+
     return Scaffold(
       backgroundColor: colors.background,
       body: ApodPadding(
@@ -20,7 +22,7 @@ class ThemeContainer extends StatelessWidget {
         child: SpacedColumn(
           spaceBetween: theme.spacings.large,
           children: [
-            ApodText.title1(title),
+            ApodText.titleLarge(title),
             ...sections,
           ],
         ),
@@ -42,12 +44,20 @@ class ThemeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return SpacedColumn(
       spaceBetween: 20.0,
       children: [
-        ApodText.title2(
+        // ApodText.titleMedium(
+        //   title,
+        //   color: colors.primary,
+        // ),
+        ApodText.custom(
           title,
-          color: colors.primary,
+          style: textTheme.titleMedium!.copyWith(
+            color: colors.primary,
+          ),
         ),
         ...categories,
       ],
@@ -71,7 +81,7 @@ class ThemeCategory extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ApodText.title3(title),
+        ApodText.titleSmall(title),
         Wrap(
           spacing: 8.0,
           runSpacing: 8.0,
@@ -123,14 +133,16 @@ class NamedCell<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final apodTheme = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: theme.spacings.xInsets.semiSmall,
+          padding: apodTheme.spacings.xInsets.semiSmall,
           decoration: BoxDecoration(
             border: Border.all(
               color: colors.onBackground.withAlpha(125),
@@ -139,10 +151,17 @@ class NamedCell<T> extends StatelessWidget {
           ),
           child: builder(context, value.value, null),
         ),
-        ApodText.paragraph2(
+        // ApodText.bodyMedium(
+        //   value.name,
+        //   color: colors.onBackground.withAlpha(125),
+        //   fontSize: 8,
+        // ),
+        ApodText.custom(
           value.name,
-          color: colors.onBackground.withAlpha(125),
-          fontSize: 8,
+          style: textTheme.bodyMedium!.copyWith(
+            color: colors.onBackground.withAlpha(125),
+            fontSize: apodTheme.spacings.small,
+          ),
         ),
       ],
     );

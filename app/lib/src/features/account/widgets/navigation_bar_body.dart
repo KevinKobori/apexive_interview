@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -12,7 +13,8 @@ class AccountNavigationBarBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
       bloc: accountOverviewPresenter,
@@ -22,13 +24,25 @@ class AccountNavigationBarBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              ApodText.paragraph1(
+              // ApodText.bodyLarge(
+              //   'Account',
+              //   color: colors.onSurface,
+              // ),
+              ApodText.custom(
                 'Account',
-                color: colors.onSurface,
+                style: textTheme.bodyLarge!.copyWith(
+                  color: colorScheme.onSurface,
+                ),
               ),
-              ApodText.title3(
+              // ApodText.titleSmall(
+              //   state.account.name,
+              //   color: colors.onSurface,
+              // ),
+              ApodText.custom(
                 state.account.name,
-                color: colors.onSurface,
+                style: textTheme.titleSmall!.copyWith(
+                  color: colorScheme.onSurface,
+                ),
               ),
             ],
           );

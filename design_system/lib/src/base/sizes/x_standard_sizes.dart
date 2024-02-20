@@ -1,7 +1,6 @@
 abstract final class XStandardSizes {
   /// + 4
   static const double zero = 0;
-  static const double x0 = 0;
   static const double x4 = 4;
   static const double x8 = 8;
   static const double x12 = 12;

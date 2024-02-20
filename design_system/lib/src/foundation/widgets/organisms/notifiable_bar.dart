@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -129,6 +130,8 @@ class _NotificationBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -152,15 +155,27 @@ class _NotificationBody extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      ApodText.title3(
+                      // ApodText.titleSmall(
+                      //   notification.title,
+                      //   color: colors.onPrimary,
+                      //   maxLines: 1,
+                      // ),
+                      ApodText.custom(
                         notification.title,
-                        color: colors.onPrimary,
-                        maxLines: 1,
+                        style: textTheme.titleSmall!.copyWith(
+                          color: colors.onPrimary,
+                        ),
                       ),
-                      ApodText.paragraph1(
+                      // ApodText.bodyLarge(
+                      //   notification.description,
+                      //   color: colors.onPrimary,
+                      //   maxLines: 1,
+                      // ),
+                      ApodText.custom(
                         notification.description,
-                        color: colors.onPrimary,
-                        maxLines: 1,
+                        style: textTheme.bodyLarge!.copyWith(
+                          color: colors.onPrimary,
+                        ),
                       ),
                     ],
                   ),

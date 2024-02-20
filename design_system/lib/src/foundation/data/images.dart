@@ -2,49 +2,39 @@ import 'package:equatable/equatable.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodImagesData extends Equatable {
-  const ApodImagesData({
-    required this.appLogo,
-    required this.appWormLogo,
-  });
-
-  factory ApodImagesData.regular({
-    required String appLogo,
-    required String appWormLogo,
-  }) =>
-      ApodImagesData(
-        appLogo: appLogo,
-        appWormLogo: appWormLogo,
-      );
-
-  factory ApodImagesData.highContrast({
-    required String appLogo,
-    required String appWormLogo,
-  }) =>
-      ApodImagesData(
-        appLogo: appLogo,
-        appWormLogo: appWormLogo,
-      );
-
   final String appLogo;
   final String appWormLogo;
+  final String darkAppLogo;
+  final String darkAppWormLogo;
+
+  const ApodImagesData()
+      : appLogo = 'assets/images/nasa_logo.svg',
+        appWormLogo = 'assets/images/nasa_worm_logo.svg',
+        darkAppLogo = 'assets/images/nasa_logo.svg',
+        darkAppWormLogo = 'assets/images/nasa_worm_logo.svg';
 
   @override
   List<Object?> get props => [
         appLogo.named('appLogo'),
         appWormLogo.named('appWormLogo'),
+        darkAppLogo.named('darkAppLogo'),
+        darkAppWormLogo.named('darkAppWormLogo'),
       ];
-
-  ApodImagesData withAppLogo(String appLogo) {
-    return ApodImagesData(
-      appLogo: appLogo,
-      appWormLogo: appWormLogo,
-    );
-  }
-
-  ApodImagesData withBackgroundPattern(ImageProvider backgroundPattern) {
-    return ApodImagesData(
-      appLogo: appLogo,
-      appWormLogo: appWormLogo,
-    );
-  }
 }
+
+
+// class ApodImagesData extends Equatable {
+//   final String appLogo;
+//   final String appWormLogo;
+
+//   const ApodImagesData({
+//     required this.appLogo,
+//     required this.appWormLogo,
+//   });
+
+//   @override
+//   List<Object?> get props => [
+//         appLogo.named('appLogo'),
+//         appWormLogo.named('appWormLogo'),
+//       ];
+// }

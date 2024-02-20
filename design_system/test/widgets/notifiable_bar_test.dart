@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 

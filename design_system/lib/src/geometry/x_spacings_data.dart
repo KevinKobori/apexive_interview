@@ -23,7 +23,7 @@ class XSpacingsData extends Equatable {
     final double? large,
     final double? extraLarge,
     final double? superLarge,
-  })  : none = none ?? XStandardSizes.x0,
+  })  : none = none ?? XStandardSizes.zero,
         superSmall = superSmall ?? XAuxiliarySizes.x2,
         extraSmall = extraSmall ?? XStandardSizes.x4,
         small = small ?? XStandardSizes.x8,

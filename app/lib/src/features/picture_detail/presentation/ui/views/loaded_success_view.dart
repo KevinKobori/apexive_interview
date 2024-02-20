@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
@@ -51,8 +52,13 @@ class _MobileLayoutState extends State<_MobileLayout> {
   List<Widget> _buildBody(BuildContext context, PictureViewModel picture) {
     final theme = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return [
+      const Align(
+        alignment: Alignment.centerRight,
+        child: ThemeSwitch(),
+      ),
       ClipRRect(
         borderRadius: theme.radius.xBorder.semiSmall,
         child: AspectRatio(
@@ -66,15 +72,20 @@ class _MobileLayoutState extends State<_MobileLayout> {
         ),
       ),
       const ApodGap.semiSmall(),
-      ApodText.title1(picture.title),
-      ApodText.title3(
+      ApodText.titleLarge(picture.title),
+      // ApodText.titleSmall(
+      //   picture.date,
+      //   color: colors.primary,
+      // ),
+      ApodText.custom(
         picture.date,
-        color: colors.primary,
+        style: textTheme.titleSmall!.copyWith(
+          color: colors.primary,
+        ),
       ),
-      ApodText.paragraph1(picture.explanation),
-      const SizedBox(
-        height: 100,
-      ),
+      ApodText.bodyLarge(picture.explanation),
+      const ApodGap.superLarge(),
+      const ApodGap.superLarge(),
     ];
   }
 }

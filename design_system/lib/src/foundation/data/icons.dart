@@ -9,31 +9,20 @@ class ApodIconsData extends XIconsData {
   }) : super(
           fontFamily: 'apod_icons',
           fontPackage: 'nasa_apod_design_system',
-          characters: ApodIconCharactersData.regular(),
+          characters: ApodIconCharactersData(),
           sizes: const ApodIconSizesData(),
         );
 }
 
 class ApodIconCharactersData extends XIconCharactersData {
-  const ApodIconCharactersData({
-    required this.addPicture,
-    required this.arrowBack,
-    required this.dismiss,
-    required this.options,
-    required this.tag,
-    required this.vikoin,
-    required this.shoppingCart,
-  });
-
-  factory ApodIconCharactersData.regular() => ApodIconCharactersData(
-        addPicture: String.fromCharCodes([57344, 58343, 58413, 57568]),
-        arrowBack: String.fromCharCodes([57344, 58537, 59260, 57572]),
-        dismiss: String.fromCharCodes([57344, 57911, 61195, 57514]),
-        options: String.fromCharCodes([58088, 58314, 57452]),
-        tag: String.fromCharCodes([59112, 57969, 57576]),
-        vikoin: String.fromCharCodes([57344, 57929, 57730, 57522]),
-        shoppingCart: String.fromCharCodes([57344, 58580, 57759, 57350]),
-      );
+  ApodIconCharactersData()
+      : addPicture = String.fromCharCodes([57344, 58343, 58413, 57568]),
+        arrowBack = String.fromCharCodes([57344, 58537, 59260, 57572]),
+        dismiss = String.fromCharCodes([57344, 57911, 61195, 57514]),
+        options = String.fromCharCodes([58088, 58314, 57452]),
+        tag = String.fromCharCodes([59112, 57969, 57576]),
+        vikoin = String.fromCharCodes([57344, 57929, 57730, 57522]),
+        shoppingCart = String.fromCharCodes([57344, 58580, 57759, 57350]);
 
   final String addPicture;
   final String arrowBack;

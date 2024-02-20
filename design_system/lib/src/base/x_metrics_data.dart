@@ -1,6 +1,7 @@
 library x_metrics_data;
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 part '../animation/x_durations_data.dart';

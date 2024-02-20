@@ -1,16 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:test_utils/test_utils.dart';
-
-typedef TestConfigurationBuilder = Widget Function(
-  Widget child,
-);
 
 void testAppWidgets(
   String name,
   Map<String, Widget> widgets, {
   Size baseSize = const Size(1024.0, 800.0),
 }) {
-  final configurations = <TestConfigurationBuilder>[
+  final configurations = <WidgetBuilderCallback>[
     (child) => Expanded(
           child: Center(
             child: child,

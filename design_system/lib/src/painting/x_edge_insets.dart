@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class XEdgeInsets {
@@ -29,10 +30,10 @@ class XEdgeInsets {
 
   EdgeInsets toEdgeInsets(XMetricsData? xMetrics) {
     return EdgeInsets.only(
-      left: left.toDouble(xMetrics) ?? XStandardSizes.x0,
-      top: top.toDouble(xMetrics) ?? XStandardSizes.x0,
-      right: right.toDouble(xMetrics) ?? XStandardSizes.x0,
-      bottom: bottom.toDouble(xMetrics) ?? XStandardSizes.x0,
+      left: left.toDouble(xMetrics) ?? XStandardSizes.zero,
+      top: top.toDouble(xMetrics) ?? XStandardSizes.zero,
+      right: right.toDouble(xMetrics) ?? XStandardSizes.zero,
+      bottom: bottom.toDouble(xMetrics) ?? XStandardSizes.zero,
     );
   }
 }

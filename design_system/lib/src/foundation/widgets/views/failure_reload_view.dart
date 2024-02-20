@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -19,7 +19,7 @@ class ApodFailureReloadView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ApodText.title2(failureMessage),
+          ApodText.titleMedium(failureMessage),
           const ApodGap.small(),
           ApodTextButton(
             onTap: onReload,

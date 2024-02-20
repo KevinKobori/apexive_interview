@@ -15,7 +15,7 @@ class XElevationsData {
     final double? level3,
     final double? level4,
     final double? level5,
-  })  : none = none ?? XStandardSizes.x0,
+  })  : none = none ?? XStandardSizes.zero,
         level1 = level1 ?? XAuxiliarySizes.x1,
         level2 = level2 ?? XAuxiliarySizes.x3,
         level3 = level3 ?? XAuxiliarySizes.x6,

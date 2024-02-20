@@ -4,6 +4,7 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 class AppModule extends Module {
   @override
   void binds(Injector i) {
+    i.addLazySingleton<AppWrapBloc>(() => AppWrapBloc());
     i.addLazySingleton<NotificationsOverviewBloc>(
         () => NotificationsOverviewBloc());
     i.addLazySingleton<CollectionsOverviewBloc>(

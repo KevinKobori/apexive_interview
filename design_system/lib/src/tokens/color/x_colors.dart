@@ -1,4 +1,4 @@
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
+import 'package:flutter/material.dart';
 
 abstract final class XColors {
   static const Color white = Color(0xFFFFFFFF);

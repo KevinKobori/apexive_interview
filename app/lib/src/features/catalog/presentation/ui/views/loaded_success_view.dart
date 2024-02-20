@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
@@ -172,7 +173,7 @@ class _BodyState extends State<_Body> {
                       right: ApodSpacing.large,
                       bottom: ApodSpacing.semiSmall,
                     ),
-                    child: ApodText.title1('Discover Now'),
+                    child: ApodText.titleLarge('Discover Now'),
                   )
                 : const SizedBox.shrink(),
           ),
