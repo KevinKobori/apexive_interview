@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
@@ -37,14 +38,9 @@ class AccountAvatarSuccessView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      url,
-      fit: BoxFit.cover,
-      frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-        return ClipOval(
-          child: child,
-        );
-      },
+    return CircleAvatar(
+      backgroundImage: CachedNetworkImageProvider(url),
+      backgroundColor: Colors.transparent,
     );
   }
 }

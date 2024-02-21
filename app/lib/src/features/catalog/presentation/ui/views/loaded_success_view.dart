@@ -105,8 +105,8 @@ class _BodyState extends State<_Body> {
           SliverToBoxAdapter(
             child: ApodPageHeader(
               controller: _controller,
-              url: widget.catalog[1].url,
-              mediaType: widget.catalog[1].mediaType,
+              url: widget.catalog[0].url,
+              mediaType: widget.catalog[0].mediaType,
             ),
           ),
           SliverToBoxAdapter(
@@ -169,7 +169,7 @@ class _BodyState extends State<_Body> {
             ),
           ),
           SliverToBoxAdapter(
-            child: widget.catalog.length >= 2
+            child: widget.catalog.length > 1
                 ? const ApodPadding(
                     padding: ApodEdgeInsets.only(
                       left: ApodSpacing.large,

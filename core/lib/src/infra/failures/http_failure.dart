@@ -12,12 +12,12 @@ class HttpFailure extends Equatable implements Exception {
   const HttpFailure.unknownError() : this._('Unknown Error', -1);
   const HttpFailure.invalidData() : this._('Invalid Data', -2);
 
-  // 1xx Informative
+  /// 1xx Informative
   const HttpFailure.continueProccess() : this._('Continue', 100);
   const HttpFailure.switchingProtocols() : this._('Switching Protocols', 101);
   const HttpFailure.processing() : this._('Processing', 102);
 
-  // 2xx Success
+  /// 2xx Success
   const HttpFailure.ok() : this._('OK', 200);
   const HttpFailure.created() : this._('Created', 201);
   const HttpFailure.accepted() : this._('Accepted', 202);
@@ -30,7 +30,7 @@ class HttpFailure extends Equatable implements Exception {
   const HttpFailure.alreadyReported() : this._('Already Reported', 208);
   const HttpFailure.iMUsed() : this._('IM Used', 226);
 
-  // 3xx Redirecting
+  /// 3xx Redirecting
   const HttpFailure.multipleChoices() : this._('Multiple Choices', 300);
   const HttpFailure.movedPermanently() : this._('Moved Permanently', 301);
   const HttpFailure.found() : this._('Found', 302);
@@ -40,7 +40,7 @@ class HttpFailure extends Equatable implements Exception {
   const HttpFailure.temporaryRedirect() : this._('Temporary Redirect', 307);
   const HttpFailure.permanentRedirect() : this._('Permanent Redirect', 308);
 
-  // 4xx Client Error
+  /// 4xx Client Error
   const HttpFailure.badRequest() : this._('Bad Request', 400);
   const HttpFailure.unauthorized() : this._('Unauthorized', 401);
   const HttpFailure.paymentRequired() : this._('Payment Required', 402);
@@ -80,7 +80,7 @@ class HttpFailure extends Equatable implements Exception {
   const HttpFailure.clientClosedRequest()
       : this._('Client Closed Request', 499);
 
-  // 5xx Server Error
+  /// 5xx Server Error
   const HttpFailure.internalServerError()
       : this._('Internal Server Error', 500);
   const HttpFailure.notImplemented() : this._('Not Implemented', 501);

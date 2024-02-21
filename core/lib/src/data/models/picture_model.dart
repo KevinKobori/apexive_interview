@@ -16,9 +16,9 @@ class PictureModel with _$PictureModel {
     @JsonKey(name: 'explanation') required String explanation,
     @JsonKey(name: 'hdurl') required String? hdurl,
     @JsonKey(name: 'media_type')
-    required MediaType mediaType, // Changed to snake_case
+    required MediaType mediaType,
     @JsonKey(name: 'service_version')
-    required String serviceVersion, // Changed to snake_case
+    required String serviceVersion,
     @JsonKey(name: 'title') required String title,
     @JsonKey(name: 'url') required String url,
   }) = _PictureModel;

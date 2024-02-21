@@ -205,6 +205,8 @@ class ProductTileLayout extends StatelessWidget {
                                   style: textTheme.titleSmall!.copyWith(
                                     color: colors.onPrimary,
                                   ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                                 ApodText.custom(
                                   date,
