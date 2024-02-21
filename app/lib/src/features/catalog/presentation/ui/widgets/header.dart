@@ -63,7 +63,7 @@ class ApodPageHeader extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final textTheme = Theme.of(context).textTheme;
     return SafeArea(
       bottom: false,
@@ -76,7 +76,7 @@ class ApodPageHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SvgPicture.asset(
-                    theme.images.appWormLogo,
+                    metrics.images.appWormLogo,
                     width: textTheme.titleLarge!.fontSize! * 4,
                   ),
                   const ApodGap.small(),

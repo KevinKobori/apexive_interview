@@ -1,7 +1,7 @@
 part of 'library.dart';
 
 // ThemeSection colors(BuildContext context) {
-//       final theme = Theme.of(context).extension<ApodThemeData>()!;
+//       final metrics = Theme.of(context).extension<ApodThemeData>()!;
 //     final colors = Theme.of(context).colorScheme;
 //   return ThemeSection(
 //     title: 'Colors',

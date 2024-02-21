@@ -24,20 +24,12 @@ class AccountNavigationBarBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ApodText.bodyLarge(
-              //   'Account',
-              //   color: colors.onSurface,
-              // ),
               ApodText.custom(
                 'Account',
                 style: textTheme.bodyLarge!.copyWith(
                   color: colorScheme.onSurface,
                 ),
               ),
-              // ApodText.titleSmall(
-              //   state.account.name,
-              //   color: colors.onSurface,
-              // ),
               ApodText.custom(
                 state.account.name,
                 style: textTheme.titleSmall!.copyWith(

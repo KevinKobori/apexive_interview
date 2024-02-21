@@ -50,7 +50,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
   }
 
   List<Widget> _buildBody(BuildContext context, PictureViewModel picture) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -60,7 +60,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
         child: ThemeSwitch(),
       ),
       ClipRRect(
-        borderRadius: theme.radius.xBorder.semiSmall,
+        borderRadius: metrics.radius.xBorder.semiSmall,
         child: AspectRatio(
           aspectRatio: picture.aspectRatio,
           child: Image(
@@ -73,10 +73,6 @@ class _MobileLayoutState extends State<_MobileLayout> {
       ),
       const ApodGap.semiSmall(),
       ApodText.titleLarge(picture.title),
-      // ApodText.titleSmall(
-      //   picture.date,
-      //   color: colors.primary,
-      // ),
       ApodText.custom(
         picture.date,
         style: textTheme.titleSmall!.copyWith(
@@ -103,7 +99,7 @@ class _NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
 
     final route = ModalRoute.of(context);
     return NotificationBar(
@@ -121,7 +117,7 @@ class _NavigationBar extends StatelessWidget {
           accountOverviewPresenter: accountOverviewPresenter,
         ),
         action: ApodTextButton(
-          icon: (theme.icons.characters as ApodIconCharactersData).addPicture,
+          icon: (metrics.icons.characters as ApodIconCharactersData).addPicture,
           title: 'Add to collections',
           onTap: () {},
         ),

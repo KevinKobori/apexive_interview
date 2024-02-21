@@ -30,10 +30,6 @@ class CollectionsOverview extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // ApodText.titleSmall(
-                      //   '$itemCount',
-                      //   color: colors.onSurface,
-                      // ),
                       ApodText.custom(
                         '$itemCount',
                         style: textTheme.titleSmall!.copyWith(

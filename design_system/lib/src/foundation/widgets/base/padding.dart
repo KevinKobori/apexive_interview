@@ -114,9 +114,9 @@ class ApodPadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     return Padding(
-      padding: padding.toEdgeInsets(theme),
+      padding: padding.toEdgeInsets(metrics),
       child: child,
     );
   }

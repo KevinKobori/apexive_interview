@@ -21,7 +21,7 @@ class ApodScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     final floatingBar = this.floatingBar;
 
@@ -51,18 +51,18 @@ class ApodScaffold extends StatelessWidget {
           body,
           if (floatingBar != null)
             AnimatedPositioned(
-              duration: theme.durations.regular,
+              duration: metrics.durations.regular,
               left: math.max(
                 mediaQuery.padding.left,
-                theme.spacings.semiSmall,
+                metrics.spacings.semiSmall,
               ),
               right: math.max(
                 mediaQuery.padding.right,
-                theme.spacings.semiSmall,
+                metrics.spacings.semiSmall,
               ),
               bottom: math.max(
                 mediaQuery.padding.bottom,
-                theme.spacings.semiSmall,
+                metrics.spacings.semiSmall,
               ),
               child: floatingBar,
             ),

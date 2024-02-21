@@ -12,7 +12,7 @@ class ApodContentSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final mediaQuery = MediaQuery.of(context);
     final route = ModalRoute.of(context);
     return SlideTransition(
@@ -30,23 +30,23 @@ class ApodContentSheet extends StatelessWidget {
         slivers: [
           SliverPadding(
             padding: EdgeInsets.only(
-              top: mediaQuery.padding.top + theme.spacings.semiSmall,
+              top: mediaQuery.padding.top + metrics.spacings.semiSmall,
             ),
             sliver: SliverStack(
               children: <Widget>[
                 SliverPositioned.fill(
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      borderRadius: theme.radius.xBorder.large,
+                      borderRadius: metrics.radius.xBorder.large,
                     ),
                   ),
                 ),
                 SliverPadding(
                   padding: EdgeInsets.only(
-                    left: theme.spacings.large,
-                    right: theme.spacings.large,
-                    top: theme.spacings.large,
-                    bottom: mediaQuery.padding.bottom + theme.spacings.large,
+                    left: metrics.spacings.large,
+                    right: metrics.spacings.large,
+                    top: metrics.spacings.large,
+                    bottom: mediaQuery.padding.bottom + metrics.spacings.large,
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate(

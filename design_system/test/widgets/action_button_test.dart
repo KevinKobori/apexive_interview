@@ -9,25 +9,25 @@ void main() {
     {
       'inactive': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.inactive(
-            icon: (theme.icons.characters as ApodIconCharactersData).arrowBack,
+            icon: (metrics.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),
       'hovered': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.hovered(
-            icon: (theme.icons.characters as ApodIconCharactersData).arrowBack,
+            icon: (metrics.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),
       'pressed': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.pressed(
-            icon: (theme.icons.characters as ApodIconCharactersData).arrowBack,
+            icon: (metrics.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),

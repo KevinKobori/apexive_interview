@@ -154,7 +154,6 @@ abstract final class PictureMapper {
   static Either<MapperFailure, PictureModel> fromJsonToModel(
       Map<String, dynamic> json) {
     try {
-      // TODO: NOW HERE
       final pictureModel = PictureModel.fromJson(json);
       return Right(pictureModel);
     } catch (_) {
@@ -165,7 +164,6 @@ abstract final class PictureMapper {
   static Either<MapperFailure, List<PictureModel>> fromJsonListToModelList(
       List<Map<String, dynamic>> jsonList) {
     try {
-      // TODO: NOW HERE
       final pictureModelList = jsonList
           .map((json) => fromJsonToModel(json)
               .getOrElse(() => throw const MapperFailure.conversionError()))

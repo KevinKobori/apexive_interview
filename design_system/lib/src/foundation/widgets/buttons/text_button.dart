@@ -113,7 +113,7 @@ class ApodTextButtonLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -132,24 +132,20 @@ class ApodTextButtonLayout extends StatelessWidget {
       }
     }();
     return AnimatedContainer(
-      duration: theme.durations.quick,
+      duration: metrics.durations.quick,
       decoration: BoxDecoration(
-        borderRadius: theme.radius.xBorder.small,
+        borderRadius: metrics.radius.xBorder.small,
         color: backgroundColor,
       ),
       padding: EdgeInsets.symmetric(
-        vertical: theme.spacings.small,
-        horizontal: title != null ? theme.spacings.large : theme.spacings.small,
+        vertical: metrics.spacings.small,
+        horizontal: title != null ? metrics.spacings.large : metrics.spacings.small,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           if (title != null)
-            // ApodText.titleSmall(
-            //   title,
-            //   color: foregroundColor,
-            // ),
             ApodText.custom(
               title,
               style: textTheme.titleSmall!.copyWith(

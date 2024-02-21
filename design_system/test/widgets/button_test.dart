@@ -18,58 +18,58 @@ void main() {
       ),
       'icon-inactive': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.inactive(
             icon:
-                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
+                (metrics.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
       'icon-hovered': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.hovered(
             icon:
-                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
+                (metrics.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
       'icon-pressed': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.pressed(
             icon:
-                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
+                (metrics.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
       'both-inactive': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.inactive(
             title: 'Buy',
             icon:
-                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
+                (metrics.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
       'both-hovered': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.hovered(
             title: 'Buy',
             icon:
-                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
+                (metrics.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),
       'both-pressed': Builder(
         builder: (context) {
-          final theme = Theme.of(context).extension<ApodThemeData>()!;
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodTextButtonLayout.pressed(
             title: 'Buy',
             icon:
-                (theme.icons.characters as ApodIconCharactersData).shoppingCart,
+                (metrics.icons.characters as ApodIconCharactersData).shoppingCart,
           );
         },
       ),

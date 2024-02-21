@@ -147,12 +147,12 @@ class NavigationBarContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     return ApodContainer(
       padding: const ApodEdgeInsets.semiSmall(),
       decoration: BoxDecoration(
-        borderRadius: theme.radius.xBorder.semiSmall,
+        borderRadius: metrics.radius.xBorder.semiSmall,
         color: colors.background,
       ),
       child: child,

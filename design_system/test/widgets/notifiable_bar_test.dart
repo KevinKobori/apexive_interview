@@ -6,23 +6,23 @@ import '../base/widget.dart';
 
 void main() {
   Widget bar(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        borderRadius: theme.radius.xBorder.small,
+        borderRadius: metrics.radius.xBorder.small,
         color: colors.onSurface,
       ),
     );
   }
 
   NotificationViewModel notification(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',
-      icon: theme.images.appLogo,
+      icon: metrics.images.appLogo,
     );
   }
 

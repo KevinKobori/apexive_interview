@@ -12,7 +12,7 @@ enum ApodTextLevel {
 
   const ApodTextLevel(this.xLevel);
 }
-// TODO: NOW - ORDER EVEYTHING BY ALPHABET?
+
 class ApodText extends XText {
   ApodText._(
     String data, {

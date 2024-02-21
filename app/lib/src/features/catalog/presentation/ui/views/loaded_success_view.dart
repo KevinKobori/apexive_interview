@@ -97,13 +97,12 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     return LayoutBuilder(builder: (context, constraints) {
       return CustomScrollView(
         controller: _controller,
         slivers: [
           SliverToBoxAdapter(
-            // TODO: NOW HERE - CREATE VIDEO READ
             child: ApodPageHeader(
               controller: _controller,
               url: widget.catalog[1].url,
@@ -117,13 +116,12 @@ class _BodyState extends State<_Body> {
                 top: ApodSpacing.large,
                 right: ApodSpacing.large,
                 bottom: ApodSpacing.large,
-              ).toEdgeInsets(theme),
+              ).toEdgeInsets(metrics),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Stack(
                     children: [
-                      // TODO: NOW HERE - CREATE VIDEO READ
                       ApodPictureTile(
                         key: Key(widget.catalog[0].date),
                         title: widget.catalog[0].title,
@@ -139,13 +137,13 @@ class _BodyState extends State<_Body> {
                         bottom: 0,
                         child: Container(
                           margin: const ApodEdgeInsets.semiSmall()
-                              .toEdgeInsets(theme),
-                          height: (theme.icons.sizes as ApodIconSizesData)
+                              .toEdgeInsets(metrics),
+                          height: (metrics.icons.sizes as ApodIconSizesData)
                               .semiLarge,
-                          width: (theme.icons.sizes as ApodIconSizesData)
+                          width: (metrics.icons.sizes as ApodIconSizesData)
                               .semiLarge,
                           alignment: Alignment.centerLeft,
-                          child: SvgPicture.asset(theme.images.appLogo),
+                          child: SvgPicture.asset(metrics.images.appLogo),
                         ),
                       ),
                     ],
@@ -187,20 +185,19 @@ class _BodyState extends State<_Body> {
             top: false,
             sliver: ApodSliverGridTile(
               padding: EdgeInsets.only(
-                left: theme.spacings.large,
-                top: theme.spacings.extraSmall,
-                right: theme.spacings.large,
+                left: metrics.spacings.large,
+                top: metrics.spacings.extraSmall,
+                right: metrics.spacings.large,
                 bottom: math.max(
                       mediaQuery.padding.bottom,
-                      theme.spacings.large,
+                      metrics.spacings.large,
                     ) +
-                    theme.spacings.superLarge,
+                    metrics.spacings.superLarge,
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
               children: widget.catalog
                   .skip(1)
                   .map(
-                    // TODO: NOW HERE - CREATE VIDEO READ
                     (picture) => ApodPictureTile(
                       key: Key(picture.date),
                       title: picture.title,

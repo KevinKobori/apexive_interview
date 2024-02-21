@@ -55,10 +55,6 @@ void testAppView(
                                     vertical: 4,
                                   ),
                                   child:
-                                      // ApodText.titleSmall(
-                                      //   device.key,
-                                      //   color: Colors.black,
-                                      // ),
                                       Builder(builder: (context) {
                                     final textTheme =
                                         Theme.of(context).textTheme;

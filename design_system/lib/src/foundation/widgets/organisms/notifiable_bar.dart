@@ -79,16 +79,16 @@ class ApodNotifiableBarLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     final notification = this.notification;
     final isOpened =
         notification != null || _state == ApodNotifiableBarState.opened;
 
     return AnimatedContainer(
-      duration: theme.durations.regular,
+      duration: metrics.durations.regular,
       decoration: BoxDecoration(
-        borderRadius: theme.radius.xBorder.semiSmall,
+        borderRadius: metrics.radius.xBorder.semiSmall,
         color: colors.primary,
         boxShadow: [
           BoxShadow(
@@ -98,7 +98,7 @@ class ApodNotifiableBarLayout extends StatelessWidget {
         ],
       ),
       child: AnimatedSize(
-        duration: theme.durations.regular,
+        duration: metrics.durations.regular,
         alignment: Alignment.bottomCenter,
         curve: Curves.easeInOut,
         child: Column(
@@ -128,7 +128,7 @@ class _NotificationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -139,8 +139,8 @@ class _NotificationBody extends StatelessWidget {
           child: Row(
             children: [
               ApodContainer(
-                height: (theme.icons.sizes as ApodIconSizesData).semiLarge,
-                width: (theme.icons.sizes as ApodIconSizesData).semiLarge,
+                height: (metrics.icons.sizes as ApodIconSizesData).semiLarge,
+                width: (metrics.icons.sizes as ApodIconSizesData).semiLarge,
                 margin: const ApodEdgeInsets.semiSmall(),
                 child: SvgPicture.asset(
                   'assets/images/nasa_logo.svg',
@@ -155,22 +155,12 @@ class _NotificationBody extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      // ApodText.titleSmall(
-                      //   notification.title,
-                      //   color: colors.onPrimary,
-                      //   maxLines: 1,
-                      // ),
                       ApodText.custom(
                         notification.title,
                         style: textTheme.titleSmall!.copyWith(
                           color: colors.onPrimary,
                         ),
                       ),
-                      // ApodText.bodyLarge(
-                      //   notification.description,
-                      //   color: colors.onPrimary,
-                      //   maxLines: 1,
-                      // ),
                       ApodText.custom(
                         notification.description,
                         style: textTheme.bodyLarge!.copyWith(
@@ -187,7 +177,7 @@ class _NotificationBody extends StatelessWidget {
         ApodPadding(
           padding: const ApodEdgeInsets.small(),
           child: ApodActionButton(
-            icon: (theme.icons.characters as ApodIconCharactersData).dismiss,
+            icon: (metrics.icons.characters as ApodIconCharactersData).dismiss,
             onTap: onClose,
           ),
         ),

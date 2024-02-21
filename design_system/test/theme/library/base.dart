@@ -12,7 +12,7 @@ class ThemeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -20,7 +20,7 @@ class ThemeContainer extends StatelessWidget {
       body: ApodPadding(
         padding: const ApodEdgeInsets.extraLarge(),
         child: SpacedColumn(
-          spaceBetween: theme.spacings.large,
+          spaceBetween: metrics.spacings.large,
           children: [
             ApodText.titleLarge(title),
             ...sections,
@@ -49,10 +49,6 @@ class ThemeSection extends StatelessWidget {
     return SpacedColumn(
       spaceBetween: 20.0,
       children: [
-        // ApodText.titleMedium(
-        //   title,
-        //   color: colors.primary,
-        // ),
         ApodText.custom(
           title,
           style: textTheme.titleMedium!.copyWith(
@@ -133,7 +129,7 @@ class NamedCell<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final apodTheme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -142,7 +138,7 @@ class NamedCell<T> extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: apodTheme.spacings.xInsets.semiSmall,
+          padding: metrics.spacings.xInsets.semiSmall,
           decoration: BoxDecoration(
             border: Border.all(
               color: colors.onBackground.withAlpha(125),
@@ -151,16 +147,11 @@ class NamedCell<T> extends StatelessWidget {
           ),
           child: builder(context, value.value, null),
         ),
-        // ApodText.bodyMedium(
-        //   value.name,
-        //   color: colors.onBackground.withAlpha(125),
-        //   fontSize: 8,
-        // ),
         ApodText.custom(
           value.name,
           style: textTheme.bodyMedium!.copyWith(
             color: colors.onBackground.withAlpha(125),
-            fontSize: apodTheme.spacings.small,
+            fontSize: metrics.spacings.small,
           ),
         ),
       ],

@@ -12,9 +12,8 @@ class CatalogPageLoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     return LayoutBuilder(builder: (context, constraints) {
-      // TODO: NOW - FIX THIS ERROR
       return ApodScaffold(
         body: CustomScrollView(
           slivers: [
@@ -28,7 +27,7 @@ class CatalogPageLoadingView extends StatelessWidget {
                   top: ApodSpacing.large,
                   right: ApodSpacing.large,
                   bottom: ApodSpacing.large,
-                ).toEdgeInsets(theme),
+                ).toEdgeInsets(metrics),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -41,14 +40,14 @@ class CatalogPageLoadingView extends StatelessWidget {
               top: false,
               sliver: ApodSliverGridTile(
                 padding: EdgeInsets.only(
-                  left: theme.spacings.large,
-                  top: theme.spacings.extraSmall,
-                  right: theme.spacings.large,
+                  left: metrics.spacings.large,
+                  top: metrics.spacings.extraSmall,
+                  right: metrics.spacings.large,
                   bottom: math.max(
                         mediaQuery.padding.bottom,
-                        theme.spacings.large,
+                        metrics.spacings.large,
                       ) +
-                      theme.spacings.superLarge,
+                      metrics.spacings.superLarge,
                 ),
                 crossAxisCount: (constraints.maxWidth / 300).ceil(),
                 children: List.generate(10, (_) => ApodPictureTile.shimmer())

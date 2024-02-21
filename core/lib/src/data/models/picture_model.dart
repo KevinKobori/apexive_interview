@@ -14,7 +14,6 @@ class PictureModel with _$PictureModel {
     @JsonKey(name: 'copyright') required String? copyright,
     @JsonKey(name: 'date') required DateTime date,
     @JsonKey(name: 'explanation') required String explanation,
-    // TODO: NOEW HERE FIIIX IIIIT NOOOW
     @JsonKey(name: 'hdurl') required String? hdurl,
     @JsonKey(name: 'media_type')
     required MediaType mediaType, // Changed to snake_case

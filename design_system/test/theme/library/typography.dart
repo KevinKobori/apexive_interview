@@ -1,7 +1,7 @@
 part of 'library.dart';
 
 // ThemeSection typography(BuildContext context) {
-//   final theme = Theme.of(context).extension<ApodThemeData>()!;
+//   final metrics = Theme.of(context).extension<ApodThemeData>()!;
 //   final colors = Theme.of(context).colorScheme;
 //   return ThemeSection(
 //     title: 'Typography',
@@ -9,7 +9,7 @@ part of 'library.dart';
 //       ThemeCategory(
 //         title: 'Regular',
 //         children: [
-//           ...theme.typography.props.map<Widget>(
+//           ...metrics.typography.props.map<Widget>(
 //             (c) {
 //               final named = c as Named<TextStyle>;
 //               return NamedCell(

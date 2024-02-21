@@ -52,17 +52,17 @@ class ApodIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
 
     final color = this.color ?? colors.onBackground;
     return Text(
       data,
       style: TextStyle(
-        fontFamily: theme.icons.fontFamily,
-        package: theme.icons.fontPackage,
+        fontFamily: metrics.icons.fontFamily,
+        package: metrics.icons.fontPackage,
         color: color,
-        fontSize: (theme.icons.sizes as ApodIconSizesData).resolve(size),
+        fontSize: (metrics.icons.sizes as ApodIconSizesData).resolve(size),
         decoration: TextDecoration.none,
       ),
     );
@@ -87,7 +87,7 @@ class ApodAnimatedIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final colors = Theme.of(context).colorScheme;
     final color = this.color ?? colors.onBackground;
     if (!isAnimated) {
@@ -100,10 +100,10 @@ class ApodAnimatedIcon extends StatelessWidget {
     }
     return AnimatedDefaultTextStyle(
       style: TextStyle(
-        fontFamily: theme.icons.fontFamily,
-        package: theme.icons.fontPackage,
+        fontFamily: metrics.icons.fontFamily,
+        package: metrics.icons.fontPackage,
         color: color,
-        fontSize: (theme.icons.sizes as ApodIconSizesData).resolve(size),
+        fontSize: (metrics.icons.sizes as ApodIconSizesData).resolve(size),
         decoration: TextDecoration.none,
       ),
       duration: duration,

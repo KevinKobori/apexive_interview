@@ -128,8 +128,7 @@ class ProductTileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: NOW - TRANSFORM IT INTO METRICS DATA
-    final apodTheme = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     final textTheme = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
     return _state == ProductTileState.shimmer
@@ -139,7 +138,7 @@ class ProductTileLayout extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: aspectRatio,
               child: ClipRRect(
-                borderRadius: apodTheme.radius.xBorder.semiSmall,
+                borderRadius: metrics.radius.xBorder.semiSmall,
                 child: Container(
                   color: Colors.grey,
                 ),
@@ -149,12 +148,12 @@ class ProductTileLayout extends StatelessWidget {
         : AspectRatio(
             aspectRatio: aspectRatio,
             child: ClipRRect(
-              borderRadius: apodTheme.radius.xBorder.semiSmall,
+              borderRadius: metrics.radius.xBorder.semiSmall,
               child: Stack(
                 children: [
                   Positioned.fill(
                     child: AnimatedContainer(
-                      duration: apodTheme.durations.regular,
+                      duration: metrics.durations.regular,
                       curve: Curves.easeIn,
                       transform: Matrix4.identity()
                         ..scale(
@@ -165,14 +164,13 @@ class ProductTileLayout extends StatelessWidget {
                           ? Image(
                               image: CachedNetworkImageProvider(url),
                               fit: BoxFit.cover,
-                              // TODO: NOW - VIDEOPLAYER
                             )
-                          : const Text('TODO: VIDEO PLAYER'),
+                          : const Text('VIDEO PLAYER'),
                     ),
                   ),
                   Positioned.fill(
                     child: AnimatedContainer(
-                      duration: apodTheme.durations.quick,
+                      duration: metrics.durations.quick,
                       color: colors.primary.withOpacity(
                         _state == ProductTileState.hovered ? 0.2 : 0.0,
                       ),
@@ -202,19 +200,12 @@ class ProductTileLayout extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                // ApodText.titleSmall(
-                                //   title,
-                                // ).copyWith(),
                                 ApodText.custom(
                                   title,
                                   style: textTheme.titleSmall!.copyWith(
                                     color: colors.onPrimary,
                                   ),
                                 ),
-                                // ApodText.bodyLarge(
-                                //   date,
-                                //   color: colors.onPrimary,
-                                // ),
                                 ApodText.custom(
                                   date,
                                   style: textTheme.bodyLarge!.copyWith(

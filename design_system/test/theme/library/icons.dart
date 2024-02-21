@@ -1,9 +1,9 @@
 part of 'library.dart';
 
 ThemeSection icons(BuildContext context) {
-  final theme = Theme.of(context).extension<ApodThemeData>()!;
+  final metrics = Theme.of(context).extension<ApodThemeData>()!;
   final colors = Theme.of(context).colorScheme;
-  final icons = theme.icons;
+  final icons = metrics.icons;
   return ThemeSection(
     title: 'Icons',
     categories: [
