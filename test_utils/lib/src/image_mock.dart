@@ -6,7 +6,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-const kDogImage = NetworkImage('https://dog.png');
+const kDogImageUrl = 'https://dog.png';
+
+const kDogImage = NetworkImage(kDogImageUrl);
 
 Future<void> ensureImagesPreloaded(WidgetTester tester) async {
   // Workaround to force load images so that it appears in golden renders

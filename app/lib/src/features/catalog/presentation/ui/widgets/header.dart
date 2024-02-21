@@ -1,23 +1,28 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ApodPageHeader extends StatelessWidget {
   final ScrollController? controller;
-  final ImageProvider? image;
+  final String url;
+  final MediaType mediaType;
   final bool isShimmer;
 
   const ApodPageHeader.shimmer({
     super.key,
-  })  : image = null,
+  })  : url = '',
+        mediaType = MediaType.image,
         controller = null,
         isShimmer = true;
 
   const ApodPageHeader({
     required this.controller,
-    required this.image,
+    required this.url,
+    required this.mediaType,
     super.key,
   }) : isShimmer = false;
 
@@ -32,27 +37,29 @@ class ApodPageHeader extends StatelessWidget {
             highlightColor: colors.background.withOpacity(0.6),
             child: _buildBody(context),
           )
-        : AnimatedBuilder(
-            animation: controller!,
-            child: _buildBody(context),
-            builder: (context, child) {
-              final scrollAmount = (1 -
-                      (controller!.offset.abs() /
-                          textTheme.titleLarge!.fontSize! *
-                          0.5))
-                  .clamp(0, 1);
-              return DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: image!,
-                    fit: BoxFit.cover,
-                    opacity: 0.475 * scrollAmount,
-                  ),
-                ),
-                child: child,
+        : mediaType == MediaType.video
+            ? _buildBody(context)
+            : AnimatedBuilder(
+                animation: controller!,
+                child: _buildBody(context),
+                builder: (context, child) {
+                  final scrollAmount = (1 -
+                          (controller!.offset.abs() /
+                              textTheme.titleLarge!.fontSize! *
+                              0.5))
+                      .clamp(0, 1);
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: CachedNetworkImageProvider(url),
+                        fit: BoxFit.cover,
+                        opacity: 0.475 * scrollAmount,
+                      ),
+                    ),
+                    child: child,
+                  );
+                },
               );
-            },
-          );
   }
 
   Widget _buildBody(BuildContext context) {

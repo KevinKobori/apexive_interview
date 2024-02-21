@@ -8,7 +8,7 @@ class PictureEntity with _$PictureEntity {
     required String? copyright,
     required DateTime date,
     required String explanation,
-    required String hdurl,
+    required String? hdurl,
     required String mediaType,
     required String serviceVersion,
     required String title,

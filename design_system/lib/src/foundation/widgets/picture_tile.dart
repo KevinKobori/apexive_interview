@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tap_builder/tap_builder.dart';
@@ -11,20 +12,23 @@ class ApodPictureTile extends StatefulWidget {
     required this.aspectRatio,
   })  : isLoading = true,
         title = '',
-        imageUrl = '',
+        url = '',
+        mediaType = MediaType.image,
         date = '',
         onTap = null;
 
   final bool isLoading;
   final String title;
-  final String imageUrl;
+  final String url;
+  final MediaType mediaType;
   final String date;
   final double aspectRatio;
   final VoidCallback? onTap;
 
   const ApodPictureTile({
     required this.title,
-    required this.imageUrl,
+    required this.url,
+    required this.mediaType,
     required this.date,
     required this.aspectRatio,
     required this.onTap,
@@ -60,14 +64,16 @@ class _ApodPictureTileState extends State<ApodPictureTile> {
             case TapState.pressed:
             case TapState.hover:
               return ProductTileLayout.hovered(
-                image: CachedNetworkImageProvider(widget.imageUrl),
+                url: widget.url,
+                mediaType: widget.mediaType,
                 title: widget.title,
                 date: widget.date,
                 aspectRatio: widget.aspectRatio,
               );
             default:
               return ProductTileLayout.idle(
-                image: CachedNetworkImageProvider(widget.imageUrl),
+                url: widget.url,
+                mediaType: widget.mediaType,
                 title: widget.title,
                 date: widget.date,
                 aspectRatio: widget.aspectRatio,
@@ -91,12 +97,14 @@ class ProductTileLayout extends StatelessWidget {
     super.key,
   })  : _state = ProductTileState.shimmer,
         title = '',
-        image = const CachedNetworkImageProvider(''),
+        url = '',
+        mediaType = MediaType.image,
         date = '';
 
   const ProductTileLayout.idle({
     required this.title,
-    required this.image,
+    required this.url,
+    required this.mediaType,
     required this.date,
     required this.aspectRatio,
     super.key,
@@ -104,7 +112,8 @@ class ProductTileLayout extends StatelessWidget {
 
   const ProductTileLayout.hovered({
     required this.title,
-    required this.image,
+    required this.url,
+    required this.mediaType,
     required this.date,
     required this.aspectRatio,
     super.key,
@@ -112,7 +121,8 @@ class ProductTileLayout extends StatelessWidget {
 
   final String title;
   final double aspectRatio;
-  final ImageProvider image;
+  final String url;
+  final MediaType mediaType;
   final String date;
   final ProductTileState _state;
 
@@ -129,7 +139,7 @@ class ProductTileLayout extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: aspectRatio,
               child: ClipRRect(
-                borderRadius: apodTheme.radius.xBorder.extraSmall,
+                borderRadius: apodTheme.radius.xBorder.semiSmall,
                 child: Container(
                   color: Colors.grey,
                 ),
@@ -139,7 +149,7 @@ class ProductTileLayout extends StatelessWidget {
         : AspectRatio(
             aspectRatio: aspectRatio,
             child: ClipRRect(
-              borderRadius: apodTheme.radius.xBorder.extraSmall,
+              borderRadius: apodTheme.radius.xBorder.semiSmall,
               child: Stack(
                 children: [
                   Positioned.fill(
@@ -151,10 +161,13 @@ class ProductTileLayout extends StatelessWidget {
                           _state == ProductTileState.hovered ? 1.05 : 1.0,
                         ),
                       transformAlignment: Alignment.center,
-                      child: Image(
-                        image: image,
-                        fit: BoxFit.cover,
-                      ),
+                      child: mediaType == MediaType.image
+                          ? Image(
+                              image: CachedNetworkImageProvider(url),
+                              fit: BoxFit.cover,
+                              // TODO: NOW - VIDEOPLAYER
+                            )
+                          : const Text('TODO: VIDEO PLAYER'),
                     ),
                   ),
                   Positioned.fill(

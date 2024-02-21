@@ -44,3 +44,9 @@ flutter:
   assets:
     - assets/images/
     - .env
+
+# build_runner:
+#   scripts:
+#     buildDel: dart run build_runner build --delete-conflicting-outputs
+#     watchDel: dart run build_runner watch --delete-conflicting-outputs
+#     watch: dart run build_runner watch

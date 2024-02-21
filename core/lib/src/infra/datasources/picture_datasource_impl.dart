@@ -6,6 +6,7 @@ class PictureDatasourceImpl implements PictureDatasource {
 
   PictureDatasourceImpl(this.httpClient);
 
+  // TODO: NOW
   @override
   Future<Either<DomainFailure, List<PictureModel>>> fetchCatalogByStartEndDate(
       String url) async {
@@ -34,6 +35,7 @@ class PictureDatasourceImpl implements PictureDatasource {
 
               /// Right
               (pictureJsonList) {
+                // TODO: NOW - ERROR HERE
                 final pictureModelListResult =
                     PictureMapper.fromJsonListToModelList(pictureJsonList);
                 return pictureModelListResult.fold(

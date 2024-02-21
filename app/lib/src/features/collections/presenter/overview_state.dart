@@ -6,7 +6,7 @@ class CollectionsOverviewStateLoadedData extends CollectionsOverviewState {
   final List<CollectionModel> collectionList;
 
   CollectionsOverviewStateLoadedData({required this.collectionList});
-
+  
   factory CollectionsOverviewStateLoadedData.demo() =>
       CollectionsOverviewStateLoadedData(
         collectionList: [
@@ -18,7 +18,7 @@ class CollectionsOverviewStateLoadedData extends CollectionsOverviewState {
                 date: DateTime.parse('2024-01-01'),
                 explanation: 'explanation',
                 hdurl: 'hdurl',
-                mediaType: 'mediaType',
+                mediaType: MediaType.image,
                 serviceVersion: 'serviceVersion',
                 title: 'title',
                 url:
@@ -34,7 +34,7 @@ class CollectionsOverviewStateLoadedData extends CollectionsOverviewState {
                 date: DateTime.parse('2024-01-01'),
                 explanation: 'explanation',
                 hdurl: 'hdurl',
-                mediaType: 'mediaType',
+                mediaType: MediaType.image,
                 serviceVersion: 'serviceVersion',
                 title: 'title',
                 url:

@@ -13,7 +13,7 @@ abstract final class PictureMapper {
       ),
       explanation: pictureEntity.explanation,
       hdurl: pictureEntity.hdurl,
-      mediaType: pictureEntity.mediaType,
+      mediaType: MediaType.values.byName(pictureEntity.mediaType),
       serviceVersion: pictureEntity.serviceVersion,
       title: pictureEntity.title,
       url: pictureEntity.url,
@@ -42,7 +42,7 @@ abstract final class PictureMapper {
       date: pictureModel.date,
       explanation: pictureModel.explanation,
       hdurl: pictureModel.hdurl,
-      mediaType: pictureModel.mediaType,
+      mediaType: pictureModel.mediaType.name,
       serviceVersion: pictureModel.serviceVersion,
       title: pictureModel.title,
       url: pictureModel.url,
@@ -68,15 +68,21 @@ abstract final class PictureMapper {
       PictureEntity pictureEntity) async {
     final apodDate =
         DateTimeMapper.getStringFromDateTimeYMD(pictureEntity.date);
-    final double aspectRatio =
-        await ImageHelper.getImageAspectRatio(pictureEntity.url);
+
+    double aspectRatio = 1;
+
+    if (pictureEntity.mediaType == MediaType.image.name) {
+      aspectRatio = await ImageHelper.getImageAspectRatio(pictureEntity.url);
+    } else {
+      aspectRatio = 16 / 9;
+    }
 
     final pictureViewModel = PictureViewModel(
       copyright: pictureEntity.copyright,
       date: apodDate,
       explanation: pictureEntity.explanation,
       hdurl: pictureEntity.hdurl,
-      mediaType: pictureEntity.mediaType,
+      mediaType: MediaType.values.byName(pictureEntity.mediaType),
       serviceVersion: pictureEntity.serviceVersion,
       title: pictureEntity.title,
       url: pictureEntity.url,
@@ -148,6 +154,7 @@ abstract final class PictureMapper {
   static Either<MapperFailure, PictureModel> fromJsonToModel(
       Map<String, dynamic> json) {
     try {
+      // TODO: NOW HERE
       final pictureModel = PictureModel.fromJson(json);
       return Right(pictureModel);
     } catch (_) {
@@ -158,6 +165,7 @@ abstract final class PictureMapper {
   static Either<MapperFailure, List<PictureModel>> fromJsonListToModelList(
       List<Map<String, dynamic>> jsonList) {
     try {
+      // TODO: NOW HERE
       final pictureModelList = jsonList
           .map((json) => fromJsonToModel(json)
               .getOrElse(() => throw const MapperFailure.conversionError()))
@@ -208,6 +216,7 @@ abstract final class PictureMapper {
     );
   }
 
+  // TODO: NOW - REMOVE IT
   static Future<Either<MapperFailure, PictureViewModel>> fromModelToViewModel(
       PictureModel pictureModel) async {
     return await fromModelToEntity(pictureModel).fold(

@@ -49,7 +49,9 @@ class _MobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ApodScaffold(
-      backgroundImage: CachedNetworkImageProvider(catalog[0].url),
+      backgroundImage: catalog[0].mediaType == MediaType.video
+          ? null
+          : CachedNetworkImageProvider(catalog[0].url),
       body: _Body(
         catalog: catalog,
         onLoadCatalog: onLoadCatalog,
@@ -101,9 +103,11 @@ class _BodyState extends State<_Body> {
         controller: _controller,
         slivers: [
           SliverToBoxAdapter(
+            // TODO: NOW HERE - CREATE VIDEO READ
             child: ApodPageHeader(
               controller: _controller,
-              image: CachedNetworkImageProvider(widget.catalog[1].url),
+              url: widget.catalog[1].url,
+              mediaType: widget.catalog[1].mediaType,
             ),
           ),
           SliverToBoxAdapter(
@@ -119,10 +123,12 @@ class _BodyState extends State<_Body> {
                 children: [
                   Stack(
                     children: [
+                      // TODO: NOW HERE - CREATE VIDEO READ
                       ApodPictureTile(
                         key: Key(widget.catalog[0].date),
                         title: widget.catalog[0].title,
-                        imageUrl: widget.catalog[0].url,
+                        url: widget.catalog[0].url,
+                        mediaType: widget.catalog[0].mediaType,
                         date: widget.catalog[0].date,
                         aspectRatio: widget.catalog[0].aspectRatio,
                         onTap: () =>
@@ -194,10 +200,12 @@ class _BodyState extends State<_Body> {
               children: widget.catalog
                   .skip(1)
                   .map(
+                    // TODO: NOW HERE - CREATE VIDEO READ
                     (picture) => ApodPictureTile(
                       key: Key(picture.date),
                       title: picture.title,
-                      imageUrl: picture.url,
+                      url: picture.url,
+                      mediaType: picture.mediaType,
                       date: picture.date,
                       aspectRatio: picture.aspectRatio,
                       onTap: () => widget.onViewPictureDetail(picture),

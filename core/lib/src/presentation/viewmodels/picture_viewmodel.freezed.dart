@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'picture_model.dart';
+part of 'picture_viewmodel.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,59 +14,45 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-PictureModel _$PictureModelFromJson(Map<String, dynamic> json) {
-  return _PictureModel.fromJson(json);
-}
-
 /// @nodoc
-mixin _$PictureModel {
-  @JsonKey(name: 'copyright')
+mixin _$PictureViewModel {
   String? get copyright => throw _privateConstructorUsedError;
-  @JsonKey(name: 'date')
-  DateTime get date => throw _privateConstructorUsedError;
-  @JsonKey(name: 'explanation')
-  String get explanation =>
-      throw _privateConstructorUsedError; // TODO: NOEW HERE FIIIX IIIIT NOOOW
-  @JsonKey(name: 'hdurl')
+  String get date => throw _privateConstructorUsedError;
+  String get explanation => throw _privateConstructorUsedError;
   String? get hdurl => throw _privateConstructorUsedError;
-  @JsonKey(name: 'media_type')
-  MediaType get mediaType =>
-      throw _privateConstructorUsedError; // Changed to snake_case
-  @JsonKey(name: 'service_version')
-  String get serviceVersion =>
-      throw _privateConstructorUsedError; // Changed to snake_case
-  @JsonKey(name: 'title')
+  MediaType get mediaType => throw _privateConstructorUsedError;
+  String get serviceVersion => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  @JsonKey(name: 'url')
   String get url => throw _privateConstructorUsedError;
+  double get aspectRatio => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PictureModelCopyWith<PictureModel> get copyWith =>
+  $PictureViewModelCopyWith<PictureViewModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PictureModelCopyWith<$Res> {
-  factory $PictureModelCopyWith(
-          PictureModel value, $Res Function(PictureModel) then) =
-      _$PictureModelCopyWithImpl<$Res, PictureModel>;
+abstract class $PictureViewModelCopyWith<$Res> {
+  factory $PictureViewModelCopyWith(
+          PictureViewModel value, $Res Function(PictureViewModel) then) =
+      _$PictureViewModelCopyWithImpl<$Res, PictureViewModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'copyright') String? copyright,
-      @JsonKey(name: 'date') DateTime date,
-      @JsonKey(name: 'explanation') String explanation,
-      @JsonKey(name: 'hdurl') String? hdurl,
-      @JsonKey(name: 'media_type') MediaType mediaType,
-      @JsonKey(name: 'service_version') String serviceVersion,
-      @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'url') String url});
+      {String? copyright,
+      String date,
+      String explanation,
+      String? hdurl,
+      MediaType mediaType,
+      String serviceVersion,
+      String title,
+      String url,
+      double aspectRatio});
 }
 
 /// @nodoc
-class _$PictureModelCopyWithImpl<$Res, $Val extends PictureModel>
-    implements $PictureModelCopyWith<$Res> {
-  _$PictureModelCopyWithImpl(this._value, this._then);
+class _$PictureViewModelCopyWithImpl<$Res, $Val extends PictureViewModel>
+    implements $PictureViewModelCopyWith<$Res> {
+  _$PictureViewModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -84,6 +70,7 @@ class _$PictureModelCopyWithImpl<$Res, $Val extends PictureModel>
     Object? serviceVersion = null,
     Object? title = null,
     Object? url = null,
+    Object? aspectRatio = null,
   }) {
     return _then(_value.copyWith(
       copyright: freezed == copyright
@@ -93,7 +80,7 @@ class _$PictureModelCopyWithImpl<$Res, $Val extends PictureModel>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       explanation: null == explanation
           ? _value.explanation
           : explanation // ignore: cast_nullable_to_non_nullable
@@ -118,35 +105,40 @@ class _$PictureModelCopyWithImpl<$Res, $Val extends PictureModel>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      aspectRatio: null == aspectRatio
+          ? _value.aspectRatio
+          : aspectRatio // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$PictureModelImplCopyWith<$Res>
-    implements $PictureModelCopyWith<$Res> {
-  factory _$$PictureModelImplCopyWith(
-          _$PictureModelImpl value, $Res Function(_$PictureModelImpl) then) =
-      __$$PictureModelImplCopyWithImpl<$Res>;
+abstract class _$$PictureViewModelImplCopyWith<$Res>
+    implements $PictureViewModelCopyWith<$Res> {
+  factory _$$PictureViewModelImplCopyWith(_$PictureViewModelImpl value,
+          $Res Function(_$PictureViewModelImpl) then) =
+      __$$PictureViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'copyright') String? copyright,
-      @JsonKey(name: 'date') DateTime date,
-      @JsonKey(name: 'explanation') String explanation,
-      @JsonKey(name: 'hdurl') String? hdurl,
-      @JsonKey(name: 'media_type') MediaType mediaType,
-      @JsonKey(name: 'service_version') String serviceVersion,
-      @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'url') String url});
+      {String? copyright,
+      String date,
+      String explanation,
+      String? hdurl,
+      MediaType mediaType,
+      String serviceVersion,
+      String title,
+      String url,
+      double aspectRatio});
 }
 
 /// @nodoc
-class __$$PictureModelImplCopyWithImpl<$Res>
-    extends _$PictureModelCopyWithImpl<$Res, _$PictureModelImpl>
-    implements _$$PictureModelImplCopyWith<$Res> {
-  __$$PictureModelImplCopyWithImpl(
-      _$PictureModelImpl _value, $Res Function(_$PictureModelImpl) _then)
+class __$$PictureViewModelImplCopyWithImpl<$Res>
+    extends _$PictureViewModelCopyWithImpl<$Res, _$PictureViewModelImpl>
+    implements _$$PictureViewModelImplCopyWith<$Res> {
+  __$$PictureViewModelImplCopyWithImpl(_$PictureViewModelImpl _value,
+      $Res Function(_$PictureViewModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -160,8 +152,9 @@ class __$$PictureModelImplCopyWithImpl<$Res>
     Object? serviceVersion = null,
     Object? title = null,
     Object? url = null,
+    Object? aspectRatio = null,
   }) {
-    return _then(_$PictureModelImpl(
+    return _then(_$PictureViewModelImpl(
       copyright: freezed == copyright
           ? _value.copyright
           : copyright // ignore: cast_nullable_to_non_nullable
@@ -169,7 +162,7 @@ class __$$PictureModelImplCopyWithImpl<$Res>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       explanation: null == explanation
           ? _value.explanation
           : explanation // ignore: cast_nullable_to_non_nullable
@@ -194,64 +187,57 @@ class __$$PictureModelImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      aspectRatio: null == aspectRatio
+          ? _value.aspectRatio
+          : aspectRatio // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$PictureModelImpl implements _PictureModel {
-  const _$PictureModelImpl(
-      {@JsonKey(name: 'copyright') required this.copyright,
-      @JsonKey(name: 'date') required this.date,
-      @JsonKey(name: 'explanation') required this.explanation,
-      @JsonKey(name: 'hdurl') required this.hdurl,
-      @JsonKey(name: 'media_type') required this.mediaType,
-      @JsonKey(name: 'service_version') required this.serviceVersion,
-      @JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'url') required this.url});
 
-  factory _$PictureModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PictureModelImplFromJson(json);
+class _$PictureViewModelImpl implements _PictureViewModel {
+  const _$PictureViewModelImpl(
+      {required this.copyright,
+      required this.date,
+      required this.explanation,
+      required this.hdurl,
+      required this.mediaType,
+      required this.serviceVersion,
+      required this.title,
+      required this.url,
+      required this.aspectRatio});
 
   @override
-  @JsonKey(name: 'copyright')
   final String? copyright;
   @override
-  @JsonKey(name: 'date')
-  final DateTime date;
+  final String date;
   @override
-  @JsonKey(name: 'explanation')
   final String explanation;
-// TODO: NOEW HERE FIIIX IIIIT NOOOW
   @override
-  @JsonKey(name: 'hdurl')
   final String? hdurl;
   @override
-  @JsonKey(name: 'media_type')
   final MediaType mediaType;
-// Changed to snake_case
   @override
-  @JsonKey(name: 'service_version')
   final String serviceVersion;
-// Changed to snake_case
   @override
-  @JsonKey(name: 'title')
   final String title;
   @override
-  @JsonKey(name: 'url')
   final String url;
+  @override
+  final double aspectRatio;
 
   @override
   String toString() {
-    return 'PictureModel(copyright: $copyright, date: $date, explanation: $explanation, hdurl: $hdurl, mediaType: $mediaType, serviceVersion: $serviceVersion, title: $title, url: $url)';
+    return 'PictureViewModel(copyright: $copyright, date: $date, explanation: $explanation, hdurl: $hdurl, mediaType: $mediaType, serviceVersion: $serviceVersion, title: $title, url: $url, aspectRatio: $aspectRatio)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PictureModelImpl &&
+            other is _$PictureViewModelImpl &&
             (identical(other.copyright, copyright) ||
                 other.copyright == copyright) &&
             (identical(other.date, date) || other.date == date) &&
@@ -263,68 +249,55 @@ class _$PictureModelImpl implements _PictureModel {
             (identical(other.serviceVersion, serviceVersion) ||
                 other.serviceVersion == serviceVersion) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.aspectRatio, aspectRatio) ||
+                other.aspectRatio == aspectRatio));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, copyright, date, explanation,
-      hdurl, mediaType, serviceVersion, title, url);
+      hdurl, mediaType, serviceVersion, title, url, aspectRatio);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PictureModelImplCopyWith<_$PictureModelImpl> get copyWith =>
-      __$$PictureModelImplCopyWithImpl<_$PictureModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PictureModelImplToJson(
-      this,
-    );
-  }
+  _$$PictureViewModelImplCopyWith<_$PictureViewModelImpl> get copyWith =>
+      __$$PictureViewModelImplCopyWithImpl<_$PictureViewModelImpl>(
+          this, _$identity);
 }
 
-abstract class _PictureModel implements PictureModel {
-  const factory _PictureModel(
-      {@JsonKey(name: 'copyright') required final String? copyright,
-      @JsonKey(name: 'date') required final DateTime date,
-      @JsonKey(name: 'explanation') required final String explanation,
-      @JsonKey(name: 'hdurl') required final String? hdurl,
-      @JsonKey(name: 'media_type') required final MediaType mediaType,
-      @JsonKey(name: 'service_version') required final String serviceVersion,
-      @JsonKey(name: 'title') required final String title,
-      @JsonKey(name: 'url') required final String url}) = _$PictureModelImpl;
-
-  factory _PictureModel.fromJson(Map<String, dynamic> json) =
-      _$PictureModelImpl.fromJson;
+abstract class _PictureViewModel implements PictureViewModel {
+  const factory _PictureViewModel(
+      {required final String? copyright,
+      required final String date,
+      required final String explanation,
+      required final String? hdurl,
+      required final MediaType mediaType,
+      required final String serviceVersion,
+      required final String title,
+      required final String url,
+      required final double aspectRatio}) = _$PictureViewModelImpl;
 
   @override
-  @JsonKey(name: 'copyright')
   String? get copyright;
   @override
-  @JsonKey(name: 'date')
-  DateTime get date;
+  String get date;
   @override
-  @JsonKey(name: 'explanation')
   String get explanation;
-  @override // TODO: NOEW HERE FIIIX IIIIT NOOOW
-  @JsonKey(name: 'hdurl')
+  @override
   String? get hdurl;
   @override
-  @JsonKey(name: 'media_type')
   MediaType get mediaType;
-  @override // Changed to snake_case
-  @JsonKey(name: 'service_version')
+  @override
   String get serviceVersion;
-  @override // Changed to snake_case
-  @JsonKey(name: 'title')
+  @override
   String get title;
   @override
-  @JsonKey(name: 'url')
   String get url;
   @override
+  double get aspectRatio;
+  @override
   @JsonKey(ignore: true)
-  _$$PictureModelImplCopyWith<_$PictureModelImpl> get copyWith =>
+  _$$PictureViewModelImplCopyWith<_$PictureViewModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
