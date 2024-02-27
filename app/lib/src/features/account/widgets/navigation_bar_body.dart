@@ -13,7 +13,8 @@ class AccountNavigationBarBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
       bloc: accountOverviewPresenter,
@@ -23,13 +24,17 @@ class AccountNavigationBarBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              ApodText.paragraph1(
+              ApodText.custom(
                 'Account',
-                color: theme.colors.actionBarForeground,
+                style: textTheme.bodyLarge!.copyWith(
+                  color: colorScheme.onSurface,
+                ),
               ),
-              ApodText.title3(
+              ApodText.custom(
                 state.account.name,
-                color: theme.colors.actionBarForeground,
+                style: textTheme.titleSmall!.copyWith(
+                  color: colorScheme.onSurface,
+                ),
               ),
             ],
           );

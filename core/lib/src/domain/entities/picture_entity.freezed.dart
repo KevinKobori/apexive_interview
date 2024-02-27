@@ -19,7 +19,7 @@ mixin _$PictureEntity {
   String? get copyright => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   String get explanation => throw _privateConstructorUsedError;
-  String get hdurl => throw _privateConstructorUsedError;
+  String? get hdurl => throw _privateConstructorUsedError;
   String get mediaType => throw _privateConstructorUsedError;
   String get serviceVersion => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $PictureEntityCopyWith<$Res> {
       {String? copyright,
       DateTime date,
       String explanation,
-      String hdurl,
+      String? hdurl,
       String mediaType,
       String serviceVersion,
       String title,
@@ -63,7 +63,7 @@ class _$PictureEntityCopyWithImpl<$Res, $Val extends PictureEntity>
     Object? copyright = freezed,
     Object? date = null,
     Object? explanation = null,
-    Object? hdurl = null,
+    Object? hdurl = freezed,
     Object? mediaType = null,
     Object? serviceVersion = null,
     Object? title = null,
@@ -82,10 +82,10 @@ class _$PictureEntityCopyWithImpl<$Res, $Val extends PictureEntity>
           ? _value.explanation
           : explanation // ignore: cast_nullable_to_non_nullable
               as String,
-      hdurl: null == hdurl
+      hdurl: freezed == hdurl
           ? _value.hdurl
           : hdurl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mediaType: null == mediaType
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$PictureEntityImplCopyWith<$Res>
       {String? copyright,
       DateTime date,
       String explanation,
-      String hdurl,
+      String? hdurl,
       String mediaType,
       String serviceVersion,
       String title,
@@ -139,7 +139,7 @@ class __$$PictureEntityImplCopyWithImpl<$Res>
     Object? copyright = freezed,
     Object? date = null,
     Object? explanation = null,
-    Object? hdurl = null,
+    Object? hdurl = freezed,
     Object? mediaType = null,
     Object? serviceVersion = null,
     Object? title = null,
@@ -158,10 +158,10 @@ class __$$PictureEntityImplCopyWithImpl<$Res>
           ? _value.explanation
           : explanation // ignore: cast_nullable_to_non_nullable
               as String,
-      hdurl: null == hdurl
+      hdurl: freezed == hdurl
           ? _value.hdurl
           : hdurl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mediaType: null == mediaType
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
@@ -202,7 +202,7 @@ class _$PictureEntityImpl implements _PictureEntity {
   @override
   final String explanation;
   @override
-  final String hdurl;
+  final String? hdurl;
   @override
   final String mediaType;
   @override
@@ -252,7 +252,7 @@ abstract class _PictureEntity implements PictureEntity {
       {required final String? copyright,
       required final DateTime date,
       required final String explanation,
-      required final String hdurl,
+      required final String? hdurl,
       required final String mediaType,
       required final String serviceVersion,
       required final String title,
@@ -265,7 +265,7 @@ abstract class _PictureEntity implements PictureEntity {
   @override
   String get explanation;
   @override
-  String get hdurl;
+  String? get hdurl;
   @override
   String get mediaType;
   @override

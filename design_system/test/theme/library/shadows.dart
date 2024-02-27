@@ -1,14 +1,15 @@
 part of 'library.dart';
 
 ThemeSection shadow(BuildContext context) {
-  final theme = ApodTheme.of(context);
+  final metrics = Theme.of(context).extension<ApodThemeData>()!;
+  final colorScheme = Theme.of(context).colorScheme;
   return ThemeSection(
     title: 'Shadows',
     categories: [
       ThemeCategory(
         title: 'Regular',
         children: [
-          ...theme.shadow.props.map<Widget>(
+          ...metrics.boxShadows.props.map<Widget>(
             (c) {
               final named = c as Named<BoxShadow>;
               return NamedCell(
@@ -18,7 +19,7 @@ ThemeSection shadow(BuildContext context) {
                   width: 48,
                   margin: const EdgeInsets.all(64),
                   decoration: BoxDecoration(
-                    color: theme.colors.foreground,
+                    color: colorScheme.onBackground,
                     boxShadow: [v],
                   ),
                 ),

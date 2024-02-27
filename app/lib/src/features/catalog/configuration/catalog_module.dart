@@ -4,6 +4,6 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 class CatalogModule extends Module {
   @override
   void routes(r) {
-    r.child('/', child: (_) => CatalogPageFactory());
+    r.child('/', child: (_) => catalogPageFactory());
   }
 }

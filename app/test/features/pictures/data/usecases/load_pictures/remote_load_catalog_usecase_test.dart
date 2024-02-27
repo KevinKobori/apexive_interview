@@ -120,7 +120,7 @@ void main() {
     expect(
         actual,
         predicate((element) =>
-            element is DomainFailure && element == DomainFailure.unexpected()));
+            element is DomainFailure && element == const DomainFailure.unexpected()));
   });
 
   test('Should throw UnexpectedFailure if HttpClient not returns 200',
@@ -138,6 +138,6 @@ void main() {
     expect(
         actual,
         predicate((element) =>
-            element is DomainFailure && element == DomainFailure.notFound));
+            element is DomainFailure && element == DomainFailure.resourceNotFound));
   });
 }

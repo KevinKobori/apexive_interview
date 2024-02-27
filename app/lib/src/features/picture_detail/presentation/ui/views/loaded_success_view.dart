@@ -35,11 +35,10 @@ class _MobileLayout extends StatefulWidget {
 class _MobileLayoutState extends State<_MobileLayout> {
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
     return ApodScaffold(
       backgroundImage: CachedNetworkImageProvider(widget.picture.url),
       body: ApodContentSheet(
-        children: _buildBody(context, theme, widget.picture),
+        children: _buildBody(context, widget.picture),
       ),
       floatingBar: _NavigationBar(
         accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
@@ -50,11 +49,18 @@ class _MobileLayoutState extends State<_MobileLayout> {
     );
   }
 
-  List<Widget> _buildBody(
-      BuildContext context, ApodThemeData theme, PictureViewModel picture) {
+  List<Widget> _buildBody(BuildContext context, PictureViewModel picture) {
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return [
+      const Align(
+        alignment: Alignment.centerRight,
+        child: ThemeSwitch(),
+      ),
       ClipRRect(
-        borderRadius: theme.radius.asBorderRadius().regular,
+        borderRadius: metrics.radius.xBorder.semiSmall,
         child: AspectRatio(
           aspectRatio: picture.aspectRatio,
           child: Image(
@@ -66,15 +72,16 @@ class _MobileLayoutState extends State<_MobileLayout> {
         ),
       ),
       const ApodGap.semiSmall(),
-      ApodText.title1(picture.title),
-      ApodText.title3(
+      ApodText.titleLarge(picture.title),
+      ApodText.custom(
         picture.date,
-        color: theme.colors.accent,
+        style: textTheme.titleSmall!.copyWith(
+          color: colorScheme.primary,
+        ),
       ),
-      ApodText.paragraph1(picture.explanation),
-      const SizedBox(
-        height: 100,
-      ),
+      ApodText.bodyLarge(picture.explanation),
+      const ApodGap.superLarge(),
+      const ApodGap.superLarge(),
     ];
   }
 }
@@ -92,7 +99,8 @@ class _NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+
     final route = ModalRoute.of(context);
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,
@@ -108,10 +116,10 @@ class _NavigationBar extends StatelessWidget {
         body: AccountNavigationBarBody(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
-        action: ApodTextButton(
-          icon: theme.icons.characters.addPicture,
+        action: ApodElevatedButton(
+          icon: (metrics.icons.characters as ApodIconCharactersData).addPicture,
           title: 'Add to collections',
-          onTap: () {},
+          onPressed: () {},
         ),
       ),
     );

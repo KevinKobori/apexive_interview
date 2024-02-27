@@ -10,7 +10,7 @@ extension HttpFailureToDomainFailureExtension on HttpFailure {
       case HttpFailure.invalidData:
         return const DomainFailure.invalidData();
       case HttpFailure.notFound:
-        return const DomainFailure.notFound();
+        return const DomainFailure.resourceNotFound();
       case HttpFailure.internalServerError:
         return const DomainFailure.internalServerError();
       case HttpFailure.unauthorized:

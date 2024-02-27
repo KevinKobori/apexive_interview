@@ -1,38 +1,19 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-class PictureViewModel extends Equatable {
-  final String? copyright;
-  final String date;
-  final String explanation;
-  final String hdurl;
-  final String mediaType;
-  final String serviceVersion;
-  final String title;
-  final String url;
-  final double aspectRatio;
+part 'picture_viewmodel.freezed.dart';
 
-  const PictureViewModel({
-    required this.copyright,
-    required this.date,
-    required this.explanation,
-    required this.hdurl,
-    required this.mediaType,
-    required this.serviceVersion,
-    required this.title,
-    required this.url,
-    required this.aspectRatio,
-  });
-
-  @override
-  List<Object?> get props => [
-        copyright,
-        date,
-        explanation,
-        hdurl,
-        mediaType,
-        serviceVersion,
-        title,
-        url,
-        aspectRatio,
-      ];
+@freezed
+class PictureViewModel with _$PictureViewModel {
+  const factory PictureViewModel({
+    required String? copyright,
+    required String date,
+    required String explanation,
+    required String? hdurl,
+    required MediaType mediaType,
+    required String serviceVersion,
+    required String title,
+    required String url,
+    required double aspectRatio,
+  }) = _PictureViewModel;
 }

@@ -66,7 +66,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
       builder: (_, pictureViewModel, __) {
         if (pictureViewModel == null) {
           return const Center(
-            // TODO: NOW
+            // TODO:
             child: Text('ERROR'),
           );
         } else {

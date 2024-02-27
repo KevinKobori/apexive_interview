@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -6,22 +6,23 @@ import '../base/widget.dart';
 
 void main() {
   Widget bar(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        borderRadius: theme.radius.asBorderRadius().small,
-        color: theme.colors.actionBarBackground,
+        borderRadius: metrics.radius.xBorder.small,
+        color: colorScheme.onSurface,
       ),
     );
   }
 
   NotificationViewModel notification(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',
-      icon: theme.images.appLogo,
+      icon: metrics.images.appLogo,
     );
   }
 

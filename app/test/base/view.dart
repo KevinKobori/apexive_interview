@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:test_utils/test_utils.dart';
 
@@ -13,7 +12,7 @@ void testAppView(
   bool showSafeAreas = true,
   Map<String, Map<String, MediaQueryData>> devices = testDevices,
 }) {
-  for (var deviceCategory in devices.entries) {
+  for (final deviceCategory in devices.entries) {
     final maxHeight = deviceCategory.value.entries
         .fold<double>(0, (max, v) => math.max(max, v.value.size.height));
     final totalWidth = deviceCategory.value.entries
@@ -22,8 +21,8 @@ void testAppView(
     appTestWidgets(
       deviceCategory.key,
       {
-        for (var colorMode in ApodAppThemeColorMode.values)
-          colorMode.name: Row(
+        for (final themeMode in ThemeMode.values)
+          themeMode.name: Row(
             mainAxisSize: MainAxisSize.min,
             textDirection: TextDirection.ltr,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,16 +30,10 @@ void testAppView(
               ...deviceCategory.value.entries.map(
                 (device) => MediaQuery(
                   data: device.value,
-                  child: ApodAppResponsiveTheme(
-                    colorMode: colorMode,
-                    appLogo: StringPicture(
-                      SvgPicture.svgStringDecoderBuilder,
-                      '<svg width="100" height="50"></svg>',
-                    ),
-                    appWormLogo: StringPicture(
-                      SvgPicture.svgStringDecoderBuilder,
-                      '<svg width="100" height="50"></svg>',
-                    ),
+                  child: ApodAppBuilder(
+                    themeMode: themeMode,
+                    // appLogo: '<svg width="100" height="50"></svg>',
+                    // appWormLogo: '<svg width="100" height="50"></svg>',
                     child: Directionality(
                       textDirection: TextDirection.ltr,
                       child: SizedBox(
@@ -61,10 +54,18 @@ void testAppView(
                                     horizontal: 8,
                                     vertical: 4,
                                   ),
-                                  child: ApodText.title3(
-                                    device.key,
-                                    color: Colors.black,
-                                  ),
+                                  child:
+                                      Builder(builder: (context) {
+                                    final textTheme =
+                                        Theme.of(context).textTheme;
+
+                                    return ApodText.custom(
+                                      device.key,
+                                      style: textTheme.titleSmall!.copyWith(
+                                        color: Colors.black,
+                                      ),
+                                    );
+                                  }),
                                 ),
                               ),
                             ),

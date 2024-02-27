@@ -10,13 +10,13 @@ class NotificationBar extends StatelessWidget {
 
   const NotificationBar({
     required this.notificationsOverviewPresenter,
-    super.key,
     required this.child,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     return BlocBuilder<NotificationsOverviewBloc, NotificationsOverviewState>(
       bloc: notificationsOverviewPresenter,
       builder: (context, state) {
@@ -30,7 +30,7 @@ class NotificationBar extends StatelessWidget {
                     description: state.lastNotification!.description,
                     icon: () {
                       return switch (state.lastNotification!.type) {
-                        NotificationType.offer => theme.images.appLogo,
+                        NotificationType.offer => metrics.images.appLogo,
                       };
                     }(),
                   )
@@ -38,7 +38,7 @@ class NotificationBar extends StatelessWidget {
             child: child,
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

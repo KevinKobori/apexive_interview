@@ -77,13 +77,22 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
         await datasourceResult.fold(
       (domainFailure) => Left(domainFailure),
       (pictureModel) async {
-        final pictureViewModelResult =
-            await PictureMapper.fromModelToViewModel(pictureModel);
+        final pictureEntityResult =
+            PictureMapper.fromModelToEntity(pictureModel);
 
-        return pictureViewModelResult.fold(
-          (mapperFailure) => Left(mapperFailure.toDomain),
-          (pictureViewModel) => Right([pictureViewModel]),
-        );
+        return pictureEntityResult
+            .fold((mapperFailure) => Left(mapperFailure.toDomain),
+                (pictureEntity) async {
+          final pictureViewModelResult =
+              await PictureMapper.fromEntityToViewModel(pictureEntity);
+
+          if (pictureViewModelResult.isLeft()) {
+            return Left(const MapperFailure.conversionError().toDomain);
+          }
+          return pictureViewModelResult.fold(
+              (mapperFailure) => Left(mapperFailure.toDomain),
+              (pictureViewModel) => Right([pictureViewModel]));
+        });
       },
     );
 

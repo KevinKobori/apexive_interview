@@ -13,7 +13,9 @@ class CollectionsOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return BlocBuilder<CollectionsOverviewBloc, CollectionsOverviewState>(
       bloc: collectionsOverviewPresenter,
       builder: (context, state) {
@@ -28,13 +30,15 @@ class CollectionsOverview extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ApodText.title3(
+                      ApodText.custom(
                         '$itemCount',
-                        color: theme.colors.actionBarForeground,
+                        style: textTheme.titleSmall!.copyWith(
+                          color: colorScheme.onSurface,
+                        ),
                       ),
                       Icon(
                         Icons.bookmark,
-                        color: theme.colors.actionBarForeground,
+                        color: colorScheme.onSurface,
                       ),
                     ],
                   ),
@@ -43,7 +47,7 @@ class CollectionsOverview extends StatelessWidget {
             ],
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

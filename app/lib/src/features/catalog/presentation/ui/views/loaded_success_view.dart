@@ -49,7 +49,9 @@ class _MobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ApodScaffold(
-      backgroundImage: CachedNetworkImageProvider(catalog[0].url),
+      backgroundImage: catalog[0].mediaType == MediaType.video
+          ? null
+          : CachedNetworkImageProvider(catalog[0].url),
       body: _Body(
         catalog: catalog,
         onLoadCatalog: onLoadCatalog,
@@ -95,7 +97,7 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final theme = ApodTheme.of(context);
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     return LayoutBuilder(builder: (context, constraints) {
       return CustomScrollView(
         controller: _controller,
@@ -103,7 +105,8 @@ class _BodyState extends State<_Body> {
           SliverToBoxAdapter(
             child: ApodPageHeader(
               controller: _controller,
-              image: CachedNetworkImageProvider(widget.catalog[1].url),
+              url: widget.catalog[0].url,
+              mediaType: widget.catalog[0].mediaType,
             ),
           ),
           SliverToBoxAdapter(
@@ -113,7 +116,7 @@ class _BodyState extends State<_Body> {
                 top: ApodSpacing.large,
                 right: ApodSpacing.large,
                 bottom: ApodSpacing.large,
-              ).toEdgeInsets(theme),
+              ).toEdgeInsets(metrics),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -122,7 +125,8 @@ class _BodyState extends State<_Body> {
                       ApodPictureTile(
                         key: Key(widget.catalog[0].date),
                         title: widget.catalog[0].title,
-                        imageUrl: widget.catalog[0].url,
+                        url: widget.catalog[0].url,
+                        mediaType: widget.catalog[0].mediaType,
                         date: widget.catalog[0].date,
                         aspectRatio: widget.catalog[0].aspectRatio,
                         onTap: () =>
@@ -133,11 +137,13 @@ class _BodyState extends State<_Body> {
                         bottom: 0,
                         child: Container(
                           margin: const ApodEdgeInsets.semiSmall()
-                              .toEdgeInsets(theme),
-                          height: theme.icons.sizes.big,
-                          width: theme.icons.sizes.big,
+                              .toEdgeInsets(metrics),
+                          height: (metrics.icons.sizes as ApodIconSizesData)
+                              .semiLarge,
+                          width: (metrics.icons.sizes as ApodIconSizesData)
+                              .semiLarge,
                           alignment: Alignment.centerLeft,
-                          child: SvgPicture(theme.images.appLogo),
+                          child: SvgPicture.asset(metrics.images.appLogo),
                         ),
                       ),
                     ],
@@ -148,8 +154,8 @@ class _BodyState extends State<_Body> {
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
-                        ApodTextButton(
-                          onTap: widget.onLoadCatalog,
+                        ApodElevatedButton(
+                          onPressed: widget.onLoadCatalog,
                           title: 'List all',
                         ),
                         const ApodGap.semiSmall(),
@@ -163,7 +169,7 @@ class _BodyState extends State<_Body> {
             ),
           ),
           SliverToBoxAdapter(
-            child: widget.catalog.length >= 2
+            child: widget.catalog.length > 1
                 ? const ApodPadding(
                     padding: ApodEdgeInsets.only(
                       left: ApodSpacing.large,
@@ -171,7 +177,7 @@ class _BodyState extends State<_Body> {
                       right: ApodSpacing.large,
                       bottom: ApodSpacing.semiSmall,
                     ),
-                    child: ApodText.title1('Discover Now'),
+                    child: ApodText.titleLarge('Discover Now'),
                   )
                 : const SizedBox.shrink(),
           ),
@@ -179,14 +185,14 @@ class _BodyState extends State<_Body> {
             top: false,
             sliver: ApodSliverGridTile(
               padding: EdgeInsets.only(
-                left: theme.spacings.large,
-                top: theme.spacings.extraSmall,
-                right: theme.spacings.large,
+                left: metrics.spacings.large,
+                top: metrics.spacings.extraSmall,
+                right: metrics.spacings.large,
                 bottom: math.max(
                       mediaQuery.padding.bottom,
-                      theme.spacings.large,
+                      metrics.spacings.large,
                     ) +
-                    theme.spacings.superLarge,
+                    metrics.spacings.superLarge,
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
               children: widget.catalog
@@ -195,7 +201,8 @@ class _BodyState extends State<_Body> {
                     (picture) => ApodPictureTile(
                       key: Key(picture.date),
                       title: picture.title,
-                      imageUrl: picture.url,
+                      url: picture.url,
+                      mediaType: picture.mediaType,
                       date: picture.date,
                       aspectRatio: picture.aspectRatio,
                       onTap: () => widget.onViewPictureDetail(picture),

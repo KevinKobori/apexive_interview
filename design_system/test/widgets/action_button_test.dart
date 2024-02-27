@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 import '../base/widget.dart';
@@ -9,25 +9,25 @@ void main() {
     {
       'inactive': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.inactive(
-            icon: theme.icons.characters.arrowBack,
+            icon: (metrics.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),
       'hovered': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.hovered(
-            icon: theme.icons.characters.arrowBack,
+            icon: (metrics.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),
       'pressed': Builder(
         builder: (context) {
-          final theme = ApodTheme.of(context);
+          final metrics = Theme.of(context).extension<ApodThemeData>()!;
           return ApodActionButtonLayout.pressed(
-            icon: theme.icons.characters.arrowBack,
+            icon: (metrics.icons.characters as ApodIconCharactersData).arrowBack,
           );
         },
       ),

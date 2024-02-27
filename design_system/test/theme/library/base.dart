@@ -12,15 +12,17 @@ class ThemeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: theme.colors.background,
+      backgroundColor: colorScheme.background,
       body: ApodPadding(
         padding: const ApodEdgeInsets.extraLarge(),
         child: SpacedColumn(
-          spaceBetween: theme.spacings.large,
+          spaceBetween: metrics.spacings.large,
           children: [
-            ApodText.title1(title),
+            ApodText.titleLarge(title),
             ...sections,
           ],
         ),
@@ -41,13 +43,17 @@ class ThemeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return SpacedColumn(
       spaceBetween: 20.0,
       children: [
-        ApodText.title2(
+        ApodText.custom(
           title,
-          color: theme.colors.accent,
+          style: textTheme.titleMedium!.copyWith(
+            color: colorScheme.primary,
+          ),
         ),
         ...categories,
       ],
@@ -71,7 +77,7 @@ class ThemeCategory extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ApodText.title3(title),
+        ApodText.titleSmall(title),
         Wrap(
           spacing: 8.0,
           runSpacing: 8.0,
@@ -123,25 +129,30 @@ class NamedCell<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ApodTheme.of(context);
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: theme.spacings.asInsets().semiSmall,
+          padding: metrics.spacings.xInsets.semiSmall,
           decoration: BoxDecoration(
             border: Border.all(
-              color: theme.colors.foreground.withAlpha(125),
+              color: colorScheme.onBackground.withAlpha(125),
             ),
             borderRadius: BorderRadius.circular(4),
           ),
           child: builder(context, value.value, null),
         ),
-        ApodText.paragraph2(
+        ApodText.custom(
           value.name,
-          color: theme.colors.foreground.withAlpha(125),
-          fontSize: 8,
+          style: textTheme.bodyMedium!.copyWith(
+            color: colorScheme.onBackground.withAlpha(125),
+            fontSize: metrics.spacings.small,
+          ),
         ),
       ],
     );

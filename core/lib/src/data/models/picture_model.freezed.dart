@@ -25,11 +25,12 @@ mixin _$PictureModel {
   @JsonKey(name: 'date')
   DateTime get date => throw _privateConstructorUsedError;
   @JsonKey(name: 'explanation')
-  String get explanation => throw _privateConstructorUsedError;
+  String get explanation =>
+      throw _privateConstructorUsedError; // TODO: NOEW HERE FIIIX IIIIT NOOOW
   @JsonKey(name: 'hdurl')
-  String get hdurl => throw _privateConstructorUsedError;
+  String? get hdurl => throw _privateConstructorUsedError;
   @JsonKey(name: 'media_type')
-  String get mediaType =>
+  MediaType get mediaType =>
       throw _privateConstructorUsedError; // Changed to snake_case
   @JsonKey(name: 'service_version')
   String get serviceVersion =>
@@ -55,8 +56,8 @@ abstract class $PictureModelCopyWith<$Res> {
       {@JsonKey(name: 'copyright') String? copyright,
       @JsonKey(name: 'date') DateTime date,
       @JsonKey(name: 'explanation') String explanation,
-      @JsonKey(name: 'hdurl') String hdurl,
-      @JsonKey(name: 'media_type') String mediaType,
+      @JsonKey(name: 'hdurl') String? hdurl,
+      @JsonKey(name: 'media_type') MediaType mediaType,
       @JsonKey(name: 'service_version') String serviceVersion,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'url') String url});
@@ -78,7 +79,7 @@ class _$PictureModelCopyWithImpl<$Res, $Val extends PictureModel>
     Object? copyright = freezed,
     Object? date = null,
     Object? explanation = null,
-    Object? hdurl = null,
+    Object? hdurl = freezed,
     Object? mediaType = null,
     Object? serviceVersion = null,
     Object? title = null,
@@ -97,14 +98,14 @@ class _$PictureModelCopyWithImpl<$Res, $Val extends PictureModel>
           ? _value.explanation
           : explanation // ignore: cast_nullable_to_non_nullable
               as String,
-      hdurl: null == hdurl
+      hdurl: freezed == hdurl
           ? _value.hdurl
           : hdurl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mediaType: null == mediaType
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MediaType,
       serviceVersion: null == serviceVersion
           ? _value.serviceVersion
           : serviceVersion // ignore: cast_nullable_to_non_nullable
@@ -133,8 +134,8 @@ abstract class _$$PictureModelImplCopyWith<$Res>
       {@JsonKey(name: 'copyright') String? copyright,
       @JsonKey(name: 'date') DateTime date,
       @JsonKey(name: 'explanation') String explanation,
-      @JsonKey(name: 'hdurl') String hdurl,
-      @JsonKey(name: 'media_type') String mediaType,
+      @JsonKey(name: 'hdurl') String? hdurl,
+      @JsonKey(name: 'media_type') MediaType mediaType,
       @JsonKey(name: 'service_version') String serviceVersion,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'url') String url});
@@ -154,7 +155,7 @@ class __$$PictureModelImplCopyWithImpl<$Res>
     Object? copyright = freezed,
     Object? date = null,
     Object? explanation = null,
-    Object? hdurl = null,
+    Object? hdurl = freezed,
     Object? mediaType = null,
     Object? serviceVersion = null,
     Object? title = null,
@@ -173,14 +174,14 @@ class __$$PictureModelImplCopyWithImpl<$Res>
           ? _value.explanation
           : explanation // ignore: cast_nullable_to_non_nullable
               as String,
-      hdurl: null == hdurl
+      hdurl: freezed == hdurl
           ? _value.hdurl
           : hdurl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mediaType: null == mediaType
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MediaType,
       serviceVersion: null == serviceVersion
           ? _value.serviceVersion
           : serviceVersion // ignore: cast_nullable_to_non_nullable
@@ -222,12 +223,13 @@ class _$PictureModelImpl implements _PictureModel {
   @override
   @JsonKey(name: 'explanation')
   final String explanation;
+// TODO: NOEW HERE FIIIX IIIIT NOOOW
   @override
   @JsonKey(name: 'hdurl')
-  final String hdurl;
+  final String? hdurl;
   @override
   @JsonKey(name: 'media_type')
-  final String mediaType;
+  final MediaType mediaType;
 // Changed to snake_case
   @override
   @JsonKey(name: 'service_version')
@@ -288,8 +290,8 @@ abstract class _PictureModel implements PictureModel {
       {@JsonKey(name: 'copyright') required final String? copyright,
       @JsonKey(name: 'date') required final DateTime date,
       @JsonKey(name: 'explanation') required final String explanation,
-      @JsonKey(name: 'hdurl') required final String hdurl,
-      @JsonKey(name: 'media_type') required final String mediaType,
+      @JsonKey(name: 'hdurl') required final String? hdurl,
+      @JsonKey(name: 'media_type') required final MediaType mediaType,
       @JsonKey(name: 'service_version') required final String serviceVersion,
       @JsonKey(name: 'title') required final String title,
       @JsonKey(name: 'url') required final String url}) = _$PictureModelImpl;
@@ -306,12 +308,12 @@ abstract class _PictureModel implements PictureModel {
   @override
   @JsonKey(name: 'explanation')
   String get explanation;
-  @override
+  @override // TODO: NOEW HERE FIIIX IIIIT NOOOW
   @JsonKey(name: 'hdurl')
-  String get hdurl;
+  String? get hdurl;
   @override
   @JsonKey(name: 'media_type')
-  String get mediaType;
+  MediaType get mediaType;
   @override // Changed to snake_case
   @JsonKey(name: 'service_version')
   String get serviceVersion;

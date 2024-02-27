@@ -1,14 +1,15 @@
 part of 'library.dart';
 
 ThemeSection radius(BuildContext context) {
-  final theme = ApodTheme.of(context);
+  final metrics = Theme.of(context).extension<ApodThemeData>()!;
+  final colorScheme = Theme.of(context).colorScheme;
   return ThemeSection(
     title: 'Border radius',
     categories: [
       ThemeCategory(
         title: 'Regular',
         children: [
-          ...theme.radius.props.map<Widget>(
+          ...metrics.radius.props.map<Widget>(
             (c) {
               final named = c as Named<Radius>;
               return NamedCell(
@@ -18,7 +19,7 @@ ThemeSection radius(BuildContext context) {
                   width: 48,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: v),
-                    color: theme.colors.accent,
+                    color: colorScheme.primary,
                   ),
                 ),
               );

@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:test_utils/test_utils.dart';
-
-typedef TestConfigurationBuilder = Widget Function(
-  Widget child,
-);
 
 void testAppWidgets(
   String name,
   Map<String, Widget> widgets, {
   Size baseSize = const Size(1024.0, 800.0),
 }) {
-  final configurations = <TestConfigurationBuilder>[
+  final configurations = <WidgetBuilderCallback>[
     (child) => Expanded(
           child: Center(
             child: child,
@@ -33,22 +29,14 @@ void testAppWidgets(
         key,
         MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ApodTheme(
-            data: ApodThemeData.regular(
-              appLogo: StringPicture(
-                SvgPicture.svgStringDecoderBuilder,
-                '<svg></svg>',
-              ),
-              appWormLogo: StringPicture(
-                SvgPicture.svgStringDecoderBuilder,
-                '<svg></svg>',
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [...configurations.map((builder) => builder(value))],
-            ),
+          title: 'Nasa Apod',
+          theme: ApodLightTheme.data(),
+          darkTheme: ApodDarkTheme.data(),
+          themeMode: ThemeMode.dark,
+          home: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [...configurations.map((builder) => builder(value))],
           ),
         ),
       ),

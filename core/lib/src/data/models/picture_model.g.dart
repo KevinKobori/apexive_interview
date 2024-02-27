@@ -10,8 +10,8 @@ _$PictureModelImpl _$$PictureModelImplFromJson(Map json) => _$PictureModelImpl(
       copyright: json['copyright'] as String?,
       date: DateTime.parse(json['date'] as String),
       explanation: json['explanation'] as String,
-      hdurl: json['hdurl'] as String,
-      mediaType: json['media_type'] as String,
+      hdurl: json['hdurl'] as String?,
+      mediaType: $enumDecode(_$MediaTypeEnumMap, json['media_type']),
       serviceVersion: json['service_version'] as String,
       title: json['title'] as String,
       url: json['url'] as String,
@@ -23,8 +23,13 @@ Map<String, dynamic> _$$PictureModelImplToJson(_$PictureModelImpl instance) =>
       'date': instance.date.toIso8601String(),
       'explanation': instance.explanation,
       'hdurl': instance.hdurl,
-      'media_type': instance.mediaType,
+      'media_type': _$MediaTypeEnumMap[instance.mediaType]!,
       'service_version': instance.serviceVersion,
       'title': instance.title,
       'url': instance.url,
     };
+
+const _$MediaTypeEnumMap = {
+  MediaType.image: 'image',
+  MediaType.video: 'video',
+};

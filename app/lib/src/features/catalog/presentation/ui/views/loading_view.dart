@@ -12,48 +12,50 @@ class CatalogPageLoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final theme = ApodTheme.of(context);
+    final metrics = Theme.of(context).extension<ApodThemeData>()!;
     return LayoutBuilder(builder: (context, constraints) {
-      return CustomScrollView(
-        slivers: [
-          const SliverToBoxAdapter(
-            child: ApodPageHeader.shimmer(),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              padding: const ApodEdgeInsets.only(
-                left: ApodSpacing.large,
-                top: ApodSpacing.large,
-                right: ApodSpacing.large,
-                bottom: ApodSpacing.large,
-              ).toEdgeInsets(theme),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  ApodPictureTile.shimmer(),
-                ],
+      return ApodScaffold(
+        body: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: ApodPageHeader.shimmer(),
+            ),
+            SliverToBoxAdapter(
+              child: Container(
+                padding: const ApodEdgeInsets.only(
+                  left: ApodSpacing.large,
+                  top: ApodSpacing.large,
+                  right: ApodSpacing.large,
+                  bottom: ApodSpacing.large,
+                ).toEdgeInsets(metrics),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ApodPictureTile.shimmer(),
+                  ],
+                ),
               ),
             ),
-          ),
-          SliverSafeArea(
-            top: false,
-            sliver: ApodSliverGridTile(
-              padding: EdgeInsets.only(
-                left: theme.spacings.large,
-                top: theme.spacings.extraSmall,
-                right: theme.spacings.large,
-                bottom: math.max(
-                      mediaQuery.padding.bottom,
-                      theme.spacings.large,
-                    ) +
-                    theme.spacings.superLarge,
+            SliverSafeArea(
+              top: false,
+              sliver: ApodSliverGridTile(
+                padding: EdgeInsets.only(
+                  left: metrics.spacings.large,
+                  top: metrics.spacings.extraSmall,
+                  right: metrics.spacings.large,
+                  bottom: math.max(
+                        mediaQuery.padding.bottom,
+                        metrics.spacings.large,
+                      ) +
+                      metrics.spacings.superLarge,
+                ),
+                crossAxisCount: (constraints.maxWidth / 300).ceil(),
+                children: List.generate(10, (_) => ApodPictureTile.shimmer())
+                    .toList(),
               ),
-              crossAxisCount: (constraints.maxWidth / 300).ceil(),
-              children:
-                  List.generate(10, (_) => ApodPictureTile.shimmer()).toList(),
             ),
-          ),
-        ],
+          ],
+        ),
       );
     });
   }
