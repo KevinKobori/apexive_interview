@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-/// Updates automatically the [ApodTheme] regarding the current [MediaQuery],
-/// as soon as the [theme] isn't overriden.
 class ApodAppBuilder extends StatelessWidget {
   const ApodAppBuilder({
     super.key,

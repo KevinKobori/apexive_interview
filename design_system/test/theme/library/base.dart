@@ -13,10 +13,10 @@ class ThemeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: colors.background,
+      backgroundColor: colorScheme.background,
       body: ApodPadding(
         padding: const ApodEdgeInsets.extraLarge(),
         child: SpacedColumn(
@@ -43,7 +43,7 @@ class ThemeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return SpacedColumn(
@@ -52,7 +52,7 @@ class ThemeSection extends StatelessWidget {
         ApodText.custom(
           title,
           style: textTheme.titleMedium!.copyWith(
-            color: colors.primary,
+            color: colorScheme.primary,
           ),
         ),
         ...categories,
@@ -130,7 +130,7 @@ class NamedCell<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return Column(
@@ -141,7 +141,7 @@ class NamedCell<T> extends StatelessWidget {
           padding: metrics.spacings.xInsets.semiSmall,
           decoration: BoxDecoration(
             border: Border.all(
-              color: colors.onBackground.withAlpha(125),
+              color: colorScheme.onBackground.withAlpha(125),
             ),
             borderRadius: BorderRadius.circular(4),
           ),
@@ -150,7 +150,7 @@ class NamedCell<T> extends StatelessWidget {
         ApodText.custom(
           value.name,
           style: textTheme.bodyMedium!.copyWith(
-            color: colors.onBackground.withAlpha(125),
+            color: colorScheme.onBackground.withAlpha(125),
             fontSize: metrics.spacings.small,
           ),
         ),

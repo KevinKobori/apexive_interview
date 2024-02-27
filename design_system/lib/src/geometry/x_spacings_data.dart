@@ -67,6 +67,10 @@ class XEdgeInsetsSpacingsData extends Equatable {
   EdgeInsets get extraLarge => EdgeInsets.all(_spacing.extraLarge);
   EdgeInsets get superLarge => EdgeInsets.all(_spacing.superLarge);
 
+  // TODO: SYMETRIC VERTICAL
+  // TODO: SYMETRIC HORIZONTAL
+  // TODO: ONLY...
+
   @override
   List<Object?> get props => [
         _spacing,

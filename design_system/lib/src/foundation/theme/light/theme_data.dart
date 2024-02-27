@@ -37,6 +37,8 @@ abstract final class ApodLightTheme {
       fontFamily: 'Poppins',
       textTheme: textTheme,
       colorScheme: ApodLightColorScheme.data,
+      elevatedButtonTheme: ApodLightElevatedButtonTheme.data,
+      
     );
   }
 }

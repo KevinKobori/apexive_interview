@@ -7,12 +7,12 @@ import '../base/widget.dart';
 void main() {
   Widget bar(BuildContext context) {
     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       height: 60,
       decoration: BoxDecoration(
         borderRadius: metrics.radius.xBorder.small,
-        color: colors.onSurface,
+        color: colorScheme.onSurface,
       ),
     );
   }

@@ -154,8 +154,8 @@ class _BodyState extends State<_Body> {
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
-                        ApodTextButton(
-                          onTap: widget.onLoadCatalog,
+                        ApodElevatedButton(
+                          onPressed: widget.onLoadCatalog,
                           title: 'List all',
                         ),
                         const ApodGap.semiSmall(),

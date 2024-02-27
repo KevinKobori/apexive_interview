@@ -51,7 +51,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
 
   List<Widget> _buildBody(BuildContext context, PictureViewModel picture) {
     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return [
@@ -76,7 +76,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
       ApodText.custom(
         picture.date,
         style: textTheme.titleSmall!.copyWith(
-          color: colors.primary,
+          color: colorScheme.primary,
         ),
       ),
       ApodText.bodyLarge(picture.explanation),
@@ -116,10 +116,10 @@ class _NavigationBar extends StatelessWidget {
         body: AccountNavigationBarBody(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
-        action: ApodTextButton(
+        action: ApodElevatedButton(
           icon: (metrics.icons.characters as ApodIconCharactersData).addPicture,
           title: 'Add to collections',
-          onTap: () {},
+          onPressed: () {},
         ),
       ),
     );

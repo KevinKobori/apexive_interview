@@ -2,7 +2,7 @@ part of 'library.dart';
 
 ThemeSection shadow(BuildContext context) {
   final metrics = Theme.of(context).extension<ApodThemeData>()!;
-  final colors = Theme.of(context).colorScheme;
+  final colorScheme = Theme.of(context).colorScheme;
   return ThemeSection(
     title: 'Shadows',
     categories: [
@@ -19,7 +19,7 @@ ThemeSection shadow(BuildContext context) {
                   width: 48,
                   margin: const EdgeInsets.all(64),
                   decoration: BoxDecoration(
-                    color: colors.onBackground,
+                    color: colorScheme.onBackground,
                     boxShadow: [v],
                   ),
                 ),

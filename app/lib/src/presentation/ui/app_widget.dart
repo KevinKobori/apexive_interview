@@ -18,7 +18,7 @@ class _AppWrapWidgetState extends State<AppWrapWidget> {
 
   @override
   void initState() {
-    bloc.add(const AppWrapSwitchThemeMode(ThemeMode.light));
+    bloc.add(const AppWrapSwitchThemeMode(ThemeMode.dark));
     super.initState();
   }
 

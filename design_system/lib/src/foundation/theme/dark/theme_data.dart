@@ -37,6 +37,8 @@ abstract final class ApodDarkTheme {
       fontFamily: 'Poppins',
       textTheme: textTheme,
       colorScheme: ApodDarkColorScheme.data,
+      elevatedButtonTheme: ApodDarkElevatedButtonTheme.data,
+      // elevatedButtonTheme: // TODO: CHATGPT HELP ME CREATIG THIS MUST COMPLEX THAT WE CAN DO
     );
   }
 }

@@ -2,7 +2,7 @@ part of 'library.dart';
 
 // ThemeSection typography(BuildContext context) {
 //   final metrics = Theme.of(context).extension<ApodThemeData>()!;
-//   final colors = Theme.of(context).colorScheme;
+//   final colorScheme = Theme.of(context).colorScheme;
 //   return ThemeSection(
 //     title: 'Typography',
 //     categories: [
@@ -16,7 +16,7 @@ part of 'library.dart';
 //                 value: named,
 //                 builder: (context, v, _) => Text(
 //                   'Hello!',
-//                   style: named.value.copyWith(color: colors.onBackground),
+//                   style: named.value.copyWith(color: colorScheme.onBackground),
 //                 ),
 //               );
 //             },

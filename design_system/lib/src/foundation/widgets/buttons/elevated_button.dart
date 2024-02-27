@@ -3,59 +3,72 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:tap_builder/tap_builder.dart';
 
 // TODO: NOW - MIGRATE THIS WIDGET TO USE MATERIAL WIDGETS
-class ApodTextButton extends StatelessWidget {
-  const ApodTextButton({
+class ApodElevatedButton extends StatelessWidget {
+  const ApodElevatedButton({
     super.key,
     this.icon,
     this.title,
-    this.onTap,
+    this.onPressed,
     this.mainAxisSize = MainAxisSize.min,
   }) : assert(icon != null || title != null);
 
   final String? icon;
   final String? title;
   final MainAxisSize mainAxisSize;
-  final VoidCallback? onTap;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return TapBuilder(
-      onTap: onTap,
-      builder: (context, state, hasFocus) {
-        switch (state) {
-          case TapState.hover:
-            return Semantics(
-              enabled: true,
-              selected: true,
-              child: ApodTextButtonLayout.hovered(
-                icon: icon,
-                title: title,
-                mainAxisSize: mainAxisSize,
-              ),
-            );
-          case TapState.pressed:
-            return Semantics(
-              enabled: true,
-              selected: true,
-              child: ApodTextButtonLayout.pressed(
-                icon: icon,
-                title: title,
-                mainAxisSize: mainAxisSize,
-              ),
-            );
-          default:
-            return Semantics(
-              enabled: true,
-              selected: true,
-              child: ApodTextButtonLayout.inactive(
-                icon: icon,
-                title: title,
-                mainAxisSize: mainAxisSize,
-              ),
-            );
-        }
-      },
-    );
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    // return ElevatedButton(
+    //   onPressed: onPressed,
+    //   child: ApodText.custom(
+    //     title ?? '',
+    //     style: textTheme.titleSmall!.copyWith(
+    //       color: colorScheme.onPrimary,
+    //       // XColorScheme.onPrimary(context),
+    //     ),
+    //   ),
+    // );
+      return TapBuilder(
+        onTap: onPressed,
+        builder: (context, state, hasFocus) {
+          switch (state) {
+            case TapState.hover:
+              return Semantics(
+                enabled: true,
+                selected: true,
+                child: ApodTextButtonLayout.hovered(
+                  icon: icon,
+                  title: title,
+                  mainAxisSize: mainAxisSize,
+                ),
+              );
+            case TapState.pressed:
+              return Semantics(
+                enabled: true,
+                selected: true,
+                child: ApodTextButtonLayout.pressed(
+                  icon: icon,
+                  title: title,
+                  mainAxisSize: mainAxisSize,
+                ),
+              );
+            default:
+              return Semantics(
+                enabled: true,
+                selected: true,
+                child: ApodTextButtonLayout.inactive(
+                  icon: icon,
+                  title: title,
+                  mainAxisSize: mainAxisSize,
+                ),
+              );
+          }
+        },
+      );
   }
 }
 
@@ -114,32 +127,32 @@ class ApodTextButtonLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     final title = this.title;
     final icon = this.icon;
     final hasBoth = title != null && icon != null;
-    final foregroundColor = this.foregroundColor ?? colors.onSurface;
+    final foregroundColor = this.foregroundColor ?? colorScheme.onSurface;
     final backgroundColor = () {
       switch (_state) {
         case ApodTextButtonState.inactive:
-          return inactiveBackgroundColor ?? colors.primary;
+          return inactiveBackgroundColor ?? colorScheme.primary;
         case ApodTextButtonState.hovered:
-          return hoveredBackgroundColor ?? colors.secondary;
+          return hoveredBackgroundColor ?? colorScheme.secondary;
         case ApodTextButtonState.pressed:
-          return pressedBackgroundColor ?? colors.tertiary;
+          return pressedBackgroundColor ?? colorScheme.tertiary;
       }
     }();
-    return AnimatedContainer(
-      duration: metrics.durations.quick,
+    return Container(
       decoration: BoxDecoration(
         borderRadius: metrics.radius.xBorder.small,
         color: backgroundColor,
       ),
       padding: EdgeInsets.symmetric(
         vertical: metrics.spacings.small,
-        horizontal: title != null ? metrics.spacings.large : metrics.spacings.small,
+        horizontal:
+            title != null ? metrics.spacings.large : metrics.spacings.small,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

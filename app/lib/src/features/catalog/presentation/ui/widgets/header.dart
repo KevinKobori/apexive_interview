@@ -28,13 +28,13 @@ class ApodPageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return isShimmer
         ? Shimmer.fromColors(
-            baseColor: colors.background,
-            highlightColor: colors.background.withOpacity(0.6),
+            baseColor: colorScheme.surface,
+            highlightColor: colorScheme.surface.withOpacity(0.6),
             child: _buildBody(context),
           )
         : mediaType == MediaType.video

@@ -21,8 +21,8 @@ class ApodFailureReloadView extends StatelessWidget {
         children: [
           ApodText.titleMedium(failureMessage),
           const ApodGap.small(),
-          ApodTextButton(
-            onTap: onReload,
+          ApodElevatedButton(
+            onPressed: onReload,
             title: I18n.strings.reload,
           )
         ],

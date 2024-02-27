@@ -80,7 +80,7 @@ class ApodNotifiableBarLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final notification = this.notification;
     final isOpened =
         notification != null || _state == ApodNotifiableBarState.opened;
@@ -89,11 +89,11 @@ class ApodNotifiableBarLayout extends StatelessWidget {
       duration: metrics.durations.regular,
       decoration: BoxDecoration(
         borderRadius: metrics.radius.xBorder.semiSmall,
-        color: colors.primary,
+        color: colorScheme.primary,
         boxShadow: [
           BoxShadow(
             blurRadius: isOpened ? 32 : 16,
-            color: colors.primary.withOpacity(0.5),
+            color: colorScheme.primary.withOpacity(0.5),
           )
         ],
       ),
@@ -129,7 +129,7 @@ class _NotificationBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return Row(
@@ -158,13 +158,13 @@ class _NotificationBody extends StatelessWidget {
                       ApodText.custom(
                         notification.title,
                         style: textTheme.titleSmall!.copyWith(
-                          color: colors.onPrimary,
+                          color: colorScheme.onPrimary,
                         ),
                       ),
                       ApodText.custom(
                         notification.description,
                         style: textTheme.bodyLarge!.copyWith(
-                          color: colors.onPrimary,
+                          color: colorScheme.onPrimary,
                         ),
                       ),
                     ],

@@ -13,7 +13,7 @@ class CollectionsOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return BlocBuilder<CollectionsOverviewBloc, CollectionsOverviewState>(
@@ -33,12 +33,12 @@ class CollectionsOverview extends StatelessWidget {
                       ApodText.custom(
                         '$itemCount',
                         style: textTheme.titleSmall!.copyWith(
-                          color: colors.onSurface,
+                          color: colorScheme.onSurface,
                         ),
                       ),
                       Icon(
                         Icons.bookmark,
-                        color: colors.onSurface,
+                        color: colorScheme.onSurface,
                       ),
                     ],
                   ),

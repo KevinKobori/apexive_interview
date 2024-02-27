@@ -2,14 +2,14 @@ part of 'library.dart';
 
 // ThemeSection colors(BuildContext context) {
 //       final metrics = Theme.of(context).extension<ApodThemeData>()!;
-//     final colors = Theme.of(context).colorScheme;
+//     final colorScheme = Theme.of(context).colorScheme;
 //   return ThemeSection(
 //     title: 'Colors',
 //     categories: [
 //       ThemeCategory(
 //         title: 'Light',
 //         children: [
-//           ...colors.props.map<Widget>(
+//           ...colorScheme.props.map<Widget>(
 //             (c) {
 //               final named = c as Named<Color>;
 //               return NamedCell(

@@ -22,12 +22,12 @@ class ApodScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    final colors = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final floatingBar = this.floatingBar;
 
 // Inside your AppScaffold build method
     return Scaffold(
-      backgroundColor: backgroundColor ?? colors.background,
+      backgroundColor: backgroundColor ?? colorScheme.background,
       body: Stack(
         children: [
           backgroundImage != null
@@ -43,7 +43,7 @@ class ApodScaffold extends StatelessWidget {
                   child: BackdropFilter(
                     filter: ui.ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
                     child: Container(
-                      color: colors.background.withOpacity(0.7),
+                      color: colorScheme.background.withOpacity(0.7),
                     ),
                   ),
                 )
