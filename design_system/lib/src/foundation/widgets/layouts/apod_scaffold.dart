@@ -21,11 +21,11 @@ class ApodScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final floatingBar = this.floatingBar;
 
-// Inside your AppScaffold build method
+    // Inside your AppScaffold build method
     return Scaffold(
       backgroundColor: backgroundColor ?? colorScheme.background,
       body: Stack(

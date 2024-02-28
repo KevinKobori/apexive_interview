@@ -8,16 +8,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:tap_builder/tap_builder.dart';
 
 class ApodPictureTile extends StatefulWidget {
-  const ApodPictureTile._shimmer({
-    required this.aspectRatio,
-  })  : isLoading = true,
-        title = '',
-        url = '',
-        mediaType = MediaType.image,
-        date = '',
-        onTap = null;
-
-  final bool isLoading;
+  final bool _isLoading;
   final String title;
   final String url;
   final MediaType mediaType;
@@ -33,16 +24,21 @@ class ApodPictureTile extends StatefulWidget {
     required this.aspectRatio,
     required this.onTap,
     super.key,
-  }) : isLoading = false;
+  }) : _isLoading = false;
 
-  factory ApodPictureTile.shimmer({Key? key}) {
+  const ApodPictureTile._shimmer(this.aspectRatio)
+      : _isLoading = true,
+        title = '',
+        url = '',
+        mediaType = MediaType.image,
+        date = '',
+        onTap = null;
+
+  factory ApodPictureTile.shimmer() {
     const double min = 0.5;
     const double max = 2;
     final double aspectRatio = 0.5 + Random().nextDouble() * (max - min);
-
-    return ApodPictureTile._shimmer(
-      aspectRatio: aspectRatio,
-    );
+    return ApodPictureTile._shimmer(aspectRatio);
   }
 
   @override
@@ -52,7 +48,7 @@ class ApodPictureTile extends StatefulWidget {
 class _ApodPictureTileState extends State<ApodPictureTile> {
   @override
   Widget build(BuildContext context) {
-    if (widget.isLoading) {
+    if (widget._isLoading) {
       return ProductTileLayout.shimmer(
         aspectRatio: widget.aspectRatio,
       );
@@ -128,9 +124,10 @@ class ProductTileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
+    
     return _state == ProductTileState.shimmer
         ? Shimmer.fromColors(
             baseColor: colorScheme.surface,
@@ -165,7 +162,7 @@ class ProductTileLayout extends StatelessWidget {
                               image: CachedNetworkImageProvider(url),
                               fit: BoxFit.cover,
                             )
-                          : const Text('VIDEO PLAYER'),
+                          : const SizedBox.shrink(),
                     ),
                   ),
                   Positioned.fill(

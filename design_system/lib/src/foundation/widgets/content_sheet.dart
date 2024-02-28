@@ -12,9 +12,10 @@ class ApodContentSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
     final mediaQuery = MediaQuery.of(context);
     final route = ModalRoute.of(context);
+    
     return SlideTransition(
       position: Tween(
         begin: const Offset(0, 1),

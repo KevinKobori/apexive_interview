@@ -56,7 +56,7 @@ enum ApodSpacing {
 }
 
 extension AppSpacingsExtension on ApodSpacing {
-  double toDouble(ApodThemeData theme) => switch (this) {
+  double toDouble(ApodMetricsData theme) => switch (this) {
         ApodSpacing.none => theme.spacings.none,
         ApodSpacing.extraSmall => theme.spacings.extraSmall,
         ApodSpacing.small => theme.spacings.small,

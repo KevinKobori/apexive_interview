@@ -67,7 +67,7 @@ class ApodEdgeInsets extends Equatable {
         bottom,
       ];
 
-  EdgeInsets toEdgeInsets(ApodThemeData theme) {
+  EdgeInsets toEdgeInsets(ApodMetricsData theme) {
     return EdgeInsets.only(
       left: left.toDouble(theme),
       top: top.toDouble(theme),
@@ -114,7 +114,8 @@ class ApodPadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    
     return Padding(
       padding: padding.toEdgeInsets(metrics),
       child: child,

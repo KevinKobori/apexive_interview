@@ -82,11 +82,12 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
 
   @override
   Widget build(BuildContext context) {
+    // TODO: NewApodElevatedButton
     return ApodElevatedButton(
       onPressed: () {
         _restorableDatePickerRouteFuture.present();
       },
-      title: 'Search by date',
+      child: const Text('Search by date'),
     );
   }
 }

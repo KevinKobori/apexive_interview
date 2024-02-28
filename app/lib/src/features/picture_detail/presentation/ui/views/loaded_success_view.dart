@@ -50,7 +50,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
   }
 
   List<Widget> _buildBody(BuildContext context, PictureViewModel picture) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -99,29 +99,48 @@ class _NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
-
+    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final textTheme = Theme.of(context).textTheme;
     final route = ModalRoute.of(context);
+    
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,
       child: ApodNavigationBar(
-        animation: route?.animation,
-        canNavigateBack: true,
-        leading: AccountAvatar(
-          accountOverviewPresenter: accountOverviewPresenter,
-        ),
-        summary: CollectionsOverview(
-          collectionsOverviewPresenter: collectionsOverviewPresenter,
-        ),
-        body: AccountNavigationBarBody(
-          accountOverviewPresenter: accountOverviewPresenter,
-        ),
-        action: ApodElevatedButton(
-          icon: (metrics.icons.characters as ApodIconCharactersData).addPicture,
-          title: 'Add to collections',
-          onPressed: () {},
-        ),
-      ),
+          animation: route?.animation,
+          canNavigateBack: true,
+          leading: AccountAvatar(
+            accountOverviewPresenter: accountOverviewPresenter,
+          ),
+          summary: CollectionsOverview(
+            collectionsOverviewPresenter: collectionsOverviewPresenter,
+          ),
+          body: AccountNavigationBarBody(
+            accountOverviewPresenter: accountOverviewPresenter,
+          ),
+          // TODO: NEW ApodElevatedButton
+          action: ApodElevatedButton(
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ApodText.custom(
+                  'Add to collections',
+                  style: textTheme.titleSmall!,
+                ),
+                const ApodGap.semiSmall(),
+                ApodIcon.regular(
+                    (assets.icons.characters as ApodIconCharactersData)
+                        .addPicture),
+              ],
+            ),
+          )
+          // ApodElevatedButton(
+          //   icon: (assets.icons.characters as ApodIconCharactersData).addPicture,
+          //   title: 'Add to collections',
+          //   onPressed: () {},
+          // ),
+          ),
     );
   }
 }

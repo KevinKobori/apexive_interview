@@ -6,8 +6,9 @@ import '../base/widget.dart';
 
 void main() {
   Widget bar(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       height: 60,
       decoration: BoxDecoration(
@@ -18,11 +19,12 @@ void main() {
   }
 
   NotificationViewModel notification(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+
     return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',
-      icon: metrics.images.appLogo,
+      icon: assets.images.appLogo,
     );
   }
 

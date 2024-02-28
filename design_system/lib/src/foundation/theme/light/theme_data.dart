@@ -3,42 +3,26 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 abstract final class ApodLightTheme {
   static ThemeData data({ApodAppFormFactor? formFactor}) {
-    var customThemeData = ApodThemeData();
-    var typographyData = ApodTypographyData.regular();
+    var metricsData = ApodMetricsData();
+    var textThemeData = ApodTextTheme.mediumData;
 
     if (formFactor != null) {
-      customThemeData = customThemeData.withFormFactor(formFactor);
+      metricsData = metricsData.withFormFactor(formFactor);
       if (formFactor == ApodAppFormFactor.small) {
-        customThemeData =
-            customThemeData.withTypography(ApodTypographyData.small());
-        typographyData = ApodTypographyData.small();
+        textThemeData = ApodTextTheme.smallData;
       }
     }
 
-    final textTheme = TextTheme(
-      // displayLarge: typographyData.title1,
-      // displayMedium: typographyData.title2,
-      // displaySmall: typographyData.title3,
-      titleLarge: typographyData.title1,
-      titleMedium: typographyData.title2,
-      titleSmall: typographyData.title3,
-      bodyLarge: typographyData.paragraph1,
-      bodyMedium: typographyData.paragraph2,
-      // bodySmall: typographyData.paragraph2,
-    );
-
     return ThemeData(
       extensions: <ThemeExtension<dynamic>>[
-        ApodMetrics.data,
-        ApodLightAssets.data,
-        customThemeData,
+        ApodAssetsData(),
+        metricsData,
       ],
       useMaterial3: true,
       fontFamily: 'Poppins',
-      textTheme: textTheme,
+      textTheme: textThemeData,
       colorScheme: ApodLightColorScheme.data,
       elevatedButtonTheme: ApodLightElevatedButtonTheme.data,
-      
     );
   }
 }

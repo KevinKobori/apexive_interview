@@ -97,13 +97,15 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    
     return LayoutBuilder(builder: (context, constraints) {
       return CustomScrollView(
         controller: _controller,
         slivers: [
           SliverToBoxAdapter(
-            child: ApodPageHeader(
+            child: CatalogPageHeader(
               controller: _controller,
               url: widget.catalog[0].url,
               mediaType: widget.catalog[0].mediaType,
@@ -123,7 +125,7 @@ class _BodyState extends State<_Body> {
                   Stack(
                     children: [
                       ApodPictureTile(
-                        key: Key(widget.catalog[0].date),
+                        // key: Key(widget.catalog[0].date),
                         title: widget.catalog[0].title,
                         url: widget.catalog[0].url,
                         mediaType: widget.catalog[0].mediaType,
@@ -138,12 +140,12 @@ class _BodyState extends State<_Body> {
                         child: Container(
                           margin: const ApodEdgeInsets.semiSmall()
                               .toEdgeInsets(metrics),
-                          height: (metrics.icons.sizes as ApodIconSizesData)
+                          height: (assets.icons.sizes as ApodIconSizesData)
                               .semiLarge,
-                          width: (metrics.icons.sizes as ApodIconSizesData)
+                          width: (assets.icons.sizes as ApodIconSizesData)
                               .semiLarge,
                           alignment: Alignment.centerLeft,
-                          child: SvgPicture.asset(metrics.images.appLogo),
+                          child: SvgPicture.asset(assets.images.appLogo),
                         ),
                       ),
                     ],
@@ -154,11 +156,14 @@ class _BodyState extends State<_Body> {
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
-                        ApodElevatedButton(
-                          onPressed: widget.onLoadCatalog,
-                          title: 'List all',
-                        ),
-                        const ApodGap.semiSmall(),
+                        // TODO: NewApodElevatedButton
+                        if (widget.catalog.length == 1) ...[
+                          ApodElevatedButton(
+                            onPressed: widget.onLoadCatalog,
+                            child: const Text('List all'),
+                          ),
+                          const ApodGap.semiSmall()
+                        ],
                         ApodDatePickerDialog(
                             onLoadPictureByDate: widget.onLoadPictureByDate),
                       ],
@@ -199,7 +204,7 @@ class _BodyState extends State<_Body> {
                   .skip(1)
                   .map(
                     (picture) => ApodPictureTile(
-                      key: Key(picture.date),
+                      // key: Key(picture.date),
                       title: picture.title,
                       url: picture.url,
                       mediaType: picture.mediaType,

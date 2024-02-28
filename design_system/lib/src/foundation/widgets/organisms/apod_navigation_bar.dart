@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodNavigationBar extends StatelessWidget {
+  final Animation<double>? animation;
+  final bool canNavigateBack;
+  final Widget leading;
+  final Widget body;
+  final Widget summary;
+  final Widget? action;
+
   const ApodNavigationBar({
     required this.leading,
     required this.body,
@@ -11,13 +18,6 @@ class ApodNavigationBar extends StatelessWidget {
     this.animation,
     this.action,
   });
-
-  final Animation<double>? animation;
-  final bool canNavigateBack;
-  final Widget leading;
-  final Widget body;
-  final Widget summary;
-  final Widget? action;
 
   Widget _animatedBody(BuildContext context, Animation<double> animation) {
     final leading = this.leading;
@@ -129,7 +129,7 @@ class ApodNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final animation = this.animation;
-    return NavigationBarContainer(
+    return _NavigationBarContainer(
       child: animation != null
           ? _animatedBody(context, animation)
           : _staticBody(context),
@@ -137,18 +137,18 @@ class ApodNavigationBar extends StatelessWidget {
   }
 }
 
-class NavigationBarContainer extends StatelessWidget {
-  const NavigationBarContainer({
-    required this.child,
-    super.key,
-  });
-
+class _NavigationBarContainer extends StatelessWidget {
   final Widget child;
+
+  const _NavigationBarContainer({
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
+
     return ApodContainer(
       padding: const ApodEdgeInsets.semiSmall(),
       decoration: BoxDecoration(

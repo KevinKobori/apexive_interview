@@ -79,7 +79,7 @@ class ApodNotifiableBarLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final notification = this.notification;
     final isOpened =
@@ -128,7 +128,7 @@ class _NotificationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final assets = Theme.of(context).extension<ApodAssetsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -139,8 +139,8 @@ class _NotificationBody extends StatelessWidget {
           child: Row(
             children: [
               ApodContainer(
-                height: (metrics.icons.sizes as ApodIconSizesData).semiLarge,
-                width: (metrics.icons.sizes as ApodIconSizesData).semiLarge,
+                height: (assets.icons.sizes as ApodIconSizesData).semiLarge,
+                width: (assets.icons.sizes as ApodIconSizesData).semiLarge,
                 margin: const ApodEdgeInsets.semiSmall(),
                 child: SvgPicture.asset(
                   'assets/images/nasa_logo.svg',
@@ -176,10 +176,7 @@ class _NotificationBody extends StatelessWidget {
         ),
         ApodPadding(
           padding: const ApodEdgeInsets.small(),
-          child: ApodActionButton(
-            icon: (metrics.icons.characters as ApodIconCharactersData).dismiss,
-            onTap: onClose,
-          ),
+          child: ApodDismissButton(onClose: onClose),
         ),
       ],
     );

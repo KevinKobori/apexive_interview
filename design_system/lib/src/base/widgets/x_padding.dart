@@ -10,20 +10,22 @@ class XPadding extends StatelessWidget {
     required this.xPadding,
     super.key,
     this.child,
-  }) : padding = null;
+  })  : padding = null,
+        assert(xPadding != null);
 
   const XPadding.custom({
     required this.padding,
     super.key,
     this.child,
-  }) : xPadding = null;
+  })  : xPadding = null,
+        assert(padding != null);
 
   @override
   Widget build(BuildContext context) {
     final XMetricsData? xMetrics = Theme.of(context).extension<XMetricsData>();
 
     return Padding(
-      padding: xPadding?.toEdgeInsets(xMetrics) ?? padding ?? EdgeInsets.zero,
+      padding: xPadding?.toEdgeInsets(xMetrics) ?? padding!,
       child: child,
     );
   }

@@ -33,7 +33,8 @@ class ApodContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    
     return Container(
       width: width,
       height: height,
