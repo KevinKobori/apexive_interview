@@ -15,7 +15,7 @@ class XBorderRadiusData extends Equatable {
   BorderRadius get extraLarge => BorderRadius.all(_radius.extraLarge);
   BorderRadius get superLarge => BorderRadius.all(_radius.superLarge);
 
-  XShapesData get xShape => XShapesData(this);
+  XShapesData get shape => XShapesData(this);
 
   @override
   List<Object?> get props => [

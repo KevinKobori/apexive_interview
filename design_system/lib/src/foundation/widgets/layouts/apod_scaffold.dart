@@ -21,7 +21,7 @@ class ApodScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final floatingBar = this.floatingBar;
 

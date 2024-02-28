@@ -20,9 +20,11 @@ class ApodNavigationBar extends StatelessWidget {
   });
 
   Widget _animatedBody(BuildContext context, Animation<double> animation) {
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final leading = this.leading;
     final summary = this.summary;
     final action = this.action;
+
     return Row(
       children: [
         if (!canNavigateBack) leading,
@@ -42,7 +44,7 @@ class ApodNavigationBar extends StatelessWidget {
               ),
             ],
           ),
-        const ApodGap.semiSmall(),
+        metrics.spacings.gaps.semiSmall,
         if (action == null) body,
         if (action != null)
           Expanded(
@@ -66,7 +68,7 @@ class ApodNavigationBar extends StatelessWidget {
               ],
             ),
           ),
-        const ApodGap.semiSmall(),
+        metrics.spacings.gaps.semiSmall,
         if (action == null) summary,
         if (action != null)
           Stack(
@@ -93,9 +95,11 @@ class ApodNavigationBar extends StatelessWidget {
   }
 
   Widget _staticBody(BuildContext context) {
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final leading = this.leading;
     final summary = this.summary;
     final action = this.action;
+
     return Row(
       children: [
         Stack(
@@ -113,13 +117,13 @@ class ApodNavigationBar extends StatelessWidget {
             ),
           ],
         ),
-        const ApodGap.semiSmall(),
+        metrics.spacings.gaps.semiSmall,
         if (canNavigateBack) Expanded(child: summary),
         if (!canNavigateBack)
           Expanded(
             child: body,
           ),
-        const ApodGap.semiSmall(),
+        metrics.spacings.gaps.semiSmall,
         if (!canNavigateBack) summary,
         if (canNavigateBack && action != null) action,
       ],
@@ -146,13 +150,13 @@ class _NavigationBarContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
 
     return ApodContainer(
-      padding: const ApodEdgeInsets.semiSmall(),
+      padding: metrics.spacings.edgeInsets.allSemiSmall,
       decoration: BoxDecoration(
-        borderRadius: metrics.radius.xBorder.semiSmall,
+        borderRadius: metrics.radius.border.semiSmall,
         color: colorScheme.background,
       ),
       child: child,

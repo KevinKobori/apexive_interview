@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 abstract final class ApodLightTheme {
-  static ThemeData data({ApodAppFormFactor? formFactor}) {
-    var metricsData = ApodMetricsData();
+  static ThemeData data({XFormFactor? formFactor}) {
+    var metricsData = ApodMetrics.data;
     var textThemeData = ApodTextTheme.mediumData;
 
     if (formFactor != null) {
       metricsData = metricsData.withFormFactor(formFactor);
-      if (formFactor == ApodAppFormFactor.small) {
+      if (formFactor == XFormFactor.small) {
         textThemeData = ApodTextTheme.smallData;
       }
     }

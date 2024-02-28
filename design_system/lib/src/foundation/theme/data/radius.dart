@@ -24,7 +24,7 @@ class ApodRadiusData extends XRadiusData {
       throw UnimplementedError('superLarge is not available in ApodRadiusData');
 
   @override
-  ApodBorderRadiusData get xBorder => ApodBorderRadiusData(this);
+  ApodBorderRadiusData get border => ApodBorderRadiusData(this);
 }
 
 class ApodBorderRadiusData extends XBorderRadiusData {
@@ -43,7 +43,7 @@ class ApodBorderRadiusData extends XBorderRadiusData {
       'superLarge is not available in ApodBorderRadiusData');
 
   @override
-  ApodShapesData get xShape => ApodShapesData(this);
+  ApodShapesData get shape => ApodShapesData(this);
 }
 
 class ApodShapesData extends XShapesData {

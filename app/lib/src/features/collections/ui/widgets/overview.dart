@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class CollectionsOverview extends StatelessWidget {
   final CollectionsOverviewBloc collectionsOverviewPresenter;
@@ -30,7 +29,7 @@ class CollectionsOverview extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ApodText.custom(
+                      Text(
                         '$itemCount',
                         style: textTheme.titleSmall!.copyWith(
                           color: colorScheme.onSurface,

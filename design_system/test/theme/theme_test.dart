@@ -7,23 +7,23 @@ import 'library/library.dart';
 
 void main() {
   _renderLibrary(
-    ApodAppFormFactor.medium,
+    XFormFactor.medium,
   );
   _renderLibrary(
-    ApodAppFormFactor.medium,
+    XFormFactor.medium,
   );
   _renderLibrary(
-    ApodAppFormFactor.medium,
+    XFormFactor.medium,
   );
   _renderLibrary(
-    ApodAppFormFactor.small,
+    XFormFactor.small,
   );
   _renderLibrary(
-    ApodAppFormFactor.small,
+    XFormFactor.small,
   );
 }
 
-void _renderLibrary(ApodAppFormFactor formFactor) async {
+void _renderLibrary(XFormFactor formFactor) async {
   testWidgets('${formFactor.name} theme rendering', (tester) async {
     TestWidgetsFlutterBinding.ensureInitialized();
     await loadTestFonts();

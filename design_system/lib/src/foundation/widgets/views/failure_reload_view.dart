@@ -14,14 +14,18 @@ class ApodFailureReloadView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ApodPadding(
-      padding: const ApodEdgeInsets.all(ApodSpacing.extraLarge),
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
+    final textTheme = Theme.of(context).textTheme;
+
+    return metrics.spacings.edgeInsets.paddings.allExtraLarge(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ApodText.titleMedium(failureMessage),
-          const ApodGap.small(),
-          // TODO: NewApodElevatedButton
+          Text(
+            failureMessage,
+            style: textTheme.titleMedium!,
+          ),
+          metrics.spacings.gaps.small,
           ApodElevatedButton(
             onPressed: onReload,
             child: Text(I18n.strings.reload),

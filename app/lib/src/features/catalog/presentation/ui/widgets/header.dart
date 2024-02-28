@@ -64,12 +64,12 @@ class CatalogPageHeader extends StatelessWidget {
 
   Widget _buildBody(BuildContext context) {
     final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final textTheme = Theme.of(context).textTheme;
-    
+
     return SafeArea(
       bottom: false,
-      child: ApodPadding(
-        padding: const ApodEdgeInsets.large(),
+      child: metrics.spacings.edgeInsets.paddings.allExtraLarge(
         child: Stack(
           children: [
             Center(
@@ -80,9 +80,10 @@ class CatalogPageHeader extends StatelessWidget {
                     assets.images.appWormLogo,
                     width: textTheme.titleLarge!.fontSize! * 4,
                   ),
-                  const ApodGap.small(),
-                  const ApodText.bodyLarge(
+                  metrics.spacings.gaps.small,
+                  Text(
                     'Astronomy Picture of the Day',
+                    style: textTheme.bodyLarge!,
                     textAlign: TextAlign.center,
                   ),
                 ],

@@ -54,14 +54,14 @@ enum XIconSize {
 }
 
 extension XIconSizesExtension on XIconSize {
-  double toDouble(XIconSizesData xIconSizes) => switch (this) {
-        XIconSize.extraSmall => xIconSizes.extraSmall,
-        XIconSize.small => xIconSizes.small,
-        XIconSize.semiSmall => xIconSizes.semiSmall,
-        XIconSize.medium => xIconSizes.medium,
-        XIconSize.semiLarge => xIconSizes.semiLarge,
-        XIconSize.large => xIconSizes.large,
-        XIconSize.extraLarge => xIconSizes.extraLarge,
-        XIconSize.superLarge => xIconSizes.superLarge,
+  double toDouble(XIconSizesData iconSizes) => switch (this) {
+        XIconSize.extraSmall => iconSizes.extraSmall,
+        XIconSize.small => iconSizes.small,
+        XIconSize.semiSmall => iconSizes.semiSmall,
+        XIconSize.medium => iconSizes.medium,
+        XIconSize.semiLarge => iconSizes.semiLarge,
+        XIconSize.large => iconSizes.large,
+        XIconSize.extraLarge => iconSizes.extraLarge,
+        XIconSize.superLarge => iconSizes.superLarge,
       };
 }

@@ -31,7 +31,7 @@ class XRadiusData extends Equatable {
         extraLarge = extraLarge ?? const Radius.circular(XStandardSizes.x32),
         superLarge = superLarge ?? const Radius.circular(XStandardSizes.x48);
 
-  XBorderRadiusData get xBorder => XBorderRadiusData(this);
+  XBorderRadiusData get border => XBorderRadiusData(this);
 
   @override
   List<Object?> get props => [

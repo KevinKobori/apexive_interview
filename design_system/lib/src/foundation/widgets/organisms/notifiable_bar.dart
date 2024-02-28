@@ -79,7 +79,7 @@ class ApodNotifiableBarLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final notification = this.notification;
     final isOpened =
@@ -88,7 +88,7 @@ class ApodNotifiableBarLayout extends StatelessWidget {
     return AnimatedContainer(
       duration: metrics.durations.regular,
       decoration: BoxDecoration(
-        borderRadius: metrics.radius.xBorder.semiSmall,
+        borderRadius: metrics.radius.border.semiSmall,
         color: colorScheme.primary,
         boxShadow: [
           BoxShadow(
@@ -130,6 +130,7 @@ class _NotificationBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final assets = Theme.of(context).extension<ApodAssetsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final textTheme = Theme.of(context).textTheme;
 
     return Row(
@@ -141,27 +142,25 @@ class _NotificationBody extends StatelessWidget {
               ApodContainer(
                 height: (assets.icons.sizes as ApodIconSizesData).semiLarge,
                 width: (assets.icons.sizes as ApodIconSizesData).semiLarge,
-                margin: const ApodEdgeInsets.semiSmall(),
+                margin: metrics.spacings.edgeInsets.allSemiSmall,
                 child: SvgPicture.asset(
                   'assets/images/nasa_logo.svg',
                 ),
               ),
               Expanded(
-                child: ApodPadding(
-                  padding: const ApodEdgeInsets.symmetric(
-                    vertical: ApodSpacing.semiSmall,
-                  ),
+                child:
+                    metrics.spacings.edgeInsets.paddings.verticalSemiSmall(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      ApodText.custom(
+                      Text(
                         notification.title,
                         style: textTheme.titleSmall!.copyWith(
                           color: colorScheme.onPrimary,
                         ),
                       ),
-                      ApodText.custom(
+                      Text(
                         notification.description,
                         style: textTheme.bodyLarge!.copyWith(
                           color: colorScheme.onPrimary,
@@ -174,8 +173,7 @@ class _NotificationBody extends StatelessWidget {
             ],
           ),
         ),
-        ApodPadding(
-          padding: const ApodEdgeInsets.small(),
+        metrics.spacings.edgeInsets.paddings.allSmall(
           child: ApodDismissButton(onClose: onClose),
         ),
       ],

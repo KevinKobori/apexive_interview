@@ -2,7 +2,6 @@
 // import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 // import 'package:tap_builder/tap_builder.dart';
 
-// // `TODO`: NewApodElevatedButton
 // // `TODO`: NOW - MIGRATE THIS WIDGET TO USE MATERIAL WIDGETS
 // class ApodElevatedButton extends StatelessWidget {
 //   const ApodElevatedButton({
@@ -25,7 +24,7 @@
 
 //     // return ElevatedButton(
 //     //   onPressed: onPressed,
-//     //   child: ApodText.custom(
+//     //   child: Text(
 //     //     title ?? '',
 //     //     style: textTheme.titleSmall!.copyWith(
 //     //       color: colorScheme.onPrimary,
@@ -147,26 +146,26 @@
 //     }();
 //     return Container(
 //       decoration: BoxDecoration(
-//         borderRadius: metrics.radius.xBorder.small,
+//         borderRadius: metrics.xRadius.xBorder.small,
 //         color: backgroundColor,
 //       ),
 //       padding: EdgeInsets.symmetric(
-//         vertical: metrics.spacings.small,
+//         vertical: metrics.xSpacings.small,
 //         horizontal:
-//             title != null ? metrics.spacings.large : metrics.spacings.small,
+//             title != null ? metrics.xSpacings.large : metrics.xSpacings.small,
 //       ),
 //       child: Row(
 //         mainAxisAlignment: MainAxisAlignment.center,
 //         mainAxisSize: MainAxisSize.min,
 //         children: [
 //           if (title != null)
-//             ApodText.custom(
+//             Text(
 //               title,
 //               style: textTheme.titleSmall!.copyWith(
 //                 color: foregroundColor,
 //               ),
 //             ),
-//           if (hasBoth) const ApodGap.semiSmall(),
+//           if (hasBoth) metrics.xSpacings.xGaps.semiSmall,
 //           if (icon != null) ApodIcon.regular(icon, color: foregroundColor),
 //         ],
 //       ),

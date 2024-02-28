@@ -8,14 +8,14 @@ part 'assets/x_icons_data.dart';
 part 'assets/x_images_data.dart';
 
 class XAssetsData extends ThemeExtension<XAssetsData> {
-  final XIconsData xIcons;
-  final XImagesData xImages;
+  final XIconsData icons;
+  final XImagesData images;
 
   XAssetsData({
-    final XIconsData? xIcons,
-    final XImagesData? xImages,
-  })  : xIcons = xIcons ?? const XIconsData(),
-        xImages = xImages ?? const XImagesData();
+    final XIconsData? icons,
+    final XImagesData? images,
+  })  : icons = icons ?? const XIconsData(),
+        images = images ?? const XImagesData();
 
   @override
   ThemeExtension<XAssetsData> lerp(
@@ -24,28 +24,28 @@ class XAssetsData extends ThemeExtension<XAssetsData> {
       return this;
     } else {
       return XAssetsData(
-        xIcons: xIcons,
-        xImages: xImages,
+        icons: icons,
+        images: images,
       );
     }
   }
 
   @override
   XAssetsData copyWith({
-    XIconsData? xIcons,
-    XImagesData? xImages,
+    XIconsData? icons,
+    XImagesData? images,
   }) {
     return XAssetsData(
-      xIcons: xIcons ?? this.xIcons,
-      xImages: xImages ?? this.xImages,
+      icons: icons ?? this.icons,
+      images: images ?? this.images,
     );
   }
 
   @override
   String toString() => '''
   SquareStyle(
-    xIcons: $xIcons,
-    xImages: $xImages,
+    icons: $icons,
+    images: $images,
   )
   ''';
 }

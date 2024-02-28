@@ -124,10 +124,10 @@ class ProductTileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    
+
     return _state == ProductTileState.shimmer
         ? Shimmer.fromColors(
             baseColor: colorScheme.surface,
@@ -135,7 +135,7 @@ class ProductTileLayout extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: aspectRatio,
               child: ClipRRect(
-                borderRadius: metrics.radius.xBorder.semiSmall,
+                borderRadius: metrics.radius.border.semiSmall,
                 child: Container(
                   color: Colors.grey,
                 ),
@@ -145,7 +145,7 @@ class ProductTileLayout extends StatelessWidget {
         : AspectRatio(
             aspectRatio: aspectRatio,
             child: ClipRRect(
-              borderRadius: metrics.radius.xBorder.semiSmall,
+              borderRadius: metrics.radius.border.semiSmall,
               child: Stack(
                 children: [
                   Positioned.fill(
@@ -192,12 +192,13 @@ class ProductTileLayout extends StatelessWidget {
                               ],
                             ),
                           ),
-                          child: ApodPadding.small(
+                          child:
+                              metrics.spacings.edgeInsets.paddings.allSmall(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                ApodText.custom(
+                                Text(
                                   title,
                                   style: textTheme.titleSmall!.copyWith(
                                     color: colorScheme.onPrimary,
@@ -205,7 +206,7 @@ class ProductTileLayout extends StatelessWidget {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                ApodText.custom(
+                                Text(
                                   date,
                                   style: textTheme.bodyLarge!.copyWith(
                                     color: colorScheme.onPrimary,

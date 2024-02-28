@@ -3,7 +3,7 @@
 // import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 // class ApodGap extends StatelessWidget {
-//   final ApodSpacing spacing;
+//   final XSpacing spacing;
 
 //   const ApodGap(
 //     this.spacing, {
@@ -12,31 +12,31 @@
 
 //   const ApodGap.none({
 //     super.key,
-//   }) : spacing = ApodSpacing.none;
+//   }) : spacing = XSpacing.none;
 
 //   const ApodGap.extraSmall({
 //     super.key,
-//   }) : spacing = ApodSpacing.extraSmall;
+//   }) : spacing = XSpacing.extraSmall;
 
 //   const ApodGap.small({
 //     super.key,
-//   }) : spacing = ApodSpacing.small;
+//   }) : spacing = XSpacing.small;
 
 //   const ApodGap.semiSmall({
 //     super.key,
-//   }) : spacing = ApodSpacing.semiSmall;
+//   }) : spacing = XSpacing.semiSmall;
 
-//   const ApodGap.large({
+//   ApodGap.large({
 //     super.key,
-//   }) : spacing = ApodSpacing.large;
+//   }) : spacing = metrics.xSpacings.large;
 
 //   const ApodGap.extraLarge({
 //     super.key,
-//   }) : spacing = ApodSpacing.extraLarge;
+//   }) : spacing = XSpacing.extraLarge;
 
 //   const ApodGap.superLarge({
 //     super.key,
-//   }) : spacing = ApodSpacing.superLarge;
+//   }) : spacing = XSpacing.superLarge;
 
 //   @override
 //   Widget build(BuildContext context) {

@@ -1,7 +1,9 @@
 library x_metrics_data;
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 part '../animation/x_durations_data.dart';
@@ -13,23 +15,29 @@ part '../painting/x_box_shadows_data.dart';
 part '../painting/x_shapes_data.dart';
 
 class XMetricsData extends ThemeExtension<XMetricsData> {
-  final XDurationsData xDurations;
-  final XElevationsData xElevations;
-  final XRadiusData xRadius;
-  final XBoxShadowsData xBoxShadows;
-  final XSpacingsData xSpacings;
+  final XBoxShadowsData boxShadows;
+  final XDurationsData durations;
+  final XElevationsData elevations;
+  final XFormFactor formFactor;
+  final TargetPlatform? platform;
+  final XRadiusData radius;
+  final XSpacingsData spacings;
 
   XMetricsData({
-    final XDurationsData? xDurations,
-    final XElevationsData? xElevationSizes,
-    final XRadiusData? xRadius,
-    final XBoxShadowsData? xBoxShadows,
-    final XSpacingsData? xSpacings,
-  })  : xDurations = xDurations ?? const XDurationsData(),
-        xElevations = xElevationSizes ?? const XElevationsData(),
-        xRadius = xRadius ?? const XRadiusData(),
-        xBoxShadows = xBoxShadows ?? const XBoxShadowsData(),
-        xSpacings = xSpacings ?? const XSpacingsData();
+    final XBoxShadowsData? boxShadows,
+    final XDurationsData? durations,
+    final XElevationsData? elevations,
+    final XFormFactor? formFactor,
+    final TargetPlatform? platform,
+    final XRadiusData? radius,
+    final XSpacingsData? spacings,
+  })  : boxShadows = boxShadows ?? const XBoxShadowsData(),
+        durations = durations ?? const XDurationsData(),
+        elevations = elevations ?? const XElevationsData(),
+        formFactor = formFactor ?? XFormFactor.medium,
+        platform = platform ?? defaultTargetPlatform,
+        radius = radius ?? const XRadiusData(),
+        spacings = spacings ?? const XSpacingsData();
 
   @override
   ThemeExtension<XMetricsData> lerp(
@@ -38,40 +46,75 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
       return this;
     } else {
       return XMetricsData(
-        xDurations: xDurations,
-        xElevationSizes: xElevations,
-        xRadius: xRadius,
-        xBoxShadows: xBoxShadows,
-        xSpacings: xSpacings,
+        boxShadows: boxShadows,
+        durations: durations,
+        elevations: elevations,
+        formFactor: formFactor,
+        platform: platform,
+        radius: radius,
+        spacings: spacings,
       );
     }
   }
 
   @override
   XMetricsData copyWith({
-    XDurationsData? xDurations,
-    XElevationsData? xElevationSizes,
-    XRadiusData? xRadius,
-    XBoxShadowsData? xBoxShadows,
-    XSpacingsData? xSpacings,
+    XBoxShadowsData? boxShadows,
+    XDurationsData? durations,
+    XElevationsData? elevations,
+    XFormFactor? formFactor,
+    TargetPlatform? platform,
+    XRadiusData? radius,
+    XSpacingsData? spacings,
   }) {
     return XMetricsData(
-      xDurations: xDurations ?? this.xDurations,
-      xElevationSizes: xElevationSizes ?? xElevations,
-      xRadius: xRadius ?? this.xRadius,
-      xBoxShadows: xBoxShadows ?? this.xBoxShadows,
-      xSpacings: xSpacings ?? xSpacings,
+      boxShadows: boxShadows ?? this.boxShadows,
+      durations: durations ?? this.durations,
+      elevations: elevations ?? this.elevations,
+      formFactor: formFactor ?? this.formFactor,
+      platform: platform ?? this.platform,
+      radius: radius ?? this.radius,
+      spacings: spacings ?? this.spacings,
     );
   }
+
+  XMetricsData withFormFactor(XFormFactor formFactor) {
+    return XMetricsData(formFactor: formFactor);
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is XMetricsData &&
+          boxShadows == other.boxShadows &&
+          durations == other.durations &&
+          elevations == other.elevations &&
+          formFactor == other.formFactor &&
+          platform == other.platform &&
+          radius == other.radius &&
+          spacings == other.spacings &&
+          runtimeType == other.runtimeType;
+
+  @override
+  int get hashCode =>
+      boxShadows.hashCode ^
+      durations.hashCode ^
+      elevations.hashCode ^
+      formFactor.hashCode ^
+      platform.hashCode ^
+      radius.hashCode ^
+      spacings.hashCode;
 
   @override
   String toString() => '''
   SquareStyle(
-    xDurations: $xDurations,
-    xElevationSizes: $xElevations,
-    xRadius: $xRadius,
-    xBoxShadows: $xBoxShadows,
-    xSpacings: $xSpacings,
+    boxShadows: $boxShadows,
+    durations: $durations,
+    elevations: $elevations,
+    formFactor: $formFactor,
+    platform: $platform,
+    radius: $radius,
+    spacings: $spacings,
   )
   ''';
 }

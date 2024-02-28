@@ -1,0 +1,4 @@
+enum XFormFactor {
+  small,
+  medium,
+}

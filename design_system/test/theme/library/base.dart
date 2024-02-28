@@ -12,17 +12,20 @@ class ThemeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       backgroundColor: colorScheme.background,
-      body: ApodPadding(
-        padding: const ApodEdgeInsets.extraLarge(),
+      body: metrics.spacings.edgeInsets.paddings.allExtraLarge(
         child: SpacedColumn(
           spaceBetween: metrics.spacings.large,
           children: [
-            ApodText.titleLarge(title),
+            Text(
+              title,
+              style: textTheme.titleLarge!,
+            ),
             ...sections,
           ],
         ),
@@ -49,7 +52,7 @@ class ThemeSection extends StatelessWidget {
     return SpacedColumn(
       spaceBetween: 20.0,
       children: [
-        ApodText.custom(
+        Text(
           title,
           style: textTheme.titleMedium!.copyWith(
             color: colorScheme.primary,
@@ -73,11 +76,16 @@ class ThemeCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ApodText.titleSmall(title),
+        Text(
+          title,
+          style: textTheme.titleSmall!,
+        ),
         Wrap(
           spacing: 8.0,
           runSpacing: 8.0,
@@ -129,7 +137,7 @@ class NamedCell<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -138,7 +146,7 @@ class NamedCell<T> extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: metrics.spacings.xInsets.semiSmall,
+          padding: metrics.spacings.edgeInsets.allSemiSmall,
           decoration: BoxDecoration(
             border: Border.all(
               color: colorScheme.onBackground.withAlpha(125),
@@ -147,7 +155,7 @@ class NamedCell<T> extends StatelessWidget {
           ),
           child: builder(context, value.value, null),
         ),
-        ApodText.custom(
+        Text(
           value.name,
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onBackground.withAlpha(125),

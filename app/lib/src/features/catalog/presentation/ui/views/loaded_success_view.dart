@@ -97,9 +97,10 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final assets = Theme.of(context).extension<ApodAssetsData>()!;
-    
+    final textTheme = Theme.of(context).textTheme;
+
     return LayoutBuilder(builder: (context, constraints) {
       return CustomScrollView(
         controller: _controller,
@@ -113,12 +114,12 @@ class _BodyState extends State<_Body> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              padding: const ApodEdgeInsets.only(
-                left: ApodSpacing.large,
-                top: ApodSpacing.large,
-                right: ApodSpacing.large,
-                bottom: ApodSpacing.large,
-              ).toEdgeInsets(metrics),
+              padding: metrics.spacings.edgeInsets.only(
+                left: XSpacing.large,
+                right: XSpacing.large,
+                top: XSpacing.large,
+                bottom: XSpacing.large,
+              ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -138,8 +139,7 @@ class _BodyState extends State<_Body> {
                         right: 0,
                         bottom: 0,
                         child: Container(
-                          margin: const ApodEdgeInsets.semiSmall()
-                              .toEdgeInsets(metrics),
+                          margin: metrics.spacings.edgeInsets.allSemiSmall,
                           height: (assets.icons.sizes as ApodIconSizesData)
                               .semiLarge,
                           width: (assets.icons.sizes as ApodIconSizesData)
@@ -150,19 +150,18 @@ class _BodyState extends State<_Body> {
                       ),
                     ],
                   ),
-                  const ApodGap.large(),
+                  metrics.spacings.gaps.large,
                   SizedBox(
                     height: 38,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
-                        // TODO: NewApodElevatedButton
                         if (widget.catalog.length == 1) ...[
                           ApodElevatedButton(
                             onPressed: widget.onLoadCatalog,
                             child: const Text('List all'),
                           ),
-                          const ApodGap.semiSmall()
+                          metrics.spacings.gaps.semiSmall,
                         ],
                         ApodDatePickerDialog(
                             onLoadPictureByDate: widget.onLoadPictureByDate),
@@ -175,14 +174,16 @@ class _BodyState extends State<_Body> {
           ),
           SliverToBoxAdapter(
             child: widget.catalog.length > 1
-                ? const ApodPadding(
-                    padding: ApodEdgeInsets.only(
-                      left: ApodSpacing.large,
-                      top: ApodSpacing.none,
-                      right: ApodSpacing.large,
-                      bottom: ApodSpacing.semiSmall,
+                ? Padding(
+                    padding: metrics.spacings.edgeInsets.only(
+                      left: XSpacing.large,
+                      right: XSpacing.large,
+                      bottom: XSpacing.semiSmall,
                     ),
-                    child: ApodText.titleLarge('Discover Now'),
+                    child: Text(
+                      'Discover Now',
+                      style: textTheme.titleLarge!,
+                    ),
                   )
                 : const SizedBox.shrink(),
           ),

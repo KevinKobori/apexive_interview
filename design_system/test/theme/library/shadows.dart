@@ -1,9 +1,9 @@
 part of 'library.dart';
 
 ThemeSection shadow(BuildContext context) {
-  final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+  final metrics = Theme.of(context).extension<XMetricsData>()!;
   final colorScheme = Theme.of(context).colorScheme;
-  
+
   return ThemeSection(
     title: 'Shadows',
     categories: [

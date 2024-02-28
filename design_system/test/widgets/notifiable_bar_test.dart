@@ -6,13 +6,13 @@ import '../base/widget.dart';
 
 void main() {
   Widget bar(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodMetricsData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        borderRadius: metrics.radius.xBorder.small,
+        borderRadius: metrics.radius.border.small,
         color: colorScheme.onSurface,
       ),
     );
