@@ -99,7 +99,7 @@ class ApodAnimatedIcon extends StatelessWidget {
         size: size,
       );
     }
-    
+
     return AnimatedDefaultTextStyle(
       style: TextStyle(
         fontFamily: assets.icons.fontFamily,

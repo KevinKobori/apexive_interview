@@ -22,7 +22,6 @@ class ApodImagesData extends Equatable {
       ];
 }
 
-
 // class ApodImagesData extends Equatable {
 //   final String appLogo;
 //   final String appWormLogo;

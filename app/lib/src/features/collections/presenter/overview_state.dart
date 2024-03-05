@@ -6,7 +6,7 @@ class CollectionsOverviewStateLoadedData extends CollectionsOverviewState {
   final List<CollectionModel> collectionList;
 
   CollectionsOverviewStateLoadedData({required this.collectionList});
-  
+
   factory CollectionsOverviewStateLoadedData.demo() =>
       CollectionsOverviewStateLoadedData(
         collectionList: [

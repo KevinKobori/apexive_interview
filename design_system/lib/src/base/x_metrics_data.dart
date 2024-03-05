@@ -36,8 +36,8 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
         elevations = elevations ?? const XElevationsData(),
         formFactor = formFactor ?? XFormFactor.medium,
         platform = platform ?? defaultTargetPlatform,
-        radius = radius ?? const XRadiusData(),
-        spacings = spacings ?? const XSpacingsData();
+        radius = radius ?? XRadiusData(),
+        spacings = spacings ?? XSpacingsData();
 
   @override
   ThemeExtension<XMetricsData> lerp(
@@ -78,9 +78,9 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
     );
   }
 
-  XMetricsData withFormFactor(XFormFactor formFactor) {
-    return XMetricsData(formFactor: formFactor);
-  }
+  // XMetricsData withFormFactor(XFormFactor formFactor) {
+  //   return XMetricsData(formFactor: formFactor);
+  // }
 
   @override
   bool operator ==(Object other) =>

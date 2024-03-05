@@ -17,7 +17,7 @@ class NotificationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final assets = Theme.of(context).extension<ApodAssetsData>()!;
-    
+
     return BlocBuilder<NotificationsOverviewBloc, NotificationsOverviewState>(
       bloc: notificationsOverviewPresenter,
       builder: (context, state) {

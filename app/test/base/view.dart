@@ -54,8 +54,7 @@ void testAppView(
                                     horizontal: 8,
                                     vertical: 4,
                                   ),
-                                  child:
-                                      Builder(builder: (context) {
+                                  child: Builder(builder: (context) {
                                     final textTheme =
                                         Theme.of(context).textTheme;
 

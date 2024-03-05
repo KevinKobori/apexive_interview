@@ -42,8 +42,19 @@ class XAssetsData extends ThemeExtension<XAssetsData> {
   }
 
   @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is XAssetsData &&
+          icons == other.icons &&
+          images == other.images &&
+          runtimeType == other.runtimeType;
+
+  @override
+  int get hashCode => icons.hashCode ^ images.hashCode;
+
+  @override
   String toString() => '''
-  SquareStyle(
+  XAssetsData(
     icons: $icons,
     images: $images,
   )

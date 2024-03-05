@@ -18,13 +18,13 @@ class _AppWrapWidgetState extends State<AppWrapWidget> {
 
   @override
   void initState() {
-    bloc.add(const AppWrapSwitchThemeMode(ThemeMode.dark));
+    bloc.add(const AppWrapSwitchThemeMode(ThemeMode.light));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocBuilder<AppWrapBloc, AppWrapState>(
       bloc: bloc,
       builder: (context, state) {
         Widget loading() => const Center(child: CircularProgressIndicator());

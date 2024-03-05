@@ -41,7 +41,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     final metrics = Theme.of(context).extension<ApodThemeData>()!;
-    
+
 //     return Gap(spacing.toDouble(metrics));
 //   }
 // }

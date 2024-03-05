@@ -14,7 +14,7 @@
 // }
 
 // class ApodText extends XText {
-//   ApodText._(
+//   ApodText.(
 //     String data, {
 //     required ApodTextLevel level,
 //     super.key,
@@ -80,7 +80,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._labelSmall(
+//   const ApodText.labelSmall(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -111,7 +111,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._labelMedium(
+//   const ApodText.labelMedium(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -142,7 +142,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._labelLarge(
+//   const ApodText.labelLarge(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -173,7 +173,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._bodySmall(
+//   const ApodText.bodySmall(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -359,7 +359,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._headlineSmall(
+//   const ApodText.headlineSmall(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -390,7 +390,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._headlineMedium(
+//   const ApodText.headlineMedium(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -421,7 +421,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._headlineLarge(
+//   const ApodText.headlineLarge(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -452,7 +452,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._displaySmall(
+//   const ApodText.displaySmall(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -483,7 +483,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._displayMedium(
+//   const ApodText.displayMedium(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,
@@ -514,7 +514,7 @@
 //           textScaler: textScaler,
 //         );
 
-//   const ApodText._displayLarge(
+//   const ApodText.displayLarge(
 //     String data, {
 //     super.key,
 //     StrutStyle? strutStyle,

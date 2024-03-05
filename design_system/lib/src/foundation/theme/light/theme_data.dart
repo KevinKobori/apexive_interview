@@ -7,7 +7,7 @@ abstract final class ApodLightTheme {
     var textThemeData = ApodTextTheme.mediumData;
 
     if (formFactor != null) {
-      metricsData = metricsData.withFormFactor(formFactor);
+      metricsData = metricsData.copyWith(formFactor: formFactor);
       if (formFactor == XFormFactor.small) {
         textThemeData = ApodTextTheme.smallData;
       }

@@ -11,9 +11,9 @@ extension DomainFailureToUIFailureExtension on DomainFailure {
         return I18n.strings.invalidDataFailure;
       case DomainFailure.resourceNotFound:
         return I18n.strings.resourceNotFoundFailure;
-        case DomainFailure.dataNotFound:
+      case DomainFailure.dataNotFound:
         return I18n.strings.dataNotFoundFailure;
-        
+
       case DomainFailure.unexpected:
         return I18n.strings.unexpectedFailure;
       default:

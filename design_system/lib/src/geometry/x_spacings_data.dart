@@ -1,55 +1,112 @@
 part of x_metrics_data;
 
 class XSpacingsData extends Equatable {
-  final double none;
-  final double superSmall;
-  final double extraSmall;
-  final double small;
-  final double semiSmall;
-  final double medium;
-  final double semiLarge;
-  final double large;
-  final double extraLarge;
-  final double superLarge;
+  final double? _none;
+  final double? _superSmall;
+  final double? _extraSmall;
+  final double? _small;
+  final double? _semiSmall;
+  final double? _medium;
+  final double? _semiLarge;
+  final double? _large;
+  final double? _extraLarge;
+  final double? _superLarge;
+  final Optional<XGapsData?>? _gaps;
+  final Optional<XEdgeInsetsData?>? _edgeInsets;
 
-  const XSpacingsData({
-    final double? none,
-    final double? superSmall,
-    final double? extraSmall,
-    final double? small,
-    final double? semiSmall,
-    final double? medium,
-    final double? semiLarge,
-    final double? large,
-    final double? extraLarge,
-    final double? superLarge,
-  })  : none = none ?? XStandardSizes.zero,
-        superSmall = superSmall ?? XAuxiliarySizes.x2,
-        extraSmall = extraSmall ?? XStandardSizes.x4,
-        small = small ?? XStandardSizes.x8,
-        semiSmall = semiSmall ?? XStandardSizes.x12,
-        medium = medium ?? XStandardSizes.x16,
-        semiLarge = semiLarge ?? XStandardSizes.x20,
-        large = large ?? XStandardSizes.x24,
-        extraLarge = extraLarge ?? XStandardSizes.x32,
-        superLarge = superLarge ?? XStandardSizes.x48;
+  double get none =>
+      _none ??
+      (throw UnimplementedError('none is not implemented in metrics.spacings'));
+  double get superSmall =>
+      _superSmall ??
+      (throw UnimplementedError(
+          'superSmall is not implemented in metrics.spacings'));
+  double get extraSmall =>
+      _extraSmall ??
+      (throw UnimplementedError(
+          'extraSmall is not implemented in metrics.spacings'));
+  double get small =>
+      _small ??
+      (throw UnimplementedError(
+          'small is not implemented in metrics.spacings'));
+  double get semiSmall =>
+      _semiSmall ??
+      (throw UnimplementedError(
+          'semiSmall is not implemented in metrics.spacings'));
+  double get medium =>
+      _medium ??
+      (throw UnimplementedError(
+          'medium is not implemented in metrics.spacings'));
+  double get semiLarge =>
+      _semiLarge ??
+      (throw UnimplementedError(
+          'semiLarge is not implemented in metrics.spacings'));
+  double get large =>
+      _large ??
+      (throw UnimplementedError(
+          'large is not implemented in metrics.spacings'));
+  double get extraLarge =>
+      _extraLarge ??
+      (throw UnimplementedError(
+          'extraLarge is not implemented in metrics.spacings'));
+  double get superLarge =>
+      _superLarge ??
+      (throw UnimplementedError(
+          'superLarge is not implemented in metrics.spacings'));
+  XGapsData get gaps => _gaps == null
+      ? XGapsData(this)
+      : _gaps.value ??
+          (throw UnimplementedError(
+              'gaps is not implemented in metrics.spacings'));
+  XEdgeInsetsData get edgeInsets => _edgeInsets == null
+      ? XEdgeInsetsData(this)
+      : _edgeInsets.value ??
+          (throw UnimplementedError(
+              'edgeInsets is not implemented in metrics.spacings'));
 
-  XGapsData get gaps => XGapsData(this);
-
-  XEdgeInsetsData get edgeInsets => XEdgeInsetsData(this);
+  XSpacingsData({
+    final Optional<double?>? none,
+    final Optional<double?>? superSmall,
+    final Optional<double?>? extraSmall,
+    final Optional<double?>? small,
+    final Optional<double?>? semiSmall,
+    final Optional<double?>? medium,
+    final Optional<double?>? semiLarge,
+    final Optional<double?>? large,
+    final Optional<double?>? extraLarge,
+    final Optional<double?>? superLarge,
+    final Optional<XGapsData?>? gaps,
+    final Optional<XEdgeInsetsData?>? edgeInsets,
+  })  : _none = none == null ? XStandardSizes.zero : none.value,
+        _superSmall =
+            superSmall == null ? XAuxiliarySizes.x2 : superSmall.value,
+        _extraSmall = extraSmall == null ? XStandardSizes.x4 : extraSmall.value,
+        _small = small == null ? XStandardSizes.x8 : small.value,
+        _semiSmall = semiSmall == null ? XStandardSizes.x12 : semiSmall.value,
+        _medium = medium == null ? XStandardSizes.x16 : medium.value,
+        _semiLarge = semiLarge == null ? XStandardSizes.x20 : semiLarge.value,
+        _large = large == null ? XStandardSizes.x24 : large.value,
+        _extraLarge =
+            extraLarge == null ? XStandardSizes.x32 : extraLarge.value,
+        _superLarge =
+            superLarge == null ? XStandardSizes.x48 : superLarge.value,
+        _gaps = gaps,
+        _edgeInsets = edgeInsets;
 
   @override
   List<Object?> get props => [
-        none.named('none'),
-        superSmall.named('superSmall'),
-        extraSmall.named('extraSmall'),
-        small.named('small'),
-        semiSmall.named('semiSmall'),
-        medium.named('medium'),
-        semiLarge.named('semiLarge'),
-        large.named('large'),
-        extraLarge.named('extraLarge'),
-        superLarge.named('superLarge'),
+        _none.named('_none'),
+        _superSmall.named('_superSmall'),
+        _extraSmall.named('_extraSmall'),
+        _small.named('_small'),
+        _semiSmall.named('_semiSmall'),
+        _medium.named('_medium'),
+        _semiLarge.named('_semiLarge'),
+        _large.named('_large'),
+        _extraLarge.named('_extraLarge'),
+        _superLarge.named('_superLarge'),
+        _gaps.named('_gaps'),
+        _edgeInsets.named('_edgeInsets'),
       ];
 }
 
@@ -77,8 +134,16 @@ class XGapsData extends Equatable {
 
 class XEdgeInsetsData extends Equatable {
   final XSpacingsData _spacings;
+  late XPaddingsData paddings;
 
-  const XEdgeInsetsData(this._spacings);
+  XEdgeInsetsData(
+    this._spacings, {
+    final XPaddingsData? paddings,
+  }) : assert(paddings is XPaddingsData ||
+            paddings is Function ||
+            paddings == null) {
+    this.paddings = paddings ?? XPaddingsData(this);
+  }
 
   EdgeInsets get allNone => EdgeInsets.all(_spacings.none);
   EdgeInsets get allSuperSmall => EdgeInsets.all(_spacings.superSmall);
@@ -139,16 +204,11 @@ class XEdgeInsetsData extends Equatable {
     final XSpacing? bottom,
   }) =>
       EdgeInsets.only(
-        left:
-            (left ?? XSpacing.none).toDouble(_spacings) ?? XStandardSizes.zero,
-        top: (top ?? XSpacing.none).toDouble(_spacings) ?? XStandardSizes.zero,
-        right:
-            (right ?? XSpacing.none).toDouble(_spacings) ?? XStandardSizes.zero,
-        bottom: (bottom ?? XSpacing.none).toDouble(_spacings) ??
-            XStandardSizes.zero,
+        left: (left ?? XSpacing.none).toDouble(_spacings) ?? 0,
+        top: (top ?? XSpacing.none).toDouble(_spacings) ?? 0,
+        right: (right ?? XSpacing.none).toDouble(_spacings) ?? 0,
+        bottom: (bottom ?? XSpacing.none).toDouble(_spacings) ?? 0,
       );
-
-  XPaddingsData get paddings => XPaddingsData(this);
 
   @override
   List<Object?> get props => [
@@ -158,12 +218,8 @@ class XEdgeInsetsData extends Equatable {
 
 class XPaddingsData extends Equatable {
   final XEdgeInsetsData _edgeInsets;
-  // final Widget? child;
 
-  const XPaddingsData(
-    this._edgeInsets,
-    // this.child,
-  );
+  const XPaddingsData(this._edgeInsets);
 
   Padding allNone({Widget? child}) => Padding(padding: _edgeInsets.allNone);
   Padding allSuperSmall({Widget? child}) =>

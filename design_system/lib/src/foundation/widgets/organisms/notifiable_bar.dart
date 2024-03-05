@@ -148,8 +148,7 @@ class _NotificationBody extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child:
-                    metrics.spacings.edgeInsets.paddings.verticalSemiSmall(
+                child: metrics.spacings.edgeInsets.paddings.verticalSemiSmall(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,

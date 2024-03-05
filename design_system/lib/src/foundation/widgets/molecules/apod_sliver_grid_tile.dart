@@ -17,7 +17,7 @@ class ApodSliverGridTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metrics = Theme.of(context).extension<XMetricsData>()!;
-    
+
     final grid = SliverMasonryGrid.count(
       crossAxisCount: crossAxisCount,
       mainAxisSpacing: metrics.spacings.semiSmall,

@@ -192,8 +192,7 @@ class ProductTileLayout extends StatelessWidget {
                               ],
                             ),
                           ),
-                          child:
-                              metrics.spacings.edgeInsets.paddings.allSmall(
+                          child: metrics.spacings.edgeInsets.paddings.allSmall(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.end,
