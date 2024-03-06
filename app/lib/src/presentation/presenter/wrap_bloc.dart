@@ -4,14 +4,14 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 class AppWrapBloc extends Bloc<AppWrapEvent, AppWrapState>
     implements AppWrapPresenter {
   AppWrapBloc() : super(AppWrapLoading()) {
-    on<AppWrapSwitchThemeMode>((event, emit) {
-      switchThemeMode(event, emit);
+    on<ToggleThemeModeEvent>((event, emit) {
+      onToggleThemeMode(event, emit);
     });
   }
 
   @override
-  void switchThemeMode(
-      AppWrapSwitchThemeMode event, Emitter<AppWrapState> emit) async {
+  void onToggleThemeMode(
+      ToggleThemeModeEvent event, Emitter<AppWrapState> emit) {
     emit(AppWrapLoaded(event.themeMode));
   }
 }

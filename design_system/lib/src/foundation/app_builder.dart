@@ -34,8 +34,8 @@ class ApodAppBuilder extends StatelessWidget {
           title: 'Nasa Apod',
           routerConfig: routerConfig,
           debugShowCheckedModeBanner: false,
-          theme: ApodLightTheme.data(formFactor: formFactor),
-          darkTheme: ApodDarkTheme.data(formFactor: formFactor),
+          theme: ApodLightTheme.data(formFactor),
+          darkTheme: ApodDarkTheme.data(formFactor),
           themeMode: themeMode,
         );
   }

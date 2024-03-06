@@ -6,9 +6,13 @@ class NotificationsOverviewBloc
     extends Bloc<NotificationsOverviewEvent, NotificationsOverviewState> {
   NotificationsOverviewBloc()
       : super(NotificationsOverviewStateLoadedData.demo()) {
-    on<NotificationsOverviewEventClose>((event, emit) {
-      emit(NotificationsOverviewStateLoadedData(
-          lastNotification: event.lastNotification));
+    on<CloseEvent>((event, emit) {
+      onClose(event, emit);
     });
+  }
+
+  void onClose(CloseEvent event, Emitter<NotificationsOverviewState> emit) {
+    emit(NotificationsOverviewStateLoadedData(
+        lastNotification: event.lastNotification));
   }
 }

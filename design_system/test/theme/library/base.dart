@@ -115,11 +115,11 @@ class SpacedColumn extends StatelessWidget {
         if (children.isNotEmpty) children.first,
         ...children
             .skip(1)
-            .map((e) => <Widget>[
+            .map((element) => <Widget>[
                   SizedBox(height: spaceBetween),
-                  e,
+                  element,
                 ])
-            .expand((e) => e),
+            .expand((element) => element),
       ],
     );
   }

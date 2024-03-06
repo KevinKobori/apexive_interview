@@ -5,9 +5,14 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 class CollectionsOverviewBloc
     extends Bloc<CollectionsOverviewEvent, CollectionsOverviewState> {
   CollectionsOverviewBloc() : super(CollectionsOverviewStateLoadedData.demo()) {
-    on<CollectionsOverviewEventUpdateData>((event, emit) {
-      emit(CollectionsOverviewStateLoadedData(
-          collectionList: event.collectionList));
+    on<LoadCollectionsEvent>((event, emit) {
+      onLoadCollections(event, emit);
     });
+  }
+
+  void onLoadCollections(
+      LoadCollectionsEvent event, Emitter<CollectionsOverviewState> emit) {
+    emit(CollectionsOverviewStateLoadedData(
+        collectionsList: event.collectionList));
   }
 }

@@ -19,7 +19,7 @@ class CollectionsOverview extends StatelessWidget {
       bloc: collectionsOverviewPresenter,
       builder: (context, state) {
         if (state is CollectionsOverviewStateLoadedData) {
-          final itemCount = state.collectionList.length;
+          final itemCount = state.collectionsList.length;
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: [

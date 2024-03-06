@@ -1,7 +1,6 @@
 library x_metrics_data;
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -19,7 +18,6 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
   final XDurationsData durations;
   final XElevationsData elevations;
   final XFormFactor formFactor;
-  final TargetPlatform? platform;
   final XRadiusData radius;
   final XSpacingsData spacings;
 
@@ -28,14 +26,12 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
     final XDurationsData? durations,
     final XElevationsData? elevations,
     final XFormFactor? formFactor,
-    final TargetPlatform? platform,
     final XRadiusData? radius,
     final XSpacingsData? spacings,
-  })  : boxShadows = boxShadows ?? const XBoxShadowsData(),
-        durations = durations ?? const XDurationsData(),
-        elevations = elevations ?? const XElevationsData(),
+  })  : boxShadows = boxShadows ?? XBoxShadowsData(),
+        durations = durations ?? XDurationsData(),
+        elevations = elevations ?? XElevationsData(),
         formFactor = formFactor ?? XFormFactor.medium,
-        platform = platform ?? defaultTargetPlatform,
         radius = radius ?? XRadiusData(),
         spacings = spacings ?? XSpacingsData();
 
@@ -50,7 +46,6 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
         durations: durations,
         elevations: elevations,
         formFactor: formFactor,
-        platform: platform,
         radius: radius,
         spacings: spacings,
       );
@@ -63,7 +58,6 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
     XDurationsData? durations,
     XElevationsData? elevations,
     XFormFactor? formFactor,
-    TargetPlatform? platform,
     XRadiusData? radius,
     XSpacingsData? spacings,
   }) {
@@ -72,15 +66,10 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
       durations: durations ?? this.durations,
       elevations: elevations ?? this.elevations,
       formFactor: formFactor ?? this.formFactor,
-      platform: platform ?? this.platform,
       radius: radius ?? this.radius,
       spacings: spacings ?? this.spacings,
     );
   }
-
-  // XMetricsData withFormFactor(XFormFactor formFactor) {
-  //   return XMetricsData(formFactor: formFactor);
-  // }
 
   @override
   bool operator ==(Object other) =>
@@ -90,7 +79,6 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
           durations == other.durations &&
           elevations == other.elevations &&
           formFactor == other.formFactor &&
-          platform == other.platform &&
           radius == other.radius &&
           spacings == other.spacings &&
           runtimeType == other.runtimeType;
@@ -101,20 +89,18 @@ class XMetricsData extends ThemeExtension<XMetricsData> {
       durations.hashCode ^
       elevations.hashCode ^
       formFactor.hashCode ^
-      platform.hashCode ^
       radius.hashCode ^
       spacings.hashCode;
 
-  @override
-  String toString() => '''
-  SquareStyle(
-    boxShadows: $boxShadows,
-    durations: $durations,
-    elevations: $elevations,
-    formFactor: $formFactor,
-    platform: $platform,
-    radius: $radius,
-    spacings: $spacings,
-  )
-  ''';
+  // @override
+  // String toString() => '''
+  //   XMetricsData(
+  //     boxShadows: $boxShadows,
+  //     durations: $durations,
+  //     elevations: $elevations,
+  //     formFactor: $formFactor,
+  //     radius: $radius,
+  //     spacings: $spacings,
+  //   )
+  // ''';
 }

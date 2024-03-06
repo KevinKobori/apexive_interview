@@ -10,21 +10,21 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
   CatalogPageBloc({
     required this.loadCatalogByStartEndDate,
   }) : super(CatalogPageLoading()) {
-    on<CatalogPageLoadCatalog>((event, emit) async {
-      await loadCatalog(emit);
+    on<LoadCatalogEvent>((event, emit) async {
+      await onLoadCatalog(emit);
     });
 
-    on<CatalogPageLoadPictureByDate>((event, emit) async {
-      await loadPictureByDate(event, emit);
+    on<LoadPictureByDateEvent>((event, emit) async {
+      await onLoadPictureByDate(event, emit);
     });
 
-    on<CatalogPageGoToPictureDetail>((event, emit) {
-      goToPictureDetail(event);
+    on<GoToPictureDetailEvent>((event, emit) async {
+      await onGoToPictureDetail(event);
     });
   }
 
   @override
-  Future<void> loadCatalog(Emitter<CatalogPageState> emit) async {
+  Future<void> onLoadCatalog(Emitter<CatalogPageState> emit) async {
     emit(CatalogPageLoading());
 
     /// Infra, Data, Domain
@@ -60,8 +60,8 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
   }
 
   @override
-  Future<void> loadPictureByDate(CatalogPageLoadPictureByDate event,
-      Emitter<CatalogPageState> emit) async {
+  Future<void> onLoadPictureByDate(
+      LoadPictureByDateEvent event, Emitter<CatalogPageState> emit) async {
     emit(CatalogPageLoading());
 
     /// Infra, Data, Domain
@@ -105,7 +105,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
   }
 
   @override
-  void goToPictureDetail(CatalogPageGoToPictureDetail event) async {
+  Future<void> onGoToPictureDetail(GoToPictureDetailEvent event) async {
     await NavigatorManager.pushNamed('/picture/detail/${event.picture.date}');
   }
 }

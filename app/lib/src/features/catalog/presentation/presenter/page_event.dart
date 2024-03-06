@@ -8,17 +8,17 @@ abstract class CatalogPageEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class CatalogPageLoadCatalog extends CatalogPageEvent {
-  const CatalogPageLoadCatalog();
+class LoadCatalogEvent extends CatalogPageEvent {
+  const LoadCatalogEvent();
 
   @override
   List<Object?> get props => [];
 }
 
-class CatalogPageLoadPictureByDate extends CatalogPageEvent {
+class LoadPictureByDateEvent extends CatalogPageEvent {
   final DateTime date;
 
-  const CatalogPageLoadPictureByDate(this.date);
+  const LoadPictureByDateEvent(this.date);
 
   @override
   List<Object?> get props => [
@@ -26,10 +26,10 @@ class CatalogPageLoadPictureByDate extends CatalogPageEvent {
       ];
 }
 
-class CatalogPageGoToPictureDetail extends CatalogPageEvent {
+class GoToPictureDetailEvent extends CatalogPageEvent {
   final PictureViewModel picture;
 
-  const CatalogPageGoToPictureDetail(
+  const GoToPictureDetailEvent(
     this.picture,
   );
 

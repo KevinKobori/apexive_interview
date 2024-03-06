@@ -8,10 +8,10 @@ abstract class AppWrapEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class AppWrapSwitchThemeMode extends AppWrapEvent {
+class ToggleThemeModeEvent extends AppWrapEvent {
   final ThemeMode themeMode;
 
-  const AppWrapSwitchThemeMode(this.themeMode);
+  const ToggleThemeModeEvent(this.themeMode);
 
   @override
   List<Object?> get props => [

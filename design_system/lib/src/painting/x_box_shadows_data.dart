@@ -1,32 +1,48 @@
 part of x_metrics_data;
 
 class XBoxShadowsData extends Equatable {
-  final BoxShadow small;
-  final BoxShadow medium;
-  final BoxShadow large;
+  final BoxShadow? _small;
+  final BoxShadow? _medium;
+  final BoxShadow? _large;
 
-  const XBoxShadowsData({
-    final BoxShadow? small,
-    final BoxShadow? medium,
-    final BoxShadow? large,
-  })  : small = small ??
-            const BoxShadow(
-              blurRadius: XAuxiliarySizes.x2,
-              spreadRadius: XAuxiliarySizes.x1,
-              color: Color(0x44000000),
-            ),
-        medium = medium ??
-            const BoxShadow(
-              blurRadius: XStandardSizes.x4,
-              spreadRadius: XAuxiliarySizes.x1,
-              color: Color(0x44000000),
-            ),
-        large = large ??
-            const BoxShadow(
-              blurRadius: XStandardSizes.x8,
-              spreadRadius: XAuxiliarySizes.x2,
-              color: Color(0x44000000),
-            );
+  XBoxShadowsData({
+    final Optional<BoxShadow?>? small,
+    final Optional<BoxShadow?>? medium,
+    final Optional<BoxShadow?>? large,
+  })  : _small = small == null
+            ? const BoxShadow(
+                blurRadius: XAuxiliarySizes.x2,
+                spreadRadius: XAuxiliarySizes.x1,
+                color: Color(0x44000000),
+              )
+            : small.value,
+        _medium = medium == null
+            ? const BoxShadow(
+                blurRadius: XStandardSizes.x4,
+                spreadRadius: XAuxiliarySizes.x1,
+                color: Color(0x44000000),
+              )
+            : medium.value,
+        _large = large == null
+            ? const BoxShadow(
+                blurRadius: XStandardSizes.x8,
+                spreadRadius: XAuxiliarySizes.x2,
+                color: Color(0x44000000),
+              )
+            : large.value;
+
+  BoxShadow get small =>
+      _small ??
+      (throw UnimplementedError(
+          'small is not implemented in metrics.boxShadows'));
+  BoxShadow get medium =>
+      _medium ??
+      (throw UnimplementedError(
+          'medium is not implemented in metrics.boxShadows'));
+  BoxShadow get large =>
+      _large ??
+      (throw UnimplementedError(
+          'large is not implemented in metrics.boxShadows'));
 
   @override
   List<Object?> get props => [
@@ -34,4 +50,13 @@ class XBoxShadowsData extends Equatable {
         medium.named('medium'),
         large.named('large'),
       ];
+
+  // @override
+  // String toString() => '''
+  //   XBoxShadowsData(
+  //     small: $small,
+  //     medium: $medium,
+  //     large: $large,
+  //   )
+  // ''';
 }

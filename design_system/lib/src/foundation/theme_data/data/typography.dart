@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodTextTheme {
-  static TextTheme get mediumData => const TextTheme(
+  static TextTheme data(XFormFactor? formFactor) {
+    if (formFactor == XFormFactor.small) {
+      return _smallData;
+    } else {
+      return _mediumData;
+    }
+  }
+
+  static TextTheme get _mediumData => const TextTheme(
         displayLarge: TextStyle(
           fontFamily: 'Poppins',
           package: 'nasa_apod_design_system',
@@ -61,7 +70,7 @@ class ApodTextTheme {
         // bodySmall: typographyData.paragraph2,
       );
 
-  static TextTheme get smallData => const TextTheme(
+  static TextTheme get _smallData => const TextTheme(
         displayLarge: TextStyle(
           fontFamily: 'Poppins',
           package: 'nasa_apod_design_system',

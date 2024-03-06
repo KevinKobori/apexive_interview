@@ -21,10 +21,10 @@ class ThemeSwitch extends StatelessWidget {
         Widget loaded(bool value) => Switch(
               value: value,
               onChanged: (newValue) {
-                if (newValue) {
-                  bloc.add(const AppWrapSwitchThemeMode(ThemeMode.light));
+                if (newValue == true) {
+                  bloc.add(const ToggleThemeModeEvent(ThemeMode.dark));
                 } else {
-                  bloc.add(const AppWrapSwitchThemeMode(ThemeMode.dark));
+                  bloc.add(const ToggleThemeModeEvent(ThemeMode.light));
                 }
               },
             );
@@ -35,9 +35,9 @@ class ThemeSwitch extends StatelessWidget {
           component = loading();
         } else if (state is AppWrapLoaded) {
           if (state.themeMode == ThemeMode.light) {
-            component = loaded(true);
-          } else if (state.themeMode == ThemeMode.dark) {
             component = loaded(false);
+          } else if (state.themeMode == ThemeMode.dark) {
+            component = loaded(true);
           }
         }
 
