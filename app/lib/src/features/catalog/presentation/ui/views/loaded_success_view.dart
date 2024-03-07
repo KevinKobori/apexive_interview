@@ -145,7 +145,7 @@ class _BodyState extends State<_Body> {
                           width: (assets.icons.sizes as ApodIconSizesData)
                               .semiLarge,
                           alignment: Alignment.centerLeft,
-                          child: SvgPicture.asset(assets.images.appLogo),
+                          child: SvgPicture.asset(assets.images.lightappLogo),
                         ),
                       ),
                     ],

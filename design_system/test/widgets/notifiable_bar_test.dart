@@ -24,7 +24,7 @@ void main() {
     return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',
-      icon: assets.images.appLogo,
+      icon: assets.images.lightappLogo,
     );
   }
 

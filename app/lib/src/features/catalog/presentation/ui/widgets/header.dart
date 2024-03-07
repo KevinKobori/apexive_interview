@@ -77,7 +77,7 @@ class CatalogPageHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SvgPicture.asset(
-                    assets.images.appWormLogo,
+                    assets.images.lightAppWormLogo,
                     width: textTheme.titleLarge!.fontSize! * 4,
                   ),
                   metrics.spacings.gaps.small,
