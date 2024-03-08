@@ -32,7 +32,7 @@ class NotificationBar extends StatelessWidget {
                     icon: () {
                       return switch (state.lastNotification!.type) {
                         NotificationType.offer =>
-                          assets.images.path(ApodImageKey.lightappLogo),
+                          assets.images.path(ApodImageKey.appLogo),
                       };
                     }(),
                   )

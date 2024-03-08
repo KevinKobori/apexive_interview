@@ -115,10 +115,10 @@ class _BodyState extends State<_Body> {
           SliverToBoxAdapter(
             child: Container(
               padding: metrics.spacings.edgeInsets.only(
-                left: XSpacing.large,
-                right: XSpacing.large,
-                top: XSpacing.large,
-                bottom: XSpacing.large,
+                left: XSpacings.large,
+                right: XSpacings.large,
+                top: XSpacings.large,
+                bottom: XSpacings.large,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -144,7 +144,7 @@ class _BodyState extends State<_Body> {
                           width: assets.icons.sizes.semiLarge,
                           alignment: Alignment.centerLeft,
                           child: SvgPicture.asset(
-                              assets.images.path(ApodImageKey.lightappLogo)),
+                              assets.images.path(ApodImageKey.appLogo)),
                         ),
                       ),
                     ],
@@ -173,12 +173,10 @@ class _BodyState extends State<_Body> {
           ),
           SliverToBoxAdapter(
             child: widget.catalog.length > 1
-                ? Padding(
-                    padding: metrics.spacings.edgeInsets.only(
-                      left: XSpacing.large,
-                      right: XSpacing.large,
-                      bottom: XSpacing.semiSmall,
-                    ),
+                ? metrics.spacings.edgeInsets.paddings.only(
+                    left: XSpacings.large,
+                    right: XSpacings.large,
+                    bottom: XSpacings.semiSmall,
                     child: Text(
                       'Discover Now',
                       style: textTheme.titleLarge!,

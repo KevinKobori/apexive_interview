@@ -45,10 +45,10 @@ class ApodContentSheet extends StatelessWidget {
                 ),
                 SliverPadding(
                   padding: metrics.spacings.edgeInsets.only(
-                    left: XSpacing.large,
-                    right: XSpacing.large,
-                    top: XSpacing.large,
-                    bottom: XSpacing.large,
+                    left: XSpacings.large,
+                    right: XSpacings.large,
+                    top: XSpacings.large,
+                    bottom: XSpacings.large,
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate(

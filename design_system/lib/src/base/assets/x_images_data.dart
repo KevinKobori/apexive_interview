@@ -5,8 +5,8 @@ part of x_assets_data;
 // }
 
 // extension XImageKeyExtension on BaseImageKey {
-//     lightappLogo,
-//     lightAppWormLogo,
+//     appLogo,
+//     appWormLogo,
 //     darkAppLogo,
 //     darkAppWormLogo,
 //   }
