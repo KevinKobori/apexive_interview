@@ -63,7 +63,7 @@ class CatalogPageHeader extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
-    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
     final metrics = Theme.of(context).extension<XMetricsData>()!;
     final textTheme = Theme.of(context).textTheme;
 
@@ -77,7 +77,7 @@ class CatalogPageHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SvgPicture.asset(
-                    assets.images.lightAppWormLogo,
+                    assets.images.path(ApodImageKey.lightAppWormLogo),
                     width: textTheme.titleLarge!.fontSize! * 4,
                   ),
                   metrics.spacings.gaps.small,

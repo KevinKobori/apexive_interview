@@ -1,44 +1,44 @@
-import 'package:flutter/material.dart';
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
+// import 'package:flutter/material.dart';
+// import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class ApodAssetsData extends ThemeExtension<ApodAssetsData> {
-  final ApodIconsData icons;
-  final ApodImagesData images;
+// class XAssetsData extends ThemeExtension<XAssetsData> {
+//   final ApodIconsData icons;
+//   final ApodImagesData images;
 
-  ApodAssetsData({
-    final ApodIconsData? icons,
-    final ApodImagesData? images,
-  })  : icons = ApodIconsData(),
-        images = const ApodImagesData();
+//   XAssetsData({
+//     final ApodIconsData? icons,
+//     final ApodImagesData? images,
+//   })  : icons = ApodIconsData(),
+//         images = const ApodImagesData();
 
-  @override
-  ApodAssetsData copyWith({
-    ApodIconsData? icons,
-    ApodImagesData? images,
-  }) {
-    return ApodAssetsData(
-      icons: icons ?? this.icons,
-      images: images ?? this.images,
-    );
-  }
+//   @override
+//   XAssetsData copyWith({
+//     ApodIconsData? icons,
+//     ApodImagesData? images,
+//   }) {
+//     return XAssetsData(
+//       icons: icons ?? this.icons,
+//       images: images ?? this.images,
+//     );
+//   }
 
-  @override
-  ApodAssetsData lerp(ThemeExtension<ApodAssetsData>? other, double t) {
-    if (other is! ApodAssetsData) {
-      return this;
-    }
+//   @override
+//   XAssetsData lerp(ThemeExtension<XAssetsData>? other, double t) {
+//     if (other is! XAssetsData) {
+//       return this;
+//     }
 
-    return ApodAssetsData();
-  }
+//     return XAssetsData();
+//   }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ApodAssetsData &&
-          icons == other.icons &&
-          images == other.images &&
-          runtimeType == other.runtimeType;
+//   @override
+//   bool operator ==(Object other) =>
+//       identical(this, other) ||
+//       other is XAssetsData &&
+//           icons == other.icons &&
+//           images == other.images &&
+//           runtimeType == other.runtimeType;
 
-  @override
-  int get hashCode => icons.hashCode ^ images.hashCode;
-}
+//   @override
+//   int get hashCode => icons.hashCode ^ images.hashCode;
+// }

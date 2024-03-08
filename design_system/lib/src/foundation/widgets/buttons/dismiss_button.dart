@@ -11,11 +11,12 @@ class ApodDismissButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
 
     return ApodIconButton(
       icon: ApodIcon.regular(
-          (assets.icons.characters as ApodIconCharactersData).dismiss),
+         assets.icons.characters.char(ApodIconCharacterKey.dismiss),
+      ),
       onPressed: onClose,
     );
   }

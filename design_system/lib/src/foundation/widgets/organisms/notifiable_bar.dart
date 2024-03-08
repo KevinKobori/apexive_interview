@@ -128,7 +128,7 @@ class _NotificationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final metrics = Theme.of(context).extension<XMetricsData>()!;
     final textTheme = Theme.of(context).textTheme;
@@ -140,8 +140,8 @@ class _NotificationBody extends StatelessWidget {
           child: Row(
             children: [
               ApodContainer(
-                height: (assets.icons.sizes as ApodIconSizesData).semiLarge,
-                width: (assets.icons.sizes as ApodIconSizesData).semiLarge,
+                height: assets.icons.sizes.semiLarge,
+                width: assets.icons.sizes.semiLarge,
                 margin: metrics.spacings.edgeInsets.allSemiSmall,
                 child: SvgPicture.asset(
                   'assets/images/nasa_logo.svg',

@@ -14,8 +14,8 @@ class XAssetsData extends ThemeExtension<XAssetsData> {
   XAssetsData({
     final XIconsData? icons,
     final XImagesData? images,
-  })  : icons = icons ?? const XIconsData(),
-        images = images ?? const XImagesData();
+  })  : icons = icons ?? XIconsData(),
+        images = images ?? XImagesData();
 
   @override
   ThemeExtension<XAssetsData> lerp(

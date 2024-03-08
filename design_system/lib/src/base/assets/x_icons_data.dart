@@ -6,12 +6,12 @@ class XIconsData extends Equatable {
   final XIconCharactersData characters;
   final XIconSizesData sizes;
 
-  const XIconsData({
+  XIconsData({
     this.fontFamily,
     this.fontPackage,
     final XIconCharactersData? characters,
     final XIconSizesData? sizes,
-  })  : characters = characters ?? const XIconCharactersData(),
+  })  : characters = characters ?? XIconCharactersData(),
         sizes = sizes ?? const XIconSizesData();
 
   @override
@@ -23,11 +23,27 @@ class XIconsData extends Equatable {
       ];
 }
 
+class XIconCharacterKey {
+  final String name;
+
+  const XIconCharacterKey(this.name);
+
+  static const none = XIconCharacterKey('none');
+}
+
 class XIconCharactersData extends Equatable {
-  const XIconCharactersData();
+  final Map<XIconCharacterKey, String> _characters;
+
+  XIconCharactersData({
+    Map<XIconCharacterKey, String>? characters,
+  }) : _characters = Map.from(characters ?? {});
+
+  String char(XIconCharacterKey key) => _characters[key]!;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        _characters,
+      ];
 }
 
 class XIconSizesData extends Equatable {

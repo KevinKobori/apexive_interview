@@ -1,7 +1,7 @@
 part of 'library.dart';
 
 ThemeSection icons(BuildContext context) {
-  final assets = Theme.of(context).extension<ApodAssetsData>()!;
+  final assets = Theme.of(context).extension<XAssetsData>()!;
   final colorScheme = Theme.of(context).colorScheme;
 
   return ThemeSection(

@@ -5,7 +5,7 @@ abstract final class ApodLightTheme {
   static ThemeData data(XFormFactor? formFactor) {
     return ThemeData(
       extensions: <ThemeExtension<dynamic>>[
-        ApodAssetsData(),
+        ApodAssets.data,
         ApodMetrics.data(formFactor),
       ],
       useMaterial3: true,

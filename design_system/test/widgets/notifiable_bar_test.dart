@@ -19,12 +19,12 @@ void main() {
   }
 
   NotificationViewModel notification(BuildContext context) {
-    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
 
     return NotificationViewModel(
       title: 'Save 50% on shields this week',
       description: 'See the offer',
-      icon: assets.images.lightappLogo,
+      icon: assets.images.path(ApodImageKey.lightappLogo),
     );
   }
 

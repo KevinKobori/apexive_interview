@@ -106,7 +106,7 @@ class _NavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metrics = Theme.of(context).extension<XMetricsData>()!;
-    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
     final textTheme = Theme.of(context).textTheme;
     final route = ModalRoute.of(context);
 
@@ -136,8 +136,8 @@ class _NavigationBar extends StatelessWidget {
                 ),
                 metrics.spacings.gaps.semiSmall,
                 ApodIcon.regular(
-                    (assets.icons.characters as ApodIconCharactersData)
-                        .addPicture),
+                  assets.icons.characters.char(ApodIconCharacterKey.addPicture),
+                ),
               ],
             ),
           )),

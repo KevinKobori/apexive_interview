@@ -16,7 +16,7 @@ class NotificationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
 
     return BlocBuilder<NotificationsOverviewBloc, NotificationsOverviewState>(
       bloc: notificationsOverviewPresenter,
@@ -31,7 +31,8 @@ class NotificationBar extends StatelessWidget {
                     description: state.lastNotification!.description,
                     icon: () {
                       return switch (state.lastNotification!.type) {
-                        NotificationType.offer => assets.images.lightappLogo,
+                        NotificationType.offer =>
+                          assets.images.path(ApodImageKey.lightappLogo),
                       };
                     }(),
                   )

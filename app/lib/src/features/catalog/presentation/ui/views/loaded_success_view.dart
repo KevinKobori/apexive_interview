@@ -98,7 +98,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final metrics = Theme.of(context).extension<XMetricsData>()!;
-    final assets = Theme.of(context).extension<ApodAssetsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
     final textTheme = Theme.of(context).textTheme;
 
     return LayoutBuilder(builder: (context, constraints) {
@@ -140,12 +140,11 @@ class _BodyState extends State<_Body> {
                         bottom: 0,
                         child: Container(
                           margin: metrics.spacings.edgeInsets.allSemiSmall,
-                          height: (assets.icons.sizes as ApodIconSizesData)
-                              .semiLarge,
-                          width: (assets.icons.sizes as ApodIconSizesData)
-                              .semiLarge,
+                          height: assets.icons.sizes.semiLarge,
+                          width: assets.icons.sizes.semiLarge,
                           alignment: Alignment.centerLeft,
-                          child: SvgPicture.asset(assets.images.lightappLogo),
+                          child: SvgPicture.asset(
+                              assets.images.path(ApodImageKey.lightappLogo)),
                         ),
                       ),
                     ],
