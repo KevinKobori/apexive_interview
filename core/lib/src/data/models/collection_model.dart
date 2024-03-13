@@ -7,8 +7,8 @@ part 'collection_model.g.dart';
 @freezed
 class CollectionModel with _$CollectionModel {
   const factory CollectionModel({
-    required String name,
-    required List<PictureModel> catalog,
+    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'catalog') required List<PictureModel> catalog,
   }) = _CollectionModel;
 
   factory CollectionModel.fromJson(Map<String, Object?> json) =>

@@ -97,13 +97,16 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
+    final textTheme = Theme.of(context).textTheme;
+
     return LayoutBuilder(builder: (context, constraints) {
       return CustomScrollView(
         controller: _controller,
         slivers: [
           SliverToBoxAdapter(
-            child: ApodPageHeader(
+            child: CatalogPageHeader(
               controller: _controller,
               url: widget.catalog[0].url,
               mediaType: widget.catalog[0].mediaType,
@@ -111,19 +114,19 @@ class _BodyState extends State<_Body> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              padding: const ApodEdgeInsets.only(
-                left: ApodSpacing.large,
-                top: ApodSpacing.large,
-                right: ApodSpacing.large,
-                bottom: ApodSpacing.large,
-              ).toEdgeInsets(metrics),
+              padding: metrics.spacings.edgeInsets.only(
+                left: XSpacings.large,
+                right: XSpacings.large,
+                top: XSpacings.large,
+                bottom: XSpacings.large,
+              ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Stack(
                     children: [
                       ApodPictureTile(
-                        key: Key(widget.catalog[0].date),
+                        // key: Key(widget.catalog[0].date),
                         title: widget.catalog[0].title,
                         url: widget.catalog[0].url,
                         mediaType: widget.catalog[0].mediaType,
@@ -136,29 +139,29 @@ class _BodyState extends State<_Body> {
                         right: 0,
                         bottom: 0,
                         child: Container(
-                          margin: const ApodEdgeInsets.semiSmall()
-                              .toEdgeInsets(metrics),
-                          height: (metrics.icons.sizes as ApodIconSizesData)
-                              .semiLarge,
-                          width: (metrics.icons.sizes as ApodIconSizesData)
-                              .semiLarge,
+                          margin: metrics.spacings.edgeInsets.allSemiSmall,
+                          height: assets.icons.sizes.semiLarge,
+                          width: assets.icons.sizes.semiLarge,
                           alignment: Alignment.centerLeft,
-                          child: SvgPicture.asset(metrics.images.appLogo),
+                          child: SvgPicture.asset(
+                              assets.images.path(ApodImageKey.appLogo)),
                         ),
                       ),
                     ],
                   ),
-                  const ApodGap.large(),
+                  metrics.spacings.gaps.large,
                   SizedBox(
                     height: 38,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
-                        ApodElevatedButton(
-                          onPressed: widget.onLoadCatalog,
-                          title: 'List all',
-                        ),
-                        const ApodGap.semiSmall(),
+                        if (widget.catalog.length == 1) ...[
+                          ApodElevatedButton(
+                            onPressed: widget.onLoadCatalog,
+                            child: const Text('List all'),
+                          ),
+                          metrics.spacings.gaps.semiSmall,
+                        ],
                         ApodDatePickerDialog(
                             onLoadPictureByDate: widget.onLoadPictureByDate),
                       ],
@@ -170,14 +173,14 @@ class _BodyState extends State<_Body> {
           ),
           SliverToBoxAdapter(
             child: widget.catalog.length > 1
-                ? const ApodPadding(
-                    padding: ApodEdgeInsets.only(
-                      left: ApodSpacing.large,
-                      top: ApodSpacing.none,
-                      right: ApodSpacing.large,
-                      bottom: ApodSpacing.semiSmall,
+                ? metrics.spacings.edgeInsets.paddings.only(
+                    left: XSpacings.large,
+                    right: XSpacings.large,
+                    bottom: XSpacings.semiSmall,
+                    child: Text(
+                      'Discover Now',
+                      style: textTheme.titleLarge!,
                     ),
-                    child: ApodText.titleLarge('Discover Now'),
                   )
                 : const SizedBox.shrink(),
           ),
@@ -199,7 +202,7 @@ class _BodyState extends State<_Body> {
                   .skip(1)
                   .map(
                     (picture) => ApodPictureTile(
-                      key: Key(picture.date),
+                      // key: Key(picture.date),
                       title: picture.title,
                       url: picture.url,
                       mediaType: picture.mediaType,

@@ -10,19 +10,19 @@ class ApodAppBuilder extends StatelessWidget {
     this.themeMode = ThemeMode.light,
   });
 
-  final ApodAppFormFactor? formFactor;
+  final XFormFactor? formFactor;
   final Widget? child;
   final RouterConfig<Object>? routerConfig;
   final ThemeMode themeMode;
 
-  static ApodAppFormFactor formFactorOf(BuildContext context) {
+  static XFormFactor formFactorOf(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
 
     if (mediaQuery.size.width < 200) {
-      return ApodAppFormFactor.small;
+      return XFormFactor.small;
     }
 
-    return ApodAppFormFactor.medium;
+    return XFormFactor.medium;
   }
 
   @override
@@ -34,8 +34,8 @@ class ApodAppBuilder extends StatelessWidget {
           title: 'Nasa Apod',
           routerConfig: routerConfig,
           debugShowCheckedModeBanner: false,
-          theme: ApodLightTheme.data(formFactor: formFactor),
-          darkTheme: ApodDarkTheme.data(formFactor: formFactor),
+          theme: ApodLightTheme.data(formFactor),
+          darkTheme: ApodDarkTheme.data(formFactor),
           themeMode: themeMode,
         );
   }

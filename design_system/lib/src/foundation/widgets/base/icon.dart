@@ -7,7 +7,8 @@ enum ApodIconSize {
   semiLarge,
 }
 
-extension ApodIconSizeExtension on ApodIconSizesData {
+extension ApodIconSizeExtension on XIconSizesData {
+  // TODO: NOW - PUT ALL SIZES HERE
   double resolve(ApodIconSize size) {
     switch (size) {
       case ApodIconSize.extraSmall:
@@ -52,17 +53,17 @@ class ApodIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
-
     final color = this.color ?? colorScheme.onBackground;
+
     return Text(
       data,
       style: TextStyle(
-        fontFamily: metrics.icons.fontFamily,
-        package: metrics.icons.fontPackage,
+        fontFamily: assets.icons.fontFamily,
+        package: assets.icons.fontPackage,
         color: color,
-        fontSize: (metrics.icons.sizes as ApodIconSizesData).resolve(size),
+        fontSize: assets.icons.sizes.resolve(size),
         decoration: TextDecoration.none,
       ),
     );
@@ -87,9 +88,10 @@ class ApodAnimatedIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final color = this.color ?? colorScheme.onBackground;
+
     if (!isAnimated) {
       return ApodIcon(
         data,
@@ -98,12 +100,13 @@ class ApodAnimatedIcon extends StatelessWidget {
         size: size,
       );
     }
+
     return AnimatedDefaultTextStyle(
       style: TextStyle(
-        fontFamily: metrics.icons.fontFamily,
-        package: metrics.icons.fontPackage,
+        fontFamily: assets.icons.fontFamily,
+        package: assets.icons.fontPackage,
         color: color,
-        fontSize: (metrics.icons.sizes as ApodIconSizesData).resolve(size),
+        fontSize: assets.icons.sizes.resolve(size),
         decoration: TextDecoration.none,
       ),
       duration: duration,

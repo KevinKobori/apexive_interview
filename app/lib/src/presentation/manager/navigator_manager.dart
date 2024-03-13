@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -17,14 +18,6 @@ abstract final class NavigatorManager {
 
     await Modular.to
         .pushNamed(route, arguments: arguments)
-        .onError((error, stackTrace) => error);
-  }
-
-  static void navigate(String route, {dynamic arguments}) {
-    if (route == Modular.to.path) {
-      return;
-    }
-
-    Modular.to.navigate(route, arguments: arguments);
+        .onError((error, stackTrace) => log(error.toString()));
   }
 }

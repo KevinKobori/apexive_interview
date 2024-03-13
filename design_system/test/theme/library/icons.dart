@@ -1,16 +1,16 @@
 part of 'library.dart';
 
 ThemeSection icons(BuildContext context) {
-  final metrics = Theme.of(context).extension<ApodThemeData>()!;
+  final assets = Theme.of(context).extension<XAssetsData>()!;
   final colorScheme = Theme.of(context).colorScheme;
-  final icons = metrics.icons;
+
   return ThemeSection(
     title: 'Icons',
     categories: [
       ThemeCategory(
         title: 'Small',
         children: [
-          ...icons.characters.props.map<Widget>(
+          ...assets.icons.characters.props.map<Widget>(
             (c) => NamedCell(
               value: c as Named<String>,
               builder: (context, v, _) => ApodIcon(
@@ -25,7 +25,7 @@ ThemeSection icons(BuildContext context) {
       ThemeCategory(
         title: 'Large',
         children: [
-          ...icons.characters.props.map<Widget>(
+          ...assets.icons.characters.props.map<Widget>(
             (c) => NamedCell(
               value: c as Named<String>,
               builder: (context, v, _) => ApodIcon(

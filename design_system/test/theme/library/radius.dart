@@ -1,8 +1,9 @@
 part of 'library.dart';
 
 ThemeSection radius(BuildContext context) {
-  final metrics = Theme.of(context).extension<ApodThemeData>()!;
+  final metrics = Theme.of(context).extension<XMetricsData>()!;
   final colorScheme = Theme.of(context).colorScheme;
+
   return ThemeSection(
     title: 'Border radius',
     categories: [

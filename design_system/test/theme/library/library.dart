@@ -18,7 +18,7 @@ class ApodThemeLibrary extends StatelessWidget {
   });
 
   final ThemeMode themeMode;
-  final ApodAppFormFactor formFactor;
+  final XFormFactor formFactor;
 
   @override
   Widget build(BuildContext context) {

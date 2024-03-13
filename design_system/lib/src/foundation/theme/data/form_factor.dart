@@ -1,4 +1,0 @@
-enum ApodAppFormFactor {
-  small,
-  medium,
-}

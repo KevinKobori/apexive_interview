@@ -48,7 +48,8 @@ typedef ValueChangeHandlerCallback<T> = void Function(T oldValue, T newValue);
 typedef AsyncValueChangeHandlerCallback<T> = Future<void> Function(
     T oldValue, T newValue);
 // A builder function that constructs widgets based on the given BuildContext and index, for synchronous operations.
-typedef IndexedWidgetBuilderCallback = Widget Function(BuildContext context, int index);
+typedef IndexedWidgetBuilderCallback = Widget Function(
+    BuildContext context, int index);
 // A builder function that constructs widgets based on the given BuildContext and index, for asynchronous operations, returning a Future<Widget>.
 typedef AsyncIndexedWidgetBuilderCallback = Future<Widget> Function(
     BuildContext context, int index);

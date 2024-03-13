@@ -2,7 +2,7 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 abstract class NotificationsOverviewEvent {}
 
-class NotificationsOverviewEventClose extends NotificationsOverviewEvent {
+class CloseEvent extends NotificationsOverviewEvent {
   final NotificationModel? lastNotification;
-  NotificationsOverviewEventClose(this.lastNotification);
+  CloseEvent(this.lastNotification);
 }

@@ -12,22 +12,18 @@ class CatalogPageLoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
+
     return LayoutBuilder(builder: (context, constraints) {
       return ApodScaffold(
         body: CustomScrollView(
           slivers: [
             const SliverToBoxAdapter(
-              child: ApodPageHeader.shimmer(),
+              child: CatalogPageHeader.shimmer(),
             ),
             SliverToBoxAdapter(
               child: Container(
-                padding: const ApodEdgeInsets.only(
-                  left: ApodSpacing.large,
-                  top: ApodSpacing.large,
-                  right: ApodSpacing.large,
-                  bottom: ApodSpacing.large,
-                ).toEdgeInsets(metrics),
+                padding: metrics.spacings.edgeInsets.allLarge,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [

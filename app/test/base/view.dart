@@ -54,12 +54,11 @@ void testAppView(
                                     horizontal: 8,
                                     vertical: 4,
                                   ),
-                                  child:
-                                      Builder(builder: (context) {
+                                  child: Builder(builder: (context) {
                                     final textTheme =
                                         Theme.of(context).textTheme;
 
-                                    return ApodText.custom(
+                                    return Text(
                                       device.key,
                                       style: textTheme.titleSmall!.copyWith(
                                         color: Colors.black,

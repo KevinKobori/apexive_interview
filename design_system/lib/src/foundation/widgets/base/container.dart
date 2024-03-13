@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodContainer extends StatelessWidget {
   const ApodContainer({
@@ -18,8 +17,8 @@ class ApodContainer extends StatelessWidget {
     this.child,
   });
 
-  final ApodEdgeInsets? padding;
-  final ApodEdgeInsets? margin;
+  final EdgeInsets? padding;
+  final EdgeInsets? margin;
   final Decoration? decoration;
   final Decoration? foregroundDecoration;
   final double? width;
@@ -33,12 +32,13 @@ class ApodContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    //   final metrics = Theme.of(context).extension<XMetricsData>()!;
+
     return Container(
       width: width,
       height: height,
-      padding: padding?.toEdgeInsets(metrics),
-      margin: margin?.toEdgeInsets(metrics),
+      padding: padding,
+      margin: margin,
       decoration: decoration,
       foregroundDecoration: foregroundDecoration,
       alignment: alignment,

@@ -16,21 +16,23 @@ class NotificationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
+
     return BlocBuilder<NotificationsOverviewBloc, NotificationsOverviewState>(
       bloc: notificationsOverviewPresenter,
       builder: (context, state) {
         if (state is NotificationsOverviewStateLoadedData) {
           return ApodNotifiableBar(
             onClosed: () => BlocProvider.of<NotificationsOverviewBloc>(context)
-                .add(NotificationsOverviewEventClose(null)),
+                .add(CloseEvent(null)),
             notification: state.lastNotification != null
                 ? NotificationViewModel(
                     title: state.lastNotification!.title,
                     description: state.lastNotification!.description,
                     icon: () {
                       return switch (state.lastNotification!.type) {
-                        NotificationType.offer => metrics.images.appLogo,
+                        NotificationType.offer =>
+                          assets.images.path(ApodImageKey.appLogo),
                       };
                     }(),
                   )

@@ -50,7 +50,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
   }
 
   List<Widget> _buildBody(BuildContext context, PictureViewModel picture) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -60,7 +60,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
         child: ThemeSwitch(),
       ),
       ClipRRect(
-        borderRadius: metrics.radius.xBorder.semiSmall,
+        borderRadius: metrics.radius.border.semiSmall,
         child: AspectRatio(
           aspectRatio: picture.aspectRatio,
           child: Image(
@@ -71,17 +71,23 @@ class _MobileLayoutState extends State<_MobileLayout> {
           ),
         ),
       ),
-      const ApodGap.semiSmall(),
-      ApodText.titleLarge(picture.title),
-      ApodText.custom(
+      metrics.spacings.gaps.semiSmall,
+      Text(
+        picture.title,
+        style: textTheme.titleLarge!,
+      ),
+      Text(
         picture.date,
         style: textTheme.titleSmall!.copyWith(
           color: colorScheme.primary,
         ),
       ),
-      ApodText.bodyLarge(picture.explanation),
-      const ApodGap.superLarge(),
-      const ApodGap.superLarge(),
+      Text(
+        picture.explanation,
+        style: textTheme.bodyLarge!,
+      ),
+      metrics.spacings.gaps.superLarge,
+      metrics.spacings.gaps.superLarge,
     ];
   }
 }
@@ -99,29 +105,42 @@ class _NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<ApodThemeData>()!;
-
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
+    final textTheme = Theme.of(context).textTheme;
     final route = ModalRoute.of(context);
+
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,
       child: ApodNavigationBar(
-        animation: route?.animation,
-        canNavigateBack: true,
-        leading: AccountAvatar(
-          accountOverviewPresenter: accountOverviewPresenter,
-        ),
-        summary: CollectionsOverview(
-          collectionsOverviewPresenter: collectionsOverviewPresenter,
-        ),
-        body: AccountNavigationBarBody(
-          accountOverviewPresenter: accountOverviewPresenter,
-        ),
-        action: ApodElevatedButton(
-          icon: (metrics.icons.characters as ApodIconCharactersData).addPicture,
-          title: 'Add to collections',
-          onPressed: () {},
-        ),
-      ),
+          animation: route?.animation,
+          canNavigateBack: true,
+          leading: AccountAvatar(
+            accountOverviewPresenter: accountOverviewPresenter,
+          ),
+          summary: CollectionsOverview(
+            collectionsOverviewPresenter: collectionsOverviewPresenter,
+          ),
+          body: AccountNavigationBarBody(
+            accountOverviewPresenter: accountOverviewPresenter,
+          ),
+          action: ApodElevatedButton(
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Add to collections',
+                  style: textTheme.titleSmall!,
+                ),
+                metrics.spacings.gaps.semiSmall,
+                ApodIcon.regular(
+                  assets.icons.characters.char(ApodIconCharacterKey.addPicture),
+                ),
+              ],
+            ),
+          )),
     );
   }
 }
