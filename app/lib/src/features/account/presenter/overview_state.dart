@@ -2,13 +2,13 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 abstract class AccountOverviewState {}
 
-class AccountOverviewStateLoadedSuccess extends AccountOverviewState {
+class AccountOverviewLoadedSuccess extends AccountOverviewState {
   final AccountModel account;
 
-  AccountOverviewStateLoadedSuccess({required this.account});
+  AccountOverviewLoadedSuccess({required this.account});
 
-  factory AccountOverviewStateLoadedSuccess.demo() =>
-      AccountOverviewStateLoadedSuccess(
+  factory AccountOverviewLoadedSuccess.demo() =>
+      AccountOverviewLoadedSuccess(
         account: const AccountModel(
           name: 'Kevin Kobori',
           pictureUrl:

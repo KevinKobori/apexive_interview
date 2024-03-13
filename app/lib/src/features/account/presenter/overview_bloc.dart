@@ -4,7 +4,7 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 // AccountNotifier
 class AccountOverviewBloc
     extends Bloc<AccountOverviewEvent, AccountOverviewState> {
-  AccountOverviewBloc() : super(AccountOverviewStateLoadedSuccess.demo()) {
+  AccountOverviewBloc() : super(AccountOverviewLoadedSuccess.demo()) {
     on<LoadAccountEvent>((event, emit) async {
       onLoadAccount(event, emit);
     });
@@ -12,6 +12,6 @@ class AccountOverviewBloc
 
   void onLoadAccount(
       LoadAccountEvent event, Emitter<AccountOverviewState> emit) async {
-    emit(AccountOverviewStateLoadedSuccess(account: event.account));
+    emit(AccountOverviewLoadedSuccess(account: event.account));
   }
 }

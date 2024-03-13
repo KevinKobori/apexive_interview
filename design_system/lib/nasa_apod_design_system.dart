@@ -4,7 +4,6 @@ library nasa_apod_design_system;
 export 'src/base/assets/x_assets_data.dart';
 export 'src/base/helpers/named.dart';
 export 'src/base/helpers/optional.dart';
-export 'src/base/metrics/geometry/x_form_factor.dart';
 export 'src/base/metrics/geometry/x_icon_sizes_data.dart';
 export 'src/base/metrics/x_metrics_data.dart';
 export 'src/base/tokens/_x_auxiliary_milliseconds.dart';

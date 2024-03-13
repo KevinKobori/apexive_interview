@@ -16,7 +16,7 @@ class AccountAvatar extends StatelessWidget {
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
       bloc: accountOverviewPresenter,
       builder: (context, state) {
-        if (state is AccountOverviewStateLoadedSuccess) {
+        if (state is AccountOverviewLoadedSuccess) {
           return AccountAvatarSuccessView(
             url: state.account.pictureUrl,
           );

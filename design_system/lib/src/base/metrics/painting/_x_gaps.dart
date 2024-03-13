@@ -1,11 +1,9 @@
 part of x_metrics_data;
 
-class _XGapsData extends Equatable {
+class _XGaps extends Equatable {
   final XSpacingsData _spacings;
 
-  const _XGapsData(
-    this._spacings,
-  );
+  const _XGaps(this._spacings);
 
   Gap get none => Gap(_spacings.none);
   Gap get superSmall => Gap(_spacings.superSmall);

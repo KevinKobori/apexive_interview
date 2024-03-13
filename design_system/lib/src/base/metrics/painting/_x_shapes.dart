@@ -1,9 +1,9 @@
 part of x_metrics_data;
 
-class _XShapesData {
-  final _XBorderRadiusData _borderRadius;
+class _XShapes {
+  final _XBorderRadius _borderRadius;
 
-  const _XShapesData(this._borderRadius);
+  const _XShapes(this._borderRadius);
 
   RoundedRectangleBorder get none =>
       RoundedRectangleBorder(borderRadius: _borderRadius.none);

@@ -58,21 +58,21 @@
 
 //   @override
 //   double get small =>
-//       throw UnimplementedError('small is not available in ApodIconSizesData');
+//       throw UnsupportedError('small is not available in ApodIconSizesData');
 
 //   @override
-//   double get semiSmall => throw UnimplementedError(
+//   double get semiSmall => throw UnsupportedError(
 //       'semiSmall is not available in ApodIconSizesData');
 
 //   @override
 //   double get large =>
-//       throw UnimplementedError('large is not available in ApodIconSizesData');
+//       throw UnsupportedError('large is not available in ApodIconSizesData');
 
 //   @override
-//   double get extraLarge => throw UnimplementedError(
+//   double get extraLarge => throw UnsupportedError(
 //       'extraLarge is not available in ApodIconSizesData');
 
 //   @override
-//   double get superLarge => throw UnimplementedError(
+//   double get superLarge => throw UnsupportedError(
 //       'superLarge is not available in ApodIconSizesData');
 // }

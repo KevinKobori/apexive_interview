@@ -18,7 +18,7 @@ class AccountNavigationBarBody extends StatelessWidget {
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
       bloc: accountOverviewPresenter,
       builder: (context, state) {
-        if (state is AccountOverviewStateLoadedSuccess) {
+        if (state is AccountOverviewLoadedSuccess) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,

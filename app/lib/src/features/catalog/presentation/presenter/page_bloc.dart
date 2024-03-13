@@ -69,7 +69,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     final apodDate = DateTimeMapper.getStringFromDateTimeYMD(event.date);
     final datasourceResult = await datasource.fetchPictureByDate(
         apodApiUrlFactory(
-            apiKey: ApodEnvironmentConstants.apiKey,
+            apiKey: ApodDotEnv.instance.apiKey,
             requestPath: '&date=$apodDate'));
 
     /// Presenter

@@ -1,11 +1,9 @@
 part of x_metrics_data;
 
-class _XBorderRadiusData extends Equatable {
+class _XBorderRadius extends Equatable {
   final XRadiusData _radius;
 
-  const _XBorderRadiusData(
-    this._radius,
-  );
+  const _XBorderRadius(this._radius);
 
   BorderRadius get none => BorderRadius.all(_radius.none);
   BorderRadius get extraSmall => BorderRadius.all(_radius.extraSmall);
@@ -17,7 +15,7 @@ class _XBorderRadiusData extends Equatable {
   BorderRadius get extraLarge => BorderRadius.all(_radius.extraLarge);
   BorderRadius get superLarge => BorderRadius.all(_radius.superLarge);
 
-  _XShapesData get shape => _XShapesData(this);
+  _XShapes get shape => _XShapes(this);
 
   @override
   List<Object?> get props => [

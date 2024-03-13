@@ -7,8 +7,9 @@ import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ApodEnvironmentConstants.loadEnv();
   setPathUrlStrategy();
+
+  await _startSingletons();
 
   runApp(
     ModularApp(
@@ -16,4 +17,8 @@ void main() async {
       child: const AppWrapWidget(),
     ),
   );
+}
+
+Future<void> _startSingletons() async {
+  await ApodDotEnv.initialize();
 }

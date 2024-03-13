@@ -15,7 +15,7 @@ class ApodDismissButton extends StatelessWidget {
 
     return ApodIconButton(
       icon: ApodIcon.regular(
-         assets.icons.characters.char(ApodIconCharacterKey.dismiss),
+        assets.icons.characters.char(ApodIconCharacterKey.dismiss),
       ),
       onPressed: onClose,
     );

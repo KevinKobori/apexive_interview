@@ -22,22 +22,22 @@ class XElevationsData {
   double get none => XStandardSizes.zero;
   double get level1 =>
       _level1 ??
-      (throw UnimplementedError(
-          'level1 is not implemented in metrics.elevations'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'level1', location: 'elevations')));
   double get level2 =>
       _level2 ??
-      (throw UnimplementedError(
-          'level2 is not implemented in metrics.elevations'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'level2', location: 'elevations')));
   double get level3 =>
       _level3 ??
-      (throw UnimplementedError(
-          'level3 is not implemented in metrics.elevations'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'level3', location: 'elevations')));
   double get level4 =>
       _level4 ??
-      (throw UnimplementedError(
-          'level4 is not implemented in metrics.elevations'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'level4', location: 'elevations')));
   double get level5 =>
       _level5 ??
-      (throw UnimplementedError(
-          'level5 is not implemented in metrics.elevations'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'level5', location: 'elevations')));
 }

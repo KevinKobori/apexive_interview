@@ -30,14 +30,37 @@ extension XSpacingsExtension on XSpacings {
   }
 }
 
-class _XEdgeInsetsData extends Equatable {
+class _XEdgeInsets extends Equatable {
   final XSpacingsData _spacings;
 
-  const _XEdgeInsetsData(
-    this._spacings,
-  );
+  const _XEdgeInsets(this._spacings);
 
-  EdgeInsets get allNone => EdgeInsets.all(_spacings.none);
+  EdgeInsets all(final XSpacings value) =>
+      EdgeInsets.all(value.toDouble(_spacings));
+
+  EdgeInsets symmetric({
+    final XSpacings? vertical,
+    final XSpacings? horizontal,
+  }) =>
+      EdgeInsets.symmetric(
+        horizontal: (horizontal ?? XSpacings.none).toDouble(_spacings),
+        vertical: (vertical ?? XSpacings.none).toDouble(_spacings),
+      );
+
+  EdgeInsets only({
+    final XSpacings? left,
+    final XSpacings? top,
+    final XSpacings? right,
+    final XSpacings? bottom,
+  }) =>
+      EdgeInsets.only(
+        left: (left ?? XSpacings.none).toDouble(_spacings),
+        top: (top ?? XSpacings.none).toDouble(_spacings),
+        right: (right ?? XSpacings.none).toDouble(_spacings),
+        bottom: (bottom ?? XSpacings.none).toDouble(_spacings),
+      );
+
+  EdgeInsets get none => EdgeInsets.all(_spacings.none);
   EdgeInsets get allSuperSmall => EdgeInsets.all(_spacings.superSmall);
   EdgeInsets get allExtraSmall => EdgeInsets.all(_spacings.extraSmall);
   EdgeInsets get allSmall => EdgeInsets.all(_spacings.small);
@@ -48,7 +71,6 @@ class _XEdgeInsetsData extends Equatable {
   EdgeInsets get allExtraLarge => EdgeInsets.all(_spacings.extraLarge);
   EdgeInsets get allSuperLarge => EdgeInsets.all(_spacings.superLarge);
 
-  EdgeInsets get verticalNone => EdgeInsets.symmetric(vertical: _spacings.none);
   EdgeInsets get verticalSuperSmall =>
       EdgeInsets.symmetric(vertical: _spacings.superSmall);
   EdgeInsets get verticalExtraSmall =>
@@ -68,8 +90,6 @@ class _XEdgeInsetsData extends Equatable {
   EdgeInsets get verticalSuperLarge =>
       EdgeInsets.symmetric(vertical: _spacings.superLarge);
 
-  EdgeInsets get horizontalNone =>
-      EdgeInsets.symmetric(horizontal: _spacings.none);
   EdgeInsets get horizontalSuperSmall =>
       EdgeInsets.symmetric(horizontal: _spacings.superSmall);
   EdgeInsets get horizontalExtraSmall =>
@@ -89,20 +109,7 @@ class _XEdgeInsetsData extends Equatable {
   EdgeInsets get horizontalSuperLarge =>
       EdgeInsets.symmetric(horizontal: _spacings.superLarge);
 
-  EdgeInsets only({
-    final XSpacings? left,
-    final XSpacings? top,
-    final XSpacings? right,
-    final XSpacings? bottom,
-  }) =>
-      EdgeInsets.only(
-        left: (left ?? XSpacings.none).toDouble(_spacings),
-        top: (top ?? XSpacings.none).toDouble(_spacings),
-        right: (right ?? XSpacings.none).toDouble(_spacings),
-        bottom: (bottom ?? XSpacings.none).toDouble(_spacings),
-      );
-
-  _XPaddingsData get paddings => _XPaddingsData(this);
+  _XPaddings get paddings => _XPaddings(this);
 
   @override
   List<Object?> get props => [

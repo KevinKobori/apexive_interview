@@ -6,15 +6,25 @@ import 'package:gap/gap.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 part 'animation/x_durations_data.dart';
+part 'components/x_edge_insets.dart';
+part 'components/x_padding.dart';
 part 'geometry/x_elevations_data.dart';
+part 'geometry/x_form_factor.dart';
 part 'geometry/x_radius_data.dart';
 part 'geometry/x_spacings_data.dart';
-part 'painting/_x_border_radius_data.dart';
-part 'painting/_x_edge_insets_data.dart';
-part 'painting/_x_gaps_data.dart';
-part 'painting/_x_paddings_data.dart';
-part 'painting/_x_shapes_data.dart';
+part 'painting/_x_border_radius.dart';
+part 'painting/_x_edge_insets.dart';
+part 'painting/_x_gaps.dart';
+part 'painting/_x_paddings.dart';
+part 'painting/_x_shapes.dart';
 part 'painting/x_box_shadows_data.dart';
+
+String getUnsupportedErrorMessage({
+  required String attribute,
+  required String location,
+}) {
+  return 'Access to $attribute has been intentionally blocked in metrics.$location. This property should not be used or accessed directly, as its usage has been deprecated or is reserved for internal purposes only. Please review your implementation to avoid relying on this property and ensure your application\'s compatibility with future changes.';
+}
 
 class XMetricsData extends ThemeExtension<XMetricsData> {
   final XBoxShadowsData boxShadows;

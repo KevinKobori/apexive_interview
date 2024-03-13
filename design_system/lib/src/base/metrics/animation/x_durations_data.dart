@@ -22,24 +22,23 @@ class XDurationsData extends Equatable {
         _quick = quick == null
             ? const Duration(milliseconds: XStandardMilliseconds.x100)
             : quick.value;
-
+  // TODO: NOW - CHANGE UnsupportedError FOR UnsupportedError
   bool get areAnimationEnabled =>
       _areAnimationEnabled ??
-      (throw UnimplementedError(
-          'areAnimationEnabled is not implemented in metrics.durations'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'areAnimationEnabled', location: 'durations')));
   Duration get slow =>
       _slow ??
-      (throw UnimplementedError(
-          'slow is not implemented in metrics.durations'));
+      (throw UnsupportedError(
+          getUnsupportedErrorMessage(attribute: 'slow', location: 'durations')));
   Duration get regular =>
       _regular ??
-      (throw UnimplementedError(
-          'regular is not implemented in metrics.durations'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'regular', location: 'durations')));
   Duration get quick =>
       _quick ??
-      (throw UnimplementedError(
-          'quick is not implemented in metrics.durations'));
-
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'quick', location: 'durations')));
   @override
   List<Object?> get props => [
         areAnimationEnabled,

@@ -1,13 +1,11 @@
 part of x_metrics_data;
 
-class _XPaddingsData extends Equatable {
-  final _XEdgeInsetsData _edgeInsets;
+class _XPaddings extends Equatable {
+  final _XEdgeInsets _edgeInsets;
 
-  const _XPaddingsData(
-    this._edgeInsets,
-  );
+  const _XPaddings(this._edgeInsets);
 
-  Padding allNone({Widget? child}) => Padding(padding: _edgeInsets.allNone);
+  Padding none({Widget? child}) => Padding(padding: _edgeInsets.none);
   Padding allSuperSmall({Widget? child}) =>
       Padding(padding: _edgeInsets.allSuperSmall, child: child);
   Padding allExtraSmall({Widget? child}) =>
@@ -27,8 +25,6 @@ class _XPaddingsData extends Equatable {
   Padding allSuperLarge({Widget? child}) =>
       Padding(padding: _edgeInsets.allSuperLarge, child: child);
 
-  Padding verticalNone({Widget? child}) =>
-      Padding(padding: _edgeInsets.verticalNone, child: child);
   Padding verticalSuperSmall({Widget? child}) =>
       Padding(padding: _edgeInsets.verticalSuperSmall, child: child);
   Padding verticalExtraSmall({Widget? child}) =>
@@ -48,8 +44,6 @@ class _XPaddingsData extends Equatable {
   Padding verticalSuperLarge({Widget? child}) =>
       Padding(padding: _edgeInsets.verticalSuperLarge, child: child);
 
-  Padding horizontalNone({Widget? child}) =>
-      Padding(padding: _edgeInsets.horizontalNone, child: child);
   Padding horizontalSuperSmall({Widget? child}) =>
       Padding(padding: _edgeInsets.horizontalSuperSmall, child: child);
   Padding horizontalExtraSmall({Widget? child}) =>

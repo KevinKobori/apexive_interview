@@ -6,7 +6,7 @@ String localStorageCatalogKeyFactory() => 'catalog';
 RemoteLoadCatalogByStartEndDateUseCaseImpl
     remoteLoadCatalogByStartEndDateUseCaseFactory() =>
         RemoteLoadCatalogByStartEndDateUseCaseImpl(
-          apiKey: ApodEnvironmentConstants.apiKey,
+          apiKey: ApodDotEnv.instance.apiKey,
           pictureRepository: pictureRepositoryFactory(),
         );
 

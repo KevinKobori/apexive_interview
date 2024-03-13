@@ -39,42 +39,42 @@ class XSpacingsData extends Equatable {
   double get none => XStandardSizes.zero;
   double get superSmall =>
       _superSmall ??
-      (throw UnimplementedError(
-          'superSmall is not implemented in metrics.spacings'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'superSmall', location: 'spacings')));
   double get extraSmall =>
       _extraSmall ??
-      (throw UnimplementedError(
-          'extraSmall is not implemented in metrics.spacings'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'extraSmall', location: 'spacings')));
   double get small =>
       _small ??
-      (throw UnimplementedError(
-          'small is not implemented in metrics.spacings'));
+      (throw UnsupportedError(
+          getUnsupportedErrorMessage(attribute: 'small', location: 'spacings')));
   double get semiSmall =>
       _semiSmall ??
-      (throw UnimplementedError(
-          'semiSmall is not implemented in metrics.spacings'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'semiSmall', location: 'spacings')));
   double get medium =>
       _medium ??
-      (throw UnimplementedError(
-          'medium is not implemented in metrics.spacings'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'medium', location: 'spacings')));
   double get semiLarge =>
       _semiLarge ??
-      (throw UnimplementedError(
-          'semiLarge is not implemented in metrics.spacings'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'semiLarge', location: 'spacings')));
   double get large =>
       _large ??
-      (throw UnimplementedError(
-          'large is not implemented in metrics.spacings'));
+      (throw UnsupportedError(
+          getUnsupportedErrorMessage(attribute: 'large', location: 'spacings')));
   double get extraLarge =>
       _extraLarge ??
-      (throw UnimplementedError(
-          'extraLarge is not implemented in metrics.spacings'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'extraLarge', location: 'spacings')));
   double get superLarge =>
       _superLarge ??
-      (throw UnimplementedError(
-          'superLarge is not implemented in metrics.spacings'));
-  _XGapsData get gaps => _XGapsData(this);
-  _XEdgeInsetsData get edgeInsets => _XEdgeInsetsData(this);
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'superLarge', location: 'spacings')));
+  _XGaps get gaps => _XGaps(this);
+  _XEdgeInsets get edgeInsets => _XEdgeInsets(this);
 
   @override
   List<Object?> get props => [

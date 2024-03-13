@@ -49,34 +49,37 @@ class XRadiusData extends Equatable {
   Radius get none => Radius.zero;
   Radius get extraSmall =>
       _extraSmall ??
-      (throw UnimplementedError(
-          'extraSmall is not implemented in metrics.radius'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'extraSmall', location: 'radius')));
   Radius get small =>
       _small ??
-      (throw UnimplementedError('small is not implemented in metrics.radius'));
+      (throw UnsupportedError(
+          getUnsupportedErrorMessage(attribute: 'small', location: 'radius')));
   Radius get semiSmall =>
       _semiSmall ??
-      (throw UnimplementedError(
-          'semiSmall is not implemented in metrics.radius'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'semiSmall', location: 'radius')));
   Radius get medium =>
       _medium ??
-      (throw UnimplementedError('medium is not implemented in metrics.radius'));
+      (throw UnsupportedError(
+          getUnsupportedErrorMessage(attribute: 'medium', location: 'radius')));
   Radius get semiLarge =>
       _semiLarge ??
-      (throw UnimplementedError(
-          'semiLarge is not implemented in metrics.radius'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'semiLarge', location: 'radius')));
   Radius get large =>
       _large ??
-      (throw UnimplementedError('large is not implemented in metrics.radius'));
+      (throw UnsupportedError(
+          getUnsupportedErrorMessage(attribute: 'large', location: 'radius')));
   Radius get extraLarge =>
       _extraLarge ??
-      (throw UnimplementedError(
-          'extraLarge is not implemented in metrics.radius'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'extraLarge', location: 'radius')));
   Radius get superLarge =>
       _superLarge ??
-      (throw UnimplementedError(
-          'superLarge is not implemented in metrics.radius'));
-   _XBorderRadiusData get border => _XBorderRadiusData(this);
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'superLarge', location: 'radius')));
+  _XBorderRadius get border => _XBorderRadius(this);
 
   @override
   List<Object?> get props => [

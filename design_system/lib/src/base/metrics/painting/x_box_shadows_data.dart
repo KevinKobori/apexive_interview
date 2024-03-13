@@ -33,16 +33,16 @@ class XBoxShadowsData extends Equatable {
 
   BoxShadow get small =>
       _small ??
-      (throw UnimplementedError(
-          'small is not implemented in metrics.boxShadows'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'small', location: 'boxShadows')));
   BoxShadow get medium =>
       _medium ??
-      (throw UnimplementedError(
-          'medium is not implemented in metrics.boxShadows'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'medium', location: 'boxShadows')));
   BoxShadow get large =>
       _large ??
-      (throw UnimplementedError(
-          'large is not implemented in metrics.boxShadows'));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'large', location: 'boxShadows')));
 
   @override
   List<Object?> get props => [

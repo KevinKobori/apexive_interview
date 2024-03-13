@@ -1,15 +1,5 @@
 part of x_assets_data;
 
-// enum BaseImageKey {
-//   none,
-// }
-
-// extension XImageKeyExtension on BaseImageKey {
-//     appLogo,
-//     appWormLogo,
-//     darkAppLogo,
-//     darkAppWormLogo,
-//   }
 class XImageKey {
   final String name;
 
@@ -32,8 +22,3 @@ class XImagesData extends Equatable {
         _images,
       ];
 }
-
-// var imageManager = ImageManager({
-//   ImageKey.logo: 'assets/images/logo.png',
-//   ImageKey.icon: 'assets/images/icon.png',
-// });

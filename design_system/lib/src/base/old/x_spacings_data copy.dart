@@ -3,14 +3,14 @@
 // // class ApodSpacings {
 // //   static XSpacingsData get data => XSpacingsData(
 // //         none: 0,
-// //         superSmall: () => UnimplementedError(
+// //         superSmall: () => UnsupportedError(
 // //             'superSmall is not available in metrics.spacings'),
 // //         extraSmall: 4,
 // //         small: 8,
 // //         semiSmall: 12,
 // //         medium: () =>
-// //             UnimplementedError('medium is not available in metrics.spacings'),
-// //         semiLarge: () => UnimplementedError(
+// //             UnsupportedError('medium is not available in metrics.spacings'),
+// //         semiLarge: () => UnsupportedError(
 // //             'semiLarge is not available in metrics.spacings'),
 // //         large: 22,
 // //         extraLarge: 32,
@@ -34,50 +34,50 @@
 
 //   double get none =>
 //       _none ??
-//       (throw UnimplementedError('none is not implemented in metrics.spacings'));
+//       (throw UnsupportedError('none has been intentionally blocked in metrics.spacings'));
 //   double get superSmall =>
 //       _superSmall ??
-//       (throw UnimplementedError(
-//           'superSmall is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'superSmall has been intentionally blocked in metrics.spacings'));
 //   double get extraSmall =>
 //       _extraSmall ??
-//       (throw UnimplementedError(
-//           'extraSmall is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'extraSmall has been intentionally blocked in metrics.spacings'));
 //   double get small =>
 //       _small ??
-//       (throw UnimplementedError(
-//           'small is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'small has been intentionally blocked in metrics.spacings'));
 //   double get semiSmall =>
 //       _semiSmall ??
-//       (throw UnimplementedError(
-//           'semiSmall is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'semiSmall has been intentionally blocked in metrics.spacings'));
 //   double get medium =>
 //       _medium ??
-//       (throw UnimplementedError(
-//           'medium is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'medium has been intentionally blocked in metrics.spacings'));
 //   double get semiLarge =>
 //       _semiLarge ??
-//       (throw UnimplementedError(
-//           'semiLarge is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'semiLarge has been intentionally blocked in metrics.spacings'));
 //   double get large =>
 //       _large ??
-//       (throw UnimplementedError(
-//           'large is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'large has been intentionally blocked in metrics.spacings'));
 //   double get extraLarge =>
 //       _extraLarge ??
-//       (throw UnimplementedError(
-//           'extraLarge is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'extraLarge has been intentionally blocked in metrics.spacings'));
 //   double get superLarge =>
 //       _superLarge ??
-//       (throw UnimplementedError(
-//           'superLarge is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'superLarge has been intentionally blocked in metrics.spacings'));
 //   XGapsData get gaps =>
 //       _gaps ??
-//       (throw UnimplementedError('gaps is not implemented in metrics.spacings'));
+//       (throw UnsupportedError('gaps has been intentionally blocked in metrics.spacings'));
 //   XEdgeInsetsData get edgeInsets =>
 //       _edgeInsets ??
-//       (throw UnimplementedError(
-//           'edgeInsets is not implemented in metrics.spacings'));
+//       (throw UnsupportedError(
+//           'edgeInsets has been intentionally blocked in metrics.spacings'));
 
 //   XSpacingsData({
 //     final Optional<double?>? none,
