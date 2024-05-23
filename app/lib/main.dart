@@ -13,8 +13,8 @@ void main() async {
 
   runApp(
     ModularApp(
-      module: AppModule(),
-      child: const AppWrapWidget(),
+      module: MainModule(),
+      child: const MainWidget(),
     ),
   );
 }

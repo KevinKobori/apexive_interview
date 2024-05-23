@@ -11,7 +11,7 @@ class ThemeSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = Modular.get<AppWrapBloc>();
+    final bloc = Modular.get<MainBloc>();
 
     return BlocBuilder(
       bloc: bloc,
@@ -31,9 +31,9 @@ class ThemeSwitch extends StatelessWidget {
 
         Widget component = const BlancBox();
 
-        if (state is AppWrapLoading) {
+        if (state is MainLoading) {
           component = loading();
-        } else if (state is AppWrapLoaded) {
+        } else if (state is MainLoaded) {
           if (state.themeMode == ThemeMode.light) {
             component = loaded(false);
           } else if (state.themeMode == ThemeMode.dark) {

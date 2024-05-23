@@ -29,8 +29,8 @@ class XDurationsData extends Equatable {
           attribute: 'areAnimationEnabled', location: 'durations')));
   Duration get slow =>
       _slow ??
-      (throw UnsupportedError(
-          getUnsupportedErrorMessage(attribute: 'slow', location: 'durations')));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'slow', location: 'durations')));
   Duration get regular =>
       _regular ??
       (throw UnsupportedError(getUnsupportedErrorMessage(

@@ -113,34 +113,44 @@ class _NavigationBar extends StatelessWidget {
     return NotificationBar(
       notificationsOverviewPresenter: notificationsOverviewPresenter,
       child: ApodNavigationBar(
-          animation: route?.animation,
-          canNavigateBack: true,
-          leading: AccountAvatar(
-            accountOverviewPresenter: accountOverviewPresenter,
-          ),
-          summary: CollectionsOverview(
-            collectionsOverviewPresenter: collectionsOverviewPresenter,
-          ),
-          body: AccountNavigationBarBody(
-            accountOverviewPresenter: accountOverviewPresenter,
-          ),
-          action: ApodElevatedButton(
-            onPressed: () {},
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Add to collections',
-                  style: textTheme.titleSmall!,
-                ),
-                metrics.spacings.gaps.semiSmall,
-                ApodIcon.regular(
-                  assets.icons.characters.char(ApodIconCharacterKey.addPicture),
-                ),
-              ],
-            ),
-          )),
+        animation: route?.animation,
+        canNavigateBack: true,
+        leading: AccountAvatar(
+          accountOverviewPresenter: accountOverviewPresenter,
+        ),
+        summary: CollectionsOverview(
+          collectionsOverviewPresenter: collectionsOverviewPresenter,
+        ),
+        body: AccountNavigationBarBody(
+          accountOverviewPresenter: accountOverviewPresenter,
+        ),
+        // action: ApodElevatedButton(
+        //   onPressed: () {},
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     mainAxisSize: MainAxisSize.min,
+        //     children: [
+        //       Text(
+        //         'Add to collections',
+        //         style: textTheme.titleSmall!,
+        //       ),
+        //       metrics.spacings.gaps.semiSmall,
+        //       ApodIcon.regular(
+        //         assets.icons.characters.char(ApodIconCharacterKey.addPicture),
+        //       ),
+        //     ],
+        //   ),
+        // ),
+        action: CustomButton(
+          onPress: () {},
+          title: 'teste 123',
+          // type: CustomButtonType.primary,
+          // type: CustomButtonType.destructive,
+          type: CustomButtonType.link,
+          size: CustomButtonSize.large,
+          // size: CustomButtonSize.medium,
+        ),
+      ),
     );
   }
 }

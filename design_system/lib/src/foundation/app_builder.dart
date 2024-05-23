@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mix/mix.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodAppBuilder extends StatelessWidget {
@@ -29,14 +30,18 @@ class ApodAppBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     final formFactor = this.formFactor ?? ApodAppBuilder.formFactorOf(context);
 
-    return child ??
-        MaterialApp.router(
-          title: 'Nasa Apod',
-          routerConfig: routerConfig,
-          debugShowCheckedModeBanner: false,
-          theme: ApodLightTheme.data(formFactor),
-          darkTheme: ApodDarkTheme.data(formFactor),
-          themeMode: themeMode,
-        );
+    return MixTheme(
+      data: theme,
+      // MixThemeData.withMaterial(),
+      child: child ??
+          MaterialApp.router(
+            title: 'Nasa Apod',
+            routerConfig: routerConfig,
+            debugShowCheckedModeBanner: false,
+            theme: ApodLightTheme.data(formFactor),
+            darkTheme: ApodDarkTheme.data(formFactor),
+            themeMode: themeMode,
+          ),
+    );
   }
 }

@@ -1,2 +1,2 @@
-export '../presentation/ui/app_widget.dart';
-export 'app_module.dart';
+export '../presentation/ui/main_widget.dart';
+export 'main_module.dart';

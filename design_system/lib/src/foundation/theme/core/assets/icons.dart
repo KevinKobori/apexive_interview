@@ -30,8 +30,7 @@ class ApodIconCharacters {
               String.fromCharCodes([57344, 57911, 61195, 57514]),
           ApodIconCharacterKey.options:
               String.fromCharCodes([58088, 58314, 57452]),
-          ApodIconCharacterKey.tag:
-              String.fromCharCodes([59112, 57969, 57576]),
+          ApodIconCharacterKey.tag: String.fromCharCodes([59112, 57969, 57576]),
           ApodIconCharacterKey.vikoin:
               String.fromCharCodes([57344, 57929, 57730, 57522]),
           ApodIconCharacterKey.shoppingCart:

@@ -3,9 +3,6 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 abstract class CatalogPageEvent extends Equatable {
   const CatalogPageEvent();
-
-  @override
-  List<Object?> get props => [];
 }
 
 class LoadCatalogEvent extends CatalogPageEvent {

@@ -4,7 +4,7 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=3.2.5 <4.0.0'
+  sdk: ">=3.2.5 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -15,6 +15,11 @@ dependencies:
   flutter_staggered_grid_view: ^0.6.1
   flutter_svg: ^2.0.9
   gap: ^3.0.1
+  mix:
+    git:
+      url: https://github.com/conceptadev/mix.git
+      ref: main
+  # mix: ^0.0.7
   nasa_apod_core:
     path: ../core
   shimmer: ^3.0.0
@@ -26,8 +31,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   test_utils:
-    path: ../test_utils 
-  
+    path: ../test_utils
+
 flutter:
   fonts:
     - family: apod_icons

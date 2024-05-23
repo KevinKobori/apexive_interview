@@ -7,8 +7,7 @@ class AccountOverviewLoadedSuccess extends AccountOverviewState {
 
   AccountOverviewLoadedSuccess({required this.account});
 
-  factory AccountOverviewLoadedSuccess.demo() =>
-      AccountOverviewLoadedSuccess(
+  factory AccountOverviewLoadedSuccess.demo() => AccountOverviewLoadedSuccess(
         account: const AccountModel(
           name: 'Kevin Kobori',
           pictureUrl:

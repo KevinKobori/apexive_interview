@@ -76,9 +76,14 @@ class CatalogPageHeader extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SvgPicture.asset(
-                    assets.images.path(ApodImageKey.appWormLogo),
-                    width: textTheme.titleLarge!.fontSize! * 4,
+                  InkWell(
+                    onTap: () {
+                      if (ApodDotEnv.instance.envMode == 'DEV') {}
+                    },
+                    child: SvgPicture.asset(
+                      assets.images.path(ApodImageKey.appWormLogo),
+                      width: textTheme.titleLarge!.fontSize! * 4,
+                    ),
                   ),
                   metrics.spacings.gaps.small,
                   Text(
