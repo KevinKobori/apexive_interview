@@ -1,5 +1,5 @@
 mixin PictureFactory {
-  Map<String, dynamic> generateValidPictureMap() => {
+  Map<String, dynamic> generateValidPictureJson() => {
         'copyright': 'Roberto Ortu',
         'date': '2023-08-26',
         'explanation':
@@ -10,17 +10,17 @@ mixin PictureFactory {
         'title': 'Crescents of Venus',
         'url': 'https://apod.nasa.gov/apod/image/2308/fasidivenere.jpg'
       };
-  Map<String, dynamic> generateInvalidPictureMap() => {
+  Map<String, dynamic> generateInvalidPictureJson() => {
         'invalid_key': 'invalid_value',
       };
 
   List<Map<String, dynamic>> generateValidPictureJsonList() => [
-        generateValidPictureMap(),
-        generateValidPictureMap(),
+        generateValidPictureJson(),
+        generateValidPictureJson(),
       ];
 
   List<Map<String, dynamic>> generateInvalidPictureJsonList() => [
-        generateInvalidPictureMap(),
-        generateInvalidPictureMap(),
+        generateInvalidPictureJson(),
+        generateInvalidPictureJson(),
       ];
 }

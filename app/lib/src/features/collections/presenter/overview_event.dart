@@ -1,8 +1,15 @@
+import 'package:equatable/equatable.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-abstract class CollectionsOverviewEvent {}
+abstract class CollectionsOverviewEvent extends Equatable {}
 
-class LoadCollectionsEvent extends CollectionsOverviewEvent {
+class LoadCollections extends CollectionsOverviewEvent {
   final List<CollectionModel> collectionList;
-  LoadCollectionsEvent(this.collectionList);
+
+  LoadCollections(this.collectionList);
+
+  @override
+  List<Object?> get props => [
+        collectionList,
+      ];
 }

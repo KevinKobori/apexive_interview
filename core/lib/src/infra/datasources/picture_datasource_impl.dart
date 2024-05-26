@@ -14,15 +14,15 @@ class PictureDatasourceImpl implements PictureDatasource {
 
     return await requestResult.fold(
       /// Left
-      (httpFailure) => Left(httpFailure.toDomain),
+      (httpFailure) => Left(httpFailure.toDomain()),
 
       /// Right
-      (data) {
-        final jsonListResult = JsonMapper.tryDecode(data);
+      (httpSuccess) {
+        final jsonListResult = JsonMapper.tryDecode(httpSuccess.body);
 
         return jsonListResult.fold(
           /// Left
-          (mapperFailure) => Left(mapperFailure.toDomain),
+          (mapperFailure) => Left(mapperFailure.toDomain()),
 
           /// Right
           (dynamicList) {
@@ -30,7 +30,7 @@ class PictureDatasourceImpl implements PictureDatasource {
                 JsonMapper.fromDynamicListToJsonList(dynamicList);
             return pictureJsonListResult.fold(
               /// Left
-              (mapperFailure) => Left(mapperFailure.toDomain),
+              (mapperFailure) => Left(mapperFailure.toDomain()),
 
               /// Right
               (pictureJsonList) {
@@ -38,7 +38,7 @@ class PictureDatasourceImpl implements PictureDatasource {
                     PictureMapper.fromJsonListToModelList(pictureJsonList);
                 return pictureModelListResult.fold(
                   /// Left
-                  (mapperFailure) => Left(mapperFailure.toDomain),
+                  (mapperFailure) => Left(mapperFailure.toDomain()),
 
                   /// Right
                   (pictureModelList) => Right(pictureModelList),
@@ -58,14 +58,14 @@ class PictureDatasourceImpl implements PictureDatasource {
         await httpClient.request(method: HttpMethod.get, url: url);
     return resultHttpClient.fold(
       /// Left
-      (httpFailure) => Left(httpFailure.toDomain),
+      (httpFailure) => Left(httpFailure.toDomain()),
 
       /// Right
-      (data) {
-        final jsonResult = JsonMapper.tryDecode(data);
+      (httpSuccess) {
+        final jsonResult = JsonMapper.tryDecode(httpSuccess.body);
         return jsonResult.fold(
           /// Left
-          (mapperFailure) => Left(mapperFailure.toDomain),
+          (mapperFailure) => Left(mapperFailure.toDomain()),
 
           /// Right
           (pictureJson) {
@@ -73,7 +73,7 @@ class PictureDatasourceImpl implements PictureDatasource {
                 pictureJson as Map<String, dynamic>);
             return modelResult.fold(
               /// Left
-              (mapperFailure) => Left(mapperFailure.toDomain),
+              (mapperFailure) => Left(mapperFailure.toDomain()),
 
               /// Right
               (pictureModel) => Right(pictureModel),

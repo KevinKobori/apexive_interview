@@ -13,14 +13,14 @@ class XRadiusData extends Equatable {
   final Radius? _superLarge;
 
   XRadiusData({
-    final Optional<Radius?>? extraSmall,
-    final Optional<Radius?>? small,
-    final Optional<Radius?>? semiSmall,
-    final Optional<Radius?>? medium,
-    final Optional<Radius?>? semiLarge,
-    final Optional<Radius?>? large,
-    final Optional<Radius?>? extraLarge,
-    final Optional<Radius?>? superLarge,
+    final XAttribute<Radius?>? extraSmall,
+    final XAttribute<Radius?>? small,
+    final XAttribute<Radius?>? semiSmall,
+    final XAttribute<Radius?>? medium,
+    final XAttribute<Radius?>? semiLarge,
+    final XAttribute<Radius?>? large,
+    final XAttribute<Radius?>? extraLarge,
+    final XAttribute<Radius?>? superLarge,
   })  : _extraSmall = extraSmall == null
             ? const Radius.circular(XStandardSizes.x4)
             : extraSmall.value,

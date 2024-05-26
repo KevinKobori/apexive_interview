@@ -5,17 +5,17 @@ abstract class CatalogPageEvent extends Equatable {
   const CatalogPageEvent();
 }
 
-class LoadCatalogEvent extends CatalogPageEvent {
-  const LoadCatalogEvent();
+class LoadCatalog extends CatalogPageEvent {
+  const LoadCatalog();
 
   @override
   List<Object?> get props => [];
 }
 
-class LoadPictureByDateEvent extends CatalogPageEvent {
+class LoadPictureByDate extends CatalogPageEvent {
   final DateTime date;
 
-  const LoadPictureByDateEvent(this.date);
+  const LoadPictureByDate(this.date);
 
   @override
   List<Object?> get props => [
@@ -23,12 +23,10 @@ class LoadPictureByDateEvent extends CatalogPageEvent {
       ];
 }
 
-class GoToPictureDetailEvent extends CatalogPageEvent {
+class GoToPictureDetail extends CatalogPageEvent {
   final PictureViewModel picture;
 
-  const GoToPictureDetailEvent(
-    this.picture,
-  );
+  const GoToPictureDetail(this.picture);
 
   @override
   List<Object?> get props => [

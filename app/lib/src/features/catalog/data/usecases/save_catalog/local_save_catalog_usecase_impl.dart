@@ -18,7 +18,7 @@ class LocalSaveCatalogUseCaseImpl implements LocalSaveCatalogUseCase {
         PictureMapper.fromEntityListToJsonList(pictureEntityList);
     return await pictureJsonListResult.fold(
       /// Left
-      (mapperFailure) => Left(mapperFailure.toDomain),
+      (mapperFailure) => Left(mapperFailure.toDomain()),
 
       /// Right
       (pictureJsonList) async {
@@ -26,7 +26,7 @@ class LocalSaveCatalogUseCaseImpl implements LocalSaveCatalogUseCase {
             itemKey: itemKey, itemValue: pictureJsonList);
         return saveResult.fold(
           /// Left
-          (localStorageFailure) => Left(localStorageFailure.toDomain),
+          (localStorageFailure) => Left(localStorageFailure.toDomain()),
 
           /// Right
           (_) => const Right(null),

@@ -1,46 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-final theme = MixThemeData(
-  colors: {
-    const ColorToken('primary'): Colors.blue,
-    const ColorToken('secondary'): Colors.green,
-  },
-  textStyles: {
-    const TextStyleToken('heading1'):
-        const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-    const TextStyleToken('bodyText'): const TextStyle(fontSize: 14),
-  },
-  space: {
-    const SpaceToken('superSmall'): 2,
-    const SpaceToken('extraSmall'): 4,
-    const SpaceToken('small'): 8,
-    const SpaceToken('semiSmall'): 12,
-    const SpaceToken('medium'): 16,
-    const SpaceToken('semiLarge'): 20,
-    const SpaceToken('large'): 24,
-    const SpaceToken('extraLarge'): 32,
-    const SpaceToken('superLarge'): 48,
-    const SpaceToken('xxsmall'): 2,
-    // SpaceToken.xsmall: 4,
-    // SpaceToken.small: 8,
-    // const SpaceToken('semiSmall'): 12,
-    // SpaceToken.medium: 16,
-    // const SpaceToken('semiLarge'): 20,
-    // SpaceToken.large: 24,
-    // SpaceToken.xlarge: 32,
-    // SpaceToken.xxlarge: 48,
-  },
-  radii: {
-    RadiusToken.small: const Radius.circular(8),
-    RadiusToken.medium: const Radius.circular(16),
-    RadiusToken.large: const Radius.circular(24),
-  },
-  breakpoints: {
-    BreakpointToken.xsmall: const Breakpoint(maxWidth: 599),
-    BreakpointToken.small: const Breakpoint(minWidth: 600, maxWidth: 1023),
-    BreakpointToken.medium: const Breakpoint(minWidth: 1024, maxWidth: 1439),
-    BreakpointToken.large:
-        const Breakpoint(minWidth: 1440, maxWidth: double.infinity),
-  },
-);
+class ApodMixLightTheme {
+  static MixThemeData data(
+    XMetricsData metrics,
+  ) {
+    return MixThemeData.withMaterial(
+      breakpoints: {
+        BreakpointToken.xsmall: metrics.breakpoints.extraSmall,
+        BreakpointToken.small: metrics.breakpoints.small,
+        BreakpointToken.medium: metrics.breakpoints.medium,
+        BreakpointToken.large: metrics.breakpoints.large,
+      },
+      colors: {
+        const ColorToken('primary'): Colors.pink,
+        const ColorToken('secondary'): Colors.purpleAccent,
+      },
+      space: {
+        const SpaceToken('none'): metrics.spacings.none,
+        // const SpaceToken('xxsmall'): metrics.spacings.superSmall,
+        SpaceToken.xsmall: metrics.spacings.extraSmall,
+        SpaceToken.small: metrics.spacings.small,
+        const SpaceToken('ssmall'): metrics.spacings.semiSmall,
+        // TODO(all): block access to this 'medium' value
+        // SpaceToken.medium: metrics.spacings.medium,
+        // const SpaceToken('slarge'): metrics.spacings.semiLarge,
+        SpaceToken.large: metrics.spacings.large,
+        SpaceToken.xlarge: metrics.spacings.extraLarge,
+        SpaceToken.xxlarge: metrics.spacings.superLarge,
+      },
+      textStyles: {
+        const TextStyleToken('heading1'):
+            const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        const TextStyleToken('bodyText'): const TextStyle(fontSize: 14),
+      },
+      radii: {
+        const RadiusToken('none'): metrics.radius.none,
+        const RadiusToken('xsmall'): metrics.radius.extraSmall,
+        RadiusToken.small: metrics.radius.small,
+        const RadiusToken('ssmall'): metrics.radius.semiSmall,
+        RadiusToken.medium: metrics.radius.medium,
+        // const RadiusToken('slarge'): metrics.radius.semiLarge,
+        RadiusToken.large: metrics.radius.large,
+        // const RadiusToken('xlarge'): metrics.radius.extraLarge,
+        // const RadiusToken('xxlarge'): metrics.radius.superLarge,
+      },
+    );
+  }
+}

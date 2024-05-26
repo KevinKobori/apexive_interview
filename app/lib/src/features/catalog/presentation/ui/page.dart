@@ -16,10 +16,11 @@ class CatalogPage extends StatefulWidget {
 
 class _CatalogPageState extends State<CatalogPage> {
   late CatalogPageBloc bloc;
+
   @override
   void initState() {
     bloc = widget.pagePresenter as CatalogPageBloc;
-    bloc.add(const LoadCatalogEvent());
+    bloc.add(const LoadCatalog());
     super.initState();
   }
 
@@ -33,16 +34,15 @@ class _CatalogPageState extends State<CatalogPage> {
         } else if (state is CatalogPageLoadedFailure) {
           return CatalogPageLoadedFailureView(
             failureMessage: state.message,
-            onReload: () => bloc.add(const LoadCatalogEvent()),
+            onReload: () => bloc.add(const LoadCatalog()),
           );
         } else if (state is CatalogPageLoadedSuccess) {
           return CatalogPageLoadedSuccessView(
             catalog: state.catalog,
-            onLoadCatalog: () => bloc.add(const LoadCatalogEvent()),
-            onLoadPictureByDate: (date) =>
-                bloc.add(LoadPictureByDateEvent(date)),
+            onLoadCatalog: () => bloc.add(const LoadCatalog()),
+            onLoadPictureByDate: (date) => bloc.add(LoadPictureByDate(date)),
             onPushToPictureDetail: (picture) =>
-                bloc.add(GoToPictureDetailEvent(picture)),
+                bloc.add(GoToPictureDetail(picture)),
           );
         } else {
           return const SizedBox.shrink();

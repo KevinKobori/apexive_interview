@@ -70,7 +70,6 @@ void main() {
           actual,
           predicate((element) =>
               element is DomainFailure &&
-              element == DomainFailure.unexpected &&
               element == const DomainFailure.unexpected()));
     });
   });

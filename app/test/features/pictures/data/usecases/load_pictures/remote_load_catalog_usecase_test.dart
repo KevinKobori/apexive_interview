@@ -140,6 +140,6 @@ void main() {
         actual,
         predicate((element) =>
             element is DomainFailure &&
-            element == DomainFailure.resourceNotFound));
+            element == const DomainFailure.resourceNotFound()));
   });
 }

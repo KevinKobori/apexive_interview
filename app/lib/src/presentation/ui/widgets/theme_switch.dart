@@ -22,9 +22,9 @@ class ThemeSwitch extends StatelessWidget {
               value: value,
               onChanged: (newValue) {
                 if (newValue == true) {
-                  bloc.add(const ToggleThemeModeEvent(ThemeMode.dark));
+                  bloc.add(const ToggleThemeMode(ThemeMode.dark));
                 } else {
-                  bloc.add(const ToggleThemeModeEvent(ThemeMode.light));
+                  bloc.add(const ToggleThemeMode(ThemeMode.light));
                 }
               },
             );

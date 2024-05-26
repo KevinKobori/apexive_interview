@@ -1,17 +1,25 @@
 import 'package:equatable/equatable.dart';
 
 class MapperFailure extends Equatable implements Exception {
-  final String message;
+  final String reasonPhrase;
 
-  const MapperFailure.invalidJsonFormat() : message = 'Invalid Json Format';
-  const MapperFailure.conversionError() : message = 'Conversion Error';
-  const MapperFailure.unknownError() : message = 'Unknown Error';
+  const MapperFailure._(
+    this.reasonPhrase,
+  );
+
+  const MapperFailure.unknownError() : this._('Unknown Error');
+  const MapperFailure.invalidJsonFormat() : this._('Invalid Json Format');
+  const MapperFailure.conversionError() : this._('Conversion Error');
 
   @override
-  String toString() => 'MapperFailure: $message';
+  String toString() => '''
+    const MapperFailure(
+      reasonPhrase: $reasonPhrase,
+    );
+  ''';
 
   @override
   List<Object?> get props => [
-        message,
+        reasonPhrase,
       ];
 }

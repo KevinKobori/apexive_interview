@@ -1,9 +1,10 @@
 library nasa_apod_design_system;
 
-// TODO: NOW - CHANGE IT ALL TO BE PART OF THE LIB
+// TODO(all): NOW - CHANGE IT ALL TO BE PART OF THE LIB
 export 'src/base/assets/x_assets_data.dart';
+export 'src/base/helpers/metrics_error_message.dart';
 export 'src/base/helpers/named.dart';
-export 'src/base/helpers/optional.dart';
+export 'src/base/helpers/optional_attribute.dart';
 export 'src/base/metrics/geometry/x_icon_sizes_data.dart';
 export 'src/base/metrics/x_metrics_data.dart';
 export 'src/base/tokens/_x_auxiliary_milliseconds.dart';

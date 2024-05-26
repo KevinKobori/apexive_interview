@@ -26,7 +26,7 @@ mixin _$PictureModel {
   DateTime get date => throw _privateConstructorUsedError;
   @JsonKey(name: 'explanation')
   String get explanation =>
-      throw _privateConstructorUsedError; // TODO: NOEW HERE FIIIX IIIIT NOOOW
+      throw _privateConstructorUsedError; // TODO: NOW HERE FIX IT NOW
   @JsonKey(name: 'hdurl')
   String? get hdurl => throw _privateConstructorUsedError;
   @JsonKey(name: 'media_type')

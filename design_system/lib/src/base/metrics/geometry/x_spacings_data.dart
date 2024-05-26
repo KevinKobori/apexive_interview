@@ -14,15 +14,15 @@ class XSpacingsData extends Equatable {
   final double? _superLarge;
 
   XSpacingsData({
-    final Optional<double?>? superSmall,
-    final Optional<double?>? extraSmall,
-    final Optional<double?>? small,
-    final Optional<double?>? semiSmall,
-    final Optional<double?>? medium,
-    final Optional<double?>? semiLarge,
-    final Optional<double?>? large,
-    final Optional<double?>? extraLarge,
-    final Optional<double?>? superLarge,
+    final XAttribute<double?>? superSmall,
+    final XAttribute<double?>? extraSmall,
+    final XAttribute<double?>? small,
+    final XAttribute<double?>? semiSmall,
+    final XAttribute<double?>? medium,
+    final XAttribute<double?>? semiLarge,
+    final XAttribute<double?>? large,
+    final XAttribute<double?>? extraLarge,
+    final XAttribute<double?>? superLarge,
   })  : _superSmall =
             superSmall == null ? XAuxiliarySizes.x2 : superSmall.value,
         _extraSmall = extraSmall == null ? XStandardSizes.x4 : extraSmall.value,

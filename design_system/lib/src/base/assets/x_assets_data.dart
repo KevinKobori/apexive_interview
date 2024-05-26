@@ -54,9 +54,9 @@ class XAssetsData extends ThemeExtension<XAssetsData> {
 
   @override
   String toString() => '''
-  XAssetsData(
-    icons: $icons,
-    images: $images,
-  )
+    XAssetsData(
+      icons: $icons,
+      images: $images,
+    )
   ''';
 }

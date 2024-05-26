@@ -10,4 +10,11 @@ abstract final class XAuxiliarySizes {
   static const double x18 = 18;
   static const double x22 = 22;
   static const double x30 = 30;
+  static const double x599 = 599;
+  static const double x600 = 600;
+  static const double x800 = 800;
+  static const double x1023 = 1023;
+  static const double x1024 = 1024;
+  static const double x1439 = 1439;
+  static const double x1440 = 1440;
 }

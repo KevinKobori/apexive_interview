@@ -10,15 +10,15 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
   CatalogPageBloc({
     required this.loadCatalogByStartEndDate,
   }) : super(CatalogPageLoading()) {
-    on<LoadCatalogEvent>((event, emit) async {
+    on<LoadCatalog>((event, emit) async {
       await onLoadCatalog(emit);
     });
 
-    on<LoadPictureByDateEvent>((event, emit) async {
+    on<LoadPictureByDate>((event, emit) async {
       await onLoadPictureByDate(event, emit);
     });
 
-    on<GoToPictureDetailEvent>((event, emit) async {
+    on<GoToPictureDetail>((event, emit) async {
       await onGoToPictureDetail(event);
     });
   }
@@ -38,13 +38,19 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     /// Presenter
     final Either<DomainFailure, List<PictureViewModel>> presenterResult =
         await usecaseResult.fold(
+      /// Left
       (domainFailure) => Left(domainFailure),
+
+      /// Right
       (pictureEntityList) async {
         final pictureViewModelListResult =
             await PictureMapper.fromEntityListToViewModelList(
                 pictureEntityList);
         return pictureViewModelListResult.fold(
-          (mapperFailure) => Left(mapperFailure.toDomain),
+          /// Left
+          (mapperFailure) => Left(mapperFailure.toDomain()),
+
+          /// Right
           (pictureViewModelList) =>
               Right(pictureViewModelList.toList().reversed.toList()),
         );
@@ -53,15 +59,14 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
 
     /// UI
     presenterResult.fold(
-        (domainFailure) => emit(CatalogPageLoadedFailure(domainFailure.toUI)),
-        (pictureViewModelList) {
-      emit(CatalogPageLoadedSuccess(pictureViewModelList));
-    });
+        (domainFailure) => emit(CatalogPageLoadedFailure(domainFailure.toUI())),
+        (pictureViewModelList) =>
+            emit(CatalogPageLoadedSuccess(pictureViewModelList)));
   }
 
   @override
   Future<void> onLoadPictureByDate(
-      LoadPictureByDateEvent event, Emitter<CatalogPageState> emit) async {
+      LoadPictureByDate event, Emitter<CatalogPageState> emit) async {
     emit(CatalogPageLoading());
 
     /// Infra, Data, Domain
@@ -75,22 +80,26 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     /// Presenter
     final Either<DomainFailure, List<PictureViewModel>> presenterResult =
         await datasourceResult.fold(
+      /// Left
       (domainFailure) => Left(domainFailure),
+
+      /// Right
       (pictureModel) async {
         final pictureEntityResult =
             PictureMapper.fromModelToEntity(pictureModel);
 
         return pictureEntityResult
-            .fold((mapperFailure) => Left(mapperFailure.toDomain),
+            .fold((mapperFailure) => Left(mapperFailure.toDomain()),
                 (pictureEntity) async {
           final pictureViewModelResult =
               await PictureMapper.fromEntityToViewModel(pictureEntity);
 
-          if (pictureViewModelResult.isLeft()) {
-            return Left(const MapperFailure.conversionError().toDomain);
-          }
           return pictureViewModelResult.fold(
-              (mapperFailure) => Left(mapperFailure.toDomain),
+
+              /// Left
+              (mapperFailure) => Left(mapperFailure.toDomain()),
+
+              /// Right
               (pictureViewModel) => Right([pictureViewModel]));
         });
       },
@@ -98,14 +107,15 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
 
     /// UI
     presenterResult.fold(
-        (domainFailure) => emit(CatalogPageLoadedFailure(domainFailure.toUI)),
+        (domainFailure) => emit(CatalogPageLoadedFailure(domainFailure.toUI())),
         (pictureViewModelList) {
       emit(CatalogPageLoadedSuccess(pictureViewModelList));
     });
   }
 
   @override
-  Future<void> onGoToPictureDetail(GoToPictureDetailEvent event) async {
-    await NavigatorManager.pushNamed('/picture/detail/${event.picture.date}');
+  Future<void> onGoToPictureDetail(GoToPictureDetail event) async {
+    await NavigatorManager.pushNamed(
+        MainModule.pictureDetailsRoute + event.picture.date);
   }
 }

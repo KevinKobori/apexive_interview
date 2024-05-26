@@ -13,7 +13,7 @@ abstract class ApodDarkElevatedButtonTheme {
                 return ApodDarkColorScheme.data.secondary;
               } else if (states.contains(MaterialState.pressed)) {
                 return ApodDarkColorScheme.data.tertiary;
-                // TODO:
+                // TODO(all):
                 // } else if (states.contains(MaterialState.focused)) {
                 //   return null;
                 // } else if (states.contains(MaterialState.dragged)) {
@@ -28,7 +28,7 @@ abstract class ApodDarkElevatedButtonTheme {
               return ApodDarkColorScheme.data.primary;
             },
           ),
-          // TODO:
+          // TODO(all):
           // Foreground (text/icon) color
           foregroundColor: MaterialStateProperty.resolveWith<Color?>(
             (states) {

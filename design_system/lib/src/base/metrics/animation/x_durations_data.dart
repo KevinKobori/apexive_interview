@@ -7,10 +7,10 @@ class XDurationsData extends Equatable {
   final Duration? _quick;
 
   XDurationsData({
-    final Optional<bool?>? areAnimationEnabled,
-    final Optional<Duration?>? slow,
-    final Optional<Duration?>? regular,
-    final Optional<Duration?>? quick,
+    final XAttribute<bool?>? areAnimationEnabled,
+    final XAttribute<Duration?>? slow,
+    final XAttribute<Duration?>? regular,
+    final XAttribute<Duration?>? quick,
   })  : _areAnimationEnabled =
             areAnimationEnabled == null ? true : areAnimationEnabled.value,
         _slow = slow == null
@@ -22,7 +22,7 @@ class XDurationsData extends Equatable {
         _quick = quick == null
             ? const Duration(milliseconds: XStandardMilliseconds.x100)
             : quick.value;
-  // TODO: NOW - CHANGE UnsupportedError FOR UnsupportedError
+  // TODO(all): NOW - CHANGE UnsupportedError FOR UnsupportedError
   bool get areAnimationEnabled =>
       _areAnimationEnabled ??
       (throw UnsupportedError(getUnsupportedErrorMessage(
@@ -47,13 +47,13 @@ class XDurationsData extends Equatable {
         quick.named('quick'),
       ];
 
-  // @override
-  // String toString() => '''
-  //   XDurationsData(
-  //     areAnimationEnabled: $areAnimationEnabled,
-  //     slow: $slow,
-  //     regular: $regular,
-  //     quick: $quick,
-  //   )
-  // ''';
+  @override
+  String toString() => '''
+    XDurationsData(
+      areAnimationEnabled: $areAnimationEnabled,
+      slow: $slow,
+      regular: $regular,
+      quick: $quick,
+    )
+  ''';
 }

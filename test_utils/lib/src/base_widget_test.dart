@@ -1,11 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:test_utils/test_utils.dart';
 
 void appTestWidgets(
   String name,
   Map<String, Widget> widgets, {
-  Size size = const Size(1024.0, 800.0),
+  Size size = const Size(
+    XStandardSizes.x1024,
+    XAuxiliarySizes.x800,
+  ),
 }) =>
     testWidgets(
       'Rendering $name',

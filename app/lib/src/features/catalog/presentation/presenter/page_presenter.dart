@@ -4,9 +4,8 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 abstract class CatalogPagePresenter {
   Future<void> onLoadCatalog(Emitter<CatalogPageState> emit);
   Future<void> onLoadPictureByDate(
-    LoadPictureByDateEvent event,
+    LoadPictureByDate event,
     Emitter<CatalogPageState> emit,
   );
-
-  void onGoToPictureDetail(GoToPictureDetailEvent event);
+  void onGoToPictureDetail(GoToPictureDetail event);
 }

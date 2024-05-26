@@ -13,7 +13,11 @@ class PictureRepositoryImpl implements PictureRepository {
   @override
   Future<Either<DomainFailure, List<PictureEntity>>> getCatalogByStartEndDate(
       String url) async {
-    if (await networkInfo.isConnected()) {
+    if (!(await networkInfo.isConnected())) {
+      /// Left
+      return const Left(DomainFailure.notHaveInternetConnection());
+    } else {
+      /// Right
       final resultDataSource =
           await pictureDatasource.fetchCatalogByStartEndDate(url);
 
@@ -28,17 +32,13 @@ class PictureRepositoryImpl implements PictureRepository {
 
           return entityListResult.fold(
             /// Left
-            (mapperFailure) {
-              return Left(mapperFailure.toDomain);
-            },
+            (mapperFailure) => Left(mapperFailure.toDomain()),
 
             /// Right
             (entityList) => Right(entityList),
           );
         },
       );
-    } else {
-      return const Left(DomainFailure.notHaveInternetConnection());
     }
   }
 }

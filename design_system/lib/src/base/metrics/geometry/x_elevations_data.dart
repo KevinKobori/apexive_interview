@@ -8,11 +8,11 @@ class XElevationsData {
   final double? _level5;
 
   XElevationsData({
-    final Optional<double?>? level1,
-    final Optional<double?>? level2,
-    final Optional<double?>? level3,
-    final Optional<double?>? level4,
-    final Optional<double?>? level5,
+    final XAttribute<double?>? level1,
+    final XAttribute<double?>? level2,
+    final XAttribute<double?>? level3,
+    final XAttribute<double?>? level4,
+    final XAttribute<double?>? level5,
   })  : _level1 = level1 == null ? XAuxiliarySizes.x1 : level1.value,
         _level2 = level2 == null ? XAuxiliarySizes.x3 : level2.value,
         _level3 = level3 == null ? XAuxiliarySizes.x6 : level3.value,

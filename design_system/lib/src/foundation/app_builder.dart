@@ -3,18 +3,20 @@ import 'package:mix/mix.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodAppBuilder extends StatelessWidget {
+  final bool debugShowCheckedModeBanner;
+  final XFormFactor? formFactor;
+  final Widget? child;
+  final RouterConfig<Object>? routerConfig;
+  final ThemeMode themeMode;
+
   const ApodAppBuilder({
     super.key,
+    this.debugShowCheckedModeBanner = true,
     this.formFactor,
     this.routerConfig,
     this.child,
     this.themeMode = ThemeMode.light,
   });
-
-  final XFormFactor? formFactor;
-  final Widget? child;
-  final RouterConfig<Object>? routerConfig;
-  final ThemeMode themeMode;
 
   static XFormFactor formFactorOf(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -29,17 +31,34 @@ class ApodAppBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formFactor = this.formFactor ?? ApodAppBuilder.formFactorOf(context);
+    final metrics = ApodMetrics.data(formFactor);
+    final textTheme = ApodTextTheme.data(formFactor);
+
+    final lightTheme = ApodLightTheme.data(
+      metrics: metrics,
+      textTheme: textTheme,
+    );
+
+    final darkTheme = ApodDarkTheme.data(
+      metrics: metrics,
+      textTheme: textTheme,
+    );
+
+    final mixTheme = ApodMixLightTheme.data(
+      themeMode == ThemeMode.light
+          ? lightTheme.extension<XMetricsData>()!
+          : darkTheme.extension<XMetricsData>()!,
+    );
 
     return MixTheme(
-      data: theme,
-      // MixThemeData.withMaterial(),
+      data: mixTheme,
       child: child ??
           MaterialApp.router(
             title: 'Nasa Apod',
+            debugShowCheckedModeBanner: debugShowCheckedModeBanner,
             routerConfig: routerConfig,
-            debugShowCheckedModeBanner: false,
-            theme: ApodLightTheme.data(formFactor),
-            darkTheme: ApodDarkTheme.data(formFactor),
+            theme: lightTheme,
+            darkTheme: darkTheme,
             themeMode: themeMode,
           ),
     );

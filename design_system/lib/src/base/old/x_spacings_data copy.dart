@@ -80,18 +80,18 @@
 //           'edgeInsets has been intentionally blocked in metrics.spacings'));
 
 //   XSpacingsData({
-//     final Optional<double?>? none,
-//     final Optional<double?>? superSmall,
-//     final Optional<double?>? extraSmall,
-//     final Optional<double?>? small,
-//     final Optional<double?>? semiSmall,
-//     final Optional<double?>? medium,
-//     final Optional<double?>? semiLarge,
-//     final Optional<double?>? large,
-//     final Optional<double?>? extraLarge,
-//     final Optional<double?>? superLarge,
-//     final Optional<XGapsData?>? gaps,
-//     final Optional<XEdgeInsetsData?>? edgeInsets,
+//     final XAttribute<double?>? none,
+//     final XAttribute<double?>? superSmall,
+//     final XAttribute<double?>? extraSmall,
+//     final XAttribute<double?>? small,
+//     final XAttribute<double?>? semiSmall,
+//     final XAttribute<double?>? medium,
+//     final XAttribute<double?>? semiLarge,
+//     final XAttribute<double?>? large,
+//     final XAttribute<double?>? extraLarge,
+//     final XAttribute<double?>? superLarge,
+//     final XAttribute<XGapsData?>? gaps,
+//     final XAttribute<XEdgeInsetsData?>? edgeInsets,
 //   })  : _none =
 //             // none?.value is int
 //             // ? none!.value.toDouble()

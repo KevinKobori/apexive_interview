@@ -38,8 +38,10 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
     final viewModelResult =
         await PictureMapper.fromJsonToViewModel(pictureJson);
     return viewModelResult.fold((mapperFailure) {
-      return dz.Left(mapperFailure.toDomain);
+      /// Left
+      return dz.Left(mapperFailure.toDomain());
     }, (pictureViewModel) {
+      /// Right
       return dz.Right(pictureViewModel);
     });
   }
@@ -66,7 +68,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
       builder: (_, pictureViewModel, __) {
         if (pictureViewModel == null) {
           return const Center(
-            // TODO:
+            // TODO(all):
             child: Text('ERROR'),
           );
         } else {

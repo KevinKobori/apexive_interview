@@ -8,7 +8,7 @@ enum ApodIconSize {
 }
 
 extension ApodIconSizeExtension on XIconSizesData {
-  // TODO: NOW - PUT ALL SIZES HERE
+  // TODO(all): NOW - PUT ALL SIZES HERE
   double resolve(ApodIconSize size) {
     switch (size) {
       case ApodIconSize.extraSmall:

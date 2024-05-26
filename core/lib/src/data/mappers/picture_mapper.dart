@@ -29,8 +29,11 @@ abstract final class PictureMapper {
           .map((pictureEntity) => fromEntityToModel(pictureEntity)
               .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
+
+      /// Right
       return Right(pictureModelList);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.conversionError());
     }
   }
@@ -60,6 +63,7 @@ abstract final class PictureMapper {
           .toList();
       return Right(pictureEntityList);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.conversionError());
     }
   }
@@ -99,6 +103,7 @@ abstract final class PictureMapper {
     for (final pictureEntity in pictureEntityList) {
       final result = await fromEntityToViewModel(pictureEntity);
       if (result.isLeft()) {
+        /// Left
         return const Left(MapperFailure.conversionError());
       }
       result.fold((l) => null, (r) => pictureViewModelList.add(r));
@@ -110,8 +115,11 @@ abstract final class PictureMapper {
       PictureModel model) {
     try {
       final json = model.toJson();
+
+      /// Right
       return Right(json);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.conversionError());
     }
   }
@@ -123,8 +131,11 @@ abstract final class PictureMapper {
           .map((model) => fromModelToJson(model)
               .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
+
+      /// Right
       return Right(jsonList);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.conversionError());
     }
   }
@@ -133,8 +144,11 @@ abstract final class PictureMapper {
       Map<String, dynamic> json) {
     try {
       final pictureModel = PictureModel.fromJson(json);
+
+      /// Right
       return Right(pictureModel);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.conversionError());
     }
   }
@@ -146,8 +160,11 @@ abstract final class PictureMapper {
           .map((json) => fromJsonToModel(json)
               .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
+
+      /// Right
       return Right(pictureModelList);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.conversionError());
     }
   }
@@ -164,8 +181,11 @@ abstract final class PictureMapper {
           .map((json) => fromJsonToEntity(json)
               .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
+
+      /// Right
       return Right(list);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.conversionError());
     }
   }
@@ -178,7 +198,10 @@ abstract final class PictureMapper {
     }
 
     return entityEither.fold(
+      /// Left
       (failure) => Left(failure),
+
+      /// Right
       (entity) async => await fromEntityToViewModel(entity),
     );
   }
@@ -195,8 +218,11 @@ abstract final class PictureMapper {
           .map((entity) => fromEntityToJson(entity)
               .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
+
+      /// Right
       return Right(jsonList);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.conversionError());
     }
   }

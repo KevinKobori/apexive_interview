@@ -13,8 +13,11 @@ class LocalStorageAdapter implements LocalStorage {
     try {
       await localStorage.deleteItem(itemKey);
       await localStorage.setItem(itemKey, itemValue);
+
+      /// Right
       return const Right(null);
     } catch (_) {
+      /// Left
       return const Left(LocalStorageFailure.unknownError());
     }
   }
@@ -23,8 +26,11 @@ class LocalStorageAdapter implements LocalStorage {
   Future<Either<LocalStorageFailure, void>> delete(String itemKey) async {
     try {
       await localStorage.deleteItem(itemKey);
+
+      /// Right
       return const Right(null);
     } catch (_) {
+      /// Left
       return const Left(LocalStorageFailure.unknownError());
     }
   }
@@ -34,11 +40,14 @@ class LocalStorageAdapter implements LocalStorage {
     try {
       final data = await localStorage.getItem(itemKey);
       if (data == null) {
+        /// Left
         return const Left(LocalStorageFailure.dataNotFound());
+      } else {
+        /// Right
+        return Right(data);
       }
-
-      return Right(data);
     } catch (_) {
+      /// Left
       return const Left(LocalStorageFailure.unknownError());
     }
   }

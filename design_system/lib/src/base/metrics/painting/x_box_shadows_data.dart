@@ -6,9 +6,9 @@ class XBoxShadowsData extends Equatable {
   final BoxShadow? _large;
 
   XBoxShadowsData({
-    final Optional<BoxShadow?>? small,
-    final Optional<BoxShadow?>? medium,
-    final Optional<BoxShadow?>? large,
+    final XAttribute<BoxShadow?>? small,
+    final XAttribute<BoxShadow?>? medium,
+    final XAttribute<BoxShadow?>? large,
   })  : _small = small == null
             ? const BoxShadow(
                 blurRadius: XAuxiliarySizes.x2,
@@ -51,12 +51,12 @@ class XBoxShadowsData extends Equatable {
         large.named('large'),
       ];
 
-  // @override
-  // String toString() => '''
-  //   XBoxShadowsData(
-  //     small: $small,
-  //     medium: $medium,
-  //     large: $large,
-  //   )
-  // ''';
+  @override
+  String toString() => '''
+    XBoxShadowsData(
+      small: $small,
+      medium: $medium,
+      large: $large,
+    )
+  ''';
 }

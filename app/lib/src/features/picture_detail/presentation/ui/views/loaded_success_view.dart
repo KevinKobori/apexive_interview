@@ -105,9 +105,9 @@ class _NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = Theme.of(context).extension<XMetricsData>()!;
-    final assets = Theme.of(context).extension<XAssetsData>()!;
-    final textTheme = Theme.of(context).textTheme;
+    // final metrics = Theme.of(context).extension<XMetricsData>()!;
+    // final assets = Theme.of(context).extension<XAssetsData>()!;
+    // final textTheme = Theme.of(context).textTheme;
     final route = ModalRoute.of(context);
 
     return NotificationBar(

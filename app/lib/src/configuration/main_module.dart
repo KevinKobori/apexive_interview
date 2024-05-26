@@ -2,6 +2,14 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 
 class MainModule extends Module {
+  static const String modulePath = '';
+
+  /// PATHS
+  static const String _pictureDetailsPath = '/picture/detail/date?q=';
+
+  /// ROUTES
+  static const pictureDetailsRoute = modulePath + _pictureDetailsPath;
+
   @override
   void binds(Injector i) {
     i.addLazySingleton<MainBloc>(() => MainBloc());
@@ -14,9 +22,11 @@ class MainModule extends Module {
 
   @override
   void routes(r) {
+    // TODO(all): NOW SET THE INITIAL PAGE TO REDIRECT TO '/catalog'
     r.module('/', module: CatalogModule());
     r.child(
-      '/picture/detail/:picture_date',
+      // TODO(all): NOW TEST THIS
+      '$_pictureDetailsPath:picture_date',
       child: (context) => pictureDetailPageFactory(
         pictureDate: r.args.params['picture_date']! as String,
       ),

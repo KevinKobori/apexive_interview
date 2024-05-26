@@ -4,32 +4,42 @@ import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class JsonMapper {
-  static Either<MapperFailure, bool> dataIsAMap(dynamic data) {
+  static Either<MapperFailure, void> dataIsValidMap(dynamic data) {
     if (data is Map<String, dynamic>) {
-      return const Right(true);
+      /// Right
+      return const Right(null);
+    } else {
+      /// Left
+      return const Left(MapperFailure.invalidJsonFormat());
     }
-    return const Left(MapperFailure.invalidJsonFormat());
   }
 
-  static Either<MapperFailure, bool> dataIsAListOfMap(dynamic data) {
+  static Either<MapperFailure, void> dataIsValidMapList(dynamic data) {
     if (data is List<Map<String, dynamic>> || (data is List && data.isEmpty)) {
-      return const Right(true);
+      /// Right
+      return const Right(null);
+    } else {
+      /// Left
+      return const Left(MapperFailure.invalidJsonFormat());
     }
-    return const Left(MapperFailure.invalidJsonFormat());
   }
 
   static Either<MapperFailure, String> tryEncode(Map<String, dynamic> data) {
     try {
+      /// Right
       return Right(json.encode(data));
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.invalidJsonFormat());
     }
   }
 
   static Either<MapperFailure, dynamic> tryDecode(String data) {
     try {
+      /// Right
       return Right(json.decode(data));
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.invalidJsonFormat());
     }
   }
@@ -43,8 +53,10 @@ class JsonMapper {
         ),
       ).toList();
 
+      /// Right
       return Right(list);
     } catch (_) {
+      /// Left
       return const Left(MapperFailure.invalidJsonFormat());
     }
   }

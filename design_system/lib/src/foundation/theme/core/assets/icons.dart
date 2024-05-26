@@ -40,7 +40,7 @@ class ApodIconCharacters {
 }
 
 class ApodIconSizes {
-  // TODO: NOW - PUT IT ALL TO OPTION.NONE
+  // TODO(all): NOW - PUT IT ALL TO OPTION.NONE
   static XIconSizesData get data => const XIconSizesData(
         extraSmall: 16.0,
         small: null,

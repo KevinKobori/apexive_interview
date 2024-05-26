@@ -6,7 +6,7 @@ class LocalLoadCatalogUseCaseImpl implements LocalLoadCatalogUseCase {
   final LocalStorage localStorage;
   final String itemKey;
 
-  LocalLoadCatalogUseCaseImpl({
+  const LocalLoadCatalogUseCaseImpl({
     required this.localStorage,
     required this.itemKey,
   });
@@ -17,26 +17,28 @@ class LocalLoadCatalogUseCaseImpl implements LocalLoadCatalogUseCase {
 
     return dataResult.fold(
       /// Left
-      (localStorageFailure) => Left(localStorageFailure.toDomain),
+      (localStorageFailure) => Left(localStorageFailure.toDomain()),
 
       /// Right
       (localData) {
         localData ??= <Map<String, dynamic>>[];
         final List<Map<String, dynamic>> jsonListData =
             List<Map<String, dynamic>>.from(localData);
-        if (jsonListData.isEmpty != false) {
-          return const Left(DomainFailure.unexpected());
-        }
-
-        final entityListResult =
-            PictureMapper.fromJsonListToEntityList(jsonListData);
-        return entityListResult.fold(
+        if (jsonListData.isEmpty) {
           /// Left
-          (mapperFailure) => Left(mapperFailure.toDomain),
-
+          return const Left(DomainFailure.unexpected());
+        } else {
           /// Right
-          (pictureEntity) => Right(pictureEntity),
-        );
+          final entityListResult =
+              PictureMapper.fromJsonListToEntityList(jsonListData);
+          return entityListResult.fold(
+            /// Left
+            (mapperFailure) => Left(mapperFailure.toDomain()),
+
+            /// Right
+            (pictureEntity) => Right(pictureEntity),
+          );
+        }
       },
     );
   }

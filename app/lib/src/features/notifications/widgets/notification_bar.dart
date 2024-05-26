@@ -24,7 +24,7 @@ class NotificationBar extends StatelessWidget {
         if (state is NotificationsOverviewStateLoadedData) {
           return ApodNotifiableBar(
             onClosed: () => BlocProvider.of<NotificationsOverviewBloc>(context)
-                .add(CloseEvent(null)),
+                .add(CloseNotification(null)),
             notification: state.lastNotification != null
                 ? NotificationViewModel(
                     title: state.lastNotification!.title,

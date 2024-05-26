@@ -18,7 +18,7 @@ class _MainWidgetState extends State<MainWidget> {
 
   @override
   void initState() {
-    bloc.add(const ToggleThemeModeEvent(ThemeMode.light));
+    bloc.add(const ToggleThemeMode(ThemeMode.light));
     super.initState();
   }
 
@@ -27,19 +27,24 @@ class _MainWidgetState extends State<MainWidget> {
     return BlocBuilder<MainBloc, MainState>(
       bloc: bloc,
       builder: (context, state) {
+        ///
         Widget loading() => const Center(child: CircularProgressIndicator());
 
         Widget loaded(ThemeMode themeMode) => ApodAppBuilder(
+              debugShowCheckedModeBanner: false,
               routerConfig: Modular.routerConfig,
               themeMode: themeMode,
             );
 
-        Widget component = const BlancBox();
+        ///
+        late Widget component;
 
         if (state is MainLoading) {
           component = loading();
         } else if (state is MainLoaded) {
           component = loaded(state.themeMode);
+        } else {
+          component = const BlancBox();
         }
 
         return component;

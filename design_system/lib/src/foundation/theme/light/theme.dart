@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 abstract final class ApodLightTheme {
-  static ThemeData data(XFormFactor? formFactor) {
+  static ThemeData data({
+    required XMetricsData metrics,
+    required TextTheme textTheme,
+  }) {
     return ThemeData(
       extensions: <ThemeExtension<dynamic>>[
         ApodLightAssets.data,
-        ApodMetrics.data(formFactor),
+        metrics,
       ],
       useMaterial3: true,
       fontFamily: 'Poppins',
-      textTheme: ApodTextTheme.data(formFactor),
+      textTheme: textTheme,
       colorScheme: ApodLightColorScheme.data,
       elevatedButtonTheme: ApodLightElevatedButtonTheme.data,
     );

@@ -9,7 +9,7 @@ enum HttpMethod {
 }
 
 mixin HttpClient {
-  Future<Either<HttpFailure, dynamic>> request({
+  Future<Either<HttpFailure, HttpSuccess>> request({
     required String url,
     required HttpMethod method,
     Map<String, dynamic>? headers,
