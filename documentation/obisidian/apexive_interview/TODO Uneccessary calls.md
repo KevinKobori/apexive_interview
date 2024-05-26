@@ -1,0 +1,1 @@
+save last call to compare next calls, if the next call is in the same day from last call, and we already have a expected body saved in localstorage, so we dont want to make unecessary call again.
