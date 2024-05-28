@@ -17,18 +17,17 @@ class ApodMixLightTheme {
         const ColorToken('primary'): Colors.pink,
         const ColorToken('secondary'): Colors.purpleAccent,
       },
-      space: {
+      spaces: {
         const SpaceToken('none'): metrics.spacings.none,
         // const SpaceToken('xxsmall'): metrics.spacings.superSmall,
-        SpaceToken.xsmall: metrics.spacings.extraSmall,
-        SpaceToken.small: metrics.spacings.small,
+        const SpaceToken('xsmall'): metrics.spacings.extraSmall,
+        const SpaceToken('small'): metrics.spacings.small,
         const SpaceToken('ssmall'): metrics.spacings.semiSmall,
-        // TODO(all): block access to this 'medium' value
-        // SpaceToken.medium: metrics.spacings.medium,
+        // const SpaceToken('medium'): metrics.spacings.medium,
         // const SpaceToken('slarge'): metrics.spacings.semiLarge,
-        SpaceToken.large: metrics.spacings.large,
-        SpaceToken.xlarge: metrics.spacings.extraLarge,
-        SpaceToken.xxlarge: metrics.spacings.superLarge,
+        const SpaceToken('large'): metrics.spacings.large,
+        const SpaceToken('xlarge'): metrics.spacings.extraLarge,
+        const SpaceToken('xxlarge'): metrics.spacings.superLarge,
       },
       textStyles: {
         const TextStyleToken('heading1'):
@@ -38,11 +37,11 @@ class ApodMixLightTheme {
       radii: {
         const RadiusToken('none'): metrics.radius.none,
         const RadiusToken('xsmall'): metrics.radius.extraSmall,
-        RadiusToken.small: metrics.radius.small,
+        const RadiusToken('small'): metrics.radius.small,
         const RadiusToken('ssmall'): metrics.radius.semiSmall,
-        RadiusToken.medium: metrics.radius.medium,
+        const RadiusToken('medium'): metrics.radius.medium,
         // const RadiusToken('slarge'): metrics.radius.semiLarge,
-        RadiusToken.large: metrics.radius.large,
+        const RadiusToken('large'): metrics.radius.large,
         // const RadiusToken('xlarge'): metrics.radius.extraLarge,
         // const RadiusToken('xxlarge'): metrics.radius.superLarge,
       },

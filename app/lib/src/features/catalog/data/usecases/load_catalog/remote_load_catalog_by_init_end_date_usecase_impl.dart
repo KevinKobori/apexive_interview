@@ -7,11 +7,9 @@ import 'package:timezone/timezone.dart' as tz;
 class RemoteLoadCatalogByStartEndDateUseCaseImpl
     implements RemoteLoadCatalogByStartEndDateUseCase {
   final PictureRepository pictureRepository;
-  final String apiKey;
 
   RemoteLoadCatalogByStartEndDateUseCaseImpl({
     required this.pictureRepository,
-    required this.apiKey,
   });
 
   @override
@@ -22,7 +20,8 @@ class RemoteLoadCatalogByStartEndDateUseCaseImpl
 
     final repositoryResult = await pictureRepository.getCatalogByStartEndDate(
       apodApiUrlFactory(
-        apiKey: apiKey,
+        baseURL: ApodDotEnv.instance.baseURL,
+        apiKey: ApodDotEnv.instance.apiKey,
         requestPath: '&start_date=$apodStartDate&end_date=$apodEndDate',
       ),
     );

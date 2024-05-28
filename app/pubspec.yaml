@@ -43,8 +43,6 @@ flutter:
 
   assets:
     - assets/images/
-    - .env.PUBLIC
-    - .env.DEV
 
 # build_runner:
 #   scripts:

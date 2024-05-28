@@ -8,11 +8,11 @@ part of 'account_model.dart';
 
 _$AccountModelImpl _$$AccountModelImplFromJson(Map json) => _$AccountModelImpl(
       name: json['name'] as String,
-      pictureUrl: json['pictureUrl'] as String,
+      pictureUrl: json['picture_url'] as String,
     );
 
 Map<String, dynamic> _$$AccountModelImplToJson(_$AccountModelImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'pictureUrl': instance.pictureUrl,
+      'picture_url': instance.pictureUrl,
     };

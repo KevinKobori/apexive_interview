@@ -14,11 +14,11 @@ abstract final class ApodLightColorScheme {
         // No direct equivalent: Color for text/icons on secondary.
         // onSecondary: Colors.white,
         // cardColor: Background color for cards.
-        surface: Colors.white,
+        surface: const Color(0xFFE0E0E0),
         // Usually related to text on light/dark backgrounds.
-        // onSurface: Colors.black,
+        onSurface: Colors.black, // Example: Google Grey 300
         // scaffoldBackgroundColor: Scaffold background color.
-        background: const Color(0xFFE0E0E0), // Example: Google Grey 300
+        // background: const Color(0xFFE0E0E0), // Example: Google Grey 300
         // No direct equivalent: Color for text/icons on background.
         // onBackground: Colors.black,
         // errorColor: Color to indicate errors.

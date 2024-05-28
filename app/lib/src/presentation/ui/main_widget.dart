@@ -31,6 +31,7 @@ class _MainWidgetState extends State<MainWidget> {
         Widget loading() => const Center(child: CircularProgressIndicator());
 
         Widget loaded(ThemeMode themeMode) => ApodAppBuilder(
+              showSemanticsDebugger: false,
               debugShowCheckedModeBanner: false,
               routerConfig: Modular.routerConfig,
               themeMode: themeMode,

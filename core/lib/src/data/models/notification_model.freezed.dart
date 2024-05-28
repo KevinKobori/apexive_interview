@@ -20,8 +20,11 @@ NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NotificationModel {
+  @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'description')
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'type')
   NotificationType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +39,10 @@ abstract class $NotificationModelCopyWith<$Res> {
           NotificationModel value, $Res Function(NotificationModel) then) =
       _$NotificationModelCopyWithImpl<$Res, NotificationModel>;
   @useResult
-  $Res call({String title, String description, NotificationType type});
+  $Res call(
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String description,
+      @JsonKey(name: 'type') NotificationType type});
 }
 
 /// @nodoc
@@ -81,7 +87,10 @@ abstract class _$$NotificationModelImplCopyWith<$Res>
       __$$NotificationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String description, NotificationType type});
+  $Res call(
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String description,
+      @JsonKey(name: 'type') NotificationType type});
 }
 
 /// @nodoc
@@ -120,16 +129,21 @@ class __$$NotificationModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NotificationModelImpl implements _NotificationModel {
   const _$NotificationModelImpl(
-      {required this.title, required this.description, required this.type});
+      {@JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'description') required this.description,
+      @JsonKey(name: 'type') required this.type});
 
   factory _$NotificationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationModelImplFromJson(json);
 
   @override
+  @JsonKey(name: 'title')
   final String title;
   @override
+  @JsonKey(name: 'description')
   final String description;
   @override
+  @JsonKey(name: 'type')
   final NotificationType type;
 
   @override
@@ -169,18 +183,22 @@ class _$NotificationModelImpl implements _NotificationModel {
 
 abstract class _NotificationModel implements NotificationModel {
   const factory _NotificationModel(
-      {required final String title,
-      required final String description,
-      required final NotificationType type}) = _$NotificationModelImpl;
+          {@JsonKey(name: 'title') required final String title,
+          @JsonKey(name: 'description') required final String description,
+          @JsonKey(name: 'type') required final NotificationType type}) =
+      _$NotificationModelImpl;
 
   factory _NotificationModel.fromJson(Map<String, dynamic> json) =
       _$NotificationModelImpl.fromJson;
 
   @override
+  @JsonKey(name: 'title')
   String get title;
   @override
+  @JsonKey(name: 'description')
   String get description;
   @override
+  @JsonKey(name: 'type')
   NotificationType get type;
   @override
   @JsonKey(ignore: true)

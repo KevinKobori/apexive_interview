@@ -20,7 +20,9 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AccountModel {
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'picture_url')
   String get pictureUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +37,9 @@ abstract class $AccountModelCopyWith<$Res> {
           AccountModel value, $Res Function(AccountModel) then) =
       _$AccountModelCopyWithImpl<$Res, AccountModel>;
   @useResult
-  $Res call({String name, String pictureUrl});
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'picture_url') String pictureUrl});
 }
 
 /// @nodoc
@@ -75,7 +79,9 @@ abstract class _$$AccountModelImplCopyWith<$Res>
       __$$AccountModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String pictureUrl});
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'picture_url') String pictureUrl});
 }
 
 /// @nodoc
@@ -108,14 +114,18 @@ class __$$AccountModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AccountModelImpl implements _AccountModel {
-  const _$AccountModelImpl({required this.name, required this.pictureUrl});
+  const _$AccountModelImpl(
+      {@JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'picture_url') required this.pictureUrl});
 
   factory _$AccountModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountModelImplFromJson(json);
 
   @override
+  @JsonKey(name: 'name')
   final String name;
   @override
+  @JsonKey(name: 'picture_url')
   final String pictureUrl;
 
   @override
@@ -153,15 +163,18 @@ class _$AccountModelImpl implements _AccountModel {
 
 abstract class _AccountModel implements AccountModel {
   const factory _AccountModel(
-      {required final String name,
-      required final String pictureUrl}) = _$AccountModelImpl;
+          {@JsonKey(name: 'name') required final String name,
+          @JsonKey(name: 'picture_url') required final String pictureUrl}) =
+      _$AccountModelImpl;
 
   factory _AccountModel.fromJson(Map<String, dynamic> json) =
       _$AccountModelImpl.fromJson;
 
   @override
+  @JsonKey(name: 'name')
   String get name;
   @override
+  @JsonKey(name: 'picture_url')
   String get pictureUrl;
   @override
   @JsonKey(ignore: true)

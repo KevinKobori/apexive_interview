@@ -25,16 +25,13 @@ mixin _$PictureModel {
   @JsonKey(name: 'date')
   DateTime get date => throw _privateConstructorUsedError;
   @JsonKey(name: 'explanation')
-  String get explanation =>
-      throw _privateConstructorUsedError; // TODO: NOW HERE FIX IT NOW
+  String get explanation => throw _privateConstructorUsedError;
   @JsonKey(name: 'hdurl')
   String? get hdurl => throw _privateConstructorUsedError;
   @JsonKey(name: 'media_type')
-  MediaType get mediaType =>
-      throw _privateConstructorUsedError; // Changed to snake_case
+  MediaType get mediaType => throw _privateConstructorUsedError;
   @JsonKey(name: 'service_version')
-  String get serviceVersion =>
-      throw _privateConstructorUsedError; // Changed to snake_case
+  String get serviceVersion => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'url')
@@ -223,18 +220,15 @@ class _$PictureModelImpl implements _PictureModel {
   @override
   @JsonKey(name: 'explanation')
   final String explanation;
-// TODO: NOEW HERE FIIIX IIIIT NOOOW
   @override
   @JsonKey(name: 'hdurl')
   final String? hdurl;
   @override
   @JsonKey(name: 'media_type')
   final MediaType mediaType;
-// Changed to snake_case
   @override
   @JsonKey(name: 'service_version')
   final String serviceVersion;
-// Changed to snake_case
   @override
   @JsonKey(name: 'title')
   final String title;
@@ -308,16 +302,16 @@ abstract class _PictureModel implements PictureModel {
   @override
   @JsonKey(name: 'explanation')
   String get explanation;
-  @override // TODO: NOEW HERE FIIIX IIIIT NOOOW
+  @override
   @JsonKey(name: 'hdurl')
   String? get hdurl;
   @override
   @JsonKey(name: 'media_type')
   MediaType get mediaType;
-  @override // Changed to snake_case
+  @override
   @JsonKey(name: 'service_version')
   String get serviceVersion;
-  @override // Changed to snake_case
+  @override
   @JsonKey(name: 'title')
   String get title;
   @override

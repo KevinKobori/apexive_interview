@@ -26,9 +26,13 @@ class ApodElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PressableBox(
-      style: apodElevatedButtonStyle,
-      onPress: onPressed,
+    // return PressableBox(
+    //   style: apodElevatedButtonStyle,
+    //   onPress: onPressed,
+    //   child: child ?? const SizedBox.shrink(),
+    // );
+    return ElevatedButton(
+      onPressed: onPressed,
       child: child ?? const SizedBox.shrink(),
     );
   }

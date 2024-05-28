@@ -1,13 +1,13 @@
 // ignore_for_file: constant_identifier_names
 
 enum EnvMode {
+  DEMO,
   FEAT,
   DEV,
-  STAGING,
-  PROD,
   TESTING,
   QA,
   UAT,
+  STAGING,
   PRE_PROD,
-  DEMO,
+  PROD,
 }

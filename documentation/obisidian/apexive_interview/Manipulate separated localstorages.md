@@ -1,0 +1,7 @@
+- create an unique way to manipulate local data, maybe using local SQL.
+- Create a package that manipulates only DB logic, for both layers(backend and frontend)
+- Create DAO layers for consulting
+- Save only entities(table) values
+- utilizar a lib https://pub.dev/packages/floor? this dont have support for web applications :(
+- Todas as consultas de get data sao equivalentes as viewQueries do supabase??
+- 

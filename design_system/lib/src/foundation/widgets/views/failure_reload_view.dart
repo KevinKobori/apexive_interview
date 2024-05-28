@@ -20,6 +20,7 @@ class ApodFailureReloadView extends StatelessWidget {
     return metrics.spacings.edgeInsets.paddings.allExtraLarge(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             failureMessage,

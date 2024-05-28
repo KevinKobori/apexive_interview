@@ -10,129 +10,93 @@ class ApodTextTheme {
     }
   }
 
-  static TextTheme get _mediumData => const TextTheme(
-        displayLarge: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+  static String get _poppinsFont => 'Poppins';
+  static String get _packageFont => 'nasa_apod_design_system';
+
+  static TextStyle _defaultStyle({
+    required FontWeight fontWeight,
+    required double fontSize,
+  }) =>
+      TextStyle(
+        fontFamily: _poppinsFont,
+        package: _packageFont,
+        decoration: TextDecoration.none,
+        fontWeight: fontWeight,
+        fontSize: fontSize,
+      );
+
+  static TextTheme get _mediumData => TextTheme(
+        displayLarge: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 28,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        displayMedium: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        displayMedium: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 18,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        displaySmall: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        displaySmall: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 14,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        titleLarge: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        titleLarge: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 28,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        titleMedium: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        titleMedium: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 18,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        titleSmall: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        titleSmall: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 14,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        bodyLarge: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        bodyLarge: _defaultStyle(
           fontWeight: FontWeight.w400,
           fontSize: 12,
-          decoration: TextDecoration.none,
         ),
-        bodyMedium: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        bodyMedium: _defaultStyle(
           fontWeight: FontWeight.w400,
           fontSize: 10,
-          decoration: TextDecoration.none,
         ),
         // bodySmall: typographyData.paragraph2,
       );
 
-  static TextTheme get _smallData => const TextTheme(
-        displayLarge: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+  static TextTheme get _smallData => TextTheme(
+        displayLarge: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 20,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        displayMedium: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        displayMedium: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 14,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        displaySmall: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        displaySmall: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 12,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        titleLarge: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        titleLarge: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 20,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        titleMedium: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        titleMedium: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 14,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        titleSmall: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        titleSmall: _defaultStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 12,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.none,
         ),
-        bodyLarge: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        bodyLarge: _defaultStyle(
           fontWeight: FontWeight.w400,
           fontSize: 12,
-          decoration: TextDecoration.none,
         ),
-        bodyMedium: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        bodyMedium: _defaultStyle(
           fontWeight: FontWeight.w400,
           fontSize: 9,
-          decoration: TextDecoration.none,
         ),
-        bodySmall: TextStyle(
-          fontFamily: 'Poppins',
-          package: 'nasa_apod_design_system',
+        bodySmall: _defaultStyle(
           fontWeight: FontWeight.w400,
           fontSize: 9,
-          decoration: TextDecoration.none,
         ),
       );
 }

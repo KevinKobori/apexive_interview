@@ -13,7 +13,6 @@ void main() {
   late PictureRepository pictureRepository;
   late RemoteLoadCatalogByStartEndDateUseCase sut;
   late HttpClientSpy httpClient;
-  late String apiKey;
   late String url;
   late LoadCatalogParams params;
 
@@ -30,7 +29,6 @@ void main() {
       networkInfo: networkInfo,
       pictureDatasource: pictureDatasource,
     );
-    apiKey = ApodTest.faker.randomGenerator.string(10);
 
     final nasaApodEndDate =
         RemoteLoadCatalogByStartEndDateUseCaseImpl.getApodDateFormat(
@@ -40,13 +38,13 @@ void main() {
             params.startDate);
 
     url = apodApiUrlFactory(
-      apiKey: apiKey,
+      baseURL: ApodTest.faker.randomGenerator.string(20),
+      apiKey: ApodTest.faker.randomGenerator.string(10),
       requestPath: '&start_date=$nasaApodStartDate&end_date=$nasaApodEndDate',
     );
 
     sut = RemoteLoadCatalogByStartEndDateUseCaseImpl(
       pictureRepository: pictureRepository,
-      apiKey: apiKey,
     );
     registerFallbackValue<HttpMethod>(HttpMethod.get);
   });

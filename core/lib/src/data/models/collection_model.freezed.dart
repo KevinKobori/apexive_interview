@@ -20,7 +20,9 @@ CollectionModel _$CollectionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CollectionModel {
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'catalog')
   List<PictureModel> get catalog => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +37,9 @@ abstract class $CollectionModelCopyWith<$Res> {
           CollectionModel value, $Res Function(CollectionModel) then) =
       _$CollectionModelCopyWithImpl<$Res, CollectionModel>;
   @useResult
-  $Res call({String name, List<PictureModel> catalog});
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'catalog') List<PictureModel> catalog});
 }
 
 /// @nodoc
@@ -75,7 +79,9 @@ abstract class _$$CollectionModelImplCopyWith<$Res>
       __$$CollectionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<PictureModel> catalog});
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'catalog') List<PictureModel> catalog});
 }
 
 /// @nodoc
@@ -109,16 +115,19 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CollectionModelImpl implements _CollectionModel {
   const _$CollectionModelImpl(
-      {required this.name, required final List<PictureModel> catalog})
+      {@JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'catalog') required final List<PictureModel> catalog})
       : _catalog = catalog;
 
   factory _$CollectionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionModelImplFromJson(json);
 
   @override
+  @JsonKey(name: 'name')
   final String name;
   final List<PictureModel> _catalog;
   @override
+  @JsonKey(name: 'catalog')
   List<PictureModel> get catalog {
     if (_catalog is EqualUnmodifiableListView) return _catalog;
     // ignore: implicit_dynamic_type
@@ -161,15 +170,18 @@ class _$CollectionModelImpl implements _CollectionModel {
 
 abstract class _CollectionModel implements CollectionModel {
   const factory _CollectionModel(
-      {required final String name,
+      {@JsonKey(name: 'name') required final String name,
+      @JsonKey(name: 'catalog')
       required final List<PictureModel> catalog}) = _$CollectionModelImpl;
 
   factory _CollectionModel.fromJson(Map<String, dynamic> json) =
       _$CollectionModelImpl.fromJson;
 
   @override
+  @JsonKey(name: 'name')
   String get name;
   @override
+  @JsonKey(name: 'catalog')
   List<PictureModel> get catalog;
   @override
   @JsonKey(ignore: true)

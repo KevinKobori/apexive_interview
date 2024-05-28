@@ -5,7 +5,7 @@ class MainModule extends Module {
   static const String modulePath = '';
 
   /// PATHS
-  static const String _pictureDetailsPath = '/picture/detail/date?q=';
+  static const String _pictureDetailsPath = '/picture/detail/date/';
 
   /// ROUTES
   static const pictureDetailsRoute = modulePath + _pictureDetailsPath;

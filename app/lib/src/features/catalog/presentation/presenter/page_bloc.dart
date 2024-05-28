@@ -27,7 +27,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
   Future<void> onLoadCatalog(Emitter<CatalogPageState> emit) async {
     emit(CatalogPageLoading());
 
-    /// Infra, Data, Domain
+    /// External, Infra, Data, Domain
     final params = LoadCatalogParams(
       startDate: DateTime.now().subtract(const Duration(days: 9)),
       endDate: DateTime.now(),
@@ -74,6 +74,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     final apodDate = DateTimeMapper.getStringFromDateTimeYMD(event.date);
     final datasourceResult = await datasource.fetchPictureByDate(
         apodApiUrlFactory(
+            baseURL: ApodDotEnv.instance.baseURL,
             apiKey: ApodDotEnv.instance.apiKey,
             requestPath: '&date=$apodDate'));
 

@@ -3,6 +3,7 @@ import 'package:mix/mix.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodAppBuilder extends StatelessWidget {
+  final bool showSemanticsDebugger;
   final bool debugShowCheckedModeBanner;
   final XFormFactor? formFactor;
   final Widget? child;
@@ -11,6 +12,7 @@ class ApodAppBuilder extends StatelessWidget {
 
   const ApodAppBuilder({
     super.key,
+    this.showSemanticsDebugger = false,
     this.debugShowCheckedModeBanner = true,
     this.formFactor,
     this.routerConfig,
@@ -55,6 +57,7 @@ class ApodAppBuilder extends StatelessWidget {
       child: child ??
           MaterialApp.router(
             title: 'Nasa Apod',
+            showSemanticsDebugger: showSemanticsDebugger,
             debugShowCheckedModeBanner: debugShowCheckedModeBanner,
             routerConfig: routerConfig,
             theme: lightTheme,

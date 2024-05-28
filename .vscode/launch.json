@@ -1,12 +1,123 @@
 {
   "configurations": [
+
+    // // Demo or Showcase: Configured for demonstrating the software's features to stakeholders or for marketing purposes.
+    // {
+    //   "name": "APP DEMO",
+    //   "type": "dart",
+    //   "request": "launch",
+    //   "program": "app/lib/main.dart",
+    //   "toolArgs": [
+    //     "--dart-define-from-file", 
+    //     ".env.DEMO",
+    //   ]
+    //   // ,"preLaunchTask": "script_run",
+    //   // ,"preLaunchTask": "script_clean",
+    // },
+    // // Feature Branches: While not an environment in the traditional sense, this allows for testing features in isolation.
+    // {
+    //   "name": "APP FEAT",
+    //   "type": "dart",
+    //   "request": "launch",
+    //   "program": "app/lib/main.dart",
+    //   "toolArgs": [
+    //     "--dart-define-from-file", 
+    //     ".env.FEAT",
+    //   ]
+    //   // ,"preLaunchTask": "script_run",
+    //   // ,"preLaunchTask": "script_clean",
+    // },
+    // Local or Development: The environment for development on a developer's machine, with specific settings for rapid testing and development.
     {
-      "name": "APP: NASA APOD",
+      "name": "APP DEV",
       "type": "dart",
       "request": "launch",
-      "program": "app/lib/main.dart"
+      "program": "app/lib/main.dart",
+      "toolArgs": [
+        "--dart-define-from-file", 
+        ".env.DEV",
+      ]
+      // TODO(all): CHANGE THE WAY TO CALL script_clean
       // ,"preLaunchTask": "script_run",
       // ,"preLaunchTask": "script_clean",
-    }
+    },
+    // // Testing: An environment dedicated to rigorous automated or manual testing to ensure software behaves as expected in production.
+    // {
+    //   "name": "APP TESTING",
+    //   "type": "dart",
+    //   "request": "launch",
+    //   "program": "app/lib/main.dart",
+    //   "toolArgs": [
+    //     "--dart-define-from-file", 
+    //     ".env.TESTING",
+    //   ]
+    //   // ,"preLaunchTask": "script_run",
+    //   // ,"preLaunchTask": "script_clean",
+    // },
+    // // QA (Quality Assurance): Focuses on verifying the quality and integrity of the software through various types of testing.
+    // {
+    //   "name": "APP QA",
+    //   "type": "dart",
+    //   "request": "launch",
+    //   "program": "app/lib/main.dart",
+    //   "toolArgs": [
+    //     "--dart-define-from-file", 
+    //     ".env.QA",
+    //   ]
+    //   // ,"preLaunchTask": "script_run",
+    //   // ,"preLaunchTask": "script_clean",
+    // },
+    // // UAT (User Acceptance Testing): Allows end-users or stakeholders to test the software in a production-like environment to validate it meets their requirements.
+    // {
+    //   "name": "APP UAT",
+    //   "type": "dart",
+    //   "request": "launch",
+    //   "program": "app/lib/main.dart",
+    //   "toolArgs": [
+    //     "--dart-define-from-file", 
+    //     ".env.UAT",
+    //   ]
+    //   // ,"preLaunchTask": "script_run",
+    //   // ,"preLaunchTask": "script_clean",
+    // },
+    // // Staging: An environment that mimics production as closely as possible, used for final testing before deployment to production.
+    // {
+    //   "name": "APP STAGING",
+    //   "type": "dart",
+    //   "request": "launch",
+    //   "program": "app/lib/main.dart",
+    //   "toolArgs": [
+    //     "--dart-define-from-file", 
+    //     ".env.STAGING",
+    //   ]
+    //   // ,"preLaunchTask": "script_run",
+    //   // ,"preLaunchTask": "script_clean",
+    // },
+    // // Pre-production: A mirror of the production environment for final checks before deployment, ideal for previewing upcoming features.
+    // {
+    //   "name": "APP PRE_PROD",
+    //   "type": "dart",
+    //   "request": "launch",
+    //   "program": "app/lib/main.dart",
+    //   "toolArgs": [
+    //     "--dart-define-from-file", 
+    //     ".env.PRE_PROD",
+    //   ]
+    //   // ,"preLaunchTask": "script_run",
+    //   // ,"preLaunchTask": "script_clean",
+    // },
+    // // Production: The live environment used by end-users, where the final product is deployed.
+    // {
+    //   "name": "APP PROD",
+    //   "type": "dart",
+    //   "request": "launch",
+    //   "program": "app/lib/main.dart",
+    //   "toolArgs": [
+    //     "--dart-define-from-file", 
+    //     ".env.PROD",
+    //   ]
+    //   // ,"preLaunchTask": "script_run",
+    //   // ,"preLaunchTask": "script_clean",
+    // }
   ]
 }
