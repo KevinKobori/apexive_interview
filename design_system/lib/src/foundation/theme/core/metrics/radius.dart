@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodRadius {
-  static XRadiusData get data => XRadiusData(
+  static XRadiusData data() => XRadiusData(
         extraSmall: const XAttribute.of(Radius.circular(5)),
         small: const XAttribute.of(Radius.circular(10)),
         semiSmall: const XAttribute.of(Radius.circular(12)),

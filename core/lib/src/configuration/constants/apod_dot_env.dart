@@ -40,8 +40,8 @@ class ApodDotEnv {
   ///
   Future<void> _loadDotEnv() async {
     _envMode = EnvMode.values.byName(const String.fromEnvironment('ENV_MODE'));
-    _apiKey = const String.fromEnvironment('API_KEY');
     _baseURL = const String.fromEnvironment('BASE_URL');
+    _apiKey = const String.fromEnvironment('API_KEY');
     _connectTimeout =
         const int.fromEnvironment('CONNECT_TIMEOUT', defaultValue: 30000);
     _receiveTimeout =

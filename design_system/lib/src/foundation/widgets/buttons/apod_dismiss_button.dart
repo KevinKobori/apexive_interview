@@ -3,10 +3,12 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodDismissButton extends StatelessWidget {
   final VoidCallback? onClose;
+  final Color? color;
 
   const ApodDismissButton({
     super.key,
     this.onClose,
+    this.color,
   });
 
   @override
@@ -16,6 +18,7 @@ class ApodDismissButton extends StatelessWidget {
     return ApodIconButton(
       icon: ApodIcon.regular(
         assets.icons.characters.char(ApodIconCharacterKey.dismiss),
+        color: color,
       ),
       onPressed: onClose,
     );

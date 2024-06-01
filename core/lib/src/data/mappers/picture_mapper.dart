@@ -4,7 +4,7 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 abstract final class PictureMapper {
   static Either<MapperFailure, PictureModel> fromEntityToModel(
       PictureEntity pictureEntity) {
-    final model = PictureModel(
+    final pictureModel = PictureModel(
       copyright: pictureEntity.copyright,
       date: DateTime(
         pictureEntity.date.year,
@@ -19,7 +19,7 @@ abstract final class PictureMapper {
       url: pictureEntity.url,
     );
 
-    return Right(model);
+    return Right(pictureModel);
   }
 
   static Either<MapperFailure, List<PictureModel>> fromEntityListToModelList(
@@ -112,9 +112,9 @@ abstract final class PictureMapper {
   }
 
   static Either<MapperFailure, Map<String, dynamic>> fromModelToJson(
-      PictureModel model) {
+      PictureModel pictureModel) {
     try {
-      final json = model.toJson();
+      final json = pictureModel.toJson();
 
       /// Right
       return Right(json);
@@ -125,10 +125,10 @@ abstract final class PictureMapper {
   }
 
   static Either<MapperFailure, List<Map<String, dynamic>>>
-      fromModelListToJsonList(List<PictureModel> modelList) {
+      fromModelListToJsonList(List<PictureModel> pictureModelList) {
     try {
-      final jsonList = modelList
-          .map((model) => fromModelToJson(model)
+      final jsonList = pictureModelList
+          .map((pictureModel) => fromModelToJson(pictureModel)
               .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
 
@@ -199,23 +199,23 @@ abstract final class PictureMapper {
 
     return entityEither.fold(
       /// Left
-      (failure) => Left(failure),
+      (mapperFailure) => Left(mapperFailure),
 
       /// Right
-      (entity) async => await fromEntityToViewModel(entity),
+      (pictureEntity) async => await fromEntityToViewModel(pictureEntity),
     );
   }
 
   static Either<MapperFailure, Map<String, dynamic>> fromEntityToJson(
-      PictureEntity entity) {
-    return fromEntityToModel(entity).flatMap(fromModelToJson);
+      PictureEntity pictureEntity) {
+    return fromEntityToModel(pictureEntity).flatMap(fromModelToJson);
   }
 
   static Either<MapperFailure, List<Map<String, dynamic>>>
-      fromEntityListToJsonList(List<PictureEntity> entityList) {
+      fromEntityListToJsonList(List<PictureEntity> pictureEntityList) {
     try {
-      final jsonList = entityList
-          .map((entity) => fromEntityToJson(entity)
+      final jsonList = pictureEntityList
+          .map((pictureEntity) => fromEntityToJson(pictureEntity)
               .getOrElse(() => throw const MapperFailure.conversionError()))
           .toList();
 

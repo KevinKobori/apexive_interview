@@ -77,7 +77,16 @@ class CatalogPageHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   InkWell(
-                    onTap: () {
+                    onTap: () async {
+                      // TODO(#21): REMOVE THIS DEAD CODE
+                      // final personDao = database.personDao;
+                      // final person = Person(7, 'P3');
+
+                      // try {
+                      //   await personDao.insertPerson(person);
+                      // } catch (error) {
+                      //   log(error.toString());
+                      // } finally {}
                       if (ApodDotEnv.instance.envMode == 'DEV') {}
                     },
                     child: SvgPicture.asset(
@@ -96,7 +105,7 @@ class CatalogPageHeader extends StatelessWidget {
             ),
             const Align(
               alignment: Alignment.centerRight,
-              child: ThemeSwitch(),
+              child: ApodThemeSwitch(),
             ),
           ],
         ),

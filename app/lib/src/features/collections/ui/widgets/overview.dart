@@ -46,7 +46,7 @@ class CollectionsOverview extends StatelessWidget {
             ],
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator.adaptive());
         }
       },
     );

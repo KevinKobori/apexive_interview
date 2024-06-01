@@ -113,58 +113,61 @@ class _BodyState extends State<_Body> {
             ),
           ),
           SliverToBoxAdapter(
-            child: Container(
+            child: Padding(
               padding: metrics.spacings.edgeInsets.only(
-                left: XSpacings.large,
-                right: XSpacings.large,
                 top: XSpacings.large,
                 bottom: XSpacings.large,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Stack(
-                    children: [
-                      ApodPictureTile(
-                        // key: Key(widget.catalog[0].date),
-                        title: widget.catalog[0].title,
-                        url: widget.catalog[0].url,
-                        mediaType: widget.catalog[0].mediaType,
-                        date: widget.catalog[0].date,
-                        aspectRatio: widget.catalog[0].aspectRatio,
-                        onTap: () =>
-                            widget.onViewPictureDetail(widget.catalog[0]),
-                      ),
-                      Positioned(
-                        right: 0,
-                        bottom: 0,
-                        child: Container(
-                          margin: metrics.spacings.edgeInsets.allSemiSmall,
-                          height: assets.icons.sizes.semiLarge,
-                          width: assets.icons.sizes.semiLarge,
-                          alignment: Alignment.centerLeft,
-                          child: SvgPicture.asset(
-                              assets.images.path(ApodImageKey.appLogo)),
+                  pageHorizontalPadding(
+                    child: Stack(
+                      children: [
+                        ApodPictureTile(
+                          // key: Key(widget.catalog[0].date),
+                          title: widget.catalog[0].title,
+                          url: widget.catalog[0].url,
+                          mediaType: widget.catalog[0].mediaType,
+                          date: widget.catalog[0].date,
+                          aspectRatio: widget.catalog[0].aspectRatio,
+                          onTap: () =>
+                              widget.onViewPictureDetail(widget.catalog[0]),
                         ),
-                      ),
-                    ],
+                        Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: Container(
+                            margin: metrics.spacings.edgeInsets.allSemiSmall,
+                            height: assets.icons.sizes.semiLarge,
+                            width: assets.icons.sizes.semiLarge,
+                            alignment: Alignment.centerLeft,
+                            child: SvgPicture.asset(
+                                assets.images.path(ApodImageKey.appLogo)),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   metrics.spacings.gaps.large,
-                  SizedBox(
-                    height: 38,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        if (widget.catalog.length == 1) ...[
-                          ApodElevatedButton(
-                            onPressed: widget.onLoadCatalog,
-                            child: const Text('List all'),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: pageHorizontalPadding(
+                      child: Row(
+                        children: [
+                          if (widget.catalog.length == 1) ...[
+                            ApodElevatedButton.adaptive(
+                              onPressed: widget.onLoadCatalog,
+                              child: const Text('List all'),
+                            ),
+                            metrics.spacings.gaps.semiSmall,
+                          ],
+                          ApodDatePickerDialog.adaptive(
+                            onLoadPictureByDate: widget.onLoadPictureByDate,
                           ),
-                          metrics.spacings.gaps.semiSmall,
                         ],
-                        ApodDatePickerDialog(
-                            onLoadPictureByDate: widget.onLoadPictureByDate),
-                      ],
+                      ),
                     ),
                   ),
                 ],
@@ -182,7 +185,9 @@ class _BodyState extends State<_Body> {
                       style: textTheme.titleLarge!,
                     ),
                   )
-                : const SizedBox.shrink(),
+                : const ApodBlancBox(
+                    logMessage:
+                        'This can not happen. [CatalogPageLoadedSuccessView]'),
           ),
           SliverSafeArea(
             top: false,
@@ -217,6 +222,18 @@ class _BodyState extends State<_Body> {
         ],
       );
     });
+  }
+
+  Padding pageHorizontalPadding({required Widget child}) {
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
+
+    return Padding(
+      padding: metrics.spacings.edgeInsets.only(
+        left: XSpacings.large,
+        right: XSpacings.large,
+      ),
+      child: child,
+    );
   }
 }
 

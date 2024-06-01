@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodBoxShadows {
-  static XBoxShadowsData get data => XBoxShadowsData(
+  static XBoxShadowsData data() => XBoxShadowsData(
         small: const XAttribute.of(BoxShadow(
           blurRadius: 2,
           spreadRadius: 1,

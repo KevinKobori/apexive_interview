@@ -21,9 +21,6 @@ class ApodNavigationBar extends StatelessWidget {
 
   Widget _animatedBody(BuildContext context, Animation<double> animation) {
     final metrics = Theme.of(context).extension<XMetricsData>()!;
-    final leading = this.leading;
-    final summary = this.summary;
-    final action = this.action;
 
     return Row(
       children: [
@@ -40,11 +37,11 @@ class ApodNavigationBar extends StatelessWidget {
               ),
               FadeTransition(
                 opacity: animation,
-                child: const ApodBackButton(),
+                child: const ApodBackButton.adaptive(),
               ),
             ],
           ),
-        metrics.spacings.gaps.semiSmall,
+        // metrics.spacings.gaps.semiSmall,
         if (action == null) body,
         if (action != null)
           Expanded(
@@ -112,7 +109,7 @@ class ApodNavigationBar extends StatelessWidget {
               opacity: !canNavigateBack ? 0.0 : 1.0,
               child: IgnorePointer(
                 ignoring: !canNavigateBack,
-                child: const ApodBackButton(),
+                child: const ApodBackButton.adaptive(),
               ),
             ),
           ],
@@ -157,7 +154,7 @@ class _NavigationBarContainer extends StatelessWidget {
       padding: metrics.spacings.edgeInsets.allSemiSmall,
       decoration: BoxDecoration(
         borderRadius: metrics.radius.border.semiSmall,
-        color: colorScheme.background,
+        color: colorScheme.surface,
       ),
       child: child,
     );

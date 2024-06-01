@@ -4,7 +4,7 @@
 
 // // `TODO`: NOW - MIGRATE THIS WIDGET TO USE MATERIAL WIDGETS
 // class ApodElevatedButton extends StatelessWidget {
-//   const ApodElevatedButton({
+//   const ApodElevatedButton.adaptive({
 //     super.key,
 //     this.icon,
 //     this.title,

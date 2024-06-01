@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class CatalogPage extends StatefulWidget {
   final CatalogPagePresenter pagePresenter;
@@ -45,7 +46,8 @@ class _CatalogPageState extends State<CatalogPage> {
                 bloc.add(GoToPictureDetail(picture)),
           );
         } else {
-          return const SizedBox.shrink();
+          return const ApodBlancBox(
+              logMessage: 'This can not happen. [CatalogPage]');
         }
       },
     );

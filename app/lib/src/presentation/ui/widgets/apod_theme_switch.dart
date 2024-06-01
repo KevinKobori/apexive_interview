@@ -4,8 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class ThemeSwitch extends StatelessWidget {
-  const ThemeSwitch({
+class ApodThemeSwitch extends StatelessWidget {
+  const ApodThemeSwitch({
     super.key,
   });
 
@@ -16,9 +16,10 @@ class ThemeSwitch extends StatelessWidget {
     return BlocBuilder(
       bloc: bloc,
       builder: (context, state) {
-        Widget loading() => const Center(child: CircularProgressIndicator());
+        Widget loading() =>
+            const Center(child: CircularProgressIndicator.adaptive());
 
-        Widget loaded(bool value) => Switch(
+        Widget loaded(bool value) => ApodSwitch.adaptive(
               value: value,
               onChanged: (newValue) {
                 if (newValue == true) {
@@ -29,7 +30,7 @@ class ThemeSwitch extends StatelessWidget {
               },
             );
 
-        Widget component = const BlancBox();
+        Widget component = const ApodBlancBox();
 
         if (state is MainLoading) {
           component = loading();

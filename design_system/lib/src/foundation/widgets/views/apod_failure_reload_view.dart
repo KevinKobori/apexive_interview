@@ -27,7 +27,7 @@ class ApodFailureReloadView extends StatelessWidget {
             style: textTheme.titleMedium!,
           ),
           metrics.spacings.gaps.small,
-          ApodElevatedButton(
+          ApodElevatedButton.adaptive(
             onPressed: onReload,
             child: Text(I18n.strings.reload),
           )

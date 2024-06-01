@@ -162,7 +162,9 @@ class ProductTileLayout extends StatelessWidget {
                               image: CachedNetworkImageProvider(url),
                               fit: BoxFit.cover,
                             )
-                          : const SizedBox.shrink(),
+                          : const ApodBlancBox(
+                              logMessage:
+                                  'This can not happen. [ApodPictureTile]'),
                     ),
                   ),
                   Positioned.fill(

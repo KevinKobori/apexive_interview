@@ -57,7 +57,7 @@ class _MobileLayoutState extends State<_MobileLayout> {
     return [
       const Align(
         alignment: Alignment.centerRight,
-        child: ThemeSwitch(),
+        child: ApodThemeSwitch(),
       ),
       ClipRRect(
         borderRadius: metrics.radius.border.semiSmall,
@@ -105,9 +105,9 @@ class _NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final metrics = Theme.of(context).extension<XMetricsData>()!;
-    // final assets = Theme.of(context).extension<XAssetsData>()!;
-    // final textTheme = Theme.of(context).textTheme;
+    final metrics = Theme.of(context).extension<XMetricsData>()!;
+    final assets = Theme.of(context).extension<XAssetsData>()!;
+    final textTheme = Theme.of(context).textTheme;
     final route = ModalRoute.of(context);
 
     return NotificationBar(
@@ -124,32 +124,34 @@ class _NavigationBar extends StatelessWidget {
         body: AccountNavigationBarBody(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
-        // action: ApodElevatedButton(
-        //   onPressed: () {},
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     mainAxisSize: MainAxisSize.min,
-        //     children: [
-        //       Text(
-        //         'Add to collections',
-        //         style: textTheme.titleSmall!,
-        //       ),
-        //       metrics.spacings.gaps.semiSmall,
-        //       ApodIcon.regular(
-        //         assets.icons.characters.char(ApodIconCharacterKey.addPicture),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-        action: CustomButton(
-          onPress: () {},
-          title: 'teste 123',
-          // type: CustomButtonType.primary,
-          // type: CustomButtonType.destructive,
-          type: CustomButtonType.link,
-          size: CustomButtonSize.large,
-          // size: CustomButtonSize.medium,
+        action: ApodElevatedButton.adaptive(
+          onPressed: () {
+            // TODO(all): NOW #23
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Add to collections',
+                style: textTheme.titleSmall!,
+              ),
+              metrics.spacings.gaps.semiSmall,
+              ApodIcon.regular(
+                assets.icons.characters.char(ApodIconCharacterKey.addPicture),
+              ),
+            ],
+          ),
         ),
+        // action: CustomButton(
+        //   onPress: () {},
+        //   title: 'teste 123',
+        //   // type: CustomButtonType.primary,
+        //   // type: CustomButtonType.destructive,
+        //   type: CustomButtonType.link,
+        //   size: CustomButtonSize.large,
+        //   // size: CustomButtonSize.medium,
+        // ),
       ),
     );
   }

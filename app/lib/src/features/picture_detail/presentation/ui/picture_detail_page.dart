@@ -21,6 +21,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
       ValueNotifier<PictureViewModel?>(null);
 
   Future<dz.Either<DomainFailure, PictureViewModel>>
+      // TODO(all): #24
       getPictureViewModelFromLocalStorage() async {
     final pictureJsonList =
         await ls.LocalStorage(localStorageConfigKeyPathFactory())
@@ -33,22 +34,27 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
 
       return apodDate == widget.pictureDate;
     });
+
     final pictureJson = pictureJsonList[pictureMapIndex];
 
     final viewModelResult =
         await PictureMapper.fromJsonToViewModel(pictureJson);
-    return viewModelResult.fold((mapperFailure) {
-      /// Left
-      return dz.Left(mapperFailure.toDomain());
-    }, (pictureViewModel) {
-      /// Right
-      return dz.Right(pictureViewModel);
-    });
+    return viewModelResult.fold(
+      (mapperFailure) {
+        /// Left
+        return dz.Left(mapperFailure.toDomain());
+      },
+      (pictureViewModel) {
+        /// Right
+        return dz.Right(pictureViewModel);
+      },
+    );
   }
 
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // TODO(all): #24
       final localStorageResult = await getPictureViewModelFromLocalStorage();
 
       localStorageResult.fold(

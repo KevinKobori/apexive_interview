@@ -11,7 +11,7 @@ void main() {
   late PictureDatasource pictureDatasource;
   late DeviceInfo networkInfo;
   late PictureRepository pictureRepository;
-  late RemoteLoadCatalogByStartEndDateUseCase sut;
+  late RemoteLoadCatalogByStartDateEndDateUseCase sut;
   late HttpClientSpy httpClient;
   late String url;
   late LoadCatalogParams params;

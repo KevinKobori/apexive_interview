@@ -6,5 +6,7 @@ class ApodIconButton extends IconButton {
     required ApodIcon icon,
     required super.onPressed,
     super.key,
-  }) : super(icon: icon);
+  }) : super(
+          icon: icon,
+        );
 }

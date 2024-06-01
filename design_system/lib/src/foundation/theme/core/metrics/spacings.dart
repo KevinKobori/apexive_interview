@@ -1,7 +1,7 @@
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodSpacings {
-  static XSpacingsData get data => XSpacingsData(
+  static XSpacingsData data() => XSpacingsData(
         superSmall: const XAttribute.blocked(),
         extraSmall: null,
         small: const XAttribute.of(6),

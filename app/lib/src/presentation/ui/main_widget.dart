@@ -28,7 +28,8 @@ class _MainWidgetState extends State<MainWidget> {
       bloc: bloc,
       builder: (context, state) {
         ///
-        Widget loading() => const Center(child: CircularProgressIndicator());
+        Widget loading() =>
+            const Center(child: CircularProgressIndicator.adaptive());
 
         Widget loaded(ThemeMode themeMode) => ApodAppBuilder(
               showSemanticsDebugger: false,
@@ -37,18 +38,13 @@ class _MainWidgetState extends State<MainWidget> {
               themeMode: themeMode,
             );
 
-        ///
-        late Widget component;
-
         if (state is MainLoading) {
-          component = loading();
+          return loading();
         } else if (state is MainLoaded) {
-          component = loaded(state.themeMode);
+          return loaded(state.themeMode);
         } else {
-          component = const BlancBox();
+          return const ApodBlancBox();
         }
-
-        return component;
       },
     );
   }

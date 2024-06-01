@@ -3,8 +3,9 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class RemoteLoadCatalogByStartEndDateWithLocalFallbackUseCaseImpl
-    implements RemoteLoadCatalogByStartEndDateUseCase {
-  final RemoteLoadCatalogByStartEndDateUseCase remoteLoadCatalogByStartEndDate;
+    implements RemoteLoadCatalogByStartDateEndDateUseCase {
+  final RemoteLoadCatalogByStartDateEndDateUseCase
+      remoteLoadCatalogByStartEndDate;
   final LocalSaveCatalogUseCase localSaveCatalog;
   final LocalValidateCatalogUseCase localValidateCatalog;
   final LocalLoadCatalogUseCase localLoadCatalog;

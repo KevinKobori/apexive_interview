@@ -5,7 +5,7 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
     implements CatalogPagePresenter {
-  final RemoteLoadCatalogByStartEndDateUseCase loadCatalogByStartEndDate;
+  final RemoteLoadCatalogByStartDateEndDateUseCase loadCatalogByStartEndDate;
 
   CatalogPageBloc({
     required this.loadCatalogByStartEndDate,
@@ -32,6 +32,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
       startDate: DateTime.now().subtract(const Duration(days: 9)),
       endDate: DateTime.now(),
     );
+
     final Either<DomainFailure, List<PictureEntity>> usecaseResult =
         await loadCatalogByStartEndDate.call(params);
 

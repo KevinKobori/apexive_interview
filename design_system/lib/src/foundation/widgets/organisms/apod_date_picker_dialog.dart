@@ -1,9 +1,12 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart'; // Adiciona a importação do Cupertino
 import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodDatePickerDialog extends StatefulWidget
     implements PreferredSizeWidget {
-  const ApodDatePickerDialog({
+  const ApodDatePickerDialog.adaptive({
     required this.onLoadPictureByDate,
     super.key,
   }) : preferredSize = const Size.fromHeight(52);
@@ -34,7 +37,7 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
       RestorableRouteFuture<DateTime?>(
     onComplete: _selectDate,
     onPresent: (navigator, arguments) {
-      return navigator.restorablePush(
+      return navigator.restorablePush<dynamic>(
         _datePickerRoute,
         arguments: _selectedDate.value.millisecondsSinceEpoch,
       );
@@ -49,13 +52,46 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
     return DialogRoute<DateTime>(
       context: context,
       builder: (context) {
-        return DatePickerDialog(
-          restorationId: 'date_picker_dialog',
-          initialEntryMode: DatePickerEntryMode.calendarOnly,
-          initialDate: DateTime.fromMillisecondsSinceEpoch(arguments! as int),
-          firstDate: DateTime(2019),
-          lastDate: DateTime.now(),
-        );
+        if (Platform.isIOS || Platform.isMacOS) {
+          DateTime dateTime =
+              DateTime.fromMillisecondsSinceEpoch(arguments! as int);
+          return CupertinoAlertDialog(
+            content: SizedBox(
+              width: double.infinity,
+              height: 250,
+              child: CupertinoDatePicker(
+                initialDateTime: dateTime,
+                mode: CupertinoDatePickerMode.date,
+                use24hFormat: true,
+                onDateTimeChanged: (newDateTime) {
+                  dateTime = newDateTime;
+                },
+              ),
+            ),
+            actions: [
+              CupertinoDialogAction(
+                child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              CupertinoDialogAction(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop(dateTime);
+                },
+              ),
+            ],
+          );
+        } else {
+          return DatePickerDialog(
+            restorationId: 'date_picker_dialog',
+            initialEntryMode: DatePickerEntryMode.calendarOnly,
+            initialDate: DateTime.fromMillisecondsSinceEpoch(arguments! as int),
+            firstDate: DateTime(2019),
+            lastDate: DateTime.now(),
+          );
+        }
       },
     );
   }
@@ -72,17 +108,16 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
       setState(() {
         _selectedDate.value = newSelectedDate;
         widget.onLoadPictureByDate(_selectedDate.value);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-              'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}'),
-        ));
+        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text(
+        //         'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}')));
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ApodElevatedButton(
+    return ApodElevatedButton.adaptive(
       onPressed: () => _restorableDatePickerRouteFuture.present(),
       child: const Text('Search by date'),
     );

@@ -1,11 +1,11 @@
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ApodIcons {
-  static XIconsData get data => XIconsData(
+  static XIconsData data() => XIconsData(
         fontFamily: 'apod_icons',
         fontPackage: 'nasa_apod_design_system',
-        characters: ApodIconCharacters.data,
-        sizes: ApodIconSizes.data,
+        characters: ApodIconCharacters.data(),
+        sizes: ApodIconSizes.data(),
       );
 }
 
@@ -20,7 +20,7 @@ class ApodIconCharacterKey {
 }
 
 class ApodIconCharacters {
-  static XIconCharactersData get data => XIconCharactersData(
+  static XIconCharactersData data() => XIconCharactersData(
         characters: {
           ApodIconCharacterKey.addPicture:
               String.fromCharCodes([57344, 58343, 58413, 57568]),
@@ -41,7 +41,7 @@ class ApodIconCharacters {
 
 class ApodIconSizes {
   // TODO(all): NOW - PUT IT ALL TO OPTION.NONE
-  static XIconSizesData get data => const XIconSizesData(
+  static XIconSizesData data() => const XIconSizesData(
         extraSmall: 16.0,
         small: null,
         semiSmall: null,

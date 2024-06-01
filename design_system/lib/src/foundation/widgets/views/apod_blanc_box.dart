@@ -1,9 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/widgets.dart';
 // import 'package:logger/logger.dart';
 
-class BlancBox extends StatelessWidget {
+class ApodBlancBox extends StatelessWidget {
   final String? logMessage;
-  const BlancBox({
+  const ApodBlancBox({
     super.key,
     this.logMessage,
   });
@@ -11,7 +13,9 @@ class BlancBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO(all): Create a way to save this log
-    // log(logMessage);
+    if (logMessage != null) {
+      log(logMessage!);
+    }
     return const SizedBox.shrink();
   }
 }

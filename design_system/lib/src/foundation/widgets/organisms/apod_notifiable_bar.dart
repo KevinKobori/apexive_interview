@@ -173,7 +173,10 @@ class _NotificationBody extends StatelessWidget {
           ),
         ),
         metrics.spacings.edgeInsets.paddings.allSmall(
-          child: ApodDismissButton(onClose: onClose),
+          child: ApodDismissButton(
+            color: colorScheme.onPrimary,
+            onClose: onClose,
+          ),
         ),
       ],
     );

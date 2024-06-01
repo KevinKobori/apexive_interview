@@ -1,7 +1,7 @@
 // part of x_metrics_data;
 
 // // class ApodSpacings {
-// //   static XSpacingsData get data => XSpacingsData(
+// //   static XSpacingsData data() => XSpacingsData(
 // //         none: 0,
 // //         superSmall: () => UnsupportedError(
 // //             'superSmall is not available in metrics.spacings'),

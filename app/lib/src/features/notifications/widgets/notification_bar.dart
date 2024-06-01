@@ -40,7 +40,7 @@ class NotificationBar extends StatelessWidget {
             child: child,
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator.adaptive());
         }
       },
     );

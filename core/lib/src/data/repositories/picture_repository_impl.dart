@@ -35,7 +35,7 @@ class PictureRepositoryImpl implements PictureRepository {
             (mapperFailure) => Left(mapperFailure.toDomain()),
 
             /// Right
-            (entityList) => Right(entityList),
+            (pictureEntityList) => Right(pictureEntityList),
           );
         },
       );

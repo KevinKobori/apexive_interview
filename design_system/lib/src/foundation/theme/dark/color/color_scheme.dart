@@ -1,7 +1,36 @@
 import 'package:flutter/material.dart';
 
 abstract class ApodDarkColorScheme {
-  static ColorScheme get data => ColorScheme.fromSeed(
+  static ColorScheme data() =>
+      // // a color scheme that is pink with beige background
+      // const ColorScheme(
+      //   brightness: Brightness.light,
+      //   primary: Color(0xffFF80AB),
+      //   onPrimary: Colors.white,
+      //   primaryContainer: Color(0xffFFABDE),
+      //   onPrimaryContainer: Color(0xff21005D),
+      //   secondary: Color(0xffFFD166),
+      //   onSecondary: Colors.white,
+      //   secondaryContainer: Color(0xffFFF197),
+      //   onSecondaryContainer: Color(0xff302903),
+      //   error: Color(0xffD32F2F),
+      //   onError: Colors.white,
+      //   errorContainer: Color(0xffFBE9E8),
+      //   onErrorContainer: Color(0xff410002),
+      //   surface: Color(0xffFFFBF3),
+      //   onSurface: Color(0xff1E1917),
+      //   surfaceContainerHighest: Color(0xffF5F0EB),
+      //   onSurfaceVariant: Color(0xff4B4641),
+      //   outline: Color(0xff797470),
+      //   outlineVariant: Color(0xff5F5955),
+      //   shadow: Color(0xff000000),
+      //   scrim: Color(0xff000000),
+      //   inverseSurface: Color(0xff34302E),
+      //   onInverseSurface: Color(0xffFBF0F3),
+      //   inversePrimary: Color(0xffD15B9D),
+      //   surfaceTint: Color(0xffFED6E0),
+      // );
+      ColorScheme.fromSeed(
         seedColor: const Color(0xFFD21F3C),
         // brightness: Overall light/dark theme setting.
         brightness: Brightness.dark,
