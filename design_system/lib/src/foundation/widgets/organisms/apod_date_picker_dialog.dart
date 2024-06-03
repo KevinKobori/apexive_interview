@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart'; // Adiciona a importação do Cupertino
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -33,6 +33,7 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
       DateTime.now().hour - 1,
     ),
   );
+
   late final RestorableRouteFuture<DateTime?> _restorableDatePickerRouteFuture =
       RestorableRouteFuture<DateTime?>(
     onComplete: _selectDate,
@@ -108,9 +109,9 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
       setState(() {
         _selectedDate.value = newSelectedDate;
         widget.onLoadPictureByDate(_selectedDate.value);
-        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        //     content: Text(
-        //         'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+                'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}')));
       });
     }
   }

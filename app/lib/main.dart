@@ -45,9 +45,12 @@ import 'package:url_strategy/url_strategy.dart';
 //   }
 // }
 
+// late ObjectBox objectbox;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await ScreenUtil.ensureScreenSize();
+  // objectbox = await ObjectBox.create();
 
   setPathUrlStrategy();
 

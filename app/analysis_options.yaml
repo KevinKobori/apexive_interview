@@ -54,6 +54,7 @@ linter:
   # https://dart-lang.github.io/linter/lints/index.html.
 
   rules:
+    use_setters_to_change_properties: true
     close_sinks: true
     comment_references: true
     one_member_abstracts: true

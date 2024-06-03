@@ -22,6 +22,29 @@ class LocalSaveCatalogUseCaseImpl implements LocalSaveCatalogUseCase {
 
       /// Right
       (pictureJsonList) async {
+//         final box = store.box<Person>();
+
+// // Put a new object into the box
+//         var person = Person(name: 'Joe Green');
+//         final id = box.put(person);
+
+// // Get the object back from the box
+//         person = box.get(id)!;
+
+// // Update the object
+//         person.name = 'Joe Black';
+//         box.put(person);
+
+// // Query for objects
+//         final query = box
+//             .query(Person_.name.equals('Joe Black'))
+//             .order(Person_.name)
+//             .build();
+//         final people = query.find();
+//         query.close();
+
+// // Remove the object from the box
+//         box.remove(person.id);
         final saveResult = await localStorage.save(
             itemKey: itemKey, itemValue: pictureJsonList);
         return saveResult.fold(
