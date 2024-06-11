@@ -43,7 +43,7 @@ class _CatalogPageState extends State<CatalogPage> {
             onLoadCatalog: () => bloc.add(const LoadCatalog()),
             onLoadPictureByDate: (date) => bloc.add(LoadPictureByDate(date)),
             onPushToPictureDetail: (picture) =>
-                bloc.add(GoToPictureDetail(picture)),
+                bloc.add(PushToPictureDetailPage(picture)),
           );
         } else {
           return const ApodBlancBox(

@@ -1,7 +1,7 @@
-export 'presenter/page_bloc.dart';
-export 'presenter/page_event.dart';
-export 'presenter/page_presenter.dart';
-export 'presenter/page_state.dart';
+export 'presenter/catalog_page_bloc.dart';
+export 'presenter/catalog_page_event.dart';
+export 'presenter/catalog_page_presenter.dart';
+export 'presenter/catalog_page_state.dart';
 export 'ui/catalog_page.dart';
 export 'ui/views/loaded_failure_view.dart';
 export 'ui/views/loaded_success_view.dart';

@@ -9,7 +9,7 @@ environment:
   sdk: ">=3.2.5 <4.0.0"
 
 dependencies:
-  cached_network_image: ^3.3.0
+  # cached_network_image: ^3.3.0
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   # TODO(#20): put it into core layer?
@@ -20,7 +20,7 @@ dependencies:
   # # TODO(all): what is this?
   # flutter_screenutil: ^5.9.3
   flutter_modular: ^6.3.2
-  flutter_svg: ^2.0.9
+  # flutter_svg: ^2.0.9
   nasa_apod_core:
     path: ../core
   nasa_apod_design_system:

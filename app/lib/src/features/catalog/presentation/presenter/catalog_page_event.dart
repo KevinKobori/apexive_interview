@@ -23,10 +23,10 @@ class LoadPictureByDate extends CatalogPageEvent {
       ];
 }
 
-class GoToPictureDetail extends CatalogPageEvent {
+class PushToPictureDetailPage extends CatalogPageEvent {
   final PictureViewModel picture;
 
-  const GoToPictureDetail(this.picture);
+  const PushToPictureDetailPage(this.picture);
 
   @override
   List<Object?> get props => [

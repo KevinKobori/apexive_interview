@@ -7,5 +7,5 @@ abstract class CatalogPagePresenter {
     LoadPictureByDate event,
     Emitter<CatalogPageState> emit,
   );
-  void onGoToPictureDetail(GoToPictureDetail event);
+  void onPushToPictureDetailPage(PushToPictureDetailPage event);
 }

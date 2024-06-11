@@ -9,6 +9,11 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class CatalogPageLoadedSuccessView extends StatelessWidget {
+  final List<PictureViewModel> catalog;
+  final VoidCallback onLoadCatalog;
+  final ValueChanged<DateTime> onLoadPictureByDate;
+  final void Function(PictureViewModel picture) onPushToPictureDetail;
+
   const CatalogPageLoadedSuccessView({
     required this.catalog,
     required this.onLoadCatalog,
@@ -16,11 +21,6 @@ class CatalogPageLoadedSuccessView extends StatelessWidget {
     required this.onPushToPictureDetail,
     super.key,
   });
-
-  final List<PictureViewModel> catalog;
-  final VoidCallback onLoadCatalog;
-  final ValueChanged<DateTime> onLoadPictureByDate;
-  final void Function(PictureViewModel) onPushToPictureDetail;
 
   @override
   Widget build(BuildContext context) {

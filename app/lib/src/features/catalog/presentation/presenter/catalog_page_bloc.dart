@@ -18,8 +18,8 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
       await onLoadPictureByDate(event, emit);
     });
 
-    on<GoToPictureDetail>((event, emit) async {
-      await onGoToPictureDetail(event);
+    on<PushToPictureDetailPage>((event, emit) async {
+      await onPushToPictureDetailPage(event);
     });
   }
 
@@ -116,7 +116,7 @@ class CatalogPageBloc extends Bloc<CatalogPageEvent, CatalogPageState>
   }
 
   @override
-  Future<void> onGoToPictureDetail(GoToPictureDetail event) async {
+  Future<void> onPushToPictureDetailPage(PushToPictureDetailPage event) async {
     await NavigatorManager.pushNamed(
         MainModule.pictureDetailsRoute + event.picture.date);
   }
