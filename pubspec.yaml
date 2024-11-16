@@ -1,0 +1,14 @@
+name: minicore_nasa_apod
+description: Monorepo for managing packages in minicore_nasa_apod.
+version: 1.0.0
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  melos: ^3.0.0
+  very_good_analysis: ^6.0.0

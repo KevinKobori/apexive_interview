@@ -1,0 +1,28 @@
+name: nasa_apod_project
+
+packages:
+  - app/
+  - core/
+  - design_system/
+  - test_utils/
+
+scripts:
+  bootstrap:
+    description: "Instala as dependências de todos os pacotes."
+    run: melos bootstrap
+
+  format:
+    description: "Formata o código de todos os pacotes."
+    run: melos exec -- flutter format .
+
+  analyze:
+    description: "Executa a análise estática do código de todos os pacotes."
+    run: melos exec -- flutter analyze
+
+  test:
+    description: "Executa os testes de unidade de todos os pacotes."
+    run: melos exec -- flutter test
+
+  sync-dependencies:
+    description: "Sincroniza dependências compartilhadas entre os pacotes."
+    run: bash sync_pubspec.sh

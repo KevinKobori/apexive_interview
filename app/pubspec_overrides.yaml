@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: nasa_apod_core,nasa_apod_design_system,test_utils
+dependency_overrides:
+  nasa_apod_core:
+    path: ../core
+  nasa_apod_design_system:
+    path: ../design_system
+  test_utils:
+    path: ../test_utils
