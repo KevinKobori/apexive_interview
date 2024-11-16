@@ -12,18 +12,12 @@ dependencies:
     sdk: flutter
   flutter:
     sdk: flutter
-  mockito: ^5.0.17
   nasa_apod_core:
     path: ../core
   dartz: ^0.10.1
-  mocktail: 0.1.4 
+  mocktail: ^1.0.4
   faker: ^2.2.0
 
 dev_dependencies:
-  build_runner: ^2.4.8
-  # faker: 2.0.0 # 2.0.1
-  flutter_lints: ^2.0.0
-  freezed: ^2.4.7
-  json_serializable: ^6.7.1
-  lints: ^2.0.0
-  network_image_mock: 2.0.1
+  flutter_lints: ^5.0.0
+  lints: ^5.0.0

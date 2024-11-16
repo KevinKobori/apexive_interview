@@ -18,8 +18,8 @@ abstract final class ApodLightColorScheme {
         // Usually related to text on light/dark backgrounds.
         // onSurface: Colors.black,
         // scaffoldBackgroundColor: Scaffold background color.
-        onSurface: const Color(0xFFE0E0E0), // Example: Google Grey 300
-        // background: const Color(0xFFE0E0E0), // Example: Google Grey 300
+        // onSurface: const Color(0xFFE0E0E0), // Example: Google Grey 300
+        background: const Color(0xFFE0E0E0), // Example: Google Grey 300
         // No direct equivalent: Color for text/icons on background.
         // onBackground: Colors.black,
         // errorColor: Color to indicate errors.

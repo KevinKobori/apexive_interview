@@ -18,6 +18,9 @@ void main() {
   late LoadCatalogParams params;
 
   setUp(() {
+    // Registra o enum como valor de fallback
+    registerFallbackValue(HttpMethod.get);
+
     params = LoadCatalogParams(
       startDate: DateTime.now().subtract(const Duration(days: 9)),
       endDate: DateTime.now(),
@@ -48,7 +51,6 @@ void main() {
       pictureRepository: pictureRepository,
       apiKey: apiKey,
     );
-    registerFallbackValue<HttpMethod>(HttpMethod.get);
   });
 
   test('Should call HttpClient with correct values', () async {

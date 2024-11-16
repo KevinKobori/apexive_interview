@@ -15,13 +15,13 @@ abstract class ApodDarkColorScheme {
         onSecondary: const Color(0xFF9C172E),
         // cardColor: Background color for cards.
         // surface: const Color(0xFF000000),
-        surface: const Color(0xFFD21F3C),
+        // surface: const Color(0xFFD21F3C),
         // Usually related to text on light/dark backgrounds.
-        onSurface: const Color(0xFFFFFFFF),
+        // onSurface: const Color(0xFFFFFFFF),
         // // scaffoldBackgroundColor: Scaffold background color.
-        // background: const Color(0xFF111111),
+        background: const Color(0xFF111111),
         // // No direct equivalent: Color for text/icons on background.
-        // onBackground: const Color(0xFFFFFFFF),
+        onBackground: const Color(0xFFFFFFFF),
         // errorColor: Color to indicate errors.
         error: const Color(0xFFD32F2F),
         // No direct equivalent: Color for text/icons on errors.

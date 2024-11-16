@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
-import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz1;
+import 'package:timezone/timezone.dart' as tz2;
 
 class RemoteLoadCatalogByStartEndDateUseCaseImpl
     implements RemoteLoadCatalogByStartEndDateUseCase {
@@ -31,10 +31,10 @@ class RemoteLoadCatalogByStartEndDateUseCaseImpl
   }
 
   static String getApodDateFormat(DateTime localDateTime) {
-    tz.initializeTimeZones();
-    final tz.Location apodLocation = tz.getLocation('America/New_York');
-    final tz.TZDateTime apodDateTime =
-        tz.TZDateTime.from(localDateTime, apodLocation);
+    tz1.initializeTimeZones();
+    final tz2.Location apodLocation = tz2.getLocation('America/New_York');
+    final tz2.TZDateTime apodDateTime =
+        tz2.TZDateTime.from(localDateTime, apodLocation);
 
     final dateRequestAPIFormat = DateTime(apodDateTime.year, apodDateTime.month,
         apodDateTime.day, apodDateTime.hour);

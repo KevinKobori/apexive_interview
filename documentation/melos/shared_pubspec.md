@@ -53,12 +53,12 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.8
-  faker: 2.0.0
-  flutter_lints: ^2.0.0
+  faker: ^2.2.0
+  flutter_lints: ^5.0.0
   freezed: ^2.4.7
   json_serializable: ^6.7.1
-  lints: ^2.0.0
-  mocktail: 0.1.4
+  lints: ^5.0.0
+  mocktail: ^1.0.4
 ```
 
 ---
