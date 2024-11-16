@@ -1,0 +1,42 @@
+name: nasa_apod_design_system
+description: "A new Flutter package project."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  cached_network_image: ^3.3.0
+  equatable: ^2.0.3
+  flutter:
+    sdk: flutter
+  flutter_staggered_grid_view: ^0.6.1
+  flutter_svg: ^2.0.9
+  gap: ^3.0.1
+  nasa_apod_core:
+    path: ../core
+  shimmer: ^3.0.0
+  sliver_tools: ^0.2.5
+  tap_builder: ^0.3.4
+  win32: ^5.8.0
+  
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+  test_utils:
+    path: ../test_utils 
+  
+flutter:
+  fonts:
+    - family: apod_icons
+      fonts:
+        - asset: packages/nasa_apod_design_system/fonts/apod_icons.ttf
+    - family: Poppins
+      fonts:
+        - asset: packages/nasa_apod_design_system/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: packages/nasa_apod_design_system/fonts/Poppins-Bold.ttf
+          weight: 700
