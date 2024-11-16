@@ -1,0 +1,6 @@
+dependencies:
+  nasa_apod_core:
+    path: ../core
+dev_dependencies:
+  test_utils:
+    path: ../test_utils

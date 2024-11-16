@@ -2,11 +2,9 @@ name: nasa_apod_design_system
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
-
 environment:
   sdk: ">=3.2.5 <4.0.0"
   flutter: ">=1.17.0"
-
 dependencies:
   equatable: ^2.0.3
   flutter:
@@ -20,14 +18,13 @@ dependencies:
   sliver_tools: ^0.2.5
   # TODO(Kevin): remove this dependency, use material_toolkit instead
   tap_builder: ^0.3.4
-
 dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
+  lints: ^5.0.0
   test_utils:
     path: ../test_utils
-
 flutter:
   fonts:
     - family: apod_icons

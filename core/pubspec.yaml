@@ -2,16 +2,14 @@ name: nasa_apod_core
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
-
 environment:
   sdk: ">=3.2.5 <4.0.0"
   flutter: ">=1.17.0"
-
 dependencies:
   cached_network_image: ^3.3.0
   connectivity_plus: ^3.0.6
   dartz: ^0.10.1
-  equatable: ^2.0.5
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.1.0
@@ -21,7 +19,6 @@ dependencies:
   intl: ^0.19.0
   localstorage: ^4.0.1+4
   soundpool: ^2.4.1
-
 dev_dependencies:
   build_runner: ^2.4.8
   flutter_lints: ^5.0.0
@@ -32,6 +29,5 @@ dev_dependencies:
   json_serializable: ^6.7.1
   lints: ^5.0.0
   mocktail: ^1.0.4
-
 flutter:
   uses-material-design: true
