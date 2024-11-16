@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -159,7 +158,7 @@ class ProductTileLayout extends StatelessWidget {
                       transformAlignment: Alignment.center,
                       child: mediaType == MediaType.image
                           ? Image(
-                              image: CachedNetworkImageProvider(url),
+                              image: ApodCachedNetworkImageProvider(url),
                               fit: BoxFit.cover,
                             )
                           : const SizedBox.shrink(),

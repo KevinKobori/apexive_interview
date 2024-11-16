@@ -43,22 +43,10 @@ Crie um arquivo `shared_pubspec.yaml` no diretório raiz com as dependências co
 
 ```yaml
 dependencies:
-  cached_network_image: ^3.3.0
-  equatable: ^2.0.3
-  flutter:
-    sdk: flutter
-  flutter_svg: ^2.0.9
-  flutter_bloc: ^8.1.3
-  dartz: ^0.10.1
+  example: ^3.3.0
 
 dev_dependencies:
-  build_runner: ^2.4.8
-  faker: ^2.2.0
-  flutter_lints: ^5.0.0
-  freezed: ^2.4.7
-  json_serializable: ^6.7.1
-  lints: ^5.0.0
-  mocktail: ^1.0.4
+  example2: ^2.4.8
 ```
 
 ---

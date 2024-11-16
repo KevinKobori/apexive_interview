@@ -343,7 +343,7 @@ packages:
     source: hosted
     version: "0.6.2"
   flutter_svg:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_svg
       sha256: d39e7f95621fc84376bc0f7d504f05c3a41488c562f4a8ad410569127507402c
@@ -489,7 +489,7 @@ packages:
     source: hosted
     version: "5.0.0"
   localstorage:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: localstorage
       sha256: fdff4f717114e992acfd4045dc4a9ab9b987ca57f020965d63e3eb34089c60d8

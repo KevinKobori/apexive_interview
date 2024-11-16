@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -143,7 +142,7 @@ class _NotificationBody extends StatelessWidget {
                 height: assets.icons.sizes.semiLarge,
                 width: assets.icons.sizes.semiLarge,
                 margin: metrics.spacings.edgeInsets.allSemiSmall,
-                child: SvgPicture.asset(
+                child: ApodSvgPicture.asset(
                   'assets/images/nasa_logo.svg',
                 ),
               ),

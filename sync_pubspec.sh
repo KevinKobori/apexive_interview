@@ -5,14 +5,11 @@ echo "Iniciando sincronização de dependências compartilhadas..."
 # Caminhos para os arquivos de dependências compartilhadas
 COMMON_SHARED="shared_dependencies/common.yaml"
 APP_CORE_SHARED="shared_dependencies/app_core.yaml"
-APP_DESIGN_SHARED="shared_dependencies/app_design.yaml"
-APP_TEST_UTILS_SHARED="shared_dependencies/app_test_utils.yaml"
-CORE_DESIGN_SHARED="shared_dependencies/core_design.yaml"
-CORE_TEST_UTILS_SHARED="shared_dependencies/core_test_utils.yaml"
-DESIGN_TEST_UTILS_SHARED="shared_dependencies/design_test_utils.yaml"
+APP_DESIGN_SYSTEM_SHARED="shared_dependencies/app_design_system.yaml"
+CORE_DESIGN_SYSTEM_SHARED="shared_dependencies/core_design_system.yaml"
 
 # Lista de pacotes a sincronizar
-PACKAGES=("app" "core" "design_system" "test_utils")
+PACKAGES=("app" "core" "design_system")
 
 # Função para aplicar dependências compartilhadas a um pacote
 apply_shared_dependencies() {
@@ -51,29 +48,14 @@ for PACKAGE in "${PACKAGES[@]}"; do
     apply_shared_dependencies "$PACKAGE" "$APP_CORE_SHARED"
   fi
 
-  # Dependências específicas para app e design
+  # Dependências específicas para app e design_system
   if [[ "$PACKAGE" == "app" || "$PACKAGE" == "design_system" ]]; then
-    apply_shared_dependencies "$PACKAGE" "$APP_DESIGN_SHARED"
+    apply_shared_dependencies "$PACKAGE" "$APP_DESIGN_SYSTEM_SHARED"
   fi
 
-  # Dependências específicas para app e test_utils
-  if [[ "$PACKAGE" == "app" || "$PACKAGE" == "test_utils" ]]; then
-    apply_shared_dependencies "$PACKAGE" "$APP_TEST_UTILS_SHARED"
-  fi
-
-  # Dependências específicas para core e design
+  # Dependências específicas para core e design_system
   if [[ "$PACKAGE" == "core" || "$PACKAGE" == "design_system" ]]; then
-    apply_shared_dependencies "$PACKAGE" "$CORE_DESIGN_SHARED"
-  fi
-
-  # Dependências específicas para core e test_utils
-  if [[ "$PACKAGE" == "core" || "$PACKAGE" == "test_utils" ]]; then
-    apply_shared_dependencies "$PACKAGE" "$CORE_TEST_UTILS_SHARED"
-  fi
-
-  # Dependências específicas para design e test_utils
-  if [[ "$PACKAGE" == "design_system" || "$PACKAGE" == "test_utils" ]]; then
-    apply_shared_dependencies "$PACKAGE" "$DESIGN_TEST_UTILS_SHARED"
+    apply_shared_dependencies "$PACKAGE" "$CORE_DESIGN_SYSTEM_SHARED"
   fi
 
   # Executa flutter pub get para instalar as dependências

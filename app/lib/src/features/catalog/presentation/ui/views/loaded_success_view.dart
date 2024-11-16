@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
@@ -143,8 +142,9 @@ class _BodyState extends State<_Body> {
                           height: assets.icons.sizes.semiLarge,
                           width: assets.icons.sizes.semiLarge,
                           alignment: Alignment.centerLeft,
-                          child: SvgPicture.asset(
-                              assets.images.path(ApodImageKey.appLogo)),
+                          child: ApodSvgPicture.asset(
+                            assets.images.path(ApodImageKey.appLogo),
+                          ),
                         ),
                       ),
                     ],

@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart' as dz;
 import 'package:flutter/widgets.dart';
-import 'package:localstorage/localstorage.dart' as ls;
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 
@@ -23,7 +22,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
   Future<dz.Either<DomainFailure, PictureViewModel>>
       getPictureViewModelFromLocalStorage() async {
     final pictureJsonList =
-        await ls.LocalStorage(localStorageConfigKeyPathFactory())
+        await ApodLocalStorage(localStorageConfigKeyPathFactory())
             .getItem(localLoadCatalogUseCaseImplFactory().itemKey);
 
     final int pictureMapIndex =
