@@ -30,9 +30,8 @@ void _renderLibrary(XFormFactor formFactor) async {
 
     final key = UniqueKey();
 
-    tester.binding.window.physicalSizeTestValue =
-        Size(ThemeMode.values.length * 700.0, 1500);
-    tester.binding.window.devicePixelRatioTestValue = 1.0;
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = Size(ThemeMode.values.length * 700.0, 1500);
 
     await tester.pumpWidget(
       Row(

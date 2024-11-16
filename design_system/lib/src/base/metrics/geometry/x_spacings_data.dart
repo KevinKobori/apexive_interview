@@ -47,8 +47,8 @@ class XSpacingsData extends Equatable {
           attribute: 'extraSmall', location: 'spacings')));
   double get small =>
       _small ??
-      (throw UnsupportedError(
-          getUnsupportedErrorMessage(attribute: 'small', location: 'spacings')));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'small', location: 'spacings')));
   double get semiSmall =>
       _semiSmall ??
       (throw UnsupportedError(getUnsupportedErrorMessage(
@@ -63,8 +63,8 @@ class XSpacingsData extends Equatable {
           attribute: 'semiLarge', location: 'spacings')));
   double get large =>
       _large ??
-      (throw UnsupportedError(
-          getUnsupportedErrorMessage(attribute: 'large', location: 'spacings')));
+      (throw UnsupportedError(getUnsupportedErrorMessage(
+          attribute: 'large', location: 'spacings')));
   double get extraLarge =>
       _extraLarge ??
       (throw UnsupportedError(getUnsupportedErrorMessage(

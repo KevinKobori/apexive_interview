@@ -5,13 +5,13 @@ abstract class ApodLightElevatedButtonTheme {
   static ElevatedButtonThemeData get data => ElevatedButtonThemeData(
         style: ButtonStyle(
           // Background color
-          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+          backgroundColor: WidgetStateProperty.resolveWith<Color?>(
             (states) {
-              if (states.contains(MaterialState.disabled)) {
+              if (states.contains(WidgetState.disabled)) {
                 return ApodLightColorScheme.data.primary;
-              } else if (states.contains(MaterialState.hovered)) {
+              } else if (states.contains(WidgetState.hovered)) {
                 return ApodLightColorScheme.data.secondary;
-              } else if (states.contains(MaterialState.pressed)) {
+              } else if (states.contains(WidgetState.pressed)) {
                 return ApodLightColorScheme.data.tertiary;
                 // TODO:
                 // } else if (states.contains(MaterialState.focused)) {
@@ -30,7 +30,7 @@ abstract class ApodLightElevatedButtonTheme {
           ),
           // TODO:
           // Foreground (text/icon) color
-          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+          foregroundColor: WidgetStateProperty.resolveWith<Color?>(
             (states) {
               return ApodLightColorScheme.data.onPrimary; // Default color
             },
@@ -53,7 +53,7 @@ abstract class ApodLightElevatedButtonTheme {
           //     return 4; // Default elevation
           //   },
           // ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),

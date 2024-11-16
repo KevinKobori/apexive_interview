@@ -9,7 +9,7 @@ class NotificationsOverviewStateLoadedData extends NotificationsOverviewState {
 
   factory NotificationsOverviewStateLoadedData.demo() =>
       NotificationsOverviewStateLoadedData(
-        lastNotification: NotificationModel(
+        lastNotification: const NotificationModel(
           title: 'See the news',
           description:
               'NASA launches satellite that will study Earth’s “vital signs”',

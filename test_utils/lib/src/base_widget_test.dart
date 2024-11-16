@@ -17,8 +17,8 @@ void appTestWidgets(
           for (var child in widgets.entries) {
             final key = UniqueKey();
 
-            tester.binding.window.devicePixelRatioTestValue = 2.0;
-            tester.binding.window.physicalSizeTestValue = Size(
+            tester.view.devicePixelRatio = 2.0;
+            tester.view.physicalSize = Size(
               size.width * 2,
               size.height * 2,
             );

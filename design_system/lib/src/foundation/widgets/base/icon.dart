@@ -55,7 +55,7 @@ class ApodIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final assets = Theme.of(context).extension<XAssetsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
-    final color = this.color ?? colorScheme.onBackground;
+    final color = this.color ?? colorScheme.onSurface;
 
     return Text(
       data,
@@ -90,7 +90,7 @@ class ApodAnimatedIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final assets = Theme.of(context).extension<XAssetsData>()!;
     final colorScheme = Theme.of(context).colorScheme;
-    final color = this.color ?? colorScheme.onBackground;
+    final color = this.color ?? colorScheme.onSurface;
 
     if (!isAnimated) {
       return ApodIcon(
