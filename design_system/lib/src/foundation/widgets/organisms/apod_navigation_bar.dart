@@ -157,7 +157,7 @@ class _NavigationBarContainer extends StatelessWidget {
       padding: metrics.spacings.edgeInsets.allSemiSmall,
       decoration: BoxDecoration(
         borderRadius: metrics.radius.border.semiSmall,
-        color: colorScheme.background,
+        color: colorScheme.surface,
       ),
       child: child,
     );

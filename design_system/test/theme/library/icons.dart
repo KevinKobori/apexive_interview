@@ -15,7 +15,7 @@ ThemeSection icons(BuildContext context) {
               value: c as Named<String>,
               builder: (context, v, _) => ApodIcon(
                 v,
-                color: colorScheme.onBackground,
+                color: colorScheme.onSurface,
                 size: ApodIconSize.extraSmall,
               ),
             ),
@@ -30,7 +30,7 @@ ThemeSection icons(BuildContext context) {
               value: c as Named<String>,
               builder: (context, v, _) => ApodIcon(
                 v,
-                color: colorScheme.onBackground,
+                color: colorScheme.onSurface,
                 size: ApodIconSize.medium,
               ),
             ),

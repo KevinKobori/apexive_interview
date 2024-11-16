@@ -20,7 +20,7 @@ ThemeSection shadow(BuildContext context) {
                   width: 48,
                   margin: const EdgeInsets.all(64),
                   decoration: BoxDecoration(
-                    color: colorScheme.onBackground,
+                    color: colorScheme.onSurface,
                     boxShadow: [v],
                   ),
                 ),

@@ -76,7 +76,6 @@ void testAppView(
                                   children: [
                                     MaterialApp(
                                       debugShowCheckedModeBanner: false,
-                                      useInheritedMediaQuery: true,
                                       home: child,
                                     ),
                                     if (showSafeAreas) ...[

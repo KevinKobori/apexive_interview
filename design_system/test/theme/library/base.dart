@@ -17,7 +17,7 @@ class ThemeContainer extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       body: metrics.spacings.edgeInsets.paddings.allExtraLarge(
         child: SpacedColumn(
           spaceBetween: metrics.spacings.large,
@@ -149,7 +149,7 @@ class NamedCell<T> extends StatelessWidget {
           padding: metrics.spacings.edgeInsets.allSemiSmall,
           decoration: BoxDecoration(
             border: Border.all(
-              color: colorScheme.onBackground.withAlpha(125),
+              color: colorScheme.onSurface.withAlpha(125),
             ),
             borderRadius: BorderRadius.circular(4),
           ),
@@ -158,7 +158,7 @@ class NamedCell<T> extends StatelessWidget {
         Text(
           value.name,
           style: textTheme.bodyMedium!.copyWith(
-            color: colorScheme.onBackground.withAlpha(125),
+            color: colorScheme.onSurface.withAlpha(125),
             fontSize: metrics.spacings.small,
           ),
         ),

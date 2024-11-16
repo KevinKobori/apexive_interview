@@ -27,7 +27,7 @@ class ApodScaffold extends StatelessWidget {
 
     // Inside your AppScaffold build method
     return Scaffold(
-      backgroundColor: backgroundColor ?? colorScheme.background,
+      backgroundColor: backgroundColor ?? colorScheme.surface,
       body: Stack(
         children: [
           backgroundImage != null
@@ -43,7 +43,7 @@ class ApodScaffold extends StatelessWidget {
                   child: BackdropFilter(
                     filter: ui.ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
                     child: Container(
-                      color: colorScheme.background.withOpacity(0.7),
+                      color: colorScheme.surface.withOpacity(0.7),
                     ),
                   ),
                 )
