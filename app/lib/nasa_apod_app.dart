@@ -1,3 +1,4 @@
-export 'src/configuration/configuration.dart';
-export 'src/features/features.dart';
-export 'src/presentation/presentation.dart';
+export 'package:nasa_apod_app/presentation/ui/app_widget.dart';
+export 'configuration/configuration.dart';
+export 'features/features.dart';
+export 'presentation/presentation.dart';
